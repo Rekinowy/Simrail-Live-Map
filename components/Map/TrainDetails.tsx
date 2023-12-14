@@ -1,0 +1,76 @@
+type TrainDetailsType = {
+  trainNumber: string;
+  trainName: string;
+  departure: string;
+  destination: string;
+  speed: number;
+  user: string;
+  username: string;
+  trainImg: string;
+  vehicles: string[];
+};
+
+const TrainDetails = ({
+  trainNumber,
+  trainName,
+  departure,
+  destination,
+  speed,
+  user,
+  username,
+  trainImg,
+  vehicles,
+}: TrainDetailsType) => {
+  return (
+    <div className="absolute flex md:flex-col gap-3 top-2.5 md:top-5 right-2.5 md:right-5 md:w-72 p-4 z-[1000] rounded-xl border-2 border-slate-800 shadow-lg text-white text-base bg-primary bg-opacity-90">
+      <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col w-20 h-20 md:h-28 md:w-28 justify-center">
+          <img src={"/trains/" + trainImg} alt="train" />
+        </div>
+        <div className="flex flex-col items-center leading-5">
+          <h1 className="text-base md:text-xl">
+            {trainName} <span className="font-bold">{trainNumber}</span>
+          </h1>
+          <span className="text-sm md:text-base">{vehicles[0]}</span>
+        </div>
+      </div>
+      <div className="border-l md:border-t opacity-30"></div>
+      <div className="flex flex-col min-w-[120px] justify-center">
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-3">
+            <img src="/speed.png" alt="" className="w-5" />
+            <p className="font font-medium">{speed.toFixed()} km/h</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-3">
+              <img src="/dep.png" alt="Departure icon" className="w-5 h-5" />
+              <p className="capitalize leading-5">
+                {departure.charAt(1) === departure.charAt(1).toUpperCase()
+                  ? departure.toLowerCase()
+                  : departure}
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <img src="/des.png" alt="Departure icon" className="w-5 h-5" />
+              <p className="capitalize leading-5">
+                {destination.charAt(1) === destination.charAt(1).toUpperCase()
+                  ? destination.toLowerCase()
+                  : destination}
+              </p>
+            </div>
+          </div>
+        </div>
+        {user && (
+          <>
+            <div className="border-t my-3 opacity-30"></div>
+            <div className="flex gap-3 items-center">
+              <img src="/user.png" className="w-5" />
+              <span className="font-medium">{username}</span>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+export default TrainDetails;

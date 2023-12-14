@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
 
-module.exports = nextConfig
+}
+
+module.exports = {
+  images: {
+  remotePatterns: [{
+    hostname: 'api1.aws.simrail.eu'},{
+      hostname: 'avatars.steamstatic.com'}],
+},
+};
