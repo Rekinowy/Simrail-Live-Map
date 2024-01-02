@@ -18,7 +18,7 @@ const StationDetails = ({
   username,
 }: StationDetailsType) => {
   return (
-    <div className="absolute flex max-sm:max-w-[400px] md:flex-col gap-4 top-2.5 md:top-5 right-2.5 md:right-5 p-4 z-[1000] rounded-xl border-2 border-slate-800 text-white text-base bg-primary bg-opacity-90">
+    <div className="absolute flex max-sm:max-w-[400px] md:flex-col gap-4 top-2.5 md:top-5 right-2.5 md:right-5 p-4 z-[1000] rounded-xl border-2 border-slate-800 text-white text-base bg-primary bg-opacity-90 backdrop-blur-sm">
       <div className="flex flex-col gap-2">
         <div className="w-[200px] h-[75px] md:h-[125px] md:w-[291px] rounded-lg shadow-lg overflow-hidden">
           <Image

@@ -73,7 +73,6 @@ const StationMarker = ({
   useEffect(() => {
     if (user && username != "User") {
       fetchData();
-      console.log("Fetch Station", stationName, username);
     }
   }, [user]);
 

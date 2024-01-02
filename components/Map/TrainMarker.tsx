@@ -94,14 +94,12 @@ const TrainMarker = ({
   useEffect(() => {
     if (user && username == "User") {
       fetchData();
-      console.log("Fetch", trainNumber, username);
     }
   });
 
   useEffect(() => {
     if (user && username != "User") {
       fetchData();
-      console.log("Fetch 2", trainNumber, username);
     }
   }, [user]);
 
