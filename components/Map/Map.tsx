@@ -162,8 +162,6 @@ export default function Map({ code }: { code: string }) {
     } else {
       setFilteredTrains([]);
     }
-
-    console.log(filteredTrains);
   }, [searchValue, trains.data?.data]);
 
   return (
