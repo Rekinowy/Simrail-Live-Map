@@ -61,7 +61,7 @@ const SearchBox = ({
               );
             })
           ) : (
-            <div className="p-1.5 text-center text-sm bg-primary/50 border-b cursor-default border-slate-800">
+            <div className="p-1.5 text-center text-sm text-slate-200 bg-primary/50 border-b cursor-default border-slate-800">
               No results
             </div>
           ))}
