@@ -1,7 +1,7 @@
 import { getUserInfo } from "@/utils/actions";
 import { divIcon } from "leaflet";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Marker, Popup, Tooltip, useMap } from "react-leaflet";
 import StationDetails from "./StationDetails";
 
@@ -16,11 +16,11 @@ type StationMarkerProps = {
   selectedStation: string;
   setSelectedStation: (station: string) => void;
   zoomLevel: number;
-  setZoomLevel: (zoom: number) => void;
+
   showStations: boolean;
   showOnlyAvail: boolean;
   showMarkerLabels: boolean;
-  setOpenSettings: (openSettings: boolean) => void;
+
   labelZoomLevel: number;
 };
 
@@ -35,11 +35,11 @@ const StationMarker = ({
   selectedStation,
   setSelectedStation,
   zoomLevel,
-  setZoomLevel,
+
   showStations,
   showOnlyAvail,
   showMarkerLabels,
-  setOpenSettings,
+
   labelZoomLevel,
 }: StationMarkerProps) => {
   const [username, setUsername] = useState("User");
@@ -51,16 +51,6 @@ const StationMarker = ({
     setUsername(userData?.username);
     setAvatar(userData?.avatar);
   };
-
-  useEffect(() => {
-    map.on("zoom", () => {
-      setZoomLevel(map.getZoom());
-    });
-    map.on("click", () => {
-      setSelectedStation("");
-      setOpenSettings(false);
-    });
-  }, [map]);
 
   // Get user info
 

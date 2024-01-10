@@ -86,7 +86,7 @@ const TrainMarker = ({
       prevPos.current = [lat, lng];
     }
     if (selectedTrain == trainNumber) {
-      map.panTo(position, { animate: true, duration: 2 });
+      map.panTo(position, { animate: true, duration: 1 });
     }
   }, [position, selectedTrain]);
 
@@ -147,7 +147,7 @@ const TrainMarker = ({
     <>
       <LeafletTrackingMarker
         position={[lat, lng]}
-        duration={1500}
+        duration={2000}
         icon={markerIcon}
         rotationAngle={0}
         riseOnHover={true}
@@ -156,7 +156,6 @@ const TrainMarker = ({
           click: (event) => {
             event.target.closePopup();
             setSelectedTrain(trainNumber);
-            map.panTo(position, { animate: true, duration: 2 });
           },
           mouseover: (event) => {
             event.target.openPopup();

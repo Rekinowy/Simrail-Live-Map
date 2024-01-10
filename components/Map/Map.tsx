@@ -14,6 +14,8 @@ import { trainStations } from "@/constants";
 import { Icon } from "leaflet";
 import SettingsTab from "./SettingsTab";
 import { NextUIProvider } from "@nextui-org/system";
+import SearchBox from "./SearchBox";
+import MapControl from "./MapControl";
 
 const stationIcon = new Icon({
   iconUrl: "/station.png",
@@ -24,7 +26,7 @@ const stationIcon = new Icon({
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-type TrainDataType = {
+export type TrainDataType = {
   id: string;
   TrainData: { [name: string]: number & string };
   TrainNoLocal: string;
@@ -35,7 +37,7 @@ type TrainDataType = {
   userInfo: void;
 };
 
-type StationDataType = {
+export type StationDataType = {
   id: string;
   Name: string;
   DifficultyLevel: number;
@@ -53,6 +55,8 @@ export default function Map({ code }: { code: string }) {
   const [zoomLevel, setZoomLevel] = useState(8);
   const [openSettings, setOpenSettings] = useState(false);
   const [selectedLocos, setSelectedLocos] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredTrains, setFilteredTrains] = useState<TrainDataType[]>([]);
   const [trainLabelZoomLevel, setTrainLabelZoomLevel] = useState(() => {
     const saved = localStorage.getItem("trainLabelZoomLevel");
     if (saved) {
@@ -143,6 +147,24 @@ export default function Map({ code }: { code: string }) {
     fetcher,
     { refreshInterval: 5000 }
   );
+
+  useEffect(() => {
+    if (trains.data?.data && searchValue.length > 1) {
+      const searchResults = trains.data.data
+        .filter((train: TrainDataType) =>
+          train.TrainNoLocal.includes(searchValue)
+        )
+        .sort(
+          (a: TrainDataType, b: TrainDataType) =>
+            parseInt(a.TrainNoLocal, 10) - parseInt(b.TrainNoLocal, 10)
+        );
+      setFilteredTrains(searchResults);
+    } else {
+      setFilteredTrains([]);
+    }
+
+    console.log(filteredTrains);
+  }, [searchValue, trains.data?.data]);
 
   return (
     <NextUIProvider>
@@ -244,16 +266,28 @@ export default function Map({ code }: { code: string }) {
               selectedStation={selectedMarker}
               setSelectedStation={setSelectedMarker}
               zoomLevel={zoomLevel}
-              setZoomLevel={setZoomLevel}
               showStations={showStations}
               showOnlyAvail={showOnlyAvail}
               showMarkerLabels={showStationLabels}
-              setOpenSettings={setOpenSettings}
               labelZoomLevel={stationLabelZoomLevel}
             />
           );
         })}
+
+        <MapControl
+          setOpenSettings={setOpenSettings}
+          setZoomLevel={setZoomLevel}
+          setSelectedMarker={setSelectedMarker}
+        />
       </MapContainer>
+
+      <SearchBox
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        filteredTrains={filteredTrains}
+        setSelectedMarker={setSelectedMarker}
+        setSelectedLocos={setSelectedLocos}
+      />
 
       {openSettings && (
         <SettingsTab

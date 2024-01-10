@@ -49,7 +49,7 @@ const SettingsTab = ({
   setShowStations,
 }: SettingsTabTypes) => {
   return (
-    <div className="absolute flex flex-col gap-2 top-[122px] w-[340px] left-[50px] p-2 z-[1200] rounded-md border-2 border-slate-800 shadow-lg text-[#D4CECE] bg-primary bg-opacity-70 cursor-default backdrop-blur-sm">
+    <div className="absolute flex flex-col gap-2 top-[122px] w-[340px] left-[50px] p-2 z-[1200] rounded-md border-2 border-slate-800 shadow-lg text-[#D4CECE] bg-primary bg-opacity-70 cursor-default backdrop-blur-md">
       <div className="flex flex-col gap-2 py-2 rounded-md bg-primary border border-slate-800">
         <div className="flex w-full justify-between">
           <p className="px-3">Show trains</p>
