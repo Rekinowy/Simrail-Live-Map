@@ -3,7 +3,6 @@ import { Popup, Tooltip, useMap } from "react-leaflet";
 import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 import { divIcon } from "leaflet";
 import { trainsImg } from "@/constants";
-import { getUserInfo } from "@/utils/actions";
 import TrainDetails from "./TrainDetails";
 
 type TrainMarkerProps = {
@@ -15,7 +14,10 @@ type TrainMarkerProps = {
   vehicles: string[];
   departure: string;
   destination: string;
-  user: string;
+  user: {
+    username: string;
+    avatar: string;
+  };
   selectedTrain: string;
   setSelectedTrain: (train: string) => void;
   zoomLevel: number;
@@ -45,6 +47,8 @@ const TrainMarker = ({
   labelZoomLevel,
   selectedLocos,
 }: TrainMarkerProps) => {
+  const username = user?.username || "User";
+  const avatar = user?.avatar || "/user-avatar.jpg";
   const position = { lat: lat, lng: lng };
   const prevPos = useRef([lat, lng]);
   const map = useMap();
@@ -52,9 +56,8 @@ const TrainMarker = ({
     vehicles[0].includes(loco)
   );
 
+  const [hasPositionChanged, setHasPositionChanged] = useState(false);
   const [rotationAngle, setRotationAngle] = useState(0);
-  const [username, setUsername] = useState("User");
-  const [avatar, setAvatar] = useState("/user-avatar.jpg");
 
   const calculateRotationAngle = (prevPos: any, currentPos: any) => {
     const lat1 = (prevPos[0] * Math.PI) / 180;
@@ -73,35 +76,17 @@ const TrainMarker = ({
     return radiansToDegrees;
   };
 
-  const fetchData = async () => {
-    const userData = await getUserInfo(user);
-    setUsername(userData?.username);
-    setAvatar(userData?.avatar);
-  };
-
   // Set marker rotation and follow
   useEffect(() => {
     if (prevPos.current[0] !== lat || prevPos.current[1] !== lng) {
       setRotationAngle(calculateRotationAngle(prevPos.current, position));
       prevPos.current = [lat, lng];
+      setHasPositionChanged(true);
     }
     if (selectedTrain == trainNumber) {
       map.panTo(position, { animate: true, duration: 1 });
     }
   }, [position, selectedTrain]);
-
-  // Get user info
-  useEffect(() => {
-    if (user && username == "User") {
-      fetchData();
-    }
-  });
-
-  useEffect(() => {
-    if (user && username != "User") {
-      fetchData();
-    }
-  }, [user]);
 
   const markerIcon = divIcon({
     html: `<div class='marker-container relative'>
@@ -116,7 +101,9 @@ const TrainMarker = ({
         ? "border-yellow-600"
         : "border-red-800"
     }' />
-    <div style='transform: rotate(${rotationAngle}deg)' class='absolute transition-all top-0 left-0 -z-10 ${
+    <div style='transform: rotate(${rotationAngle}deg)' class='${
+      !hasPositionChanged && "hidden"
+    } absolute transition-all top-0 left-0 -z-10 ${
       user ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"
     }'><div class='absolute ${
       speed > 40

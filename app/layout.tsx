@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="dark h-[100dvh]">{children}</body>
+      <body className="dark h-[100dvh] scroll-smooth scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary scrollbar-track-primary_dark scrollbar-thumb-rounded-lg">
+        {children}
+      </body>
     </html>
   );
 }

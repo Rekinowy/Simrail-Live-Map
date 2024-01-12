@@ -10,12 +10,13 @@ import { useEffect, useState } from "react";
 import Control from "react-leaflet-custom-control";
 import Link from "next/link";
 import Image from "next/image";
-import { trainStations } from "@/constants";
+import { trainStations, trainsImg } from "@/constants";
 import { Icon } from "leaflet";
 import SettingsTab from "./SettingsTab";
 import { NextUIProvider } from "@nextui-org/system";
 import SearchBox from "./SearchBox";
 import MapControl from "./MapControl";
+import { getUserInfo } from "@/utils/actions";
 
 const stationIcon = new Icon({
   iconUrl: "/station.png",
@@ -23,8 +24,6 @@ const stationIcon = new Icon({
   iconAnchor: [10, 10],
   popupAnchor: [3, -12],
 });
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export type TrainDataType = {
   id: string;
@@ -34,7 +33,8 @@ export type TrainDataType = {
   Vehicles: string[];
   StartStation: string;
   EndStation: string;
-  userInfo: void;
+
+  userInfo: { username: string; avatar: string };
 };
 
 export type StationDataType = {
@@ -44,8 +44,16 @@ export type StationDataType = {
   Prefix: string;
   Latititude: number;
   Longitude: number;
-  DispatchedBy: [{ [name: string]: string }];
+  userInfo: { username: string; avatar: string };
   MainImageURL: string;
+};
+
+export type SearchResultType = {
+  id: string;
+  label: string;
+  username: string;
+  image: string;
+  type: "train" | "station";
 };
 
 export default function Map({ code }: { code: string }) {
@@ -56,7 +64,11 @@ export default function Map({ code }: { code: string }) {
   const [openSettings, setOpenSettings] = useState(false);
   const [selectedLocos, setSelectedLocos] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [filteredTrains, setFilteredTrains] = useState<TrainDataType[]>([]);
+
+  const [filteredResults, setFilteredResults] = useState<SearchResultType[]>(
+    []
+  );
+  const [userCache, setUserCache] = useState<Record<string, any>>({});
   const [trainLabelZoomLevel, setTrainLabelZoomLevel] = useState(() => {
     const saved = localStorage.getItem("trainLabelZoomLevel");
     if (saved) {
@@ -137,6 +149,41 @@ export default function Map({ code }: { code: string }) {
     localStorage.setItem("showOnlyAvail", JSON.stringify(showOnlyAvail));
   }, [showOnlyAvail]);
 
+  const fetcher = async (url: string) => {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (data.data) {
+      for (let item of data.data) {
+        let userId = "";
+        if (url.includes("trains")) {
+          if (item.TrainData?.ControlledBySteamID) {
+            userId = item.TrainData.ControlledBySteamID;
+          }
+        } else if (url.includes("stations")) {
+          if (item.DispatchedBy && item.DispatchedBy.length > 0) {
+            userId = item.DispatchedBy[0]?.SteamId;
+          }
+        }
+        if (userId) {
+          if (userCache[userId]) {
+            item.userInfo = userCache[userId];
+          } else {
+            const userData = await getUserInfo(userId);
+
+            item.userInfo = userData;
+
+            setUserCache((prevState) => ({
+              ...prevState,
+              [userId]: item.userInfo,
+            }));
+          }
+        }
+      }
+    }
+    return data;
+  };
+
   const trains = useSWR(
     `https://panel.simrail.eu:8084/trains-open?serverCode=${code}`,
     fetcher,
@@ -148,21 +195,55 @@ export default function Map({ code }: { code: string }) {
     { refreshInterval: 5000 }
   );
 
+  // Search data filtering
   useEffect(() => {
-    if (trains.data?.data && searchValue.length > 1) {
-      const searchResults = trains.data.data
-        .filter((train: TrainDataType) =>
-          train.TrainNoLocal.includes(searchValue)
-        )
-        .sort(
-          (a: TrainDataType, b: TrainDataType) =>
-            parseInt(a.TrainNoLocal, 10) - parseInt(b.TrainNoLocal, 10)
-        );
-      setFilteredTrains(searchResults);
-    } else {
-      setFilteredTrains([]);
+    const lowerCaseSearchValue = searchValue.toLowerCase();
+    let searchResults: SearchResultType[] = [];
+
+    if (searchValue.length > 0) {
+      if (trains.data?.data) {
+        const trainResults = trains.data.data
+          .filter(
+            (train: TrainDataType) =>
+              train.TrainNoLocal.toLowerCase().includes(lowerCaseSearchValue) ||
+              (train.userInfo?.username &&
+                train.userInfo.username
+                  .toLowerCase()
+                  .includes(lowerCaseSearchValue))
+          )
+          .map((train: TrainDataType) => ({
+            id: train.id,
+            label: train.TrainNoLocal,
+            username: train.userInfo?.username || "",
+            image: `/trains/${trainsImg[train.Vehicles[0]]}`,
+            type: "train",
+          }));
+        searchResults = searchResults.concat(trainResults);
+      }
+
+      if (stations.data?.data) {
+        const stationResults = stations.data.data
+          .filter(
+            (station: StationDataType) =>
+              station.Name.toLowerCase().includes(lowerCaseSearchValue) ||
+              (station.userInfo?.username &&
+                station.userInfo.username
+                  .toLowerCase()
+                  .includes(lowerCaseSearchValue))
+          )
+          .map((station: StationDataType) => ({
+            id: station.id,
+            label: station.Name,
+            username: station.userInfo?.username || "",
+            image: "/lever.png",
+            type: "station",
+          }));
+        searchResults = searchResults.concat(stationResults);
+      }
     }
-  }, [searchValue, trains.data?.data]);
+
+    setFilteredResults(searchResults);
+  }, [searchValue, trains.data?.data, stations.data?.data]);
 
   return (
     <NextUIProvider>
@@ -179,7 +260,7 @@ export default function Map({ code }: { code: string }) {
         <Control prepend position="topleft">
           <Link
             href="/"
-            className="flex justify-center items-center w-[30px] h-[30px]  rounded-sm bg-primary bg-opacity-70 shadow-sm"
+            className="flex justify-center items-center w-[30px] h-[30px] rounded-sm bg-primary bg-opacity-70 shadow-sm"
           >
             <div className="w-[16px] h-[16px]">
               <Image src="/back.png" alt="Back" width={32} height={32} />
@@ -226,30 +307,31 @@ export default function Map({ code }: { code: string }) {
             );
           })}
 
-        {trains.data?.data.map((train: TrainDataType) => {
-          return (
-            <TrainMarker
-              key={train.id}
-              lat={train.TrainData.Latititute}
-              lng={train.TrainData.Longitute}
-              speed={train.TrainData.Velocity}
-              trainNumber={train.TrainNoLocal}
-              trainName={train.TrainName}
-              vehicles={train.Vehicles}
-              departure={train.StartStation}
-              destination={train.EndStation}
-              user={train.TrainData.ControlledBySteamID}
-              selectedTrain={selectedMarker}
-              setSelectedTrain={setSelectedMarker}
-              zoomLevel={zoomLevel}
-              showTrains={showTrains}
-              showOnlyAvail={showOnlyAvail}
-              showMarkerLabels={showMarkerLabels}
-              labelZoomLevel={trainLabelZoomLevel}
-              selectedLocos={selectedLocos}
-            />
-          );
-        })}
+        {trains.data?.data &&
+          trains.data.data.map((train: TrainDataType) => {
+            return (
+              <TrainMarker
+                key={train.id}
+                lat={train.TrainData.Latititute}
+                lng={train.TrainData.Longitute}
+                speed={train.TrainData.Velocity}
+                trainNumber={train.TrainNoLocal}
+                trainName={train.TrainName}
+                vehicles={train.Vehicles}
+                departure={train.StartStation}
+                destination={train.EndStation}
+                user={train?.userInfo}
+                selectedTrain={selectedMarker}
+                setSelectedTrain={setSelectedMarker}
+                zoomLevel={zoomLevel}
+                showTrains={showTrains}
+                showOnlyAvail={showOnlyAvail}
+                showMarkerLabels={showMarkerLabels}
+                labelZoomLevel={trainLabelZoomLevel}
+                selectedLocos={selectedLocos}
+              />
+            );
+          })}
         {stations.data?.data.map((station: StationDataType) => {
           return (
             <StationMarker
@@ -260,7 +342,7 @@ export default function Map({ code }: { code: string }) {
               difficulty={station.DifficultyLevel}
               lat={station.Latititude}
               lng={station.Longitude}
-              user={station.DispatchedBy[0]?.SteamId}
+              user={station.userInfo}
               selectedStation={selectedMarker}
               setSelectedStation={setSelectedMarker}
               zoomLevel={zoomLevel}
@@ -282,7 +364,7 @@ export default function Map({ code }: { code: string }) {
       <SearchBox
         searchValue={searchValue}
         setSearchValue={setSearchValue}
-        filteredTrains={filteredTrains}
+        filteredResults={filteredResults}
         setSelectedMarker={setSelectedMarker}
         setSelectedLocos={setSelectedLocos}
       />

@@ -129,5 +129,16 @@ body {
     background: rgb(22, 27, 34) !important;
     outline: 0;
   }
+
+  .inputBlur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(5px); /* Adjust the pixel value as needed */
+    pointer-events: none; /* Prevent the pseudo-element from capturing mouse events */
+  }
   
 

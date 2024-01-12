@@ -4,7 +4,7 @@ type TrainDetailsType = {
   departure: string;
   destination: string;
   speed: number;
-  user: string;
+  user: { username: string; avatar: string };
   username: string;
   trainImg: string;
   vehicles: string[];

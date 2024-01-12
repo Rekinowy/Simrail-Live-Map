@@ -1,7 +1,6 @@
-import { getUserInfo } from "@/utils/actions";
 import { divIcon } from "leaflet";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Marker, Popup, Tooltip, useMap } from "react-leaflet";
 import StationDetails from "./StationDetails";
 
@@ -12,15 +11,13 @@ type StationMarkerProps = {
   difficulty: number;
   lat: number;
   lng: number;
-  user: string;
+  user: { username: string; avatar: string };
   selectedStation: string;
   setSelectedStation: (station: string) => void;
   zoomLevel: number;
-
   showStations: boolean;
   showOnlyAvail: boolean;
   showMarkerLabels: boolean;
-
   labelZoomLevel: number;
 };
 
@@ -35,36 +32,15 @@ const StationMarker = ({
   selectedStation,
   setSelectedStation,
   zoomLevel,
-
   showStations,
   showOnlyAvail,
   showMarkerLabels,
 
   labelZoomLevel,
 }: StationMarkerProps) => {
-  const [username, setUsername] = useState("User");
-  const [avatar, setAvatar] = useState("/user-avatar.jpg");
+  const username = user?.username || "User";
+  const avatar = user?.avatar || "/user-avatar.jpg";
   const map = useMap();
-
-  const fetchData = async () => {
-    const userData = await getUserInfo(user);
-    setUsername(userData?.username);
-    setAvatar(userData?.avatar);
-  };
-
-  // Get user info
-
-  useEffect(() => {
-    if (user && username == "User") {
-      fetchData();
-    }
-  });
-
-  useEffect(() => {
-    if (user && username != "User") {
-      fetchData();
-    }
-  }, [user]);
 
   const stationIcon = divIcon({
     html: `<div class='marker-container'>
@@ -77,6 +53,12 @@ const StationMarker = ({
     }'/>
     </div>`,
     iconSize: [0, 0],
+  });
+
+  useEffect(() => {
+    if (selectedStation == stationName) {
+      map.panTo([lat, lng], { animate: true, duration: 1 });
+    }
   });
 
   if (!showStations) {
@@ -96,8 +78,7 @@ const StationMarker = ({
         eventHandlers={{
           click: (event) => {
             event.target.closePopup();
-            setSelectedStation(stationPrefix);
-            map.panTo({ lat, lng }, { animate: true, duration: 2 });
+            setSelectedStation(stationName);
           },
           mouseover: (event) => {
             event.target.openPopup();
@@ -158,7 +139,7 @@ const StationMarker = ({
           )}
         </Popup>
       </Marker>
-      {selectedStation == stationPrefix && (
+      {selectedStation == stationName && (
         <StationDetails
           stationName={stationName}
           stationPrefix={stationPrefix}

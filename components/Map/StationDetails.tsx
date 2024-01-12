@@ -5,7 +5,7 @@ type StationDetailsType = {
   stationPrefix: string;
   stationImage: string;
   difficulty: number;
-  user: string;
+  user: { username: string; avatar: string };
   username: string;
 };
 

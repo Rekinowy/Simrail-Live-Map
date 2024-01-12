@@ -16,11 +16,15 @@ const config: Config = {
       },
       colors: {
         primary: '#2b3d4f',
+        primary_light: '#2b4259',
+        primary_dark: '#1c2b3b',
         'light-gray': '#f4f4f4',
       },
     },
   },
-  plugins: [nextui()],
+  plugins: [nextui(),
+    require('tailwind-scrollbar')({ nocompatible: true }),],
+  
 };
 
 export default config;
