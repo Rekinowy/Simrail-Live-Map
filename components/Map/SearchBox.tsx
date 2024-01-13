@@ -15,7 +15,7 @@ const SearchBox = ({
   filteredResults: SearchResultType[];
 }) => {
   return (
-    <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-[300px] z-[1200] text-white">
+    <div className="absolute top-2.5 left-1/2 transform -translate-x-1/2 w-[280px] z-[1200] text-white">
       <Input
         isClearable
         placeholder="Search"
