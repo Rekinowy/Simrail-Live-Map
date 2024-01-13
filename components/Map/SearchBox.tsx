@@ -18,23 +18,22 @@ const SearchBox = ({
     <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-[300px] z-[1200] text-white">
       <Input
         isClearable
-        placeholder="Search by train number or username"
+        placeholder="Search"
         radius="sm"
         className="relative z-10 inputBlur"
         classNames={{
-          label: "text-black/50 dark:text-white/90",
           input: [
             "bg-transparent",
-            "text-black/90 dark:text-white/30",
-            "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+            "text-white/30",
+            "placeholder:text-[#D4CECE]",
+            "ml-1",
           ],
-          innerWrapper: "bg-transparent focus:bg-black",
           inputWrapper: [
             "h-5",
             "shadow-xl",
             "bg-primary/70",
-            "dark:hover:bg-primary/80",
-            "dark:focus-within:!bg-primary",
+            "hover:bg-primary/80",
+            "focus-within:!bg-primary",
             "!cursor-text",
             "border border-slate-800 focus:bg-black ",
           ],
@@ -42,6 +41,9 @@ const SearchBox = ({
         value={searchValue}
         onChange={(value) => setSearchValue(value.target.value)}
         onClear={() => setSearchValue("")}
+        startContent={
+          <img src="/search.png" alt="search" width={16} height={16} />
+        }
       />
       <div className="relative flex flex-col w-[95%] max-h-[80vh] m-auto rounded-b-lg shadow-lg overflow-hidden scroll-smooth">
         <div className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary_light scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80vh]">
@@ -70,10 +72,7 @@ const SearchBox = ({
                         />
                       </div>
                       <div className="flex flex-col items-start">
-                        <p className="text-sm text-left">
-                          {item.label}
-                          {}
-                        </p>
+                        <p className="text-sm text-left">{item.label}</p>
                         {item.username && (
                           <p className="text-slate-200 font-thin text-xs">
                             {item.username}
