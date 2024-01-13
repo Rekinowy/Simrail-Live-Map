@@ -78,7 +78,7 @@ export const trainsImg: TrainsImgType = {
   "EN57/EN71-005": '/en71-005.png',
   "EN57/EN71-011": '/en71-011.png',
 
-  "Pendolino/ED250-018 Variant": '/ed250-018.png',
+  "Pendolino/ED250-018": '/ed250-018.png',
 
 }
 

@@ -22,7 +22,7 @@ const TrainDetails = ({
   vehicles,
 }: TrainDetailsType) => {
   return (
-    <div className="absolute flex md:flex-col gap-3 top-2.5 md:top-5 right-2.5 md:right-5 md:w-72 p-4 z-[1000] rounded-xl border-2 border-slate-800 shadow-lg text-white text-base bg-primary bg-opacity-90 backdrop-blur-sm">
+    <div className="absolute flex md:flex-col gap-3 top-2.5 right-3 w-72 p-4 z-[1000] rounded-xl border-2 border-slate-800 shadow-lg text-white text-base bg-primary bg-opacity-90 backdrop-blur-sm">
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-col w-20 h-20 md:h-28 md:w-28 justify-center">
           <img src={"/trains/" + trainImg} alt="train" />

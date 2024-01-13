@@ -160,6 +160,9 @@ export default function Map({ code }: { code: string }) {
           if (item.TrainData?.ControlledBySteamID) {
             userId = item.TrainData.ControlledBySteamID;
           }
+          if (item.Vehicles[0].includes("Pendolino")) {
+            item.Vehicles[0] = "Pendolino/ED250-018";
+          }
         } else if (url.includes("stations")) {
           if (item.DispatchedBy && item.DispatchedBy.length > 0) {
             userId = item.DispatchedBy[0]?.SteamId;
