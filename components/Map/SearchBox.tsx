@@ -29,7 +29,7 @@ const SearchBox = ({
             "ml-1",
           ],
           inputWrapper: [
-            "h-5",
+            "h-2",
             "shadow-xl",
             "bg-primary/70",
             "hover:bg-primary/80",
@@ -42,10 +42,10 @@ const SearchBox = ({
         onChange={(value) => setSearchValue(value.target.value)}
         onClear={() => setSearchValue("")}
         startContent={
-          <img src="/search.png" alt="search" width={16} height={16} />
+          <img src="/search.png" alt="search" width={14} height={14} />
         }
       />
-      <div className="relative flex flex-col w-[95%] max-h-[80vh] m-auto rounded-b-lg shadow-lg overflow-hidden scroll-smooth">
+      <div className="relative flex flex-col w-[95%] max-h-[70dvh] m-auto rounded-b-lg shadow-lg overflow-hidden scroll-smooth">
         <div className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary_light scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80vh]">
           {searchValue.length > 0 &&
             (filteredResults.length > 0 ? (

@@ -58,6 +58,7 @@ const TrainMarker = ({
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
   const [rotationAngle, setRotationAngle] = useState(0);
+  const [duration, setDuration] = useState(2000);
 
   const calculateRotationAngle = (prevPos: any, currentPos: any) => {
     const lat1 = (prevPos[0] * Math.PI) / 180;
@@ -84,7 +85,7 @@ const TrainMarker = ({
       setHasPositionChanged(true);
     }
     if (selectedTrain == trainNumber) {
-      map.panTo(position, { animate: true, duration: 1 });
+      map.panTo(position, { animate: true, duration: 2 });
     }
   }, [position, selectedTrain]);
 
@@ -103,7 +104,7 @@ const TrainMarker = ({
     }' />
     <div style='transform: rotate(${rotationAngle}deg)' class='${
       !hasPositionChanged && "hidden"
-    } absolute transition-all top-0 left-0 -z-10 ${
+    } absolute top-0 left-0 -z-10 ${
       user ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"
     }'><div class='absolute ${
       speed > 40
@@ -134,7 +135,7 @@ const TrainMarker = ({
     <>
       <LeafletTrackingMarker
         position={[lat, lng]}
-        duration={2000}
+        duration={duration}
         icon={markerIcon}
         rotationAngle={0}
         riseOnHover={true}
