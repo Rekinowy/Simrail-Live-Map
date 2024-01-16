@@ -72,8 +72,8 @@ const TrainDetails = ({
           )}
         </div>
       </div>
-      <div className="flex lg:hidden absolute gap-2 p-2 w-80 bottom-4 z-[1000] left-1/2 transform -translate-x-1/2 rounded-xl border-2 border-slate-800 shadow-lg text-white bg-primary bg-opacity-90 backdrop-blur-sm">
-        <div className="flex flex-col min-w-[40%] justify-center items-center">
+      <div className="flex lg:hidden absolute p-2 w-[80%] max-w-[380px] justify-evenly bottom-4 z-[1000] left-1/2 transform -translate-x-1/2 rounded-xl border-2 border-slate-800 shadow-lg text-white bg-primary bg-opacity-90 backdrop-blur-sm">
+        <div className="flex flex-col items-center">
           <div className="flex flex-col h-20 w-20 justify-center">
             <img src={"/trains/" + trainImg} alt="train" />
           </div>
@@ -81,44 +81,55 @@ const TrainDetails = ({
             <h1 className="text-sm text-center">
               {trainName} <span className="font-bold">{trainNumber}</span>
             </h1>
-            <span className="text-xs">{vehicles[0]}</span>
+            <span className="text-xs text-center">{vehicles[0]}</span>
           </div>
         </div>
-        <div className="border-l border-t opacity-30"></div>
-        <div className="flex flex-col min-w-[120px] justify-center">
-          <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-3">
-              <img src="/speed.png" alt="" className="w-4" />
-              <p className="font font-medium">{speed.toFixed()} km/h</p>
-            </div>
+        <div className="flex gap-2">
+          <div className="border-l border-t opacity-30"></div>
+          <div className="flex flex-col min-w-[120px] justify-center">
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-3">
-                <img src="/dep.png" alt="Departure icon" className="w-4 h-4" />
-                <p className="capitalize leading-2">
-                  {departure.charAt(1) === departure.charAt(1).toUpperCase()
-                    ? departure.toLowerCase()
-                    : departure}
-                </p>
+                <img src="/speed.png" alt="" className="w-4" />
+                <p className="font font-medium">{speed.toFixed()} km/h</p>
               </div>
-              <div className="flex items-center gap-3">
-                <img src="/des.png" alt="Departure icon" className="w-4 h-4" />
-                <p className="capitalize leading-2">
-                  {destination.charAt(1) === destination.charAt(1).toUpperCase()
-                    ? destination.toLowerCase()
-                    : destination}
-                </p>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/dep.png"
+                    alt="Departure icon"
+                    className="w-4 h-4"
+                  />
+                  <p className="capitalize leading-2">
+                    {departure.charAt(1) === departure.charAt(1).toUpperCase()
+                      ? departure.toLowerCase()
+                      : departure}
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/des.png"
+                    alt="Departure icon"
+                    className="w-4 h-4"
+                  />
+                  <p className="capitalize leading-2">
+                    {destination.charAt(1) ===
+                    destination.charAt(1).toUpperCase()
+                      ? destination.toLowerCase()
+                      : destination}
+                  </p>
+                </div>
               </div>
             </div>
+            {user && (
+              <>
+                <div className="border-t my-2 opacity-30"></div>
+                <div className="flex gap-3 items-center">
+                  <img src="/user.png" className="w-4" />
+                  <span className="font-medium">{username}</span>
+                </div>
+              </>
+            )}
           </div>
-          {user && (
-            <>
-              <div className="border-t my-2 opacity-30"></div>
-              <div className="flex gap-3 items-center">
-                <img src="/user.png" className="w-4" />
-                <span className="font-medium">{username}</span>
-              </div>
-            </>
-          )}
         </div>
       </div>
     </>

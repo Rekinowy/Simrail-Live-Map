@@ -23,19 +23,11 @@ const ServersList = () => {
     <section className="grid grid-cols-2 md:grid-cols-4 w-full gap-4 md:gap-6 p-4 max-w-screen-xl rounded-xl border border-primary shadow-lg bg-primary/30 cursor-default backdrop-blur-sm">
       {servers.data?.data ? (
         servers.data.data.map(
-          ({
-            id,
-            ServerCode,
-            ServerName,
-            ServerRegion,
-            IsActive,
-          }: ServerDataType) => (
+          ({ id, ServerCode, ServerRegion, IsActive }: ServerDataType) => (
             <Link
               key={id}
               href={`/server/${ServerCode}`}
-              className={`flex md:h-28 px-2 py-3 items-center bg-primary/80 text-white text-lg border hover:bg-primary rounded-xl ${
-                IsActive ? "border-green-700" : "border-red-700"
-              }`}
+              className={`flex md:h-28 px-2 py-3 items-center bg-primary/80 text-white text-lg border hover:bg-primary rounded-xl border-slate-800`}
             >
               <div
                 className={`w-5 h-5 mx-2 rounded-full border border-slate-600 ${
