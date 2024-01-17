@@ -9,7 +9,7 @@ export const locos = [
   },
   {
     name: 'Dragon2',
-    label: 'E6ACT Dragon 2'
+    label: 'E6ACTa DRAGON 2'
   },
   {
     name: 'Pendolino',

@@ -16,7 +16,7 @@ const ServersList = () => {
   const servers = useSWR(
     "https://panel.simrail.eu:8084/servers-open",
     fetcher,
-    { refreshInterval: 5000 }
+    { refreshInterval: 10000 }
   );
 
   return (
