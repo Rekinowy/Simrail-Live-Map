@@ -72,9 +72,10 @@ const TrainDetails = ({
           )}
         </div>
       </div>
-      <div className="flex lg:hidden absolute p-2 w-[80%] max-w-[380px] justify-evenly bottom-4 z-[1000] left-1/2 transform -translate-x-1/2 rounded-xl border-2 border-slate-800 shadow-lg text-white bg-primary bg-opacity-90 backdrop-blur-sm">
+      // mobile view
+      <div className="flex lg:hidden absolute py-2 w-[80%] max-w-[380px] justify-evenly bottom-4 z-[1000] left-1/2 transform -translate-x-1/2 rounded-xl border-2 border-slate-800 shadow-lg text-white bg-primary bg-opacity-90 backdrop-blur-sm">
         <div className="flex flex-col items-center">
-          <div className="flex flex-col h-20 w-20 justify-center">
+          <div className="flex flex-col h-16 w-16 justify-center">
             <img src={"/trains/" + trainImg} alt="train" />
           </div>
           <div className="flex flex-col items-center leading-5">
@@ -84,7 +85,7 @@ const TrainDetails = ({
             <span className="text-xs text-center">{vehicles[0]}</span>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <div className="border-l border-t opacity-30"></div>
           <div className="flex flex-col min-w-[120px] justify-center">
             <div className="flex flex-col gap-1">
