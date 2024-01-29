@@ -26,6 +26,7 @@ type TrainMarkerProps = {
   showMarkerLabels: boolean;
   labelZoomLevel: number;
   selectedLocos: string[];
+  serverCode: string;
 };
 
 const TrainMarker = ({
@@ -46,6 +47,7 @@ const TrainMarker = ({
   showMarkerLabels,
   labelZoomLevel,
   selectedLocos,
+  serverCode,
 }: TrainMarkerProps) => {
   const username = user?.username || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
@@ -58,7 +60,6 @@ const TrainMarker = ({
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
   const [rotationAngle, setRotationAngle] = useState(0);
-  const [duration, setDuration] = useState(2000);
 
   const calculateRotationAngle = (prevPos: any, currentPos: any) => {
     const lat1 = (prevPos[0] * Math.PI) / 180;
@@ -135,7 +136,7 @@ const TrainMarker = ({
     <>
       <LeafletTrackingMarker
         position={[lat, lng]}
-        duration={duration}
+        duration={2000}
         icon={markerIcon}
         rotationAngle={0}
         riseOnHover={true}
@@ -222,19 +223,6 @@ const TrainMarker = ({
           )}
         </Popup>
       </LeafletTrackingMarker>
-      {selectedTrain == trainNumber && (
-        <TrainDetails
-          trainNumber={trainNumber}
-          trainName={trainName}
-          departure={departure}
-          destination={destination}
-          speed={speed}
-          user={user}
-          username={username}
-          trainImg={trainsImg[vehicles[0]]}
-          vehicles={vehicles}
-        />
-      )}
     </>
   );
 };

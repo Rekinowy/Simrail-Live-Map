@@ -23,7 +23,7 @@ const config: Config = {
     },
   },
   plugins: [nextui(),
-    require('tailwind-scrollbar')({ nocompatible: true }),],
+    require('tailwind-scrollbar')({ nocompatible: true, preferredStrategy: 'pseudoelements', }),],
   
 };
 

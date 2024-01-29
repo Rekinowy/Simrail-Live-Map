@@ -46,7 +46,7 @@ const SearchBox = ({
         }
       />
       <div className="relative flex flex-col w-[95%] max-h-[70dvh] m-auto rounded-b-lg shadow-lg overflow-hidden scroll-smooth">
-        <div className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary_light scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80vh]">
+        <div className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary_light scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80dvh]">
           {searchValue.length > 0 &&
             (filteredResults.length > 0 ? (
               filteredResults.map((item) => {

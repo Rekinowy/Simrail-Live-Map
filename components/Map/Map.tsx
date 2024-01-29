@@ -17,6 +17,7 @@ import { NextUIProvider } from "@nextui-org/system";
 import SearchBox from "./SearchBox";
 import MapControl from "./MapControl";
 import { getUserInfo } from "@/utils/actions";
+import TrainDetails from "./TrainDetails";
 
 const stationIcon = new Icon({
   iconUrl: "/station.png",
@@ -33,8 +34,9 @@ export type TrainDataType = {
   Vehicles: string[];
   StartStation: string;
   EndStation: string;
-
   userInfo: { username: string; avatar: string };
+  view: string;
+  setView: (view: string) => void;
 };
 
 export type StationDataType = {
@@ -118,6 +120,13 @@ export default function Map({ code }: { code: string }) {
     }
     return false;
   });
+  const [trainDetailsView, setTrainDetailsView] = useState(() => {
+    const saved = localStorage.getItem("trainDetailsView");
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return "general";
+  });
 
   useEffect(() => {
     localStorage.setItem("showMarkerLabels", JSON.stringify(showMarkerLabels));
@@ -148,6 +157,9 @@ export default function Map({ code }: { code: string }) {
   useEffect(() => {
     localStorage.setItem("showOnlyAvail", JSON.stringify(showOnlyAvail));
   }, [showOnlyAvail]);
+  useEffect(() => {
+    localStorage.setItem("trainDetailsView", JSON.stringify(trainDetailsView));
+  }, [trainDetailsView]);
 
   const fetcher = async (url: string) => {
     const res = await fetch(url);
@@ -256,7 +268,7 @@ export default function Map({ code }: { code: string }) {
         zoom={8}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | Rekinowy'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           className="map-tiles"
         />
@@ -332,6 +344,7 @@ export default function Map({ code }: { code: string }) {
                 showMarkerLabels={showMarkerLabels}
                 labelZoomLevel={trainLabelZoomLevel}
                 selectedLocos={selectedLocos}
+                serverCode={code}
               />
             );
           })}
@@ -364,6 +377,26 @@ export default function Map({ code }: { code: string }) {
         />
       </MapContainer>
 
+      {trains.data?.data.map((train: TrainDataType) => {
+        return (
+          selectedMarker == train.TrainNoLocal && (
+            <TrainDetails
+              key={train.id}
+              trainNumber={train.TrainNoLocal}
+              trainName={train.TrainName}
+              vehicles={train.Vehicles}
+              departure={train.StartStation}
+              destination={train.EndStation}
+              speed={train.TrainData.Velocity}
+              user={train?.userInfo}
+              serverCode={code}
+              view={trainDetailsView}
+              setView={setTrainDetailsView}
+            />
+          )
+        );
+      })}
+
       <SearchBox
         searchValue={searchValue}
         setSearchValue={setSearchValue}
@@ -371,7 +404,6 @@ export default function Map({ code }: { code: string }) {
         setSelectedMarker={setSelectedMarker}
         setSelectedLocos={setSelectedLocos}
       />
-
       {openSettings && (
         <SettingsTab
           setOpenSettings={setOpenSettings}

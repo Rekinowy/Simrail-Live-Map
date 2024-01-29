@@ -13,6 +13,17 @@ export const getUserInfo = async (user: string) =>{
   }
 }
 
+export const getTimetable = async (serverCode: string, trainNumber: string) =>{
+  try {
+    const query = await fetch(`https://api1.aws.simrail.eu:8082/api/getAllTimetables?serverCode=${serverCode}&train=${trainNumber}`)
+    const response = await query.json()
+
+    return {response}
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const getMapInfo = async (link: string) =>{
   try {
     const query = await fetch(link)

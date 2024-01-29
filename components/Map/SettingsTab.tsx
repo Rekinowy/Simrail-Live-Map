@@ -54,6 +54,7 @@ const SettingsTab = ({
         <div className="flex w-full justify-between">
           <p className="px-3">Show trains</p>
           <Switch
+            name="Show trains"
             defaultSelected={showTrains}
             onChange={() => setShowTrains(!showTrains)}
             color="default"
@@ -66,6 +67,7 @@ const SettingsTab = ({
             <div className="flex w-full justify-between ">
               <p className="px-3">Show labels</p>
               <Switch
+                name="Show train labels"
                 defaultSelected={showMarkerLabels}
                 onChange={() => setShowMarkerLabels(!showMarkerLabels)}
                 color="default"
@@ -107,6 +109,7 @@ const SettingsTab = ({
         <div className="flex w-full justify-between">
           <p className="px-3">Show signal boxes</p>
           <Switch
+            name="Show stations"
             defaultSelected={showStations}
             onChange={() => setShowStations(!showStations)}
             color="default"
@@ -119,6 +122,7 @@ const SettingsTab = ({
             <div className="flex w-full justify-between ">
               <p className="px-3">Show labels</p>
               <Switch
+                name="Show station labels"
                 defaultSelected={showStationLabels}
                 onChange={() => setShowStationLabels(!showStationLabels)}
                 color="default"
@@ -161,6 +165,7 @@ const SettingsTab = ({
         <div className="flex w-full justify-between">
           <p className="px-3">Show train stops</p>
           <Switch
+            name="Show train stops"
             defaultSelected={showTrainStops}
             onChange={() => setShowTrainStops(!showTrainStops)}
             color="default"
@@ -200,6 +205,7 @@ const SettingsTab = ({
       <div className="flex py-2 w-full justify-between rounded-md bg-primary border border-slate-800">
         <p className="px-3 text-medium">Show only available</p>
         <Switch
+          name="Show only available"
           defaultSelected={showOnlyAvail}
           onChange={() => setShowOnlyAvail(!showOnlyAvail)}
           color="default"
@@ -210,6 +216,7 @@ const SettingsTab = ({
       <div className="flex flex-col gap-2 py-2 w-full justify-between rounded-md bg-primary border border-slate-800">
         <p className="px-3 text-medium">Filter by locomotive</p>
         <Select
+          name="filter by locomotive"
           aria-label="filter by locomotive"
           placeholder="All"
           selectionMode="multiple"
@@ -235,6 +242,7 @@ const SettingsTab = ({
       </div>
       <div className="flex w-full mt-1 justify-center">
         <Button
+          name="Show labels"
           className="w-full border border-slate-800 text-sm"
           size="sm"
           color="primary"
