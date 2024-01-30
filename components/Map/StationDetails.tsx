@@ -60,12 +60,12 @@ const StationDetails = ({
         )}
       </div>
       // mobile view
-      <div className="absolute flex lg:hidden w-[80%] max-w-[380px] justify-evenly gap-2 bottom-4 left-1/2 transform -translate-x-1/2 p-2 z-[1000] rounded-xl border-2 border-slate-800 text-white text-base bg-primary bg-opacity-90 backdrop-blur-sm">
+      <div className="absolute flex lg:hidden w-[80%] max-w-[280px] justify-evenly gap-2 bottom-4 left-1/2 transform -translate-x-1/2 p-2 z-[1000] rounded-xl border-2 border-slate-800 text-white text-base bg-primary bg-opacity-90 backdrop-blur-sm">
         <div className="flex flex-col min-w-[40%] justify-center items-center">
           <div className="text-sm border-2 font-bold text-slate-200 border-slate-300 rounded-[4px] px-2 my-2 bg-blue-700">
             {stationPrefix}
           </div>
-          <div className="text-sm text-center">{stationName}</div>
+          <div className="text-xs text-center">{stationName}</div>
         </div>
         <div className="border-l opacity-30" />
         <div className="flex flex-col min-w-[50%] gap-3 items-center justify-center">

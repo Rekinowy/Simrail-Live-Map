@@ -169,13 +169,13 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                 } ${isBeforeOrLastPassedStation && "opacity-60"}`}
               >
                 <div className="flex flex-col w-full gap-1">
-                  <div className="capitalize">
+                  <div className="capitalize text-slate-100 text-sm lg:text-base">
                     {point.station.name.charAt(1) ===
                     point.station.name.charAt(1).toUpperCase()
                       ? point.station.name.toLowerCase()
                       : point.station.name}
                   </div>
-                  <div className="text-sm text-slate-300">
+                  <div className="text-xs lg:text-sm text-slate-300">
                     <p>
                       {point.scheduled_arrival &&
                         scheduledArrival !== scheduledDeparture && (
@@ -185,7 +185,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                               arrivalDelay &&
                               lastPassedStationIndex + 2 > index && (
                                 <span
-                                  className={`text-xs ${
+                                  className={`text-[10px] lg:text-xs ${
                                     arrivalDelay < 0
                                       ? "text-lime-600"
                                       : arrivalDelay < 10
@@ -209,7 +209,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                         departureDelay != 0 &&
                         departureDelay && (
                           <span
-                            className={`text-xs  ${
+                            className={`text-[10px] lg:text-xs  ${
                               departureDelay < 0
                                 ? "text-lime-600"
                                 : departureDelay < 10
@@ -232,7 +232,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                         arrivalDelay != 0 &&
                         arrivalDelay && (
                           <span
-                            className={`text-xs  ${
+                            className={`text-[10px] lg:text-xs  ${
                               arrivalDelay < 0
                                 ? "text-lime-600"
                                 : arrivalDelay < 10
@@ -255,17 +255,17 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                   scheduledArrival &&
                   point.stop_type &&
                   scheduledArrival !== scheduledDeparture && (
-                    <div className="h-fit min-w-[30px] px-1 mt-0.5 text-xs text-center rounded-md text-slate-300 bg-orange-800/50 border border-orange-800/50 bg">
+                    <div className="h-fit min-w-[30px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-orange-800/50 border border-orange-800/50 bg">
                       pt
                     </div>
                   )}
                 {point.stop_type == "PH" && (
                   <div className="flex flex-col gap-2">
-                    <div className="min-w-[30px] px-1 mt-0.5 text-xs text-center rounded-md text-slate-300 bg-lime-800 border border-lime-700">
+                    <div className="min-w-[30px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-lime-800 border border-lime-700">
                       ph
                     </div>
                     {point.terminal && (
-                      <div className="min-w-[30px] px-1 text-xs text-center rounded-md text-slate-300 bg-slate-700 border border-slate-600">
+                      <div className="min-w-[30px] px-1 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-slate-700 border border-slate-600">
                         {point.terminal}/{point.track}
                       </div>
                     )}

@@ -9,6 +9,15 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
+    screens: {
+      xs: '420px',
+      sm: '640px',
+      md: '820px',
+      lg: '1220px',
+      xl: '1220px',
+      '2xl': '1440px',
+      '3xl': '1700px',
+    },
     extend: {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],

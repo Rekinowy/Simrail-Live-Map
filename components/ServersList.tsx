@@ -27,7 +27,7 @@ const ServersList = () => {
             <Link
               key={id}
               href={`/server/${ServerCode}`}
-              className={`flex sm:h-28 px-2 py-3 items-center bg-primary/80 text-white text-lg border hover:bg-primary rounded-xl border-slate-800`}
+              className={`flex sm:h-28 px-2 py-3 items-center bg-primary/80 text-white text-lg border rounded-xl border-slate-800 transition-all hover:bg-primary`}
             >
               <div
                 className={`w-5 h-5 mx-2 rounded-full border border-slate-600 ${

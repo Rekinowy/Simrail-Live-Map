@@ -52,7 +52,7 @@ const SearchBox = ({
               filteredResults.map((item) => {
                 return (
                   <button
-                    className="relative z-10 p-1 bg-primary/70 hover:bg-primary cursor-pointer border-b border-slate-800"
+                    className="relative z-10 p-1 bg-primary/70 hover:bg-primary cursor-pointer border-b border-slate-800 transition-all duration-75"
                     key={item.id}
                     onClick={() => {
                       setSelectedMarker(item.label);

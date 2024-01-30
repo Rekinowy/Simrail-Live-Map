@@ -15,7 +15,7 @@ const TrainGeneralInfo = ({
 }: TrainGeneralType) => {
   return (
     <>
-      <div className="flex flex-col min-w-[120px] justify-center text-">
+      <div className="flex flex-col min-w-[120px] justify-center text-sm lg:text-base">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
             <img src="/speed.png" alt="" className="w-5" />
