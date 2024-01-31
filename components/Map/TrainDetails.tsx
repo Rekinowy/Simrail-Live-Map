@@ -1,8 +1,8 @@
-import { useState } from "react";
 import TrainGeneralInfo from "./TrainGeneralInfo";
 import TrainTimetable from "./TrainTimetable";
 import useSWR from "swr";
 import { trainsImg } from "@/constants";
+import { useTranslation } from "react-i18next";
 
 type TrainDetailsType = {
   trainNumber: string;
@@ -29,6 +29,8 @@ const TrainDetails = ({
   view,
   setView,
 }: TrainDetailsType) => {
+  const { t } = useTranslation();
+
   const username = user?.username || "User";
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -64,7 +66,7 @@ const TrainDetails = ({
                 "hover:border-slate-400  hover:text-slate-300"
               }`}
             >
-              General
+              {t("Settings:general")}
             </button>
             <button
               onClick={() => setView("timetable")}
@@ -75,7 +77,7 @@ const TrainDetails = ({
                 "hover:border-slate-400 hover:text-slate-300"
               }`}
             >
-              Timetable
+              {t("Settings:timetable")}
             </button>
           </div>
           <div className="border-t opacity-30"></div>
@@ -94,7 +96,7 @@ const TrainDetails = ({
         )}
       </div>
 
-      <div className="flex flex-col md:hidden absolute p-3 w-[80%] max-w-[280px] max-h-[85%] bottom-6 z-[1000] left-1/2 transform -translate-x-1/2 rounded-xl border-2 border-slate-800 shadow-lg text-white bg-primary bg-opacity-90 backdrop-blur-sm">
+      <div className="flex flex-col md:hidden absolute p-3 w-[80%] max-w-[280px] max-h-[60dvh] bottom-6 z-[1000] left-1/2 transform -translate-x-1/2 rounded-xl border-2 border-slate-800 shadow-lg text-white bg-primary bg-opacity-90 backdrop-blur-sm">
         <div className="flex">
           <div className="flex flex-col w-5/12 items-center justify-center mx-1">
             <div className="flex flex-col h-14 w-14 justify-center">
@@ -104,7 +106,7 @@ const TrainDetails = ({
               <h1 className="text-xs text-center">
                 {trainName} <span className="font-bold">{trainNumber}</span>
               </h1>
-              <span className="text-center text-[10px]">{vehicles[0]}</span>
+              <p className="text-center leading-3 text-[10px]">{vehicles[0]}</p>
             </div>
           </div>
 

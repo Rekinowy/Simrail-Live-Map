@@ -32,7 +32,7 @@ const StationDetails = ({
           </div>
           <div className="flex flex-col gap-2 justify-center items-center">
             <div className="flex flex-col items-center gap-1">
-              <div className="text-xl font-bold text-slate-200 border-2 border-slate-300 rounded-[4px] px-2 my-2 bg-blue-700">
+              <div className="text-xl text-center font-bold min-w-[42px] text-slate-200 border-2 border-slate-300 rounded-[4px] px-2 my-2 bg-blue-700">
                 {stationPrefix}
               </div>
               <div className="text-lg">{stationName}</div>
@@ -60,9 +60,9 @@ const StationDetails = ({
         )}
       </div>
       // mobile view
-      <div className="absolute flex lg:hidden w-[80%] max-w-[280px] justify-evenly gap-2 bottom-4 left-1/2 transform -translate-x-1/2 p-2 z-[1000] rounded-xl border-2 border-slate-800 text-white text-base bg-primary bg-opacity-90 backdrop-blur-sm">
+      <div className="absolute flex lg:hidden w-[80%] max-w-[280px] justify-evenly gap-2 bottom-6 left-1/2 transform -translate-x-1/2 p-2 z-[1000] rounded-xl border-2 border-slate-800 text-white text-base bg-primary bg-opacity-90 backdrop-blur-sm">
         <div className="flex flex-col min-w-[40%] justify-center items-center">
-          <div className="text-sm border-2 font-bold text-slate-200 border-slate-300 rounded-[4px] px-2 my-2 bg-blue-700">
+          <div className="text-sm text-center border-2 min-w-[30px] font-bold text-slate-200 border-slate-300 rounded-[4px] px-2 py-0.5 my-2 bg-blue-700">
             {stationPrefix}
           </div>
           <div className="text-xs text-center">{stationName}</div>

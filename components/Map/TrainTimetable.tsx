@@ -56,10 +56,15 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
         12 * 60 * 60 * 1000
         ? new Date(scheduledDate2.getTime() + 24 * 60 * 60 * 1000)
         : scheduledDate2;
-    const differenceInMinutes = Math.floor(
+    let differenceInMinutes = Math.floor(
       (actualDate.getTime() - scheduledDateAdjusted.getTime()) / (1000 * 60)
     );
 
+    if (differenceInMinutes > 1000) {
+      differenceInMinutes -= 1440;
+    } else if (differenceInMinutes < -1000) {
+      differenceInMinutes += 1440;
+    }
     if (!actual) return;
     if (type === "departure" && differenceInMinutes >= 1 && stopType === "PH")
       return differenceInMinutes - 1;
@@ -90,7 +95,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
   };
 
   return (
-    <div className="flex flex-col pr-2 overflow-y-auto scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary_dark/80 scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
+    <div className="flex flex-col pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-primary_dark/80 scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
       {timetable?.map(
         (
           point: {
@@ -261,11 +266,11 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                   )}
                 {point.stop_type == "PH" && (
                   <div className="flex flex-col gap-2">
-                    <div className="min-w-[30px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-lime-800 border border-lime-700">
+                    <div className="min-w-[32px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-lime-800 border border-lime-700">
                       ph
                     </div>
                     {point.terminal && (
-                      <div className="min-w-[30px] px-1 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-slate-700 border border-slate-600">
+                      <div className=" min-w-[32px] px-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-slate-700 border border-slate-600">
                         {point.terminal}/{point.track}
                       </div>
                     )}

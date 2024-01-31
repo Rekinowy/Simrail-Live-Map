@@ -1,5 +1,6 @@
 import { Input } from "@nextui-org/react";
 import { SearchResultType } from "./Map";
+import { useTranslation } from "react-i18next";
 
 const SearchBox = ({
   searchValue,
@@ -14,12 +15,15 @@ const SearchBox = ({
   setSelectedLocos: (value: any) => void;
   filteredResults: SearchResultType[];
 }) => {
+  const { t } = useTranslation();
+
   return (
-    <div className="absolute top-2.5 left-1/2 transform -translate-x-1/2 w-[280px] z-[1200] text-white">
+    <div className="absolute top-2.5 left-1/2 transform -translate-x-1/2 z-[1200] text-white">
       <Input
         isClearable
-        placeholder="Search"
+        placeholder={t("Searchbox:search")}
         radius="sm"
+        size="sm"
         className="relative z-10 inputBlur"
         classNames={{
           input: [
@@ -29,13 +33,14 @@ const SearchBox = ({
             "ml-1",
           ],
           inputWrapper: [
-            "h-2",
+            "h-[36px] md:h-10",
+            "w-64 md:w-72",
             "shadow-xl",
-            "bg-primary/70",
-            "hover:bg-primary/80",
+            "bg-primary/80",
+            "hover:bg-primary/90",
             "focus-within:!bg-primary",
             "!cursor-text",
-            "border border-slate-800 focus:bg-black ",
+            "border border-slate-800 focus:bg-black",
           ],
         }}
         value={searchValue}
@@ -46,13 +51,13 @@ const SearchBox = ({
         }
       />
       <div className="relative flex flex-col w-[95%] max-h-[70dvh] m-auto rounded-b-lg shadow-lg overflow-hidden scroll-smooth">
-        <div className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary_light scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80dvh]">
+        <div className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-thumb-primary_light scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80dvh]">
           {searchValue.length > 0 &&
             (filteredResults.length > 0 ? (
               filteredResults.map((item) => {
                 return (
                   <button
-                    className="relative z-10 p-1 bg-primary/70 hover:bg-primary cursor-pointer border-b border-slate-800 transition-all duration-75"
+                    className="relative z-10 p-1 bg-primary/70 hover:bg-primary/90 cursor-pointer border-b border-slate-800 transition-all duration-75"
                     key={item.id}
                     onClick={() => {
                       setSelectedMarker(item.label);
@@ -85,7 +90,7 @@ const SearchBox = ({
               })
             ) : (
               <div className="relative z-10 p-1.5 text-center text-sm text-slate-200 bg-primary/50 border-b cursor-default border-slate-800">
-                No results
+                {t("Searchbox:no_results")}
               </div>
             ))}
         </div>

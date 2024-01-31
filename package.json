@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "i18nexus pull && next dev",
+    "build": "i18nexus pull && next build",
+    "start": "i18nexus pull && next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -18,12 +18,16 @@
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.16",
     "framer-motion": "^10.16.16",
+    "i18next": "^23.8.2",
+    "i18next-resources-to-backend": "^1.2.0",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "next": "^14.0.3",
+    "next-i18n-router": "^5.2.0",
     "postcss": "8.4.30",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-i18next": "^14.0.1",
     "react-leaflet": "^4.2.1",
     "react-leaflet-custom-control": "^1.4.0",
     "react-leaflet-tracking-marker": "^1.0.16",
@@ -33,6 +37,7 @@
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.8",
+    "i18nexus-cli": "^3.3.0",
     "tailwind-scrollbar": "^3.1.0-rc.0"
   }
 }
