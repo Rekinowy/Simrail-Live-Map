@@ -27,6 +27,7 @@ type TrainMarkerProps = {
   labelZoomLevel: number;
   selectedLocos: string[];
   serverCode: string;
+  follow: boolean;
 };
 
 const TrainMarker = ({
@@ -47,7 +48,7 @@ const TrainMarker = ({
   showMarkerLabels,
   labelZoomLevel,
   selectedLocos,
-  serverCode,
+  follow,
 }: TrainMarkerProps) => {
   const username = user?.username || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
@@ -85,7 +86,7 @@ const TrainMarker = ({
       prevPos.current = [lat, lng];
       setHasPositionChanged(true);
     }
-    if (selectedTrain == trainNumber) {
+    if (selectedTrain == trainNumber && follow) {
       map.panTo(position, { animate: true, duration: 2 });
     }
   }, [position, selectedTrain]);
@@ -132,6 +133,7 @@ const TrainMarker = ({
   if (showOnlyAvail && user) {
     return null;
   }
+
   return (
     <>
       <LeafletTrackingMarker

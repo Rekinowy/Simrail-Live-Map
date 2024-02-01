@@ -37,6 +37,8 @@ export type TrainDataType = {
   userInfo: { username: string; avatar: string };
   view: string;
   setView: (view: string) => void;
+  followTrain: boolean;
+  setFollowTrain: (follow: boolean) => void;
 };
 
 export type StationDataType = {
@@ -127,6 +129,13 @@ export default function Map({ code }: { code: string }) {
     }
     return "general";
   });
+  const [followTrain, setFollowTrain] = useState(() => {
+    const saved = localStorage.getItem("followTrain");
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return true;
+  });
 
   useEffect(() => {
     localStorage.setItem("showMarkerLabels", JSON.stringify(showMarkerLabels));
@@ -160,6 +169,9 @@ export default function Map({ code }: { code: string }) {
   useEffect(() => {
     localStorage.setItem("trainDetailsView", JSON.stringify(trainDetailsView));
   }, [trainDetailsView]);
+  useEffect(() => {
+    localStorage.setItem("followTrain", JSON.stringify(followTrain));
+  }, [followTrain]);
 
   const fetcher = async (url: string) => {
     const res = await fetch(url);
@@ -345,6 +357,7 @@ export default function Map({ code }: { code: string }) {
                 labelZoomLevel={trainLabelZoomLevel}
                 selectedLocos={selectedLocos}
                 serverCode={code}
+                follow={followTrain}
               />
             );
           })}
@@ -392,6 +405,8 @@ export default function Map({ code }: { code: string }) {
               serverCode={code}
               view={trainDetailsView}
               setView={setTrainDetailsView}
+              follow={followTrain}
+              setFollow={setFollowTrain}
             />
           )
         );

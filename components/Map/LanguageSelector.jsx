@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import i18nConfig from "@/i18nConfig";
 import { Select, SelectItem } from "@nextui-org/react";
 
-export default function LanguageChanger() {
+export default function LanguageSelector() {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
   const router = useRouter();

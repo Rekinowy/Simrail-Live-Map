@@ -15,6 +15,8 @@ type TrainDetailsType = {
   serverCode: string;
   view: string;
   setView: (view: string) => void;
+  follow: string;
+  setFollow: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const TrainDetails = ({
@@ -28,6 +30,8 @@ const TrainDetails = ({
   serverCode,
   view,
   setView,
+  follow,
+  setFollow,
 }: TrainDetailsType) => {
   const { t } = useTranslation();
 
@@ -38,7 +42,7 @@ const TrainDetails = ({
   const timetable = useSWR(
     `https://simrail-edr.de/api/trainTimeTable/train/${serverCode}/${trainNumber}`,
     fetcher,
-    { refreshInterval: 2000 }
+    { refreshInterval: 2500 }
   );
 
   return (
@@ -66,7 +70,7 @@ const TrainDetails = ({
                 "hover:border-slate-400  hover:text-slate-300"
               }`}
             >
-              {t("Settings:general")}
+              {t("general")}
             </button>
             <button
               onClick={() => setView("timetable")}
@@ -77,7 +81,7 @@ const TrainDetails = ({
                 "hover:border-slate-400 hover:text-slate-300"
               }`}
             >
-              {t("Settings:timetable")}
+              {t("timetable")}
             </button>
           </div>
           <div className="border-t opacity-30"></div>
@@ -94,11 +98,29 @@ const TrainDetails = ({
         {view === "timetable" && (
           <TrainTimetable timetable={timetable.data?.data} />
         )}
+        <button
+          className={`absolute top-3 right-3 flex items-center gap-1 p-1 rounded-lg hover:bg-slate-700 ${
+            follow ? "bg-primary_dark" : "bg-primary font-thin"
+          } border-1 border-slate-600 text-xs text-light-gray`}
+          onClick={() => setFollow((prev) => !prev)}
+        >
+          <img
+            className="w-5 h-5"
+            src={follow ? "/pin-fill.png" : "/pin.png"}
+            alt="follow"
+          />
+          {/* {t("follow")} */}
+        </button>
       </div>
 
-      <div className="flex flex-col md:hidden absolute p-3 w-[80%] max-w-[280px] max-h-[60dvh] bottom-6 z-[1000] left-1/2 transform -translate-x-1/2 rounded-xl border-2 border-slate-800 shadow-lg text-white bg-primary bg-opacity-90 backdrop-blur-sm">
+      {/* mobile devices */}
+      <div
+        className={`flex flex-col md:hidden absolute px-1 py-2 w-[80%] max-w-[280px] bottom-6 z-[1000] left-1/2 transform -translate-x-1/2 rounded-xl border-2 border-slate-800 shadow-lg text-white bg-primary bg-opacity-90 backdrop-blur-sm ${
+          view === "timetable" ? "max-h-[60dvh]" : "max-h-[30dvh]"
+        } transition-all`}
+      >
         <div className="flex">
-          <div className="flex flex-col w-5/12 items-center justify-center mx-1">
+          <div className="flex flex-col w-4/12 items-center justify-center mx-1">
             <div className="flex flex-col h-14 w-14 justify-center">
               <img src={"/trains/" + trainsImg[vehicles[0]]} alt="train" />
             </div>
@@ -109,7 +131,6 @@ const TrainDetails = ({
               <p className="text-center leading-3 text-[10px]">{vehicles[0]}</p>
             </div>
           </div>
-
           <div className="border-l w-fit border-t opacity-30"></div>
           <div className="flex flex-col w-7/12 mx-2 justify-center text-xs">
             <div className="flex flex-col gap-1">
@@ -155,6 +176,29 @@ const TrainDetails = ({
               </>
             )}
           </div>
+          <div className="flex flex-col gap-2">
+            <button
+              className={`w-7 h-7 p-1 rounded-lg ${
+                follow ? "bg-primary_dark" : "bg-primary"
+              } border-2 border-slate-600`}
+              onClick={() => setFollow((prev) => !prev)}
+            >
+              <img
+                src={follow ? "/pin-fill.png" : "/pin.png"}
+                alt="timetable"
+              />
+            </button>
+            <button
+              className={`w-7 h-7 p-0.5 rounded-lg ${
+                view === "timetable" ? "bg-primary_dark" : "bg-primary"
+              } border-2 border-slate-600`}
+              onClick={() =>
+                setView(view === "general" ? "timetable" : "general")
+              }
+            >
+              <img src="/timetable.png" alt="timetable" />
+            </button>
+          </div>
         </div>
         {view === "timetable" && (
           <>
@@ -162,14 +206,6 @@ const TrainDetails = ({
             <TrainTimetable timetable={timetable.data?.data} />
           </>
         )}
-        <button
-          className={`absolute w-7 h-7 p-1 rounded-lg ${
-            view === "timetable" ? "bg-primary_dark" : "bg-primary"
-          } border-2 border-slate-600 hover:border-slate-400 top-1 right-1`}
-          onClick={() => setView(view === "general" ? "timetable" : "general")}
-        >
-          <img src="/timetable.png" alt="timetable" />
-        </button>
       </div>
     </>
   );

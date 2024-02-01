@@ -39,6 +39,9 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
   ) => {
     const actualDate = new Date(actual);
     const scheduledDate = new Date(scheduled);
+    const timezoneOffset = timetable[0].station.server.timezone_offset;
+    const serverCode = timetable[0].station.server.server_code;
+
     const scheduledDate2 =
       scheduledDate.getFullYear() === 2023
         ? new Date(
@@ -50,6 +53,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
             scheduledDate.getSeconds()
           )
         : scheduledDate;
+
     const scheduledDateAdjusted =
       scheduledDate2.getDate() < actualDate.getDate() &&
       Math.abs(actualDate.getTime() - scheduledDate2.getTime()) >
@@ -64,6 +68,9 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
       differenceInMinutes -= 1440;
     } else if (differenceInMinutes < -1000) {
       differenceInMinutes += 1440;
+    }
+    if (["pl2", "fr1"].includes(serverCode) && timezoneOffset !== 1) {
+      differenceInMinutes -= (timezoneOffset - 1) * 60;
     }
     if (!actual) return;
     if (type === "departure" && differenceInMinutes >= 1 && stopType === "PH")
@@ -95,7 +102,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
   };
 
   return (
-    <div className="flex flex-col pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-primary_dark/80 scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
+    <div className="flex flex-col mx-2 md:mx-0 pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-primary_dark/80 scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
       {timetable?.map(
         (
           point: {
