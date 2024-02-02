@@ -18,7 +18,7 @@ const SearchBox = ({
   const { t } = useTranslation();
 
   return (
-    <div className="absolute top-2.5 left-1/2 transform -translate-x-1/2 z-[1200] text-white">
+    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-[1200] text-white">
       <Input
         isClearable
         placeholder={t("Searchbox:search")}

@@ -105,7 +105,8 @@ body {
     border: 1px solid rgb(30 41 59) !important;
     background: rgba(43, 61, 79, 0.8) !important;
     color: rgb(170, 170, 170) !important;
-    border-radius: 2px !important;
+    border-radius: 6px !important;
+    overflow:hidden !important
   }
 
   .leaflet-control a {
