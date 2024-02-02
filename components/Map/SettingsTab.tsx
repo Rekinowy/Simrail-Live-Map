@@ -53,7 +53,7 @@ const SettingsTab = ({
   const { t } = useTranslation();
 
   return (
-    <div className="absolute flex flex-col gap-2 top-[122px] w-[340px] left-[50px] p-2 z-[1200] rounded-md border-2 border-slate-800 shadow-lg text-[#D4CECE] bg-primary bg-opacity-70 cursor-default backdrop-blur-md max-sm:scale-85 max-sm:left-1/2 max-sm:top-1/2 max-sm:transform max-sm:-translate-x-1/2 max-sm:-translate-y-1/2">
+    <div className="absolute flex flex-col gap-2 top-[126px] w-[340px] left-[50px] p-2 z-[1200] rounded-md border-2 border-slate-800 shadow-lg text-[#D4CECE] bg-primary/70 cursor-default backdrop-blur-md max-sm:scale-85 max-sm:left-1/2 max-sm:top-1/2 max-sm:transform max-sm:-translate-x-1/2 max-sm:-translate-y-1/2">
       <div className="flex flex-col gap-2 py-2 w-full justify-between rounded-md bg-primary border border-slate-800">
         <p className="px-3 text-medium">{t("Settings:language")}</p>
         <LanguageChanger />

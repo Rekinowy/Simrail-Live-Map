@@ -108,8 +108,8 @@ const TrainDetails = ({
             className="w-5 h-5"
             src={follow ? "/pin-fill.png" : "/pin.png"}
             alt="follow"
+            title={t("follow")}
           />
-          {/* {t("follow")} */}
         </button>
       </div>
 
