@@ -2,7 +2,7 @@ type TrainGeneralType = {
   departure: string;
   destination: string;
   speed: number;
-  user: { username: string; avatar: string };
+  user: { name: string; avatar: string };
   username: string;
 };
 

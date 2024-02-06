@@ -26,15 +26,32 @@ const stationIcon = new Icon({
   popupAnchor: [3, -12],
 });
 
+// export type TrainDataType = {
+//   id: string;
+//   TrainData: { [name: string]: number & string };
+//   TrainNoLocal: string;
+//   TrainName: string;
+//   Vehicles: string[];
+//   StartStation: string;
+//   EndStation: string;
+//   userInfo: { username: string; avatar: string };
+//   view: string;
+//   setView: (view: string) => void;
+//   followTrain: boolean;
+//   setFollowTrain: (follow: boolean) => void;
+// };
+
 export type TrainDataType = {
   id: string;
-  TrainData: { [name: string]: number & string };
-  TrainNoLocal: string;
-  TrainName: string;
-  Vehicles: string[];
-  StartStation: string;
-  EndStation: string;
-  userInfo: { username: string; avatar: string };
+  latitude: number;
+  longitude: number;
+  velocity: number;
+  train_number: string;
+  train_name: string;
+  vehicle: { name: string }[];
+  start_station: string;
+  end_station: string;
+  steam_user: any;
   view: string;
   setView: (view: string) => void;
   followTrain: boolean;
@@ -43,13 +60,13 @@ export type TrainDataType = {
 
 export type StationDataType = {
   id: string;
-  Name: string;
-  DifficultyLevel: number;
-  Prefix: string;
-  Latititude: number;
-  Longitude: number;
-  userInfo: { username: string; avatar: string };
-  MainImageURL: string;
+  name: string;
+  difficulty_level: number;
+  prefix: string;
+  latitude: number;
+  longitude: number;
+  dispatched_by: { steam_user: { name: string; avatar: string } }[];
+  main_image_url: string;
 };
 
 export type SearchResultType = {
@@ -173,51 +190,57 @@ export default function Map({ code }: { code: string }) {
     localStorage.setItem("followTrain", JSON.stringify(followTrain));
   }, [followTrain]);
 
-  const fetcher = async (url: string) => {
-    const res = await fetch(url);
-    const data = await res.json();
+  // const fetcher = async (url: string) => {
+  //   const res = await fetch(url);
+  //   const data = await res.json();
 
-    if (data.data) {
-      for (let item of data.data) {
-        let userId = "";
-        if (url.includes("trains")) {
-          if (item.TrainData?.ControlledBySteamID) {
-            userId = item.TrainData.ControlledBySteamID;
-          }
-          if (item.Vehicles[0].includes("Pendolino")) {
-            item.Vehicles[0] = "Pendolino/ED250-018";
-          }
-        } else if (url.includes("stations")) {
-          if (item.DispatchedBy && item.DispatchedBy.length > 0) {
-            userId = item.DispatchedBy[0]?.SteamId;
-          }
-        }
-        if (userId) {
-          if (userCache[userId]) {
-            item.userInfo = userCache[userId];
-          } else {
-            const userData = await getUserInfo(userId);
+  //   if (data.data) {
+  //     for (let item of data.data) {
+  //       let userId = "";
+  //       if (url.includes("trains")) {
+  //         if (item.TrainData?.ControlledBySteamID) {
+  //           userId = item.TrainData.ControlledBySteamID;
+  //         }
+  //         if (item.Vehicles[0].includes("Pendolino")) {
+  //           item.Vehicles[0] = "Pendolino/ED250-018";
+  //         }
+  //       } else if (url.includes("stations")) {
+  //         if (item.DispatchedBy && item.DispatchedBy.length > 0) {
+  //           userId = item.DispatchedBy[0]?.SteamId;
+  //         }
+  //       }
+  //       if (userId) {
+  //         if (userCache[userId]) {
+  //           item.userInfo = userCache[userId];
+  //         } else {
+  //           const userData = await getUserInfo(userId);
 
-            item.userInfo = userData;
+  //           item.userInfo = userData;
 
-            setUserCache((prevState) => ({
-              ...prevState,
-              [userId]: item.userInfo,
-            }));
-          }
-        }
-      }
-    }
-    return data;
-  };
+  //           setUserCache((prevState) => ({
+  //             ...prevState,
+  //             [userId]: item.userInfo,
+  //           }));
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return data;
+  // };
 
-  const trains = useSWR(
-    `https://panel.simrail.eu:8084/trains-open?serverCode=${code}`,
-    fetcher,
-    { refreshInterval: 5000 }
-  );
+  // const trains = useSWR(
+  //   `https://panel.simrail.eu:8084/trains-open?serverCode=${code}`,
+  //   fetcher,
+  //   { refreshInterval: 5000 }
+  // );
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+  const trains = useSWR(`https://simrail-edr.de/api/train/${code}`, fetcher, {
+    refreshInterval: 5000,
+  });
+
   const stations = useSWR(
-    `https://panel.simrail.eu:8084/stations-open?serverCode=${code}`,
+    `https://simrail-edr.de/api/stations/${code}`,
     fetcher,
     { refreshInterval: 5000 }
   );
@@ -232,17 +255,20 @@ export default function Map({ code }: { code: string }) {
         const trainResults = trains.data.data
           .filter(
             (train: TrainDataType) =>
-              train.TrainNoLocal.toLowerCase().includes(lowerCaseSearchValue) ||
-              (train.userInfo?.username &&
-                train.userInfo.username
+              train.train_number
+                .toString()
+                .toLowerCase()
+                .includes(lowerCaseSearchValue) ||
+              (train.steam_user?.name &&
+                train.steam_user.name
                   .toLowerCase()
                   .includes(lowerCaseSearchValue))
           )
           .map((train: TrainDataType) => ({
             id: train.id,
-            label: train.TrainNoLocal,
-            username: train.userInfo?.username || "",
-            image: `/trains/${trainsImg[train.Vehicles[0]]}`,
+            label: train.train_number,
+            username: train.steam_user?.name || "",
+            image: `/trains/${trainsImg[train.vehicle[0].name]}`,
             type: "train",
           }));
         searchResults = searchResults.concat(trainResults);
@@ -252,16 +278,16 @@ export default function Map({ code }: { code: string }) {
         const stationResults = stations.data.data
           .filter(
             (station: StationDataType) =>
-              station.Name.toLowerCase().includes(lowerCaseSearchValue) ||
-              (station.userInfo?.username &&
-                station.userInfo.username
+              station.name.toLowerCase().includes(lowerCaseSearchValue) ||
+              (station.dispatched_by[0]?.steam_user.name &&
+                station.dispatched_by[0]?.steam_user.name
                   .toLowerCase()
                   .includes(lowerCaseSearchValue))
           )
           .map((station: StationDataType) => ({
             id: station.id,
-            label: station.Name,
-            username: station.userInfo?.username || "",
+            label: station.name,
+            username: station.dispatched_by[0]?.steam_user.name || "",
             image: "/lever.png",
             type: "station",
           }));
@@ -334,7 +360,7 @@ export default function Map({ code }: { code: string }) {
             );
           })}
 
-        {trains.data?.data &&
+        {/* {trains.data?.data &&
           trains.data.data.map((train: TrainDataType) => {
             return (
               <TrainMarker
@@ -360,8 +386,35 @@ export default function Map({ code }: { code: string }) {
                 follow={followTrain}
               />
             );
+          })} */}
+        {trains.data?.data &&
+          trains.data.data.map((train: TrainDataType) => {
+            return (
+              <TrainMarker
+                key={train.id}
+                lat={train.latitude}
+                lng={train.longitude}
+                speed={train.velocity}
+                trainNumber={train.train_number}
+                trainName={train.train_name}
+                vehicles={train.vehicle}
+                departure={train.start_station}
+                destination={train.end_station}
+                user={train?.steam_user}
+                selectedTrain={selectedMarker}
+                setSelectedTrain={setSelectedMarker}
+                zoomLevel={zoomLevel}
+                showTrains={showTrains}
+                showOnlyAvail={showOnlyAvail}
+                showMarkerLabels={showMarkerLabels}
+                labelZoomLevel={trainLabelZoomLevel}
+                selectedLocos={selectedLocos}
+                serverCode={code}
+                follow={followTrain}
+              />
+            );
           })}
-        {stations.data?.data.map((station: StationDataType) => {
+        {/* {stations.data?.data.map((station: StationDataType) => {
           return (
             <StationMarker
               key={station.id}
@@ -381,6 +434,27 @@ export default function Map({ code }: { code: string }) {
               labelZoomLevel={stationLabelZoomLevel}
             />
           );
+        })} */}
+        {stations.data?.data.map((station: StationDataType) => {
+          return (
+            <StationMarker
+              key={station.id}
+              stationName={station.name}
+              stationPrefix={station.prefix}
+              stationImage={station.main_image_url}
+              difficulty={station.difficulty_level}
+              lat={station.latitude}
+              lng={station.longitude}
+              user={station.dispatched_by[0]?.steam_user}
+              selectedStation={selectedMarker}
+              setSelectedStation={setSelectedMarker}
+              zoomLevel={zoomLevel}
+              showStations={showStations}
+              showOnlyAvail={showOnlyAvail}
+              showMarkerLabels={showStationLabels}
+              labelZoomLevel={stationLabelZoomLevel}
+            />
+          );
         })}
 
         <MapControl
@@ -390,7 +464,7 @@ export default function Map({ code }: { code: string }) {
         />
       </MapContainer>
 
-      {trains.data?.data.map((train: TrainDataType) => {
+      {/* {trains.data?.data.map((train: TrainDataType) => {
         return (
           selectedMarker == train.TrainNoLocal && (
             <TrainDetails
@@ -402,6 +476,28 @@ export default function Map({ code }: { code: string }) {
               destination={train.EndStation}
               speed={train.TrainData.Velocity}
               user={train?.userInfo}
+              serverCode={code}
+              view={trainDetailsView}
+              setView={setTrainDetailsView}
+              follow={followTrain}
+              setFollow={setFollowTrain}
+            />
+          )
+        );
+      })} */}
+
+      {trains.data?.data.map((train: TrainDataType) => {
+        return (
+          selectedMarker == train.train_number && (
+            <TrainDetails
+              key={train.id}
+              trainNumber={train.train_number}
+              trainName={train.train_name}
+              vehicles={train.vehicle}
+              departure={train.start_station}
+              destination={train.end_station}
+              speed={train.velocity}
+              user={train.steam_user}
               serverCode={code}
               view={trainDetailsView}
               setView={setTrainDetailsView}

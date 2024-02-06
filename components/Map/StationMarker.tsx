@@ -11,7 +11,7 @@ type StationMarkerProps = {
   difficulty: number;
   lat: number;
   lng: number;
-  user: { username: string; avatar: string };
+  user: { name: string; avatar: string };
   selectedStation: string;
   setSelectedStation: (station: string) => void;
   zoomLevel: number;
@@ -38,7 +38,7 @@ const StationMarker = ({
 
   labelZoomLevel,
 }: StationMarkerProps) => {
-  const username = user?.username || "User";
+  const username = user?.name || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
   const map = useMap();
 

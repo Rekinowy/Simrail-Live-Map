@@ -3,7 +3,6 @@ import { Popup, Tooltip, useMap } from "react-leaflet";
 import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 import { divIcon } from "leaflet";
 import { trainsImg } from "@/constants";
-import TrainDetails from "./TrainDetails";
 
 type TrainMarkerProps = {
   lat: number;
@@ -11,11 +10,11 @@ type TrainMarkerProps = {
   speed: number;
   trainNumber: string;
   trainName: string;
-  vehicles: string[];
+  vehicles: { name: string }[];
   departure: string;
   destination: string;
   user: {
-    username: string;
+    name: string;
     avatar: string;
   };
   selectedTrain: string;
@@ -50,13 +49,13 @@ const TrainMarker = ({
   selectedLocos,
   follow,
 }: TrainMarkerProps) => {
-  const username = user?.username || "User";
+  const username = user?.name || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
   const position = { lat: lat, lng: lng };
   const prevPos = useRef([lat, lng]);
   const map = useMap();
   const isLocoSelected = selectedLocos.some((loco) =>
-    vehicles[0].includes(loco)
+    vehicles[0]?.name.includes(loco)
   );
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
@@ -134,6 +133,9 @@ const TrainMarker = ({
     return null;
   }
 
+  if (vehicles[0]?.name === "Pendolino/ED250-018 Variant")
+    vehicles[0].name = "Pendolino/ED250-018";
+
   return (
     <>
       <LeafletTrackingMarker
@@ -178,7 +180,7 @@ const TrainMarker = ({
           <div className="flex gap-2">
             <div className="w-[50px]">
               <img
-                src={"/trains/" + trainsImg[vehicles[0]]}
+                src={"/trains/" + trainsImg[vehicles[0]?.name]}
                 alt="train"
                 width={50}
                 height={40}
@@ -188,7 +190,7 @@ const TrainMarker = ({
               <h1>
                 {trainName} <span className="font-bold">{trainNumber}</span>
               </h1>
-              <span className="text-xs">{vehicles[0]}</span>
+              <span className="text-xs">{vehicles[0]?.name}</span>
             </div>
           </div>
           <div className="border-t my-1.5 opacity-30"></div>

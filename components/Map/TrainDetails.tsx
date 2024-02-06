@@ -10,8 +10,8 @@ type TrainDetailsType = {
   departure: string;
   destination: string;
   speed: number;
-  user: { username: string; avatar: string };
-  vehicles: string[];
+  user: { name: string; avatar: string };
+  vehicles: { name: string }[];
   serverCode: string;
   view: string;
   setView: (view: string) => void;
@@ -35,7 +35,7 @@ const TrainDetails = ({
 }: TrainDetailsType) => {
   const { t } = useTranslation();
 
-  const username = user?.username || "User";
+  const username = user?.name || "User";
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -47,16 +47,16 @@ const TrainDetails = ({
 
   return (
     <>
-      <div className="hidden md:flex absolute flex-col gap-4 top-2.5 right-3 w-64 lg:w-80 max-h-[80dvh] p-4 z-[1000] rounded-xl border-2 border-slate-800 shadow-lg text-white text-base bg-primary/80 backdrop-blur-sm">
+      <div className="hidden md:flex absolute flex-col gap-4 top-2.5 right-3 w-64 lg:w-72 max-h-[80dvh] p-4 z-[1000] rounded-xl border-2 border-slate-800 shadow-lg text-white text-base bg-primary/80 backdrop-blur-sm">
         <div className="flex flex-col justify-center items-center">
           <div className="flex flex-col h-24 lg:h-28 w-24 lg:w-28 justify-center">
-            <img src={"/trains/" + trainsImg[vehicles[0]]} alt="train" />
+            <img src={"/trains/" + trainsImg[vehicles[0]?.name]} alt="train" />
           </div>
           <div className="flex flex-col items-center leading-5">
             <h1 className="text-lg lg:text-xl">
               {trainName} <span className="font-bold">{trainNumber}</span>
             </h1>
-            <span className="text-sm lg:text-base">{vehicles[0]}</span>
+            <span className="text-sm lg:text-base">{vehicles[0]?.name}</span>
           </div>
         </div>
         <div>
@@ -122,13 +122,18 @@ const TrainDetails = ({
         <div className="flex">
           <div className="flex flex-col w-4/12 items-center justify-center mx-1">
             <div className="flex flex-col h-14 w-14 justify-center">
-              <img src={"/trains/" + trainsImg[vehicles[0]]} alt="train" />
+              <img
+                src={"/trains/" + trainsImg[vehicles[0]?.name]}
+                alt="train"
+              />
             </div>
             <div className="flex flex-col items-center leading-5">
               <h1 className="text-xs text-center">
                 {trainName} <span className="font-bold">{trainNumber}</span>
               </h1>
-              <p className="text-center leading-3 text-[10px]">{vehicles[0]}</p>
+              <p className="text-center leading-3 text-[10px]">
+                {vehicles[0]?.name}
+              </p>
             </div>
           </div>
           <div className="border-l w-fit border-t opacity-30"></div>
