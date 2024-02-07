@@ -268,7 +268,7 @@ export default function Map({ code }: { code: string }) {
             id: train.id,
             label: train.train_number,
             username: train.steam_user?.name || "",
-            image: `/trains/${trainsImg[train.vehicle[0].name]}`,
+            image: `/trains/${trainsImg[train.vehicle[0]?.name]}`,
             type: "train",
           }));
         searchResults = searchResults.concat(trainResults);
