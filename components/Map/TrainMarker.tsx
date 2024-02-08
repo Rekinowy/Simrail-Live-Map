@@ -52,13 +52,14 @@ const TrainMarker = ({
   const username = user?.name || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
   const position = { lat: lat, lng: lng };
-  const prevPos = useRef([lat, lng]);
+  let prevPos = useRef([lat, lng]);
   const map = useMap();
   const isLocoSelected = selectedLocos.some((loco) =>
     vehicles[0]?.name.includes(loco)
   );
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
+  const [duration, setDuration] = useState(2000);
   const [rotationAngle, setRotationAngle] = useState(0);
 
   const calculateRotationAngle = (prevPos: any, currentPos: any) => {
@@ -89,6 +90,23 @@ const TrainMarker = ({
       map.panTo(position, { animate: true, duration: 2 });
     }
   }, [position, selectedTrain]);
+
+  // useEffect(() => {
+  //   // Ustawienie aktywności animacji na true, gdy strona jest aktywna
+  //   const handleVisibilityChange = () => {
+  //     setDuration(10);
+  //     setTimeout(() => {
+  //       setDuration(2000);
+  //     }, 500);
+  //     console.log("visibility change");
+  //   };
+
+  //   document.addEventListener("visibilitychange", handleVisibilityChange);
+
+  //   return () => {
+  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
+  //   };
+  // });
 
   const markerIcon = divIcon({
     html: `<div class='marker-container relative'>
@@ -125,6 +143,7 @@ const TrainMarker = ({
   if (!showTrains) {
     return null;
   }
+
   if (selectedLocos.length > 0 && !isLocoSelected) {
     return null;
   }
@@ -140,7 +159,7 @@ const TrainMarker = ({
     <>
       <LeafletTrackingMarker
         position={[lat, lng]}
-        duration={2000}
+        duration={duration}
         icon={markerIcon}
         rotationAngle={0}
         riseOnHover={true}

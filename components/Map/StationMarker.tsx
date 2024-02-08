@@ -69,6 +69,11 @@ const StationMarker = ({
     return null;
   }
 
+  if (stationName === "Katowice") {
+    lat = 50.25673;
+    lng = 19.02148;
+  }
+
   return (
     <>
       <Marker
