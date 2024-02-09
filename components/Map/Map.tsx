@@ -42,7 +42,7 @@ const stationIcon = new Icon({
 // };
 
 export type TrainDataType = {
-  id: string;
+  id: number;
   latitude: number;
   longitude: number;
   velocity: number;
@@ -233,17 +233,18 @@ export default function Map({ code }: { code: string }) {
   //   fetcher,
   //   { refreshInterval: 5000 }
   // );
+  const TRAINS_API_URL = `https://simrail-edr.de/api/train/${code}`;
+  const STTATIONS_API_URL = `https://simrail-edr.de/api/stations/${code}`;
+
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-  const trains = useSWR(`https://simrail-edr.de/api/train/${code}`, fetcher, {
+  const trains = useSWR(TRAINS_API_URL, fetcher, {
     refreshInterval: 5000,
   });
 
-  const stations = useSWR(
-    `https://simrail-edr.de/api/stations/${code}`,
-    fetcher,
-    { refreshInterval: 5000 }
-  );
+  const stations = useSWR(STTATIONS_API_URL, fetcher, {
+    refreshInterval: 5000,
+  });
 
   // Search data filtering
   useEffect(() => {
@@ -279,15 +280,15 @@ export default function Map({ code }: { code: string }) {
           .filter(
             (station: StationDataType) =>
               station.name.toLowerCase().includes(lowerCaseSearchValue) ||
-              (station.dispatched_by[0]?.steam_user.name &&
-                station.dispatched_by[0]?.steam_user.name
+              (station.dispatched_by[0]?.steam_user?.name &&
+                station.dispatched_by[0]?.steam_user?.name
                   .toLowerCase()
                   .includes(lowerCaseSearchValue))
           )
           .map((station: StationDataType) => ({
             id: station.id,
             label: station.name,
-            username: station.dispatched_by[0]?.steam_user.name || "",
+            username: station.dispatched_by[0]?.steam_user?.name || "",
             image: "/lever.png",
             type: "station",
           }));
