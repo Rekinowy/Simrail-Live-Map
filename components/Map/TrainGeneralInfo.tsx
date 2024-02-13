@@ -2,7 +2,7 @@ type TrainGeneralType = {
   departure: string;
   destination: string;
   speed: number;
-  user: { name: string; avatar: string };
+  user: { name: string; avatar: string; distance_meter: number };
   username: string;
 };
 
@@ -47,6 +47,14 @@ const TrainGeneralInfo = ({
               <img src="/user.png" className="w-5" />
               <span className="font-medium">{username}</span>
             </div>
+            {user.distance_meter && user.distance_meter !== 0 && (
+              <div className="mt-1 flex gap-3 items-center">
+                <img src="/distance.png" className="w-5" />
+                <span className="font-thin">
+                  {Math.round(user.distance_meter / 1000)} km
+                </span>
+              </div>
+            )}
           </>
         )}
       </div>

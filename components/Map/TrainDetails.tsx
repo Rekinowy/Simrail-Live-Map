@@ -10,7 +10,7 @@ type TrainDetailsType = {
   departure: string;
   destination: string;
   speed: number;
-  user: { name: string; avatar: string };
+  user: { name: string; avatar: string; distance_meter: number };
   vehicles: { name: string }[];
   serverCode: string;
   view: string;

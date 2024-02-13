@@ -5,7 +5,7 @@ type StationDetailsType = {
   stationPrefix: string;
   stationImage: string;
   difficulty: number;
-  user: { name: string; avatar: string };
+  user: { name: string; avatar: string; dispatcher_time: number };
   username: string;
 };
 
@@ -35,7 +35,9 @@ const StationDetails = ({
               <div className="text-lg lg:text-xl text-center font-bold min-w-[42px] text-slate-200 border-2 border-slate-300 rounded-[4px] px-2 my-2 bg-blue-700">
                 {stationPrefix}
               </div>
-              <div className="text-lg lg:text-xl">{stationName}</div>
+              <div className="text-lg lg:text-xl text-center">
+                {stationName}
+              </div>
             </div>
             <div className="flex gap-1 items-center mt-2">
               {[...Array(5)].map((_, i) => (
@@ -52,11 +54,23 @@ const StationDetails = ({
         {user && (
           <>
             <div className="border-l border-t opacity-30" />
-            <div className="flex gap-3 items-center">
-              <img src="/user.png" className="w-5" />
-              <span className="font-medium text-sm lg:text-base">
-                {username}
-              </span>
+            <div className="flex flex-col gap-1">
+              <div className="flex gap-3 items-center">
+                <img src="/user.png" className="w-5" />
+                <span className="font-medium text-sm lg:text-base">
+                  {username}
+                </span>
+              </div>
+              {user.dispatcher_time && user.dispatcher_time !== 0 && (
+                <div className="flex gap-3">
+                  <div className="flex items-center w-5 justify-center">
+                    <img src="/time.png" className="w-4" />
+                  </div>
+                  <span className="text-sm font-thin lg:text-base">
+                    {Math.round(user.dispatcher_time / 60)} h
+                  </span>
+                </div>
+              )}
             </div>
           </>
         )}
@@ -82,11 +96,23 @@ const StationDetails = ({
             ))}
           </div>
           {user && (
-            <div className="flex gap-3">
-              <div className="flex items-center">
-                <img src="/user.png" className="w-5" />
+            <div className="flex flex-col gap-1">
+              <div className="flex gap-3">
+                <div className="flex items-center">
+                  <img src="/user.png" className="w-5" />
+                </div>
+                <span className="font-medium text-sm">{username}</span>
               </div>
-              <span className="font-medium text-sm">{username}</span>
+              {user.dispatcher_time && user.dispatcher_time !== 0 && (
+                <div className="flex gap-3">
+                  <div className="flex items-center w-5 justify-center">
+                    <img src="/time.png" className="w-4" />
+                  </div>
+                  <span className="text-sm font-thin">
+                    {Math.round(user.dispatcher_time / 60)} h
+                  </span>
+                </div>
+              )}
             </div>
           )}
         </div>
