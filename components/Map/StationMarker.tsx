@@ -11,7 +11,7 @@ type StationMarkerProps = {
   difficulty: number;
   lat: number;
   lng: number;
-  user: { name: string; avatar: string };
+  user: { name: string; avatar: string; dispatcher_time: number };
   selectedStation: string;
   setSelectedStation: (station: string) => void;
   zoomLevel: number;

@@ -65,7 +65,9 @@ export type StationDataType = {
   prefix: string;
   latitude: number;
   longitude: number;
-  dispatched_by: { steam_user: { name: string; avatar: string } }[];
+  dispatched_by: {
+    steam_user: { name: string; avatar: string; dispatcher_time: number };
+  }[];
   main_image_url: string;
 };
 
