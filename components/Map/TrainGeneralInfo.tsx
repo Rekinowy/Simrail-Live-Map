@@ -49,10 +49,12 @@ const TrainGeneralInfo = ({
             </div>
             {user.distance_meter && user.distance_meter !== 0 && (
               <div className="mt-1 flex gap-3 items-center">
-                <img src="/distance.png" className="w-5" />
-                <span className="font-thin">
+                <div className="flex w-5 justify-center">
+                  <img src="/distance.png" className="w-[18px]" />
+                </div>
+                <div className="font-thin">
                   {Math.round(user.distance_meter / 1000)} km
-                </span>
+                </div>
               </div>
             )}
           </>
