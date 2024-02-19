@@ -106,7 +106,7 @@ const TrainDetails = ({
         >
           <img
             className="w-5 h-5"
-            src={follow ? "/pin-fill.png" : "/pin.png"}
+            src={follow ? "/target-fill.png" : "/target.png"}
             alt="follow"
             title={t("follow")}
           />
