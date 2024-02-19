@@ -16,7 +16,6 @@ import SettingsTab from "./SettingsTab";
 import { NextUIProvider } from "@nextui-org/system";
 import SearchBox from "./SearchBox";
 import MapControl from "./MapControl";
-import { getUserInfo } from "@/utils/actions";
 import TrainDetails from "./TrainDetails";
 
 const stationIcon = new Icon({
@@ -25,21 +24,6 @@ const stationIcon = new Icon({
   iconAnchor: [10, 10],
   popupAnchor: [3, -12],
 });
-
-// export type TrainDataType = {
-//   id: string;
-//   TrainData: { [name: string]: number & string };
-//   TrainNoLocal: string;
-//   TrainName: string;
-//   Vehicles: string[];
-//   StartStation: string;
-//   EndStation: string;
-//   userInfo: { username: string; avatar: string };
-//   view: string;
-//   setView: (view: string) => void;
-//   followTrain: boolean;
-//   setFollowTrain: (follow: boolean) => void;
-// };
 
 export type TrainDataType = {
   id: number;
@@ -91,7 +75,6 @@ export default function Map({ code }: { code: string }) {
   const [filteredResults, setFilteredResults] = useState<SearchResultType[]>(
     []
   );
-  const [userCache, setUserCache] = useState<Record<string, any>>({});
   const [trainLabelZoomLevel, setTrainLabelZoomLevel] = useState(() => {
     const saved = localStorage.getItem("trainLabelZoomLevel");
     if (saved) {
@@ -192,51 +175,8 @@ export default function Map({ code }: { code: string }) {
     localStorage.setItem("followTrain", JSON.stringify(followTrain));
   }, [followTrain]);
 
-  // const fetcher = async (url: string) => {
-  //   const res = await fetch(url);
-  //   const data = await res.json();
-
-  //   if (data.data) {
-  //     for (let item of data.data) {
-  //       let userId = "";
-  //       if (url.includes("trains")) {
-  //         if (item.TrainData?.ControlledBySteamID) {
-  //           userId = item.TrainData.ControlledBySteamID;
-  //         }
-  //         if (item.Vehicles[0].includes("Pendolino")) {
-  //           item.Vehicles[0] = "Pendolino/ED250-018";
-  //         }
-  //       } else if (url.includes("stations")) {
-  //         if (item.DispatchedBy && item.DispatchedBy.length > 0) {
-  //           userId = item.DispatchedBy[0]?.SteamId;
-  //         }
-  //       }
-  //       if (userId) {
-  //         if (userCache[userId]) {
-  //           item.userInfo = userCache[userId];
-  //         } else {
-  //           const userData = await getUserInfo(userId);
-
-  //           item.userInfo = userData;
-
-  //           setUserCache((prevState) => ({
-  //             ...prevState,
-  //             [userId]: item.userInfo,
-  //           }));
-  //         }
-  //       }
-  //     }
-  //   }
-  //   return data;
-  // };
-
-  // const trains = useSWR(
-  //   `https://panel.simrail.eu:8084/trains-open?serverCode=${code}`,
-  //   fetcher,
-  //   { refreshInterval: 5000 }
-  // );
   const TRAINS_API_URL = `https://simrail-edr.de/api/train/${code}`;
-  const STTATIONS_API_URL = `https://simrail-edr.de/api/stations/${code}`;
+  const STATIONS_API_URL = `https://simrail-edr.de/api/stations/${code}`;
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -244,7 +184,7 @@ export default function Map({ code }: { code: string }) {
     refreshInterval: 5000,
   });
 
-  const stations = useSWR(STTATIONS_API_URL, fetcher, {
+  const stations = useSWR(STATIONS_API_URL, fetcher, {
     refreshInterval: 5000,
   });
 
@@ -363,33 +303,6 @@ export default function Map({ code }: { code: string }) {
             );
           })}
 
-        {/* {trains.data?.data &&
-          trains.data.data.map((train: TrainDataType) => {
-            return (
-              <TrainMarker
-                key={train.id}
-                lat={train.TrainData.Latititute}
-                lng={train.TrainData.Longitute}
-                speed={train.TrainData.Velocity}
-                trainNumber={train.TrainNoLocal}
-                trainName={train.TrainName}
-                vehicles={train.Vehicles}
-                departure={train.StartStation}
-                destination={train.EndStation}
-                user={train?.userInfo}
-                selectedTrain={selectedMarker}
-                setSelectedTrain={setSelectedMarker}
-                zoomLevel={zoomLevel}
-                showTrains={showTrains}
-                showOnlyAvail={showOnlyAvail}
-                showMarkerLabels={showMarkerLabels}
-                labelZoomLevel={trainLabelZoomLevel}
-                selectedLocos={selectedLocos}
-                serverCode={code}
-                follow={followTrain}
-              />
-            );
-          })} */}
         {trains.data?.data &&
           trains.data.data.map((train: TrainDataType) => {
             return (
@@ -417,27 +330,7 @@ export default function Map({ code }: { code: string }) {
               />
             );
           })}
-        {/* {stations.data?.data.map((station: StationDataType) => {
-          return (
-            <StationMarker
-              key={station.id}
-              stationName={station.Name}
-              stationPrefix={station.Prefix}
-              stationImage={station.MainImageURL}
-              difficulty={station.DifficultyLevel}
-              lat={station.Latititude}
-              lng={station.Longitude}
-              user={station.userInfo}
-              selectedStation={selectedMarker}
-              setSelectedStation={setSelectedMarker}
-              zoomLevel={zoomLevel}
-              showStations={showStations}
-              showOnlyAvail={showOnlyAvail}
-              showMarkerLabels={showStationLabels}
-              labelZoomLevel={stationLabelZoomLevel}
-            />
-          );
-        })} */}
+
         {stations.data?.data.map((station: StationDataType) => {
           return (
             <StationMarker
@@ -466,28 +359,6 @@ export default function Map({ code }: { code: string }) {
           setSelectedMarker={setSelectedMarker}
         />
       </MapContainer>
-
-      {/* {trains.data?.data.map((train: TrainDataType) => {
-        return (
-          selectedMarker == train.TrainNoLocal && (
-            <TrainDetails
-              key={train.id}
-              trainNumber={train.TrainNoLocal}
-              trainName={train.TrainName}
-              vehicles={train.Vehicles}
-              departure={train.StartStation}
-              destination={train.EndStation}
-              speed={train.TrainData.Velocity}
-              user={train?.userInfo}
-              serverCode={code}
-              view={trainDetailsView}
-              setView={setTrainDetailsView}
-              follow={followTrain}
-              setFollow={setFollowTrain}
-            />
-          )
-        );
-      })} */}
 
       {trains.data?.data.map((train: TrainDataType) => {
         return (

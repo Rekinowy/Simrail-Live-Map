@@ -63,12 +63,12 @@ const StationDetails = ({
               </div>
               {user.dispatcher_time && user.dispatcher_time !== 0 && (
                 <div className="flex gap-3">
-                  <div className="flex items-center w-5 justify-center">
+                  <div className="flex w-5 justify-center items-center">
                     <img src="/time.png" className="w-4" />
                   </div>
-                  <span className="text-sm font-thin lg:text-base">
+                  <div className="text-sm font-thin lg:text-base">
                     {Math.round(user.dispatcher_time / 60)} h
-                  </span>
+                  </div>
                 </div>
               )}
             </div>

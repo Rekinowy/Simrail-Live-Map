@@ -20,14 +20,14 @@ const ServersList = () => {
   );
 
   return (
-    <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-4 md:gap-6 p-4 max-w-screen-xl rounded-xl border border-primary shadow-lg bg-primary/30 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-hide">
+    <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-4 md:gap-6 p-4 max-w-screen-lg rounded-xl border border-primary shadow-lg bg-primary/50 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-hide">
       {servers.data?.data ? (
         servers.data.data.map(
           ({ id, ServerCode, ServerRegion, IsActive }: ServerDataType) => (
             <Link
               key={id}
               href={`/server/${ServerCode}`}
-              className={`flex sm:h-28 px-2 py-3 items-center bg-primary/80 text-white text-lg border rounded-xl border-slate-800 transition-all hover:bg-primary`}
+              className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-primary/90 to-primary_dark/80 hover:bg-primary_dark text-white text-lg border rounded-xl border-slate-800 hover:border-slate-900 transition-all `}
             >
               <div
                 className={`w-5 h-5 mx-2 rounded-full border border-slate-600 ${

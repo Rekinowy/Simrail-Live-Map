@@ -91,23 +91,6 @@ const TrainMarker = ({
     }
   }, [position, selectedTrain]);
 
-  // useEffect(() => {
-  //   // Ustawienie aktywności animacji na true, gdy strona jest aktywna
-  //   const handleVisibilityChange = () => {
-  //     setDuration(10);
-  //     setTimeout(() => {
-  //       setDuration(2000);
-  //     }, 500);
-  //     console.log("visibility change");
-  //   };
-
-  //   document.addEventListener("visibilitychange", handleVisibilityChange);
-
-  //   return () => {
-  //     document.removeEventListener("visibilitychange", handleVisibilityChange);
-  //   };
-  // });
-
   const markerIcon = divIcon({
     html: `<div class='marker-container relative'>
     <img src='${
