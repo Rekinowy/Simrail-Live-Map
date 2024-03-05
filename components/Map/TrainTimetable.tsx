@@ -120,7 +120,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
   };
 
   return (
-    <div className="flex flex-col mx-2 md:mx-0 pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-primary_dark/80 scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
+    <ul className="flex flex-col mx-2 md:mx-0 pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-primary_dark/80 scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
       {timetable?.map(
         (
           point: {
@@ -160,7 +160,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
           );
 
           return (
-            <div
+            <li
               ref={
                 index === lastPassedStationIndex ? lastPassedStationRef : null
               }
@@ -302,11 +302,11 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                   </div>
                 )}
               </div>
-            </div>
+            </li>
           );
         }
       )}
-    </div>
+    </ul>
   );
 };
 export default TrainTimetable;

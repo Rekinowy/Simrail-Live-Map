@@ -51,41 +51,42 @@ const SearchBox = ({
         }
       />
       <div className="relative flex flex-col w-[95%] max-h-[70dvh] m-auto rounded-b-lg shadow-lg overflow-hidden scroll-smooth">
-        <div className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-thumb-primary_light scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80dvh]">
+        <ul className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-thumb-primary_light scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80dvh]">
           {searchValue.length > 0 &&
             (filteredResults.length > 0 ? (
               filteredResults.map((item) => {
                 return (
-                  <button
-                    className="relative z-10 p-1 bg-primary/70 hover:bg-primary/90 cursor-pointer border-b border-slate-800 transition-all duration-75"
-                    key={item.id}
-                    onClick={() => {
-                      setSelectedMarker(item.label);
-                      setSearchValue("");
-                      if (item.type === "train") {
-                        setSelectedLocos([]);
-                      }
-                    }}
-                  >
-                    <div className="flex gap-4 pl-2 items-center">
-                      <div className="py-1">
-                        <img
-                          src={item.image}
-                          alt="picture"
-                          width={40}
-                          height={40}
-                        />
+                  <li className="relative flex z-10 p-1 bg-primary/70 hover:bg-primary/90 cursor-pointer border-b border-slate-800 transition-all duration-75">
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        setSelectedMarker(item.label);
+                        setSearchValue("");
+                        if (item.type === "train") {
+                          setSelectedLocos([]);
+                        }
+                      }}
+                    >
+                      <div className="flex gap-4 pl-2 items-center">
+                        <div className="py-1">
+                          <img
+                            src={item.image}
+                            alt="picture"
+                            width={46}
+                            height={46}
+                          />
+                        </div>
+                        <div className="flex flex-col items-start">
+                          <p className="text-sm text-left">{item.label}</p>
+                          {item.username && (
+                            <p className="text-slate-200 font-thin text-xs">
+                              {item.username}
+                            </p>
+                          )}
+                        </div>
                       </div>
-                      <div className="flex flex-col items-start">
-                        <p className="text-sm text-left">{item.label}</p>
-                        {item.username && (
-                          <p className="text-slate-200 font-thin text-xs">
-                            {item.username}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </button>
+                    </button>
+                  </li>
                 );
               })
             ) : (
@@ -93,7 +94,7 @@ const SearchBox = ({
                 {t("Searchbox:no_results")}
               </div>
             ))}
-        </div>
+        </ul>
         <div className="backdrop-blur-md absolute inset-0 z-0 pointer-events-none"></div>
       </div>
     </div>

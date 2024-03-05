@@ -154,11 +154,9 @@ const TrainMarker = ({
           },
           mouseover: (event) => {
             event.target.openPopup();
-            event.target.closeTooltip();
           },
           mouseout: (event) => {
             event.target.closePopup();
-            event.target.openTooltip();
           },
         }}
       >

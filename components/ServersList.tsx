@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 import useSWR from "swr";
 
 type ServerDataType = {
@@ -13,10 +14,12 @@ type ServerDataType = {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ServersList = () => {
+  const { t } = useTranslation();
+
   const servers = useSWR(
     "https://panel.simrail.eu:8084/servers-open",
     fetcher,
-    { refreshInterval: 10000 }
+    { refreshInterval: 2000 }
   );
 
   return (
@@ -27,7 +30,7 @@ const ServersList = () => {
             <Link
               key={id}
               href={`/server/${ServerCode}`}
-              className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-primary/90 to-primary_dark/80 hover:bg-primary_dark text-white text-lg border rounded-xl border-slate-800 hover:border-slate-900 transition-all `}
+              className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-primary/90 to-primary_dark/80 hover:bg-primary_dark text-white text-lg border rounded-xl border-slate-800 hover:border-slate-900 transition-all`}
             >
               <div
                 className={`w-5 h-5 mx-2 rounded-full border border-slate-600 ${
@@ -47,7 +50,7 @@ const ServersList = () => {
           )
         )
       ) : (
-        <p>Loading...</p>
+        <p className="text-xl text-white">{t("home:loading")}...</p>
       )}
     </section>
   );
