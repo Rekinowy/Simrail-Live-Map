@@ -25,7 +25,7 @@ const ServersList = () => {
   );
 
   return (
-    <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-4 md:gap-6 p-4 max-w-screen-lg rounded-xl border border-primary shadow-lg bg-primary/50 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-hide">
+    <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-4 md:gap-6 p-4 max-w-screen-lg rounded-xl border border-light_primary/50 dark:border-primary shadow-lg bg-light_primary/30 dark:bg-primary/50 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-hide">
       {servers.data?.data ? (
         servers.data.data.map(
           (
@@ -40,7 +40,7 @@ const ServersList = () => {
               <Link
                 key={id}
                 href={`/server/${ServerCode}`}
-                className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-primary/90 to-primary_dark/80 hover:bg-primary_dark text-slate-200 hover:text-white text-lg border rounded-xl border-slate-800 hover:border-slate-900 hover:scale-[1.025] transition duration-100`}
+                className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-light_primary_dark/70 to-light_primary/90 dark:from-primary/90 dark:to-primary_dark/80 hover:bg-light_primary_light dark:hover:bg-primary_dark text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-xl border-slate-800 hover:border-slate-900 hover:scale-[1.025] transition duration-100`}
               >
                 <div
                   className={`w-5 h-5 mx-2 rounded-full border border-slate-600 ${
