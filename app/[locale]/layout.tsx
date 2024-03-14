@@ -1,8 +1,6 @@
+import ThemeContextProvider from "@/context/ThemeContext";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "SimRail Live Map",
@@ -16,8 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="dark h-[100dvh] scroll-smooth scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary scrollbar-track-primary_dark scrollbar-thumb-rounded-lg">
-        {children}
+      <body className="h-[100dvh] scroll-smooth scrollbar scrollbar-w-2 scrollbar-h-2 scrollbar-thumb-primary scrollbar-track-primary_dark scrollbar-thumb-rounded-lg">
+        <ThemeContextProvider>{children}</ThemeContextProvider>
       </body>
     </html>
   );

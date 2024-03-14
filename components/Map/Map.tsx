@@ -9,7 +9,6 @@ import StationMarker from "./StationMarker";
 import { useEffect, useState } from "react";
 import Control from "react-leaflet-custom-control";
 import Link from "next/link";
-import Image from "next/image";
 import { trainStations, trainsImg } from "@/constants";
 import { Icon } from "leaflet";
 import SettingsTab from "./SettingsTab";
@@ -17,6 +16,11 @@ import { NextUIProvider } from "@nextui-org/system";
 import SearchBox from "./SearchBox";
 import MapControl from "./MapControl";
 import TrainDetails from "./TrainDetails";
+import { ImArrowLeft } from "react-icons/im";
+import { IoMdSettings } from "react-icons/io";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { useTheme } from "@/context/ThemeContext";
+import { GiLever } from "react-icons/gi";
 
 const stationIcon = new Icon({
   iconUrl: "/station.png",
@@ -71,6 +75,7 @@ export default function Map({ code }: { code: string }) {
   const [openSettings, setOpenSettings] = useState(false);
   const [selectedLocos, setSelectedLocos] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const { theme, toggleTheme } = useTheme();
 
   const [filteredResults, setFilteredResults] = useState<SearchResultType[]>(
     []
@@ -231,7 +236,9 @@ export default function Map({ code }: { code: string }) {
             id: station.id,
             label: station.name,
             username: station.dispatched_by[0]?.steam_user?.name || "",
-            image: "/lever.png",
+            image: (
+              <GiLever className="w-8 h-8 text-primary dark:text-light_gray" />
+            ),
             type: "station",
           }));
         searchResults = searchResults.concat(stationResults);
@@ -249,28 +256,37 @@ export default function Map({ code }: { code: string }) {
         zoom={8}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | Rekinowy'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | &copy; SimRail Live Map'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          className="map-tiles"
+          className="map-tiles transition-all"
         />
+
         <Control prepend position="topleft">
           <Link
             href="/"
-            className="flex justify-center items-center w-[30px] h-[30px] rounded-sm bg-primary bg-opacity-70 shadow-sm"
+            className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm"
           >
-            <div className="w-[16px] h-[16px]">
-              <Image src="/back.png" alt="Back" width={32} height={32} />
-            </div>
+            <ImArrowLeft className="text-primary dark:text-light_gray" />
           </Link>
         </Control>
         <Control position="topleft">
           <button
-            className="flex justify-center items-center w-[30px] h-[30px] rounded-sm bg-primary bg-opacity-70 shadow-sm border border-transparent"
+            className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm"
             onClick={() => setOpenSettings((prev) => !prev)}
           >
-            <div className="w-[16px] h-[16px]">
-              <Image src="/settings.png" alt="Back" width={32} height={32} />
-            </div>
+            <IoMdSettings className="w-4 h-4 text-primary dark:text-light_gray" />
+          </button>
+        </Control>
+        <Control position="topleft">
+          <button
+            className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm"
+            onClick={toggleTheme}
+          >
+            {theme === "light" ? (
+              <MdDarkMode className="w-4 h-4 text-primary dark:text-light_gray" />
+            ) : (
+              <MdLightMode className="w-4 h-4 text-primary dark:text-light_gray" />
+            )}
           </button>
         </Control>
 

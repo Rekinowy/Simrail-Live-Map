@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { Marker, Popup, Tooltip, useMap } from "react-leaflet";
 import StationDetails from "./StationDetails";
+import { FaRegStar, FaStar, FaUserAlt } from "react-icons/fa";
 
 type StationMarkerProps = {
   stationName: string;
@@ -48,8 +49,8 @@ const StationMarker = ({
       user ? avatar : "/bot-avatar.jpg"
     }' alt="User avatar" class='rounded-md border-[3px]  ${
       user
-        ? "border-blue-400 w-9 h-9 -ml-[20px] -mt-[18px]"
-        : "border-slate-400 w-7 h-7 -ml-[15px] -mt-[12px]"
+        ? "border-sky-500 dark:border-sky-600 w-9 h-9 -ml-[20px] -mt-[18px]"
+        : "border-slate-500 dark:border-slate-400 w-7 h-7 -ml-[15px] -mt-[12px]"
     }'/>
     </div>`,
     iconSize: [0, 0],
@@ -109,7 +110,7 @@ const StationMarker = ({
           closeButton={false}
           autoPan={false}
         >
-          <div className="flex h-[100px] w-[233px] rounded-md shadow-xl overflow-hidden mb-2.5 justify-center">
+          <div className="flex h-[100px] w-[233px] rounded-md shadow-md overflow-hidden mb-2.5 justify-center">
             <Image
               src={stationImage}
               alt="Station image"
@@ -119,25 +120,26 @@ const StationMarker = ({
             />
           </div>
           <div className="flex items-center justify-between font-semibold">
-            <div>
+            <div className="max-w-[155px]">
               <h1>{stationName}</h1>
             </div>
             <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
                 <div key={i}>
-                  <img
-                    src={i < difficulty ? "/star-filled.png" : "/star.png"}
-                    className="w-3"
-                  />
+                  {i < difficulty ? (
+                    <FaStar className="w-2.5" />
+                  ) : (
+                    <FaRegStar className="w-2.5" />
+                  )}
                 </div>
               ))}
             </div>
           </div>
           {user && (
             <>
-              <div className="border-t my-1.5 opacity-30"></div>
+              <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
               <div className="flex gap-2 items-center">
-                <img src="/user.png" className="w-[16px]" />
+                <FaUserAlt className="w-3" />
                 <p className="font-medium">{username}</p>
               </div>
             </>

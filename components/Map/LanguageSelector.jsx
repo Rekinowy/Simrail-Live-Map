@@ -6,13 +6,17 @@ import { useTranslation } from "react-i18next";
 import i18nConfig from "@/i18nConfig";
 import { Select, SelectItem } from "@nextui-org/react";
 
-export default function LanguageSelector() {
+export default function LanguageSelector({ selectStyles }) {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
   const router = useRouter();
   const currentPathname = usePathname();
 
-  const languages = [{locale: 'en', label: 'English', flag: "/gb.svg"}, {locale: 'pl', label: 'Polski', flag: "/pl.svg"}, {locale: 'de', label: 'Deutsch', flag: "/de.svg"}]
+  const languages = [
+    { locale: "en", label: "English", flag: "/gb.svg" },
+    { locale: "pl", label: "Polski", flag: "/pl.svg" },
+    { locale: "de", label: "Deutsch", flag: "/de.svg" },
+  ];
 
   const handleChange = (e) => {
     const newLocale = e.target.value;
@@ -44,18 +48,21 @@ export default function LanguageSelector() {
       name="language"
       aria-label="language"
       radius="sm"
-      placeholder={languages.find((lang) => lang.locale === currentLocale)?.label}
+      placeholder={
+        languages.find((lang) => lang.locale === currentLocale)?.label
+      }
       value={currentLocale}
       style={{ height: "40px" }}
-      classNames={{
-        base: "px-2",
-        popoverContent: "rounded-lg text-[#D4CECE]",
-      }}
+      classNames={selectStyles}
       onChange={handleChange}
     >
       {languages.map((lang) => (
-        <SelectItem key={lang.locale} value={lang.label} startContent={<img className='w-3 h-3' src={lang.flag} alt="flag" />}>
-           {lang.label}
+        <SelectItem
+          key={lang.locale}
+          value={lang.label}
+          startContent={<img className="w-3 h-3" src={lang.flag} alt="flag" />}
+        >
+          {lang.label}
         </SelectItem>
       ))}
     </Select>

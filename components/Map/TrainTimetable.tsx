@@ -120,7 +120,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
   };
 
   return (
-    <ul className="flex flex-col mx-2 md:mx-0 pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-primary_dark/80 scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
+    <ul className="flex flex-col mx-2 md:mx-0 pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-light_primary_dark dark:scrollbar-thumb-primary_dark/80 scrollbar-track-light_primary_light/60 dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
       {timetable?.map(
         (
           point: {
@@ -175,37 +175,37 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                       : index === timetable.length - 1
                       ? "h-1/2 top-0"
                       : "h-full"
-                  } bg-slate-700`}
+                  } bg-slate-200 dark:bg-slate-700`}
                 ></div>
                 <div
                   className={`w-4 h-4 z-10 rounded-full ${
                     isBeforeOrLastPassedStation
-                      ? "bg-slate-700"
+                      ? "bg-slate-200 dark:bg-slate-700"
                       : isFirstNonPassedStation
                       ? actualArrival
-                        ? "bg-lime-700"
-                        : "bg-slate-300"
-                      : "bg-slate-500"
+                        ? "bg-lime-600 dark:bg-lime-700"
+                        : "bg-slate-400 dark:bg-slate-300"
+                      : "bg-slate-100 dark:bg-slate-600"
                   }`}
                 ></div>
               </div>
               <div
-                className={`flex w-full gap-1 p-2 my-2 rounded-lg border-2  ${
+                className={`flex w-full gap-1 p-2 my-2 rounded-lg border  ${
                   isFirstNonPassedStation
                     ? actualArrival
-                      ? "border-lime-700 bg-primary_dark"
-                      : "border-slate-400 bg-primary_dark"
-                    : "border-slate-800 bg-primary_dark/70 "
+                      ? "border-lime-600 bg-light_primary_dark dark:border-lime-700 dark:bg-primary_dark"
+                      : "border-slate-500 bg-light_primary_dark dark:border-slate-400 dark:bg-primary_dark"
+                    : "border-slate-400/50 bg-light_primary_dark/40 dark:border-slate-800 dark:bg-primary_dark/70 "
                 } ${isBeforeOrLastPassedStation && "opacity-60"}`}
               >
                 <div className="flex flex-col w-full gap-1">
-                  <div className="capitalize text-slate-100 text-sm lg:text-base">
+                  <div className="capitalize text-primary font-medium dark:font-normal dark:text-slate-100 text-sm lg:text-base">
                     {point.station.name.charAt(1) ===
                     point.station.name.charAt(1).toUpperCase()
                       ? point.station.name.toLowerCase()
                       : point.station.name}
                   </div>
-                  <div className="text-xs lg:text-sm text-slate-300">
+                  <div className="text-xs lg:text-sm text-primary dark:text-slate-300">
                     <p>
                       {point.scheduled_arrival &&
                         scheduledArrival !== scheduledDeparture && (
@@ -215,12 +215,12 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                               arrivalDelay &&
                               lastPassedStationIndex + 2 > index && (
                                 <span
-                                  className={`text-[10px] lg:text-xs ${
+                                  className={`text-[10px] lg:text-xs font-medium dark:font-normal ${
                                     arrivalDelay < 0
-                                      ? "text-lime-600"
+                                      ? "text-lime-700 dark:text-lime-600"
                                       : arrivalDelay < 10
-                                      ? "text-yellow-500"
-                                      : "text-red-400"
+                                      ? "text-yellow-600 dark:text-yellow-500"
+                                      : "text-red-600 dark:text-red-400"
                                   }`}
                                 >
                                   {" "}
@@ -239,12 +239,12 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                         departureDelay != 0 &&
                         departureDelay && (
                           <span
-                            className={`text-[10px] lg:text-xs  ${
+                            className={`text-[10px] lg:text-xs font-medium dark:font-normal ${
                               departureDelay < 0
-                                ? "text-lime-600"
+                                ? "text-lime-700 dark:text-lime-600"
                                 : departureDelay < 10
-                                ? "text-yellow-500"
-                                : "text-red-400"
+                                ? "text-yellow-600 dark:text-yellow-500"
+                                : "text-red-600 dark:text-red-400"
                             }`}
                           >
                             {" "}
@@ -262,12 +262,12 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                         arrivalDelay != 0 &&
                         arrivalDelay && (
                           <span
-                            className={`text-[10px] lg:text-xs  ${
+                            className={`text-[10px] lg:text-xs font-medium dark:font-normal  ${
                               arrivalDelay < 0
-                                ? "text-lime-600"
+                                ? "text-lime-700 dark:text-lime-600"
                                 : arrivalDelay < 10
-                                ? "text-yellow-500"
-                                : "text-red-400"
+                                ? "text-yellow-600 dark:text-yellow-500"
+                                : "text-red-600 dark:text-red-400"
                             }`}
                           >
                             {" "}
@@ -285,17 +285,17 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                   scheduledArrival &&
                   point.stop_type &&
                   scheduledArrival !== scheduledDeparture && (
-                    <div className="h-fit min-w-[30px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-orange-800/50 border border-orange-800/50 bg">
+                    <div className="h-fit min-w-[30px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-200 dark:text-slate-300 bg-orange-700/70 dark:bg-orange-800/50 border border-orange-700/70 dark:border-orange-800/50 ">
                       pt
                     </div>
                   )}
                 {point.stop_type == "PH" && (
                   <div className="flex flex-col gap-2">
-                    <div className="min-w-[32px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-lime-800 border border-lime-700">
+                    <div className="min-w-[32px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-200 dark:text-slate-300 border bg-lime-600 border-lime-700 dark:bg-lime-800 dark:border-lime-700">
                       ph
                     </div>
                     {point.terminal && (
-                      <div className=" min-w-[32px] px-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-300 bg-slate-700 border border-slate-600">
+                      <div className=" min-w-[32px] px-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-200 dark:text-slate-300 bg-slate-600 dark:bg-slate-700 border border-slate-700 dark:border-slate-600">
                         {point.terminal}/{point.track}
                       </div>
                     )}

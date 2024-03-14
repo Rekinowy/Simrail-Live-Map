@@ -13,7 +13,7 @@ const Home = async ({ params: { locale } }: { params: { locale: string } }) => {
       resources={resources}
       namespaces={i18nNamespaces}
     >
-      <main className="flex flex-col h-[100dvh] gap-6 p-4 items-center bg-[url('/background.jpg')] bg-center bg-cover">
+      <main className="dark flex flex-col h-[100dvh] gap-6 p-4 items-center bg-[url('/background.jpg')] bg-center bg-cover">
         <section className="text-4xl text-slate-200 font-roboto p-2">
           <h1>{t("header")}</h1>
         </section>

@@ -3,6 +3,9 @@ import { Popup, Tooltip, useMap } from "react-leaflet";
 import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 import { divIcon } from "leaflet";
 import { trainsImg } from "@/constants";
+import { SlSpeedometer } from "react-icons/sl";
+import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
+import { FaUserAlt } from "react-icons/fa";
 
 type TrainMarkerProps = {
   lat: number;
@@ -99,10 +102,10 @@ const TrainMarker = ({
       user ? "w-8 h-8 -ml-4 -mt-4" : "w-6 h-6 -ml-3 -mt-3"
     } ${
       speed > 40
-        ? "border-green-700"
+        ? "border-green-600 dark:border-green-700"
         : speed > 1
-        ? "border-yellow-600"
-        : "border-red-800"
+        ? "border-yellow-500 dark:border-yellow-600"
+        : "border-red-700 dark:border-red-800"
     }' />
     <div style='transform: rotate(${rotationAngle}deg)' class='${
       !hasPositionChanged && "hidden"
@@ -110,9 +113,9 @@ const TrainMarker = ({
       user ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"
     }'><div class='absolute ${
       speed > 40
-        ? "border-b-green-700"
+        ? "border-b-green-600 dark:border-b-green-700"
         : speed > 2
-        ? "border-b-yellow-600"
+        ? "border-b-yellow-500 dark:border-b-yellow-600"
         : "hidden"
     } ${
       user
@@ -178,7 +181,7 @@ const TrainMarker = ({
           autoPan={false}
         >
           <div className="flex gap-2">
-            <div className="w-[50px]">
+            <div className="w-[50px] brightness-125 dark:brightness-105">
               <img
                 src={"/trains/" + trainsImg[vehicles[0]?.name]}
                 alt="train"
@@ -193,23 +196,23 @@ const TrainMarker = ({
               <span className="text-xs">{vehicles[0]?.name}</span>
             </div>
           </div>
-          <div className="border-t my-1.5 opacity-30"></div>
+          <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
           <div className="flex items-center gap-2">
-            <img src="/speed.png" alt="" className="w-[14px]" />
+            <SlSpeedometer className="w-4 h-3" />
             <p className="font font-medium">{speed.toFixed()} km/h</p>
           </div>
           <div className="flex flex-col ">
             <div className="flex items-center gap-2">
-              <img src="/dep.png" alt="Departure icon" className="w-[14px]" />
-              <p className="capitalize leading-4 font-light">
+              <RiMapPin2Line className="w-4 h-4" />
+              <p className="capitalize leading-4">
                 {departure.charAt(1) === departure.charAt(1).toUpperCase()
                   ? departure.toLowerCase()
                   : departure}
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <img src="/des.png" alt="Departure icon" className="w-[14px]" />
-              <p className="capitalize leading-4">
+              <RiMapPin2Fill className="w-4 h-4" />
+              <p className="capitalize leading-4 font-medium">
                 {destination.charAt(1) === destination.charAt(1).toUpperCase()
                   ? destination.toLowerCase()
                   : destination}
@@ -218,9 +221,9 @@ const TrainMarker = ({
           </div>
           {user && (
             <>
-              <div className="border-t my-1.5 opacity-30"></div>
+              <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
               <div className="flex gap-2 items-center">
-                <img src="/user.png" className="w-[14px]" />
+                <FaUserAlt className="w-4" />
                 <p className="font-medium">{username}</p>
               </div>
             </>
