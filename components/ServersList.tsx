@@ -8,10 +8,8 @@ import { motion } from "framer-motion";
 type ServerDataType = {
   id: string;
   ServerCode: string;
-  ServerName: string;
   ServerRegion: string;
   IsActive: boolean;
-  index: number;
 };
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -40,7 +38,7 @@ const ServersList = () => {
               <Link
                 key={id}
                 href={`/server/${ServerCode}`}
-                className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-light_primary_dark/70 to-light_primary/90 dark:from-primary/90 dark:to-primary_dark/80 hover:bg-light_primary_light dark:hover:bg-primary_dark text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-xl border-slate-800 hover:border-slate-900 hover:scale-[1.025] transition duration-100`}
+                className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-light_primary_dark/70 to-light_primary/90 dark:from-primary/90 dark:to-primary_dark/80 hover:bg-light_primary_light dark:hover:bg-primary_dark text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-xl border-slate-400 hover:border-slate-600 dark:border-slate-800 dark:hover:border-slate-900 hover:scale-[1.025] transition duration-100`}
               >
                 <div
                   className={`w-5 h-5 mx-2 rounded-full border border-slate-600 ${
