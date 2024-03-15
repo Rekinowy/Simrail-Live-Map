@@ -1,7 +1,8 @@
+import { SearchResultType } from "@/lib/types/types";
 import { Input } from "@nextui-org/react";
-import { SearchResultType } from "./Map";
 import { useTranslation } from "react-i18next";
 import { FaSearch } from "react-icons/fa";
+import { GiLever } from "react-icons/gi";
 
 const SearchBox = ({
   searchValue,
@@ -48,9 +49,7 @@ const SearchBox = ({
         value={searchValue}
         onChange={(value) => setSearchValue(value.target.value)}
         onClear={() => setSearchValue("")}
-        startContent={
-          <FaSearch className="text-slate-700 dark:text-light_gray" />
-        }
+        startContent={<FaSearch className="text-slate-700 dark:text-light_gray" />}
       />
       <div className="relative flex flex-col w-[95%] max-h-[70dvh] m-auto rounded-b-lg shadow-lg overflow-hidden scroll-smooth">
         <ul className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-thumb-light_primary_light/60 scrollbar-track-light_primary/50 dark:scrollbar-thumb-primary_light dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80dvh]">
@@ -58,9 +57,11 @@ const SearchBox = ({
             (filteredResults.length > 0 ? (
               filteredResults.map((item) => {
                 return (
-                  <li className="relative flex z-10 p-1 bg-light_primary_dark/60 hover:bg-light_primary_dark/80 dark:bg-primary/70 dark:hover:bg-primary/90 cursor-pointer border-b border-slate-400 dark:border-slate-800 transition-all">
+                  <li
+                    key={item.id}
+                    className="relative flex z-10 p-1 bg-light_primary_dark/60 hover:bg-light_primary_dark/80 dark:bg-primary/70 dark:hover:bg-primary/90 cursor-pointer border-b border-slate-400 dark:border-slate-800 transition-all"
+                  >
                     <button
-                      key={item.id}
                       onClick={() => {
                         setSelectedMarker(item.label);
                         setSearchValue("");
@@ -71,23 +72,16 @@ const SearchBox = ({
                     >
                       <div className="flex gap-3 pl-2 items-center">
                         <div className="py-1 brightness-125 dark:brightness-105">
-                          {typeof item.image === "string" ? (
-                            <img
-                              src={item.image}
-                              alt="picture"
-                              width={48}
-                              height={48}
-                            />
+                          {item.image ? (
+                            <img src={item.image} alt="picture" width={48} height={48} />
                           ) : (
                             <div className="flex items-center justify-center w-12 h-12">
-                              {item.image}
+                              <GiLever className="w-9 h-9 text-primary dark:text-light_gray" />
                             </div>
                           )}
                         </div>
                         <div className="flex flex-col items-start">
-                          <p className="text-sm font-medium dark:font-normal text-left">
-                            {item.label}
-                          </p>
+                          <p className="text-sm font-medium dark:font-normal text-left">{item.label}</p>
                           {item.username && (
                             <p className="text-xs text-slate-950 dark:text-slate-200 dark:font-light">
                               {item.username}

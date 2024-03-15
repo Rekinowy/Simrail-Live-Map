@@ -1,35 +1,7 @@
-export const locos = [
-  {
-    name: "Traxx",
-    label: "E186 Traxx",
-  },
-  {
-    name: "Dragon2",
-    label: "E6ACTa DRAGON 2",
-  },
-  {
-    name: "Pendolino",
-    label: "ED250 Pendolino",
-  },
-  {
-    name: "EN57",
-    label: "EN57/EN71",
-  },
-  {
-    name: "Elf",
-    label: "EN76/EN96 Elf",
-  },
-  {
-    name: "08-",
-    label: "EP08",
-  },
-  {
-    name: "07-",
-    label: "EU07/EP07",
-  },
-] as const;
+import { Icon } from "leaflet";
+import { TrainsImgType } from "../types/types";
 
-export const trainsImg = {
+export const trainsImg: TrainsImgType = {
   "Dragon2/ET25-002": "/et25-002.png",
   "Dragon2/E6ACTa-014": "/e6acta-014.png",
   "Dragon2/E6ACTa-016": "/e6acta-016.png",
@@ -75,6 +47,37 @@ export const trainsImg = {
 
   "Pendolino/ED250-018": "/ed250-018.png",
 };
+
+export const locos = [
+  {
+    name: "Traxx",
+    label: "E186 Traxx",
+  },
+  {
+    name: "Dragon2",
+    label: "E6ACTa DRAGON 2",
+  },
+  {
+    name: "Pendolino",
+    label: "ED250 Pendolino",
+  },
+  {
+    name: "EN57",
+    label: "EN57/EN71",
+  },
+  {
+    name: "Elf",
+    label: "EN76/EN96 Elf",
+  },
+  {
+    name: "08-",
+    label: "EP08",
+  },
+  {
+    name: "07-",
+    label: "EU07/EP07",
+  },
+] as const;
 
 export const trainStations = [
   { name: "Będzin", pos: [50.30898, 19.14142] },
@@ -133,3 +136,10 @@ export const trainStations = [
   { name: "Zawiercie Borowe Pole", pos: [50.511078, 19.398637] },
   { name: "Zawiercie", pos: [50.48102, 19.42313] },
 ] as const;
+
+export const stationIcon = new Icon({
+  iconUrl: "/station.png",
+  iconSize: [18, 18],
+  iconAnchor: [10, 10],
+  popupAnchor: [3, -12],
+});

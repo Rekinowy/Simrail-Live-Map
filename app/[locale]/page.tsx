@@ -1,6 +1,6 @@
 import ServersList from "@/components/ServersList";
-import initTranslations from "../../utils/i18n";
-import TranslationsProvider from "../../utils/TranslationsProvider";
+import initTranslations from "../../lib/utils/i18n";
+import TranslationsProvider from "../../lib/utils/TranslationsProvider";
 
 const i18nNamespaces = ["Home"];
 

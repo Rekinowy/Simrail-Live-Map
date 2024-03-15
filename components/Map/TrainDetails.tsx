@@ -1,13 +1,14 @@
 import TrainGeneralInfo from "./TrainGeneralInfo";
 import TrainTimetable from "./TrainTimetable";
 import useSWR from "swr";
-import { trainsImg } from "@/constants";
+import { trainsImg } from "@/lib/constants";
 import { useTranslation } from "react-i18next";
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
 import { BsCalendar2Week, BsCalendar2WeekFill } from "react-icons/bs";
+import { fetcher } from "../Map";
 
 type TrainDetailsType = {
   trainNumber: string;
@@ -42,13 +43,9 @@ const TrainDetails = ({
 
   const username = user?.name || "User";
 
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-  const timetable = useSWR(
-    `https://simrail-edr.de/api/trainTimeTable/train/${serverCode}/${trainNumber}`,
-    fetcher,
-    { refreshInterval: 2500 }
-  );
+  const timetable = useSWR(`https://simrail-edr.de/api/trainTimeTable/train/${serverCode}/${trainNumber}`, fetcher, {
+    refreshInterval: 2500,
+  });
 
   return (
     <>
@@ -69,8 +66,7 @@ const TrainDetails = ({
             <button
               onClick={() => setView("general")}
               className={`w-full p-2 text-sm lg:text-base border-b border-transparent ${
-                view === "general" &&
-                "font-medium text-primary_dark border-black dark:text-white dark:border-white"
+                view === "general" && "font-medium text-primary_dark border-black dark:text-white dark:border-white"
               } ${
                 view !== "general" &&
                 " hover:border-slate-400 hover:text-slate-800 dark:hover:border-slate-300  dark:hover:text-slate-300"
@@ -81,8 +77,7 @@ const TrainDetails = ({
             <button
               onClick={() => setView("timetable")}
               className={`w-full p-2 text-sm lg:text-base border-b border-transparent  ${
-                view === "timetable" &&
-                "font-medium text-primary_dark border-black dark:text-white dark:border-white"
+                view === "timetable" && "font-medium text-primary_dark border-black dark:text-white dark:border-white"
               } ${
                 view !== "timetable" &&
                 " hover:border-slate-400 hover:text-slate-800 dark:hover:border-slate-300  dark:hover:text-slate-300"
@@ -102,22 +97,14 @@ const TrainDetails = ({
             username={username}
           />
         )}
-        {view === "timetable" && (
-          <TrainTimetable timetable={timetable.data?.data} />
-        )}
+        {view === "timetable" && <TrainTimetable timetable={timetable.data?.data} />}
         <button
           className={`absolute top-3 right-3 flex items-center gap-1 p-1 rounded-lg  ${
-            follow
-              ? "bg-light_primary_dark dark:bg-primary_dark"
-              : "bg-light_primary dark:bg-primary"
+            follow ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
           } border-1  text-xs border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-700`}
           onClick={() => setFollow((prev) => !prev)}
         >
-          {follow ? (
-            <MdPushPin className="w-5 h-5" />
-          ) : (
-            <MdOutlinePushPin className="w-5 h-5" />
-          )}
+          {follow ? <MdPushPin className="w-5 h-5" /> : <MdOutlinePushPin className="w-5 h-5" />}
         </button>
       </div>
 
@@ -130,18 +117,13 @@ const TrainDetails = ({
         <div className="flex">
           <div className="flex flex-col w-4/12 items-center justify-center mx-1">
             <div className="flex flex-col h-14 w-14 justify-center brightness-125 dark:brightness-105">
-              <img
-                src={"/trains/" + trainsImg[vehicles[0]?.name]}
-                alt="train"
-              />
+              <img src={"/trains/" + trainsImg[vehicles[0]?.name]} alt="train" />
             </div>
             <div className="flex flex-col items-center leading-5">
               <h1 className="text-xs text-center">
                 {trainName} <span className="font-bold">{trainNumber}</span>
               </h1>
-              <p className="text-center leading-3 text-[10px]">
-                {vehicles[0]?.name}
-              </p>
+              <p className="text-center leading-3 text-[10px]">{vehicles[0]?.name}</p>
             </div>
           </div>
           <div className="border-l w-fit border-t opacity-30 border-primary dark:border-white"></div>
@@ -159,9 +141,7 @@ const TrainDetails = ({
                     <RiMapPin2Line className="w-4 h-4 text-primary_dark dark:text-light_gray" />
                   </div>
                   <p className="capitalize leading-2">
-                    {departure.charAt(1) === departure.charAt(1).toUpperCase()
-                      ? departure.toLowerCase()
-                      : departure}
+                    {departure.charAt(1) === departure.charAt(1).toUpperCase() ? departure.toLowerCase() : departure}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -169,8 +149,7 @@ const TrainDetails = ({
                     <RiMapPin2Fill className="w-4 h-4 text-primary_dark dark:text-light_gray" />
                   </div>
                   <p className="capitalize leading-2">
-                    {destination.charAt(1) ===
-                    destination.charAt(1).toUpperCase()
+                    {destination.charAt(1) === destination.charAt(1).toUpperCase()
                       ? destination.toLowerCase()
                       : destination}
                   </p>
@@ -190,9 +169,7 @@ const TrainDetails = ({
           <div className="flex flex-col gap-2">
             <button
               className={`w-7 h-7 p-1 rounded-lg text-light_gray ${
-                follow
-                  ? "bg-light_primary_dark dark:bg-primary_dark"
-                  : "bg-light_primary dark:bg-primary"
+                follow ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
               } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
               onClick={() => setFollow((prev) => !prev)}
             >
@@ -200,13 +177,9 @@ const TrainDetails = ({
             </button>
             <button
               className={`w-7 h-7 p-0.5 rounded-lg ${
-                view === "timetable"
-                  ? "bg-light_primary_dark dark:bg-primary_dark"
-                  : "bg-light_primary dark:bg-primary"
+                view === "timetable" ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
               } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
-              onClick={() =>
-                setView(view === "general" ? "timetable" : "general")
-              }
+              onClick={() => setView(view === "general" ? "timetable" : "general")}
             >
               {view === "timetable" ? (
                 <BsCalendar2WeekFill className="w-3.5 h-3.5 m-auto" />

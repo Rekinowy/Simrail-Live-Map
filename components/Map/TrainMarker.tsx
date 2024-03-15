@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Popup, Tooltip, useMap } from "react-leaflet";
 import { LeafletTrackingMarker } from "react-leaflet-tracking-marker";
 import { divIcon } from "leaflet";
-import { trainsImg } from "@/constants";
+
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
+import { trainsImg } from "@/lib/constants";
 
 type TrainMarkerProps = {
   lat: number;
@@ -57,9 +58,7 @@ const TrainMarker = ({
   const position = { lat: lat, lng: lng };
   let prevPos = useRef([lat, lng]);
   const map = useMap();
-  const isLocoSelected = selectedLocos.some((loco) =>
-    vehicles[0]?.name.includes(loco)
-  );
+  const isLocoSelected = selectedLocos.some((loco) => vehicles[0]?.name.includes(loco));
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
   const [duration, setDuration] = useState(2000);
@@ -73,9 +72,7 @@ const TrainMarker = ({
     const dLon = long2 - long1;
 
     const y = Math.sin(dLon) * Math.cos(lat2);
-    const x =
-      Math.cos(lat1) * Math.sin(lat2) -
-      Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
 
     const radiansBearing = Math.atan2(y, x);
     const radiansToDegrees = (radiansBearing * 180) / Math.PI;
@@ -96,9 +93,7 @@ const TrainMarker = ({
 
   const markerIcon = divIcon({
     html: `<div class='marker-container relative'>
-    <img src='${
-      user ? avatar : "/bot-avatar.jpg"
-    }' alt="User avatar" class='rounded-full border-[3px] ${
+    <img src='${user ? avatar : "/bot-avatar.jpg"}' alt="User avatar" class='rounded-full border-[3px] ${
       user ? "w-8 h-8 -ml-4 -mt-4" : "w-6 h-6 -ml-3 -mt-3"
     } ${
       speed > 40
@@ -109,9 +104,7 @@ const TrainMarker = ({
     }' />
     <div style='transform: rotate(${rotationAngle}deg)' class='${
       !hasPositionChanged && "hidden"
-    } absolute top-0 left-0 -z-10 ${
-      user ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"
-    }'><div class='absolute ${
+    } absolute top-0 left-0 -z-10 ${user ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"}'><div class='absolute ${
       speed > 40
         ? "border-b-green-600 dark:border-b-green-700"
         : speed > 2
@@ -138,8 +131,7 @@ const TrainMarker = ({
     return null;
   }
 
-  if (vehicles[0]?.name === "Pendolino/ED250-018 Variant")
-    vehicles[0].name = "Pendolino/ED250-018";
+  if (vehicles[0]?.name === "Pendolino/ED250-018 Variant") vehicles[0].name = "Pendolino/ED250-018";
 
   return (
     <>
@@ -164,30 +156,14 @@ const TrainMarker = ({
         }}
       >
         {showMarkerLabels && zoomLevel >= labelZoomLevel && (
-          <Tooltip
-            direction="top"
-            permanent={true}
-            opacity={0.8}
-            offset={[2, -16]}
-            className="custom-tooltip"
-          >
+          <Tooltip direction="top" permanent={true} opacity={0.8} offset={[2, -16]} className="custom-tooltip">
             {trainNumber}
           </Tooltip>
         )}
-        <Popup
-          className="custom-popup"
-          offset={[4, -14]}
-          closeButton={false}
-          autoPan={false}
-        >
+        <Popup className="custom-popup" offset={[4, -14]} closeButton={false} autoPan={false}>
           <div className="flex gap-2">
             <div className="w-[50px] brightness-125 dark:brightness-105">
-              <img
-                src={"/trains/" + trainsImg[vehicles[0]?.name]}
-                alt="train"
-                width={50}
-                height={40}
-              />
+              <img src={"/trains/" + trainsImg[vehicles[0]?.name]} alt="train" width={50} height={40} />
             </div>
             <div className="flex flex-col justify-center text-sm leading-5">
               <h1>
@@ -205,9 +181,7 @@ const TrainMarker = ({
             <div className="flex items-center gap-2">
               <RiMapPin2Line className="w-4 h-4" />
               <p className="capitalize leading-4">
-                {departure.charAt(1) === departure.charAt(1).toUpperCase()
-                  ? departure.toLowerCase()
-                  : departure}
+                {departure.charAt(1) === departure.charAt(1).toUpperCase() ? departure.toLowerCase() : departure}
               </p>
             </div>
             <div className="flex items-center gap-2">

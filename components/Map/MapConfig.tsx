@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 
-const MapControl = ({
+const MapConfig = ({
   setZoomLevel,
   setOpenSettings,
   setSelectedMarker,
@@ -24,4 +24,4 @@ const MapControl = ({
 
   return null;
 };
-export default MapControl;
+export default MapConfig;
