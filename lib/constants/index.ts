@@ -1,7 +1,6 @@
 import { Icon } from "leaflet";
-import { TrainsImgType } from "../types/types";
 
-export const trainsImg: TrainsImgType = {
+export const trainsImg = {
   "Dragon2/ET25-002": "/et25-002.png",
   "Dragon2/E6ACTa-014": "/e6acta-014.png",
   "Dragon2/E6ACTa-016": "/e6acta-016.png",
