@@ -1,3 +1,7 @@
+export type TrainsImgType = {
+  [key: string]: string;
+};
+
 export type TrainDataType = {
   id: string;
   latitude: number;
