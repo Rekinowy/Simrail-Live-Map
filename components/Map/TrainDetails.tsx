@@ -9,21 +9,8 @@ import { FaUserAlt } from "react-icons/fa";
 import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
 import { BsCalendar2Week, BsCalendar2WeekFill } from "react-icons/bs";
 import { fetcher } from "../Map";
-
-type TrainDetailsType = {
-  trainNumber: string;
-  trainName: string;
-  departure: string;
-  destination: string;
-  speed: number;
-  user: { name: string; avatar: string; distance_meter: number };
-  vehicles: { name: string }[];
-  serverCode: string;
-  view: string;
-  setView: (view: string) => void;
-  follow: string;
-  setFollow: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { TrainDetailsType } from "@/lib/types/types";
+import { PiPath, PiPathBold } from "react-icons/pi";
 
 const TrainDetails = ({
   trainNumber,
@@ -38,6 +25,8 @@ const TrainDetails = ({
   setView,
   follow,
   setFollow,
+  showPath,
+  setShowPath,
 }: TrainDetailsType) => {
   const { t } = useTranslation();
 
@@ -105,6 +94,14 @@ const TrainDetails = ({
           onClick={() => setFollow((prev) => !prev)}
         >
           {follow ? <MdPushPin className="w-5 h-5" /> : <MdOutlinePushPin className="w-5 h-5" />}
+        </button>
+        <button
+          className={`absolute top-3 left-3 flex items-center gap-1 p-1 rounded-lg  ${
+            showPath ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
+          } border-1  text-xs border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-700`}
+          onClick={() => setShowPath((prev) => !prev)}
+        >
+          {showPath ? <PiPathBold className="w-5 h-5" /> : <PiPath className="w-5 h-5" />}
         </button>
       </div>
 
@@ -174,6 +171,14 @@ const TrainDetails = ({
               onClick={() => setFollow((prev) => !prev)}
             >
               {follow ? <MdPushPin /> : <MdOutlinePushPin />}
+            </button>
+            <button
+              className={`w-7 h-7 p-1 rounded-lg text-light_gray ${
+                showPath ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
+              } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
+              onClick={() => setShowPath((prev) => !prev)}
+            >
+              {showPath ? <PiPathBold /> : <PiPath />}
             </button>
             <button
               className={`w-7 h-7 p-0.5 rounded-lg ${

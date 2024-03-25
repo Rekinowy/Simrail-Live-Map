@@ -7,31 +7,7 @@ import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 import { trainsImg } from "@/lib/constants";
-
-type TrainMarkerProps = {
-  lat: number;
-  lng: number;
-  speed: number;
-  trainNumber: string;
-  trainName: string;
-  vehicles: { name: string }[];
-  departure: string;
-  destination: string;
-  user: {
-    name: string;
-    avatar: string;
-  };
-  selectedTrain: string;
-  setSelectedTrain: (train: string) => void;
-  zoomLevel: number;
-  showTrains: boolean;
-  showOnlyAvail: boolean;
-  showMarkerLabels: boolean;
-  labelZoomLevel: number;
-  selectedLocos: string[];
-  serverCode: string;
-  follow: boolean;
-};
+import { TrainMarkerProps } from "@/lib/types/types";
 
 const TrainMarker = ({
   lat,
@@ -55,18 +31,18 @@ const TrainMarker = ({
 }: TrainMarkerProps) => {
   const username = user?.name || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
-  const position = { lat: lat, lng: lng };
-  let prevPos = useRef([lat, lng]);
+  const position = { lat, lng };
+  const prevPos = useRef({ lat, lng });
   const map = useMap();
   const isLocoSelected = selectedLocos.some((loco) => vehicles[0]?.name.includes(loco));
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
-  const [duration, setDuration] = useState(2000);
   const [rotationAngle, setRotationAngle] = useState(0);
+  const duration = 2000;
 
   const calculateRotationAngle = (prevPos: any, currentPos: any) => {
-    const lat1 = (prevPos[0] * Math.PI) / 180;
-    const long1 = (prevPos[1] * Math.PI) / 180;
+    const lat1 = (prevPos.lat * Math.PI) / 180;
+    const long1 = (prevPos.lng * Math.PI) / 180;
     const lat2 = (currentPos.lat * Math.PI) / 180;
     const long2 = (currentPos.lng * Math.PI) / 180;
     const dLon = long2 - long1;
@@ -79,17 +55,26 @@ const TrainMarker = ({
     return radiansToDegrees;
   };
 
+  // const selectedTrainNumbers = ["111"];
+
   // Set marker rotation and follow
   useEffect(() => {
-    if (prevPos.current[0] !== lat || prevPos.current[1] !== lng) {
+    if (prevPos.current.lat !== lat || prevPos.current.lng !== lng) {
       setRotationAngle(calculateRotationAngle(prevPos.current, position));
-      prevPos.current = [lat, lng];
+      prevPos.current = { lat, lng };
       setHasPositionChanged(true);
+
+      // if (selectedTrainNumbers.includes(trainNumber)) {
+      //   const coordinates = JSON.parse(localStorage.getItem(`coordinates_${trainNumber}`) || "[]");
+      //   coordinates.push([parseFloat(lat.toFixed(6)), parseFloat(lng.toFixed(6))]);
+      //   localStorage.setItem(`coordinates_${trainNumber}`, JSON.stringify(coordinates));
+      // }
     }
     if (selectedTrain == trainNumber && follow) {
       map.panTo(position, { animate: true, duration: 2 });
     }
-  }, [position, selectedTrain]);
+  }, [position, trainNumber]);
+  // }, [position, trainNumber, selectedTrainNumbers]);
 
   const markerIcon = divIcon({
     html: `<div class='marker-container relative'>

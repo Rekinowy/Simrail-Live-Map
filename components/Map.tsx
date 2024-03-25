@@ -13,13 +13,13 @@ import MapConfig from "./Map/MapConfig";
 import SettingsTab from "./Map/SettingsTab";
 import SearchBox from "./Map/SearchBox";
 import TrainDetails from "./Map/TrainDetails";
+import MapControls from "./Map/MapControls";
 
-import { filterSearchData } from "@/lib/utils/actions";
+import { filterSearchData } from "@/lib/utils/utils";
 import { stationIcon, trainStations } from "@/lib/constants";
 import { SearchResultType, StationDataType, TrainDataType } from "@/lib/types/types";
-
-import MapControls from "./Map/MapControls";
-import { UseLocalStorage } from "@/lib/hooks/hooks";
+import { useLocalStorage } from "@/lib/hooks/hooks";
+import RoutePath from "./Map/RoutePath";
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -36,18 +36,19 @@ export default function Map({ code }: { code: string }) {
   const [searchValue, setSearchValue] = useState("");
   const [filteredResults, setFilteredResults] = useState<SearchResultType[]>([]);
 
-  const [showMarkerLabels, setShowMarkerLabels] = UseLocalStorage("showMarkerLabels", true);
-  const [showStationLabels, setShowStationLabels] = UseLocalStorage("showStationLabels", true);
-  const [trainLabelZoomLevel, setTrainLabelZoomLevel] = UseLocalStorage("trainLabelZoomLevel", 12);
-  const [stationLabelZoomLevel, setStationLabelZoomLevel] = UseLocalStorage("stationLabelZoomLevel", 12);
-  const [trainStopsZoomLevel, setTrainStopsZoomLevel] = UseLocalStorage("trainStopsZoomLevel", 12);
-  const [showTrainStops, setShowTrainStops] = UseLocalStorage("showTrainStops", true);
-  const [showOnlyAvail, setShowOnlyAvail] = UseLocalStorage("showOnlyAvail", false);
-  const [trainDetailsView, setTrainDetailsView] = UseLocalStorage("trainDetailsView", "general");
-  const [followTrain, setFollowTrain] = UseLocalStorage("followTrain", true);
+  const [showMarkerLabels, setShowMarkerLabels] = useLocalStorage("showMarkerLabels", true);
+  const [showStationLabels, setShowStationLabels] = useLocalStorage("showStationLabels", true);
+  const [trainLabelZoomLevel, setTrainLabelZoomLevel] = useLocalStorage("trainLabelZoomLevel", 12);
+  const [stationLabelZoomLevel, setStationLabelZoomLevel] = useLocalStorage("stationLabelZoomLevel", 12);
+  const [trainStopsZoomLevel, setTrainStopsZoomLevel] = useLocalStorage("trainStopsZoomLevel", 12);
+  const [showTrainStops, setShowTrainStops] = useLocalStorage("showTrainStops", true);
+  const [showOnlyAvail, setShowOnlyAvail] = useLocalStorage("showOnlyAvail", false);
+  const [trainDetailsView, setTrainDetailsView] = useLocalStorage("trainDetailsView", "general");
+  const [followTrain, setFollowTrain] = useLocalStorage("followTrain", true);
+  const [showPath, setShowPath] = useLocalStorage("showPath", true);
 
   const trains = useSWR(TRAINS_API_URL, fetcher, {
-    refreshInterval: 5000,
+    refreshInterval: 2500,
   });
 
   const stations = useSWR(STATIONS_API_URL, fetcher, {
@@ -67,6 +68,8 @@ export default function Map({ code }: { code: string }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           className="map-tiles transition-all"
         />
+        {showPath && <RoutePath selectedTrain={selectedMarker} />}
+
         <MapControls setOpenSettings={setOpenSettings} />
 
         {showTrainStops &&
@@ -167,6 +170,8 @@ export default function Map({ code }: { code: string }) {
               setView={setTrainDetailsView}
               follow={followTrain}
               setFollow={setFollowTrain}
+              showPath={showPath}
+              setShowPath={setShowPath}
             />
           )
         );

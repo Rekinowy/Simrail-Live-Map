@@ -1,0 +1,41 @@
+import { path_13xxx, path_31xxx } from "./passenger/path-[13xxx-31xxx]";
+import { path_14xxx, path_41xxx } from "./passenger/path-[14xxx-41xxx]";
+import { path_16xxx, path_61xxx } from "./passenger/path-[16xxx-61xxx]";
+import { path_19xx, path_91xx } from "./passenger/path-[19xx-91xx]";
+import { path_19xxx, path_91xxx } from "./passenger/path-[19xxx-91xxx]";
+import { path_37xxx, path_73xxx } from "./passenger/path-[37xxx-73xxx]";
+import { path_249xx, path_429xx } from "./passenger/path-[249xx-429xx]";
+import { path_433xx, path_443xx } from "./passenger/path-[433xx-443xx]";
+import { path_2412x, path_4212x } from "./passenger/path-[2412x-4212x]";
+import { path_2417x, path_4217x } from "./passenger/path-[2417x-4217x]";
+import { path_4012x, path_4067x } from "./passenger/path-[4012x-4067x]";
+import { path_4017x, path_4062x } from "./passenger/path-[4017x-4062x]";
+import { path_54xxx } from "./passenger/path-[54xxx-45xxx]";
+
+export const paths = {
+  path_13xxx,
+  path_31xxx,
+  path_14xxx,
+  path_41xxx,
+  path_16xxx,
+  path_61xxx,
+  path_19xx,
+  path_91xx,
+  path_19xxx,
+  path_91xxx,
+  path_37xxx,
+  path_73xxx,
+  path_249xx,
+  path_429xx,
+  path_433xx,
+  path_443xx,
+  path_2412x,
+  path_4212x,
+  path_2417x,
+  path_4217x,
+  path_4012x,
+  path_4067x,
+  path_4017x,
+  path_4062x,
+  path_54xxx,
+};

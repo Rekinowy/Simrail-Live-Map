@@ -4,23 +4,7 @@ import { useEffect } from "react";
 import { Marker, Popup, Tooltip, useMap } from "react-leaflet";
 import StationDetails from "./StationDetails";
 import { FaRegStar, FaStar, FaUserAlt } from "react-icons/fa";
-
-type StationMarkerProps = {
-  stationName: string;
-  stationPrefix: string;
-  stationImage: string;
-  difficulty: number;
-  lat: number;
-  lng: number;
-  user: { name: string; avatar: string; dispatcher_time: number };
-  selectedStation: string;
-  setSelectedStation: (station: string) => void;
-  zoomLevel: number;
-  showStations: boolean;
-  showOnlyAvail: boolean;
-  showMarkerLabels: boolean;
-  labelZoomLevel: number;
-};
+import { StationMarkerProps } from "@/lib/types/types";
 
 const StationMarker = ({
   stationName,
@@ -36,7 +20,6 @@ const StationMarker = ({
   showStations,
   showOnlyAvail,
   showMarkerLabels,
-
   labelZoomLevel,
 }: StationMarkerProps) => {
   const username = user?.name || "User";
@@ -45,9 +28,7 @@ const StationMarker = ({
 
   const stationIcon = divIcon({
     html: `<div class='marker-container'>
-    <img src='${
-      user ? avatar : "/bot-avatar.jpg"
-    }' alt="User avatar" class='rounded-md border-[3px]  ${
+    <img src='${user ? avatar : "/bot-avatar.jpg"}' alt="User avatar" class='rounded-md border-[3px]  ${
       user
         ? "border-sky-500 dark:border-sky-600 w-9 h-9 -ml-[20px] -mt-[18px]"
         : "border-slate-500 dark:border-slate-400 w-7 h-7 -ml-[15px] -mt-[12px]"
@@ -95,29 +76,13 @@ const StationMarker = ({
         }}
       >
         {showMarkerLabels && zoomLevel >= labelZoomLevel && (
-          <Tooltip
-            direction="bottom"
-            permanent={true}
-            offset={[0, 16]}
-            className="custom-tooltip"
-          >
+          <Tooltip direction="bottom" permanent={true} offset={[0, 16]} className="custom-tooltip">
             {stationPrefix}
           </Tooltip>
         )}
-        <Popup
-          className="custom-popup station-popup"
-          offset={[2, -12]}
-          closeButton={false}
-          autoPan={false}
-        >
+        <Popup className="custom-popup station-popup" offset={[2, -12]} closeButton={false} autoPan={false}>
           <div className="flex h-[100px] w-[233px] rounded-md shadow-md overflow-hidden mb-2.5 justify-center">
-            <Image
-              src={stationImage}
-              alt="Station image"
-              width={233}
-              height={100}
-              className="object-cover w-auto"
-            />
+            <Image src={stationImage} alt="Station image" width={233} height={100} className="object-cover w-auto" />
           </div>
           <div className="flex items-center justify-between font-semibold">
             <div className="max-w-[155px]">
@@ -125,13 +90,7 @@ const StationMarker = ({
             </div>
             <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
-                <div key={i}>
-                  {i < difficulty ? (
-                    <FaStar className="w-2.5" />
-                  ) : (
-                    <FaRegStar className="w-2.5" />
-                  )}
-                </div>
+                <div key={i}>{i < difficulty ? <FaStar className="w-2.5" /> : <FaRegStar className="w-2.5" />}</div>
               ))}
             </div>
           </div>

@@ -2,30 +2,7 @@ import { locos } from "@/lib/constants";
 import { Button, Select, SelectItem, Slider, Switch } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import LanguageChanger from "../LanguageSelector";
-
-type SettingsTabTypes = {
-  setOpenSettings: (value: boolean) => void;
-  showTrainStops: boolean;
-  setShowTrainStops: (value: boolean) => void;
-  showOnlyAvail: boolean;
-  setShowOnlyAvail: (value: boolean) => void;
-  showMarkerLabels: boolean;
-  setShowMarkerLabels: (value: boolean) => void;
-  showStationLabels: boolean;
-  setShowStationLabels: (value: boolean) => void;
-  trainLabelZoomLevel: number;
-  setTrainLabelZoomLevel: (value: any) => void;
-  stationLabelZoomLevel: number;
-  setStationLabelZoomLevel: (value: any) => void;
-  trainStopsZoomLevel: number;
-  setTrainStopsZoomLevel: (value: any) => void;
-  selectedLocos: string[];
-  setSelectedLocos: (value: any) => void;
-  showTrains: boolean;
-  setShowTrains: (value: boolean) => void;
-  showStations: boolean;
-  setShowStations: (value: boolean) => void;
-};
+import { SettingsTabTypes } from "@/lib/types/types";
 
 const switchStyles = {
   thumb: "bg-primary_light dark:bg-light_gray",
@@ -38,7 +15,7 @@ const sliderStyles = {
   label: "text-base",
   value: "text-md",
   filler: "bg-primary_light dark:bg-light_gray",
-  track: "bg-gray-200 border-l-primary_light dark:bg-gray-600/50 dark:border-l-slate-300",
+  track: "bg-gray-200 border-l-primary dark:bg-gray-600/50 dark:border-l-slate-300",
   step: "data-[in-range=false]:bg-slate-300 data-[in-range=true]:bg-primary dark:data-[in-range=false]:bg-primary_dark/50 dark:data-[in-range=true]:bg-light_gray",
 };
 
