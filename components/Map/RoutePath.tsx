@@ -1,6 +1,5 @@
 import { Polyline } from "react-leaflet";
 import { ranges } from "@/lib/constants/paths/ranges";
-import { paths } from "@/lib/constants/paths";
 // import { testPath } from "@/lib/constants/paths/testPath";
 
 const RoutePath = ({ selectedTrain }: { selectedTrain: string }) => {
@@ -20,9 +19,6 @@ const RoutePath = ({ selectedTrain }: { selectedTrain: string }) => {
     return (
       <>
         <Polyline pathOptions={{ color: "royalblue" }} positions={path} />
-        {number > 414000 && number < 415000 && (
-          <Polyline pathOptions={{ color: "royalblue" }} positions={paths.path_414xxxb} />
-        )}
       </>
     );
   }

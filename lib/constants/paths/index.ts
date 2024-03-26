@@ -17,7 +17,7 @@ import { path_649xxx, path_629xxx } from "./cargo/path-[649xxx-629xxx]";
 import { path_144xxx } from "./cargo/path-144xxx";
 import { path_243xxx } from "./cargo/path-243xxx";
 import { path_244xxx } from "./cargo/path-244xxx";
-import { path_414xxxa, path_414xxxb } from "./cargo/path-414xxx";
+import { path_414xxx } from "./cargo/path-414xxx";
 import { path_424xxx } from "./cargo/path-424xxx";
 import { path_441xxx } from "./cargo/path-441xxx";
 import { path_442xxx } from "./cargo/path-442xxx";
@@ -60,8 +60,7 @@ export const paths = {
   path_144xxx,
   path_243xxx,
   path_244xxx,
-  path_414xxxa,
-  path_414xxxb,
+  path_414xxx,
   path_424xxx,
   path_441xxx,
   path_442xxx,

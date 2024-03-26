@@ -68,7 +68,7 @@ export const ranges = [
   { min: 144000, max: 145000, path: paths.path_144xxx },
   { min: 243000, max: 243990, path: paths.path_243xxx },
   { min: 244000, max: 245000, path: paths.path_244xxx },
-  { min: 414000, max: 415000, path: paths.path_414xxxa },
+  { min: 414000, max: 415000, path: paths.path_414xxx },
   { min: 424000, max: 425000, path: paths.path_424xxx },
   { min: 441000, max: 441990, path: paths.path_441xxx },
   { min: 442000, max: 442990, path: paths.path_442xxx },
