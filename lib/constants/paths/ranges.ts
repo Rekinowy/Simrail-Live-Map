@@ -57,4 +57,22 @@ export const ranges = [
 
   // TLK Bydgoszcz Gł - Gliwice
   { min: 54000, max: 55000, path: paths.path_54xxx },
+
+  // CARGO
+  { min: 132000, max: 133000, path: paths.path_132xxx },
+  { min: 142000, max: 143000, path: paths.path_142xxx },
+  { min: 146000, max: 147000, path: paths.path_146xxx },
+  { min: 446000, max: 447000, path: paths.path_446xxx },
+  { min: 649000, max: 650000, path: paths.path_649xxx },
+  { min: 629000, max: 630000, path: paths.path_629xxx },
+  { min: 144000, max: 145000, path: paths.path_144xxx },
+  { min: 243000, max: 243990, path: paths.path_243xxx },
+  { min: 244000, max: 245000, path: paths.path_244xxx },
+  { min: 414000, max: 415000, path: paths.path_414xxxa },
+  { min: 424000, max: 425000, path: paths.path_424xxx },
+  { min: 441000, max: 441990, path: paths.path_441xxx },
+  { min: 442000, max: 442990, path: paths.path_442xxx },
+  { min: 443000, max: 443990, path: paths.path_443xxx },
+  { min: 445000, max: 445990, path: paths.path_445xxx },
+  { min: 464000, max: 465000, path: paths.path_464xxx },
 ];

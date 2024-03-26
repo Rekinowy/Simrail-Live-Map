@@ -102,7 +102,7 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                 ></div>
               </div>
               <div
-                className={`flex w-full gap-1 p-2 my-2 rounded-lg border  ${
+                className={`flex w-full gap-1 p-2 my-2 rounded-md border  ${
                   isFirstNonPassedStation
                     ? actualArrival
                       ? "border-lime-600 bg-light_primary_dark dark:border-lime-700 dark:bg-primary_dark"

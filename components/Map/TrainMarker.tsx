@@ -8,6 +8,7 @@ import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 import { trainsImg } from "@/lib/constants";
 import { TrainMarkerProps } from "@/lib/types/types";
+import { calculateRotationAngle } from "@/lib/utils/utils";
 
 const TrainMarker = ({
   lat,
@@ -38,24 +39,12 @@ const TrainMarker = ({
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
   const [rotationAngle, setRotationAngle] = useState(0);
-  const duration = 2000;
+  const duration = 1500;
 
-  const calculateRotationAngle = (prevPos: any, currentPos: any) => {
-    const lat1 = (prevPos.lat * Math.PI) / 180;
-    const long1 = (prevPos.lng * Math.PI) / 180;
-    const lat2 = (currentPos.lat * Math.PI) / 180;
-    const long2 = (currentPos.lng * Math.PI) / 180;
-    const dLon = long2 - long1;
-
-    const y = Math.sin(dLon) * Math.cos(lat2);
-    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
-
-    const radiansBearing = Math.atan2(y, x);
-    const radiansToDegrees = (radiansBearing * 180) / Math.PI;
-    return radiansToDegrees;
-  };
-
-  // const selectedTrainNumbers = ["111"];
+  // const selectedTrainNumbers = [
+  //   144283, 413084, 446038, 424056, 464038, 445046, 445048, 442037, 442039, 414056, 146047, 243545, 243547, 414066,
+  //   445054,
+  // ];
 
   // Set marker rotation and follow
   useEffect(() => {
@@ -63,6 +52,8 @@ const TrainMarker = ({
       setRotationAngle(calculateRotationAngle(prevPos.current, position));
       prevPos.current = { lat, lng };
       setHasPositionChanged(true);
+
+      // Coordinates to local storage
 
       // if (selectedTrainNumbers.includes(trainNumber)) {
       //   const coordinates = JSON.parse(localStorage.getItem(`coordinates_${trainNumber}`) || "[]");
@@ -74,7 +65,6 @@ const TrainMarker = ({
       map.panTo(position, { animate: true, duration: 2 });
     }
   }, [position, trainNumber]);
-  // }, [position, trainNumber, selectedTrainNumbers]);
 
   const markerIcon = divIcon({
     html: `<div class='marker-container relative'>

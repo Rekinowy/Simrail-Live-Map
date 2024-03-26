@@ -163,3 +163,18 @@ export const formatDelay = (delay: number, currentPoint: any, previousPoint: any
     return "";
   }
 };
+
+export const calculateRotationAngle = (prevPos: any, currentPos: any) => {
+  const lat1 = (prevPos.lat * Math.PI) / 180;
+  const long1 = (prevPos.lng * Math.PI) / 180;
+  const lat2 = (currentPos.lat * Math.PI) / 180;
+  const long2 = (currentPos.lng * Math.PI) / 180;
+  const dLon = long2 - long1;
+
+  const y = Math.sin(dLon) * Math.cos(lat2);
+  const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+
+  const radiansBearing = Math.atan2(y, x);
+  const radiansToDegrees = (radiansBearing * 180) / Math.PI;
+  return radiansToDegrees;
+};
