@@ -52,7 +52,7 @@ export const ranges = [
   { min: 40650, max: 40700, path: paths.path_4067x },
 
   // S1 Gliwice - Częstochowa
-  { min: 40150, max: 40200, path: paths.path_4012x },
+  { min: 40150, max: 40200, path: paths.path_4017x },
   { min: 40600, max: 40649, path: paths.path_4062x },
 
   // TLK Bydgoszcz Gł - Gliwice
