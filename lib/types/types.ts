@@ -1,3 +1,4 @@
+import { getTimetable } from "./../utils/utils";
 export type TrainsImgType = {
   [key: string]: string;
 };
@@ -105,6 +106,7 @@ export type StationMarkerProps = {
   showOnlyAvail: boolean;
   showMarkerLabels: boolean;
   labelZoomLevel: number;
+  showDetailsLite: boolean;
 };
 
 export type TrainDetailsType = {
@@ -122,6 +124,7 @@ export type TrainDetailsType = {
   setFollow: React.Dispatch<React.SetStateAction<boolean>>;
   showPath: boolean;
   setShowPath: React.Dispatch<React.SetStateAction<boolean>>;
+  showDetailsLite: boolean;
 };
 
 export type StationDetailsType = {
@@ -131,6 +134,7 @@ export type StationDetailsType = {
   difficulty: number;
   user: { name: string; avatar: string; dispatcher_time: number };
   username: string;
+  showDetailsLite: boolean;
 };
 
 export type SettingsTabTypes = {
@@ -155,4 +159,6 @@ export type SettingsTabTypes = {
   setShowTrains: (value: boolean) => void;
   showStations: boolean;
   setShowStations: (value: boolean) => void;
+  showDetailsLite: boolean;
+  setShowDetailsLite: (value: boolean) => void;
 };

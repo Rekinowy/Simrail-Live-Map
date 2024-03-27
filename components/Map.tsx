@@ -43,6 +43,7 @@ export default function Map({ code }: { code: string }) {
   const [trainStopsZoomLevel, setTrainStopsZoomLevel] = useLocalStorage("trainStopsZoomLevel", 12);
   const [showTrainStops, setShowTrainStops] = useLocalStorage("showTrainStops", true);
   const [showOnlyAvail, setShowOnlyAvail] = useLocalStorage("showOnlyAvail", false);
+  const [showDetailsLite, setShowDetailsLite] = useLocalStorage("showDetailsLite", false);
   const [trainDetailsView, setTrainDetailsView] = useLocalStorage("trainDetailsView", "general");
   const [followTrain, setFollowTrain] = useLocalStorage("followTrain", true);
   const [showPath, setShowPath] = useLocalStorage("showPath", true);
@@ -142,6 +143,7 @@ export default function Map({ code }: { code: string }) {
               showOnlyAvail={showOnlyAvail}
               showMarkerLabels={showStationLabels}
               labelZoomLevel={stationLabelZoomLevel}
+              showDetailsLite={showDetailsLite}
             />
           );
         })}
@@ -172,6 +174,7 @@ export default function Map({ code }: { code: string }) {
               setFollow={setFollowTrain}
               showPath={showPath}
               setShowPath={setShowPath}
+              showDetailsLite={showDetailsLite}
             />
           )
         );
@@ -207,6 +210,8 @@ export default function Map({ code }: { code: string }) {
           setShowTrains={setShowTrains}
           showStations={showStations}
           setShowStations={setShowStations}
+          showDetailsLite={showDetailsLite}
+          setShowDetailsLite={setShowDetailsLite}
         />
       )}
     </NextUIProvider>

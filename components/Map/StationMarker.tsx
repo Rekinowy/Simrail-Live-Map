@@ -21,6 +21,7 @@ const StationMarker = ({
   showOnlyAvail,
   showMarkerLabels,
   labelZoomLevel,
+  showDetailsLite,
 }: StationMarkerProps) => {
   const username = user?.name || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
@@ -113,6 +114,7 @@ const StationMarker = ({
           difficulty={difficulty}
           user={user}
           username={username}
+          showDetailsLite={showDetailsLite}
         />
       )}
     </>

@@ -110,13 +110,13 @@ const TrainTimetable = ({ timetable }: { timetable: any[] }) => {
                     : "border-slate-400/50 bg-light_primary_dark/40 dark:border-slate-800 dark:bg-primary_dark/70 "
                 } ${isBeforeOrLastPassedStation && "opacity-60"}`}
               >
-                <div className="flex flex-col w-full gap-1">
-                  <div className="capitalize text-primary font-medium dark:font-normal dark:text-slate-100 text-sm lg:text-base">
+                <div className="flex flex-col w-full gap-1 text-xs lg:text-sm">
+                  <div className="capitalize text-primary font-medium dark:font-normal dark:text-slate-100 ">
                     {point.station.name.charAt(1) === point.station.name.charAt(1).toUpperCase()
                       ? point.station.name.toLowerCase()
                       : point.station.name}
                   </div>
-                  <div className="text-xs lg:text-sm text-primary dark:text-slate-300">
+                  <div className=" text-primary dark:text-slate-300">
                     <p>
                       {point.scheduled_arrival && scheduledArrival !== scheduledDeparture && (
                         <>
