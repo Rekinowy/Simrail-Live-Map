@@ -53,7 +53,7 @@ export default function Map({ code }: { code: string }) {
   });
 
   const stations = useSWR(STATIONS_API_URL, fetcher, {
-    refreshInterval: 5000,
+    refreshInterval: 2500,
   });
 
   useEffect(() => {

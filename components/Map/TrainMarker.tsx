@@ -41,10 +41,7 @@ const TrainMarker = ({
   const [rotationAngle, setRotationAngle] = useState(0);
   const duration = 1500;
 
-  // const selectedTrainNumbers = [
-  //   144283, 413084, 446038, 424056, 464038, 445046, 445048, 442037, 442039, 414056, 146047, 243545, 243547, 414066,
-  //   445054,
-  // ];
+  // const selectedTrainNumbers = [];
 
   // Set marker rotation and follow
   useEffect(() => {
@@ -61,8 +58,9 @@ const TrainMarker = ({
       //   localStorage.setItem(`coordinates_${trainNumber}`, JSON.stringify(coordinates));
       // }
     }
+
     if (selectedTrain == trainNumber && follow) {
-      map.panTo(position, { animate: true, duration: 2 });
+      map.panTo(position, { animate: true, duration: duration / 1000 });
     }
   }, [position, trainNumber]);
 
