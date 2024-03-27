@@ -39,7 +39,7 @@ const TrainDetailsLite = ({
       } transition-all`}
     >
       <div className="flex">
-        <div className="flex flex-col w-4/12 items-center justify-center mx-1">
+        <div className="flex flex-col w-4/12 items-center justify-center">
           <div className="flex flex-col h-14 w-14 justify-center brightness-125 dark:brightness-105">
             <img src={"/trains/" + trainsImg[vehicles[0]?.name]} alt="train" />
           </div>
@@ -50,7 +50,7 @@ const TrainDetailsLite = ({
             <p className="text-center leading-3 text-[10px]">{vehicles[0]?.name}</p>
           </div>
         </div>
-        <div className="border-l w-fit border-t opacity-30 border-primary dark:border-white"></div>
+        <div className="border-l w-fit border-t opacity-30 border-primary dark:border-white ml-2"></div>
         <div className="flex flex-col w-7/12 mx-2 justify-center text-xs">
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2 ">
