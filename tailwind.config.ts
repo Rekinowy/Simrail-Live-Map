@@ -21,7 +21,6 @@ const config: Config = {
     extend: {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
-        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         primary: "#2b3d4f",

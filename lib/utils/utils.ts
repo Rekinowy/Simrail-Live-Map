@@ -123,21 +123,21 @@ export const calcDelay = (
     differenceInMinutes += 1440;
   }
 
-  if (["pl2", "pl4", "fr1", "es1", "cz1", "de1", "de3"].includes(serverCode) && timezoneOffset !== 1) {
-    differenceInMinutes += (timezoneOffset + 1) * 60;
-  } else if (["pl3", "de4"].includes(serverCode) && timezoneOffset !== -10) {
-    differenceInMinutes += (timezoneOffset - 10) * 60;
-  } else if (["pl8"].includes(serverCode) && timezoneOffset !== -6) {
-    differenceInMinutes += (timezoneOffset - 6) * 60;
-  } else if (["ua1"].includes(serverCode) && timezoneOffset !== 2) {
-    differenceInMinutes += (timezoneOffset + 2) * 60;
-  } else if (["en2"].includes(serverCode) && timezoneOffset !== -12) {
-    differenceInMinutes += (timezoneOffset - 12) * 60;
-  } else if (["en3"].includes(serverCode) && timezoneOffset !== -5) {
-    differenceInMinutes += (timezoneOffset - 5) * 60;
-  } else if (["cn1"].includes(serverCode) && timezoneOffset !== 8) {
-    differenceInMinutes += (timezoneOffset + 8) * 60;
-  }
+  // if (["pl2", "pl4", "fr1", "es1", "cz1", "de1", "de3"].includes(serverCode) && timezoneOffset !== 1) {
+  //   differenceInMinutes += (timezoneOffset + 2) * 60;
+  // } else if (["pl3", "de4"].includes(serverCode) && timezoneOffset !== -10) {
+  //   differenceInMinutes += (timezoneOffset - 11) * 60;
+  // } else if (["pl8"].includes(serverCode) && timezoneOffset !== -6) {
+  //   differenceInMinutes += (timezoneOffset - 5) * 60;
+  // } else if (["ua1"].includes(serverCode) && timezoneOffset !== 2) {
+  //   differenceInMinutes += (timezoneOffset + 3) * 60;
+  // } else if (["en2"].includes(serverCode) && timezoneOffset !== -12) {
+  //   differenceInMinutes += (timezoneOffset - 11) * 60;
+  // } else if (["en3"].includes(serverCode) && timezoneOffset !== -5) {
+  //   differenceInMinutes += (timezoneOffset - 4) * 60;
+  // } else if (["cn1"].includes(serverCode) && timezoneOffset !== 8) {
+  //   differenceInMinutes += (timezoneOffset + 9) * 60;
+  // }
 
   if (!actual) return;
 

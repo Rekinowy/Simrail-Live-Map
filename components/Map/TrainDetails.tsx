@@ -106,7 +106,7 @@ const TrainDetails = ({
             username={username}
           />
         )}
-        {view === "timetable" && <TrainTimetable timetable={timetable.data?.data} />}
+        {view === "timetable" && <TrainTimetable timetable={timetable.data?.data} serverCode={serverCode} />}
         <button
           className={`absolute top-3 right-3 flex items-center gap-1 p-1 rounded-lg  ${
             follow ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"

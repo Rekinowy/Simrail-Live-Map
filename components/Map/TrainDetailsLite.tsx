@@ -26,6 +26,7 @@ const TrainDetailsLite = ({
   username,
   timetable,
   showDetailsLite,
+  serverCode,
 }: TrainDetailsType & {
   username: string;
   timetable: any;
@@ -125,7 +126,7 @@ const TrainDetailsLite = ({
         <>
           <div className="border-t m-2 opacity-20 border-primary dark:border-white"></div>
 
-          <TrainTimetable timetable={timetable.data?.data} />
+          <TrainTimetable timetable={timetable.data?.data} serverCode={serverCode} />
         </>
       )}
     </div>
