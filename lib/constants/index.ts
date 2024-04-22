@@ -22,7 +22,14 @@ export const trainsImg: TrainsImgType = {
   "4E/EP07-174": "/ep07-174.png",
 
   "4E/EP08-001": "/ep08-001.png",
-  "4E/EP08-013": "/ep08-001.png",
+  "4E/EP08-013": "/ep08-013.png",
+
+  "201E/ET22-243": "/et22-243.png",
+  "201E/ET22-256": "/et22-256.png",
+  "201E/ET22-644": "/et22-644.png",
+  "201E/ET22-836": "/et22-836.png",
+  "201E/ET22-911": "/et22-911.png",
+  "201E/ET22-1163": "/et22-1163.png",
 
   "Elf/EN76-006": "/en76-006.png",
   "Elf/EN76-022": "/en76-022.png",
@@ -46,13 +53,6 @@ export const trainsImg: TrainsImgType = {
 
   "EN57/EN71-005": "/en71-005.png",
   "EN57/EN71-011": "/en71-011.png",
-
-  "201E/ET22-243": "/et22.png",
-  "201E/ET22-256": "/et22.png",
-  "201E/ET22-644": "/et22.png",
-  "201E/ET22-836": "/et22.png",
-  "201E/ET22-911": "/et22.png",
-  "201E/ET22-1163": "/et22.png",
 
   "Pendolino/ED250-018": "/ed250-018.png",
 } as const;
