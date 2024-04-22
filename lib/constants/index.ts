@@ -20,7 +20,9 @@ export const trainsImg: TrainsImgType = {
 
   "4E/EP07-135": "/ep07-135.png",
   "4E/EP07-174": "/ep07-174.png",
+
   "4E/EP08-001": "/ep08-001.png",
+  "4E/EP08-013": "/ep08-001.png",
 
   "Elf/EN76-006": "/en76-006.png",
   "Elf/EN76-022": "/en76-022.png",
