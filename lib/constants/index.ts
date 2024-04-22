@@ -45,6 +45,13 @@ export const trainsImg: TrainsImgType = {
   "EN57/EN71-005": "/en71-005.png",
   "EN57/EN71-011": "/en71-011.png",
 
+  "201E/ET22-243": "/et22.png",
+  "201E/ET22-256": "/et22.png",
+  "201E/ET22-644": "/et22.png",
+  "201E/ET22-836": "/et22.png",
+  "201E/ET22-911": "/et22.png",
+  "201E/ET22-1163": "/et22.png",
+
   "Pendolino/ED250-018": "/ed250-018.png",
 } as const;
 
@@ -75,7 +82,11 @@ export const locos = [
   },
   {
     name: "07-",
-    label: "EU07/EP07",
+    label: "EP07/EU07",
+  },
+  {
+    name: "201E",
+    label: "ET22",
   },
 ] as const;
 
