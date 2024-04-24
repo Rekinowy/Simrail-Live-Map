@@ -1,3 +1,4 @@
+import { StationsPosType } from "./../types/types";
 import { Icon } from "leaflet";
 import { TrainsImgType } from "../types/types";
 
@@ -92,7 +93,7 @@ export const locos = [
   },
 ] as const;
 
-export const trainStations = [
+export const trainStops = [
   { name: "Będzin", pos: [50.30898, 19.14142] },
   { name: "Będzin Ksawera", pos: [50.330615, 19.15847] },
   { name: "Będzin Miasto", pos: [50.3192, 19.13554] },
@@ -149,6 +150,43 @@ export const trainStations = [
   { name: "Zawiercie Borowe Pole", pos: [50.511078, 19.398637] },
   { name: "Zawiercie", pos: [50.48102, 19.42313] },
 ] as const;
+
+export const stationsPos: StationsPosType = {
+  "Biała Rawska": [51.794803619385, 20.439792633057],
+  Bukowno: [50.264113162983, 19.452883246473],
+  Będzin: [50.309978485107, 19.141355514526],
+  Dorota: [50.282779693604, 19.280614852905],
+  "Dąbrowa Górnicza": [50.329818725586, 19.186489105225],
+  "Dąbrowa Górnicza Huta Katowice": [50.335250856265, 19.260228343475],
+  "Dąbrowa Górnicza Wschodnia": [50.303436279297, 19.29854147644],
+  "Dąbrowa Górnicza Ząbkowice": [50.362598419189, 19.261383056641],
+  "Grodzisk Mazowiecki": [52.11067199707, 20.622367858887],
+  "Góra Włodowska": [50.584541320801, 19.463600158691],
+  Idzikowice: [51.450141088867, 20.313865661621],
+  Juliusz: [50.272239685059, 19.225088119507],
+  Katowice: [50.25673, 19.02148],
+  "Katowice Zawodzie": [50.257431030273, 19.05518913269],
+  Knapówka: [50.800239562988, 19.904640197754],
+  Korytów: [52.020065810664, 20.495401444974],
+  Kozłów: [50.481561782042, 20.015825410525],
+  Olszamowice: [51.095241546631, 20.068349838257],
+  "Opoczno Południe": [51.361091447754, 20.235159108887],
+  Pilichowice: [51.25463104248, 20.121379852295],
+  Pruszków: [52.166650968373, 20.794635226347],
+  Psary: [50.733257293701, 19.816065106201],
+  "Sosnowiec Główny": [50.276008605957, 19.120859146118],
+  "Sosnowiec Kazimierz": [50.289874207168, 19.232434387547],
+  "Sosnowiec Południowy": [50.273410797119, 19.121028900146],
+  Strzałki: [51.6425, 20.4049873],
+  Szeligi: [51.942913825242, 20.458844548244],
+  Sławków: [50.294772406842, 19.375027198205],
+  Tunel: [50.432523319126, 19.990375245344],
+  "Włoszczowa Północ": [50.851181030273, 19.943790435791],
+  Zawiercie: [50.473461151123, 19.424390792847],
+  Łazy: [50.431119331609, 19.393823502961],
+  "Łazy Ła": [50.453914642334, 19.420406341553],
+  "Łazy Łc": [50.416500091553, 19.363010406494],
+};
 
 export const stationIcon = new Icon({
   iconUrl: "/station.png",

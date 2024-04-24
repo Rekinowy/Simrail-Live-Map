@@ -5,6 +5,7 @@ import { Marker, Popup, Tooltip, useMap } from "react-leaflet";
 import StationDetails from "./StationDetails";
 import { FaRegStar, FaStar, FaUserAlt } from "react-icons/fa";
 import { StationMarkerProps } from "@/lib/types/types";
+import { stationsPos } from "@/lib/constants";
 
 const StationMarker = ({
   stationName,
@@ -27,6 +28,10 @@ const StationMarker = ({
   const avatar = user?.avatar || "/user-avatar.jpg";
   const map = useMap();
 
+  const position: [number, number] = stationsPos[stationName]
+    ? (stationsPos[stationName] as [number, number])
+    : [lat, lng];
+
   const stationIcon = divIcon({
     html: `<div class='marker-container'>
     <img src='${user ? avatar : "/bot-avatar.jpg"}' alt="User avatar" class='rounded-md border-[3px]  ${
@@ -40,7 +45,7 @@ const StationMarker = ({
 
   useEffect(() => {
     if (selectedStation == stationName) {
-      map.panTo([lat, lng], { animate: true, duration: 1 });
+      map.panTo(position, { animate: true, duration: 1 });
     }
   });
 
@@ -60,7 +65,7 @@ const StationMarker = ({
   return (
     <>
       <Marker
-        position={[lat, lng]}
+        position={position}
         icon={stationIcon}
         riseOnHover={true}
         eventHandlers={{

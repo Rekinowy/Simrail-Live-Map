@@ -1,3 +1,4 @@
+import { LatLngExpression } from "leaflet";
 import { getTimetable } from "./../utils/utils";
 export type TrainsImgType = {
   [key: string]: string;
@@ -162,3 +163,5 @@ export type SettingsTabTypes = {
   showDetailsLite: boolean;
   setShowDetailsLite: (value: boolean) => void;
 };
+
+export type StationsPosType = { [key: string]: LatLngExpression };

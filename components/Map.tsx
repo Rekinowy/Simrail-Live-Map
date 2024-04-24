@@ -16,7 +16,7 @@ import TrainDetails from "./Map/TrainDetails";
 import MapControls from "./Map/MapControls";
 
 import { filterSearchData } from "@/lib/utils/utils";
-import { stationIcon, trainStations } from "@/lib/constants";
+import { stationIcon, trainStops } from "@/lib/constants";
 import { SearchResultType, StationDataType, TrainDataType } from "@/lib/types/types";
 import { useLocalStorage } from "@/lib/hooks/hooks";
 import RoutePath from "./Map/RoutePath";
@@ -75,7 +75,7 @@ export default function Map({ code }: { code: string }) {
 
         {showTrainStops &&
           zoomLevel >= trainStopsZoomLevel &&
-          trainStations.map((station: any) => {
+          trainStops.map((station: any) => {
             return (
               <Marker
                 key={station.name}
