@@ -86,6 +86,10 @@ const TrainMarker = ({
     return null;
   }
 
+  if (!lat || !lng) {
+    return null;
+  }
+
   if (selectedLocos.length > 0 && !isLocoSelected) {
     return null;
   }
