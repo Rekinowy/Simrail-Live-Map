@@ -82,11 +82,7 @@ const TrainMarker = ({
     iconSize: [0, 0],
   });
 
-  if (!showTrains) {
-    return null;
-  }
-
-  if (!lat || !lng) {
+  if (!showTrains || !lat || !lng) {
     return null;
   }
 

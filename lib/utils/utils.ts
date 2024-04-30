@@ -14,7 +14,9 @@ export const filterSearchData = (
       const trainResults = trainsData
         .filter(
           (train: TrainDataType) =>
-            train.train_number.toString().toLowerCase().includes(lowerCaseSearchValue) ||
+            (train.latitude &&
+              train.longitude &&
+              train.train_number.toString().toLowerCase().includes(lowerCaseSearchValue)) ||
             (train.steam_user?.name && train.steam_user.name.toLowerCase().includes(lowerCaseSearchValue))
         )
         .map((train) => ({
