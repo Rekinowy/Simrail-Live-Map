@@ -16,7 +16,7 @@ const SearchItem = ({ item, setSelectedMarker, setSearchValue, setSelectedLocos 
           }
         }}
       >
-        <div className="flex gap-3 pl-2 items-center">
+        <div className="flex gap-2 pl-1 items-center">
           <div className="py-1 brightness-125 dark:brightness-105">
             {item.image ? (
               <img src={item.image} alt="picture" width={48} height={48} />
@@ -26,7 +26,7 @@ const SearchItem = ({ item, setSelectedMarker, setSearchValue, setSelectedLocos 
               </div>
             )}
           </div>
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col flex-shrink items-start">
             <p className="text-sm font-medium dark:font-normal text-left">{item.label}</p>
             {item.username && (
               <p className="text-xs text-slate-950 dark:text-slate-200 dark:font-light">{item.username}</p>
