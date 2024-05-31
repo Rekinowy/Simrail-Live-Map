@@ -68,11 +68,21 @@ const TrainMarker = ({
     html: `<div class='marker-container relative'>
     <img src='${user ? avatar : "/bot-avatar.jpg"}' alt="User avatar" class='rounded-full border-[3px] ${
       user ? "w-8 h-8 -ml-4 -mt-4" : "w-6 h-6 -ml-3 -mt-3"
-    } ${speed > 40 ? "border-green-700" : speed > 1 ? "border-yellow-600" : "border-red-700 dark:border-red-800"}' />
+    } ${
+      speed > 40
+        ? "dark:border-green-700 border-green-600"
+        : speed > 1
+        ? "dark:border-yellow-600 border-yellow-500"
+        : "border-red-700 dark:border-red-800"
+    }' />
     <div style='transform: rotate(${rotationAngle}deg)' class='${
       !hasPositionChanged && "hidden"
     } absolute top-0 left-0 -z-10 ${user ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"}'><div class='absolute ${
-      speed > 40 ? "border-b-green-700" : speed > 2 ? "border-b-yellow-600" : "hidden"
+      speed > 40
+        ? "dark:border-green-700 border-green-600"
+        : speed > 2
+        ? "dark:border-yellow-600 border-yellow-500"
+        : "hidden"
     } ${
       user
         ? "left-[8px] border-l-[8px] border-r-[8px] border-b-[10px]"
