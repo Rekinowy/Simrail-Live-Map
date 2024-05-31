@@ -13,8 +13,6 @@ const TrainTimetable = ({
   const lastPassedStationRef = useRef(null);
   let timezoneOffset = timeOffset || 0;
 
-  console.log(timetable);
-
   const lastPassedStationIndex = (() => {
     let lastIndex = -1;
 
