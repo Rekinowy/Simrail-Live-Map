@@ -56,7 +56,7 @@ export const locos = [
   },
   {
     name: "Dragon2",
-    label: "E6ACTa DRAGON 2",
+    label: "E6ACTa Dragon 2",
   },
   {
     name: "Pendolino",

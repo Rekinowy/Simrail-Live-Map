@@ -30,8 +30,7 @@ const TrainDetails = ({
 }: TrainDetailsType) => {
   const { t } = useTranslation();
 
-  // const username = user?.name || "User";
-  const username = "Rekionowyyyyyyyyyy";
+  const username = user?.name || "User";
 
   const timetable = useSWR(`https://simrail-edr.de/api/trainTimeTable/train/${serverCode}/${trainNumber}`, fetcher, {
     refreshInterval: 2500,
