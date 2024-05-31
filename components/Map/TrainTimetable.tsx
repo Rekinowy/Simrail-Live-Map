@@ -1,13 +1,19 @@
 import { calcDelay, formatDelay, formatTime } from "@/lib/utils/utils";
 import { useEffect, useRef } from "react";
 
-const TrainTimetable = ({ timetable, serverCode }: { timetable: any[]; serverCode: string }) => {
+const TrainTimetable = ({
+  timetable,
+  serverCode,
+  timeOffset,
+}: {
+  timetable: any[];
+  serverCode: string;
+  timeOffset: number;
+}) => {
   const lastPassedStationRef = useRef(null);
-  let timezoneOffset = 0;
+  let timezoneOffset = timeOffset || 0;
 
-  // if (timetable) {
-  //   timezoneOffset = timetable[0]?.station?.server.timezone_offset;
-  // }
+  console.log(timetable);
 
   const lastPassedStationIndex = (() => {
     let lastIndex = -1;
@@ -108,8 +114,8 @@ const TrainTimetable = ({ timetable, serverCode }: { timetable: any[]; serverCod
                     : "border-slate-400/50 bg-light_primary_dark/40 dark:border-slate-800 dark:bg-primary_dark/70 "
                 } ${isBeforeOrLastPassedStation && "opacity-60"}`}
               >
-                <div className="flex flex-col w-full gap-1 text-xs lg:text-sm">
-                  <div className="capitalize text-primary font-medium dark:font-normal dark:text-slate-100 ">
+                <div className="flex flex-col w-full gap-1 text-xs md:text-sm">
+                  <div className="capitalize text-primary font-medium dark:font-normal dark:text-slate-100">
                     {point.station.name.charAt(1) === point.station.name.charAt(1).toUpperCase()
                       ? point.station.name.toLowerCase()
                       : point.station.name}
@@ -119,7 +125,7 @@ const TrainTimetable = ({ timetable, serverCode }: { timetable: any[]; serverCod
                       {point.scheduled_arrival && scheduledArrival !== scheduledDeparture && (
                         <>
                           {scheduledArrival}
-                          {/* {arrivalDelay != 0 && arrivalDelay && lastPassedStationIndex + 2 > index && (
+                          {arrivalDelay != 0 && arrivalDelay && lastPassedStationIndex + 2 > index && (
                             <span
                               className={`text-[10px] lg:text-xs font-medium dark:font-normal ${
                                 arrivalDelay < 0
@@ -136,12 +142,12 @@ const TrainTimetable = ({ timetable, serverCode }: { timetable: any[]; serverCod
                                 timetable[index - 1]?.arrived_station
                               )}{" "}
                             </span>
-                          )} */}
+                          )}
                           <span>{" — "}</span>
                         </>
                       )}
                       {scheduledDeparture}
-                      {/* {lastPassedStationIndex + 1 > index && departureDelay != 0 && departureDelay && (
+                      {lastPassedStationIndex + 1 > index && departureDelay != 0 && departureDelay && (
                         <span
                           className={`text-[10px] lg:text-xs font-medium dark:font-normal ${
                             departureDelay < 0
@@ -181,7 +187,7 @@ const TrainTimetable = ({ timetable, serverCode }: { timetable: any[]; serverCod
                               timetable[index - 1]?.passed_station
                             )}{" "}
                           </span>
-                        )} */}
+                        )}
                     </p>
                   </div>
                 </div>

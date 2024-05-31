@@ -101,22 +101,38 @@ export const calcDelay = (
   const actualDate = new Date(actual);
   const scheduledDate = new Date(scheduled);
 
-  const scheduledDate2 =
-    scheduledDate.getFullYear() === 2023
-      ? new Date(
-          actualDate.getFullYear(),
-          actualDate.getMonth(),
-          actualDate.getDate(),
-          scheduledDate.getHours(),
-          scheduledDate.getMinutes(),
-          scheduledDate.getSeconds()
-        )
-      : scheduledDate;
-  const scheduledDateAdjusted =
-    scheduledDate2.getDate() < actualDate.getDate() &&
-    Math.abs(actualDate.getTime() - scheduledDate2.getTime()) > 12 * 60 * 60 * 1000
-      ? new Date(scheduledDate2.getTime() + 24 * 60 * 60 * 1000)
-      : scheduledDate2;
+  const timeDifference = Math.abs(actualDate.getTime() - scheduledDate.getTime());
+
+  let scheduledDateAdjusted;
+
+  if (timeDifference > 86400000) {
+    // 86400000 ms = 1 day
+    scheduledDateAdjusted = new Date(
+      actualDate.getFullYear(),
+      actualDate.getMonth(),
+      actualDate.getDate(),
+      scheduledDate.getHours(),
+      scheduledDate.getMinutes(),
+      scheduledDate.getSeconds()
+    );
+  } else {
+    scheduledDateAdjusted = new Date(
+      scheduledDate.getFullYear() === 2023 ? actualDate.getFullYear() : scheduledDate.getFullYear(),
+      scheduledDate.getMonth(),
+      scheduledDate.getDate(),
+      scheduledDate.getHours(),
+      scheduledDate.getMinutes(),
+      scheduledDate.getSeconds()
+    );
+
+    if (
+      scheduledDateAdjusted.getDate() < actualDate.getDate() &&
+      Math.abs(actualDate.getTime() - scheduledDateAdjusted.getTime()) > 12 * 60 * 60 * 1000
+    ) {
+      scheduledDateAdjusted = new Date(scheduledDateAdjusted.getTime() + 24 * 60 * 60 * 1000);
+    }
+  }
+
   let differenceInMinutes = Math.floor((actualDate.getTime() - scheduledDateAdjusted.getTime()) / (1000 * 60));
 
   if (differenceInMinutes > 1000) {
@@ -125,21 +141,27 @@ export const calcDelay = (
     differenceInMinutes += 1440;
   }
 
-  // if (["pl2", "pl4", "fr1", "es1", "cz1", "de1", "de3"].includes(serverCode) && timezoneOffset !== 1) {
-  //   differenceInMinutes += (timezoneOffset + 2) * 60;
-  // } else if (["pl3", "de4"].includes(serverCode) && timezoneOffset !== -10) {
-  //   differenceInMinutes += (timezoneOffset - 11) * 60;
-  // } else if (["pl8"].includes(serverCode) && timezoneOffset !== -6) {
-  //   differenceInMinutes += (timezoneOffset - 5) * 60;
-  // } else if (["ua1"].includes(serverCode) && timezoneOffset !== 2) {
-  //   differenceInMinutes += (timezoneOffset + 3) * 60;
-  // } else if (["en2"].includes(serverCode) && timezoneOffset !== -12) {
-  //   differenceInMinutes += (timezoneOffset - 11) * 60;
-  // } else if (["en3"].includes(serverCode) && timezoneOffset !== -5) {
-  //   differenceInMinutes += (timezoneOffset - 4) * 60;
-  // } else if (["cn1"].includes(serverCode) && timezoneOffset !== 8) {
-  //   differenceInMinutes += (timezoneOffset + 9) * 60;
-  // }
+  if (["pl2", "pl4", "fr1", "es1", "cz1", "de1", "de3"].includes(serverCode) && timezoneOffset !== 2) {
+    differenceInMinutes += (timezoneOffset + 2) * 60;
+  } else if (["pl3", "de4"].includes(serverCode) && timezoneOffset !== -8) {
+    differenceInMinutes += (timezoneOffset - 11) * 60;
+  } else if (["pl8"].includes(serverCode) && timezoneOffset !== -4) {
+    differenceInMinutes += (timezoneOffset - 5) * 60;
+  } else if (["ua1"].includes(serverCode) && timezoneOffset !== 2) {
+    differenceInMinutes += (timezoneOffset + 3) * 60;
+  } else if (["en2"].includes(serverCode) && timezoneOffset !== -12) {
+    differenceInMinutes += (timezoneOffset - 11) * 60;
+  } else if (["en3"].includes(serverCode) && timezoneOffset !== -5) {
+    differenceInMinutes += (timezoneOffset - 4) * 60;
+  } else if (["cn1"].includes(serverCode) && timezoneOffset !== 8) {
+    differenceInMinutes += (timezoneOffset + 9) * 60;
+  }
+
+  if (["en3", "cn1"].includes(serverCode) && differenceInMinutes) {
+    differenceInMinutes += -60;
+  } else if (["eu3", "hu1"].includes(serverCode) && differenceInMinutes) {
+    differenceInMinutes += 120;
+  }
 
   if (!actual) return;
 

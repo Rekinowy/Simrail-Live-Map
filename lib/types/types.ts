@@ -18,6 +18,7 @@ export type TrainDataType = {
   start_station: string;
   end_station: string;
   steam_user: any;
+  server: { timezone_offset: number };
   view: string;
   setView: (view: string) => void;
   followTrain: boolean;
@@ -121,6 +122,7 @@ export type TrainDetailsType = {
   speed: number;
   user: { name: string; avatar: string; distance_meter: number };
   vehicles: { name: string }[];
+  timeOffset: number;
   serverCode: string;
   view: string;
   setView: (view: string) => void;

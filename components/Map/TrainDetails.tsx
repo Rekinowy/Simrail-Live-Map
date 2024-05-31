@@ -19,6 +19,7 @@ const TrainDetails = ({
   speed,
   user,
   vehicles,
+  timeOffset,
   serverCode,
   view,
   setView,
@@ -45,6 +46,7 @@ const TrainDetails = ({
       speed={speed}
       user={user}
       vehicles={vehicles}
+      timeOffset={timeOffset}
       serverCode={serverCode}
       view={view}
       setView={setView}
@@ -106,7 +108,9 @@ const TrainDetails = ({
             username={username}
           />
         )}
-        {view === "timetable" && <TrainTimetable timetable={timetable.data?.data} serverCode={serverCode} />}
+        {view === "timetable" && (
+          <TrainTimetable timetable={timetable.data?.data} serverCode={serverCode} timeOffset={timeOffset} />
+        )}
         <button
           className={`absolute top-3 right-3 flex items-center gap-1 p-1 rounded-lg  ${
             follow ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
@@ -133,6 +137,7 @@ const TrainDetails = ({
         speed={speed}
         user={user}
         vehicles={vehicles}
+        timeOffset={timeOffset}
         serverCode={serverCode}
         view={view}
         setView={setView}

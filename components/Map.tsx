@@ -167,6 +167,7 @@ export default function Map({ code }: { code: string }) {
               destination={train.end_station}
               speed={train.velocity}
               user={train.steam_user}
+              timeOffset={train.server.timezone_offset}
               serverCode={code}
               view={trainDetailsView}
               setView={setTrainDetailsView}
