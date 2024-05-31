@@ -79,9 +79,9 @@ const TrainMarker = ({
       !hasPositionChanged && "hidden"
     } absolute top-0 left-0 -z-10 ${user ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"}'><div class='absolute ${
       speed > 40
-        ? "dark:border-green-700 border-green-600"
+        ? "dark:border-b-green-700 border-green-600"
         : speed > 2
-        ? "dark:border-yellow-600 border-yellow-500"
+        ? "dark:border-b-yellow-600 border-yellow-500"
         : "hidden"
     } ${
       user
