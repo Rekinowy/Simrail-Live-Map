@@ -112,7 +112,7 @@ const TrainTimetable = ({
                     : "border-slate-400/50 bg-light_primary_dark/40 dark:border-slate-800 dark:bg-primary_dark/70 "
                 } ${isBeforeOrLastPassedStation && "opacity-60"}`}
               >
-                <div className="flex flex-col w-full gap-1 text-xs md:text-sm">
+                <div className="flex flex-col w-full gap-1 text-xs lg:text-sm">
                   <div className="capitalize text-primary font-medium dark:font-normal dark:text-slate-100">
                     {point.station.name.charAt(1) === point.station.name.charAt(1).toUpperCase()
                       ? point.station.name.toLowerCase()
