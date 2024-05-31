@@ -1,7 +1,10 @@
 import { LatLngExpression } from "leaflet";
-import { getTimetable } from "./../utils/utils";
-export type TrainsImgType = {
-  [key: string]: string;
+
+export type TrainsType = {
+  [key: string]: {
+    img: string;
+    name: string;
+  };
 };
 
 export type TrainDataType = {

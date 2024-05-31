@@ -1,4 +1,4 @@
-import { trainsImg } from "../constants";
+import { trains } from "../constants";
 import { SearchResultType, StationDataType, TrainDataType } from "../types/types";
 
 export const filterSearchData = (
@@ -23,7 +23,7 @@ export const filterSearchData = (
           id: train.id,
           label: train.train_number,
           username: train.steam_user?.name || "",
-          image: `/trains/${trainsImg[train.vehicle[0]?.name]}`,
+          image: `/trains/${trains[train.vehicle[0]?.name]?.img}`,
           type: "train" as "train",
         }));
       searchResults = searchResults.concat(trainResults);

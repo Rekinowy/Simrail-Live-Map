@@ -6,7 +6,7 @@ import { divIcon } from "leaflet";
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
-import { trainsImg } from "@/lib/constants";
+import { trains } from "@/lib/constants";
 import { TrainMarkerProps } from "@/lib/types/types";
 import { calculateRotationAngle } from "@/lib/utils/utils";
 
@@ -94,8 +94,6 @@ const TrainMarker = ({
     return null;
   }
 
-  if (vehicles[0]?.name === "Pendolino/ED250-018 Variant") vehicles[0].name = "Pendolino/ED250-018";
-
   return (
     <>
       <LeafletTrackingMarker
@@ -126,13 +124,13 @@ const TrainMarker = ({
         <Popup className="custom-popup" offset={[4, -14]} closeButton={false} autoPan={false}>
           <div className="flex gap-2">
             <div className="w-[50px] brightness-125 dark:brightness-105">
-              <img src={"/trains/" + trainsImg[vehicles[0]?.name]} alt="train" width={50} height={40} />
+              <img src={"/trains/" + trains[vehicles[0]?.name]?.img} alt="train" width={50} height={40} />
             </div>
             <div className="flex flex-col justify-center text-sm leading-5">
               <h1>
                 {trainName} <span className="font-bold">{trainNumber}</span>
               </h1>
-              <span className="text-xs">{vehicles[0]?.name}</span>
+              <span className="text-xs">{trains[vehicles[0]?.name]?.name}</span>
             </div>
           </div>
           <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
