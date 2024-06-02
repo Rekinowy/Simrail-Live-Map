@@ -28,12 +28,12 @@ const StationDetails = ({
           ))}
         </div>
         {user && (
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 w-full">
             <div className="flex gap-2">
               <div className="flex items-center">
                 <FaUserAlt className="w-4 h-3 text-primary_dark dark:text-light_gray" />
               </div>
-              <span className="font-medium text-sm">{username}</span>
+              <span className="font-medium text-sm overflow-hidden text-overflow-ellipsis break-words">{username}</span>
             </div>
             {user.dispatcher_time && user.dispatcher_time !== 0 && (
               <div className="flex gap-2">
@@ -74,7 +74,9 @@ const StationDetails = ({
             <div className="flex flex-col gap-1">
               <div className="flex gap-3 items-center">
                 <FaUserAlt className="w-4 h-3.5 text-primary_dark dark:text-light_gray" />
-                <span className="font-medium text-md">{username}</span>
+                <span className="font-medium text-md overflow-hidden text-overflow-ellipsis break-words">
+                  {username}
+                </span>
               </div>
               {user.dispatcher_time && user.dispatcher_time !== 0 && (
                 <div className="flex gap-3">
@@ -108,7 +110,7 @@ const StationDetails = ({
                 <div className="flex items-center">
                   <FaUserAlt className="w-4 h-3 text-primary_dark dark:text-light_gray" />
                 </div>
-                <span className="font-medium text-sm">{username}</span>
+                <span className="font-medium text-sm truncate">{username}</span>
               </div>
               {user.dispatcher_time && user.dispatcher_time !== 0 && (
                 <div className="flex gap-2">

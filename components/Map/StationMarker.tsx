@@ -103,9 +103,9 @@ const StationMarker = ({
           {user && (
             <>
               <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center max-w-[233px]">
                 <FaUserAlt className="w-3" />
-                <p className="font-medium">{username}</p>
+                <p className="font-medium truncate">{username}</p>
               </div>
             </>
           )}

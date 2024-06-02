@@ -38,7 +38,7 @@ const TrainGeneralInfo = ({ departure, destination, speed, user, username }: Tra
             <div className="border-t my-3 opacity-30 border-primary dark:border-white"></div>
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-5 h-3.5 text-primary_dark dark:text-light_gray" />
-              <span className="font-medium">{username}</span>
+              <span className="font-medium overflow-hidden text-overflow-ellipsis break-words">{username}</span>
             </div>
             {user.distance_meter && user.distance_meter !== 0 && (
               <div className="mt-1 flex gap-3 items-center">
