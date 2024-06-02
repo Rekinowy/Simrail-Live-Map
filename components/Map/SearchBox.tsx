@@ -29,8 +29,8 @@ const SearchBox = ({
             "ml-1",
           ],
           inputWrapper: [
-            "h-[36px] md:h-10",
-            "w-64 md:w-72",
+            "h-10",
+            "w-72",
             "shadow-xl",
             "bg-light_primary/60 dark:bg-primary/60",
             "hover:bg-light_primary/80 hover:dark:bg-primary/80",
