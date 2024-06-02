@@ -28,8 +28,8 @@ const StationDetails = ({
           ))}
         </div>
         {user && (
-          <div className="flex flex-col gap-1 w-full">
-            <div className="flex gap-2">
+          <div className="flex flex-col gap-1">
+            <div className="flex gap-2 max-w-[120px]">
               <div className="flex items-center">
                 <FaUserAlt className="w-4 h-3 text-primary_dark dark:text-light_gray" />
               </div>
