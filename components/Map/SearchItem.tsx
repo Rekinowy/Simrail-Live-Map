@@ -19,17 +19,19 @@ const SearchItem = ({ item, setSelectedMarker, setSearchValue, setSelectedLocos 
         <div className="flex gap-3 pl-3 items-center">
           <div className="py-1 brightness-125 dark:brightness-105">
             {item.image ? (
-              <img src={item.image} alt="picture" width={48} height={48} />
+              <div className="w-12">
+                <img src={item.image} alt="picture" width={48} height={48} />
+              </div>
             ) : (
               <div className="flex items-center justify-center w-12 h-12">
                 <GiLever className="w-9 h-9 text-primary dark:text-light_gray" />
               </div>
             )}
           </div>
-          <div className="flex flex-col flex-shrink items-start w-full max-w-[40px]">
+          <div className="flex flex-col flex-shrink items-start w-full">
             <p className="text-sm font-medium dark:font-normal text-left">{item.label}</p>
             {item.username && (
-              <p className="max-w-[180px] text-xs text-slate-950 dark:text-slate-200 dark:font-light truncate">
+              <p className="max-w-[160px] md:max-w-[190px] text-xs text-slate-950 dark:text-slate-200 dark:font-light truncate">
                 {item.username}
               </p>
             )}
