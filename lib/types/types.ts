@@ -7,18 +7,26 @@ export type TrainsType = {
   };
 };
 
+export type UserType = {
+  name: string;
+  avatar: string;
+  type: "bot" | "user";
+  distance: number;
+  dispatcher_time: number;
+};
+
 export type TrainDataType = {
   id: string;
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lng: number;
   velocity: number;
-  train_number: string;
-  train_name: string;
-  vehicle: { name: string }[];
-  start_station: string;
-  end_station: string;
-  steam_user: any;
-  server: { timezone_offset: number };
+  number: string;
+  name: string;
+  vehicles: [string];
+  departure: string;
+  destination: string;
+  user: UserType;
+  timezone_offset: number;
   view: string;
   setView: (view: string) => void;
   followTrain: boolean;
@@ -30,14 +38,12 @@ export type TrainDataType = {
 export type StationDataType = {
   id: string;
   name: string;
-  difficulty_level: number;
   prefix: string;
-  latitude: number;
-  longitude: number;
-  dispatched_by: {
-    steam_user: { name: string; avatar: string; dispatcher_time: number };
-  }[];
-  main_image_url: string;
+  difficulty: number;
+  image: string;
+  lat: number;
+  lng: number;
+  user: UserType;
 };
 
 export type SearchResultType = {
@@ -69,13 +75,10 @@ export type TrainMarkerProps = {
   speed: number;
   trainNumber: string;
   trainName: string;
-  vehicles: { name: string }[];
+  vehicles: [string];
   departure: string;
   destination: string;
-  user: {
-    name: string;
-    avatar: string;
-  };
+  user: UserType;
   selectedTrain: string;
   setSelectedTrain: (train: string) => void;
   zoomLevel: number;
@@ -92,7 +95,7 @@ export type TrainGeneralType = {
   departure: string;
   destination: string;
   speed: number;
-  user: { name: string; avatar: string; distance_meter: number };
+  user: UserType;
   username: string;
 };
 
@@ -103,7 +106,7 @@ export type StationMarkerProps = {
   difficulty: number;
   lat: number;
   lng: number;
-  user: { name: string; avatar: string; dispatcher_time: number };
+  user: UserType;
   selectedStation: string;
   setSelectedStation: (station: string) => void;
   zoomLevel: number;
@@ -120,8 +123,8 @@ export type TrainDetailsType = {
   departure: string;
   destination: string;
   speed: number;
-  user: { name: string; avatar: string; distance_meter: number };
-  vehicles: { name: string }[];
+  user: UserType;
+  vehicles: [string];
   timeOffset: number;
   serverCode: string;
   view: string;
@@ -138,7 +141,7 @@ export type StationDetailsType = {
   stationPrefix: string;
   stationImage: string;
   difficulty: number;
-  user: { name: string; avatar: string; dispatcher_time: number };
+  user: UserType;
   username: string;
   showDetailsLite: boolean;
 };

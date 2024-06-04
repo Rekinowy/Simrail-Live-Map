@@ -34,8 +34,8 @@ const StationMarker = ({
 
   const stationIcon = divIcon({
     html: `<div class='marker-container'>
-    <img src='${user ? avatar : "/bot-avatar.jpg"}' alt="User avatar" class='rounded-md border-[3px]  ${
-      user
+    <img src='${user.type === "user" ? avatar : "/bot-avatar.jpg"}' alt="User avatar" class='rounded-md border-[3px]  ${
+      user.type === "user"
         ? "border-sky-500 dark:border-sky-600 w-9 h-9 -ml-[20px] -mt-[18px]"
         : "border-slate-500 dark:border-slate-400 w-7 h-7 -ml-[15px] -mt-[12px]"
     }'/>
@@ -53,7 +53,7 @@ const StationMarker = ({
     return null;
   }
 
-  if (showOnlyAvail && user) {
+  if (showOnlyAvail && user.type === "user") {
     return null;
   }
 

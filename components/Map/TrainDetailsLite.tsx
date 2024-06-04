@@ -36,20 +36,20 @@ const TrainDetailsLite = ({
     <div
       className={`${
         !showDetailsLite && "md:hidden"
-      } flex flex-col absolute px-2 py-2 w-[80%] max-w-[280px] md:max-w-[260px] bottom-8 right-1/2 md:right-3 z-[1000] max-md:transform max-md:translate-x-1/2 rounded-xl border-1 border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary/90 dark:bg-primary/90  backdrop-blur-sm ${
+      } flex flex-col absolute px-2 py-2 w-[80%] max-w-[280px] md:max-w-[260px] bottom-8 right-1/2 md:right-3 z-[1000] max-md:transform max-md:translate-x-1/2 rounded-lg border-1 border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary/90 dark:bg-primary/90  backdrop-blur-sm ${
         view === "timetable" ? "max-h-[60dvh]" : "max-h-[30dvh]"
       } transition-all`}
     >
       <div className="flex">
         <div className="flex flex-col w-4/12 items-center justify-center">
           <div className="flex flex-col h-14 w-14 justify-center brightness-125 dark:brightness-105">
-            <img src={"/trains/" + trains[vehicles[0]?.name]?.img} alt="train" />
+            <img src={"/trains/" + trains[vehicles[0]]?.img} alt="train" />
           </div>
           <div className="flex flex-col items-center leading-5">
             <h1 className="text-xs text-center">
               {trainName} <span className="font-bold">{trainNumber}</span>
             </h1>
-            <p className="text-center leading-3 text-[10px]">{trains[vehicles[0]?.name]?.name}</p>
+            <p className="text-center leading-3 text-[10px]">{trains[vehicles[0]]?.name}</p>
           </div>
         </div>
         <div className="border-l w-fit border-t opacity-30 border-primary dark:border-white ml-2"></div>
@@ -82,7 +82,7 @@ const TrainDetailsLite = ({
               </div>
             </div>
           </div>
-          {user && (
+          {user.type === "user" && (
             <>
               <div className="border-t my-2 opacity-30 border-primary dark:border-white"></div>
               <div className="flex gap-2 items-center max-w-[140px] md:max-w-[120px]">

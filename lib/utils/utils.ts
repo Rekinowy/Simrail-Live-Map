@@ -14,16 +14,14 @@ export const filterSearchData = (
       const trainResults = trainsData
         .filter(
           (train: TrainDataType) =>
-            (train.latitude &&
-              train.longitude &&
-              train.train_number.toString().toLowerCase().includes(lowerCaseSearchValue)) ||
-            (train.steam_user?.name && train.steam_user.name.toLowerCase().includes(lowerCaseSearchValue))
+            (train.lat && train.lng && train.number.toString().toLowerCase().includes(lowerCaseSearchValue)) ||
+            (train.user?.name && train.user.name.toLowerCase().includes(lowerCaseSearchValue))
         )
         .map((train) => ({
           id: train.id,
-          label: train.train_number,
-          username: train.steam_user?.name || "",
-          image: `/trains/${trains[train.vehicle[0]?.name]?.img}`,
+          label: train.number,
+          username: train.user?.name || "",
+          image: `/trains/${trains[train.vehicles[0]]?.img}`,
           type: "train" as "train",
         }));
       searchResults = searchResults.concat(trainResults);
@@ -34,13 +32,12 @@ export const filterSearchData = (
         .filter(
           (station: StationDataType) =>
             station.name.toLowerCase().includes(lowerCaseSearchValue) ||
-            (station.dispatched_by[0]?.steam_user?.name &&
-              station.dispatched_by[0]?.steam_user?.name.toLowerCase().includes(lowerCaseSearchValue))
+            (station.user.name && station.user.name.toLowerCase().includes(lowerCaseSearchValue))
         )
         .map((station: StationDataType) => ({
           id: station.id,
           label: station.name,
-          username: station.dispatched_by[0]?.steam_user?.name || "",
+          username: station.user.name || "",
           image: "",
           type: "station" as "station",
         }));

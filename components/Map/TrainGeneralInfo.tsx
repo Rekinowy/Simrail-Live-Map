@@ -33,19 +33,19 @@ const TrainGeneralInfo = ({ departure, destination, speed, user, username }: Tra
             </div>
           </div>
         </div>
-        {user && (
+        {user.type === "user" && (
           <>
             <div className="border-t my-3 opacity-30 border-primary dark:border-white"></div>
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-5 h-3.5 text-primary_dark dark:text-light_gray" />
               <span className="font-medium overflow-hidden text-overflow-ellipsis break-words">{username}</span>
             </div>
-            {user.distance_meter && user.distance_meter !== 0 && (
+            {user.distance && user.distance !== 0 && (
               <div className="mt-1 flex gap-3 items-center">
                 <div className="flex w-5 justify-center">
                   <FaRoute className="w-3.5 h-3.5 text-primary_dark dark:text-light_gray" />
                 </div>
-                <div>{Math.round(user.distance_meter / 1000)} km</div>
+                <div>{Math.round(user.distance / 1000)} km</div>
               </div>
             )}
           </>

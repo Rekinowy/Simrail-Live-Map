@@ -35,11 +35,11 @@ const TrainMarker = ({
   const position = { lat, lng };
   const prevPos = useRef({ lat, lng });
   const map = useMap();
-  const isLocoSelected = selectedLocos.some((loco) => vehicles[0]?.name.includes(loco));
+  const isLocoSelected = selectedLocos.some((loco) => vehicles[0]?.includes(loco));
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
   const [rotationAngle, setRotationAngle] = useState(0);
-  const duration = 1500;
+  const duration = 1000;
 
   // const selectedTrainNumbers = [];
 
@@ -66,8 +66,10 @@ const TrainMarker = ({
 
   const markerIcon = divIcon({
     html: `<div class='marker-container relative'>
-    <img src='${user ? avatar : "/bot-avatar.jpg"}' alt="User avatar" class='rounded-full border-[3px] ${
-      user ? "w-8 h-8 -ml-4 -mt-4" : "w-6 h-6 -ml-3 -mt-3"
+    <img src='${
+      user.type === "user" ? avatar : "/bot-avatar.jpg"
+    }' alt="User avatar" class='rounded-full border-[3px] ${
+      user.type === "user" ? "w-8 h-8 -ml-4 -mt-4" : "w-6 h-6 -ml-3 -mt-3"
     } ${
       speed > 40
         ? "dark:border-green-700 border-green-600"
@@ -77,14 +79,14 @@ const TrainMarker = ({
     }' />
     <div style='transform: rotate(${rotationAngle}deg)' class='${
       !hasPositionChanged && "hidden"
-    } absolute top-0 left-0 -z-10 ${user ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"}'><div class='absolute ${
+    } absolute top-0 left-0 -z-10 ${user.type === "user" ? "w-8 h-8 -ml-4" : "w-6 h-6 -ml-3"}'><div class='absolute ${
       speed > 40
         ? "dark:border-b-green-700 border-green-600"
         : speed > 2
         ? "dark:border-b-yellow-600 border-yellow-500"
         : "hidden"
     } ${
-      user
+      user.type === "user"
         ? "left-[8px] border-l-[8px] border-r-[8px] border-b-[10px]"
         : "left-[6px] border-l-[6px] border-r-[6px] border-b-[8px]"
     } -top-[6px] w-0 h-0 border-l-transparent border-r-transparent' /></div>
@@ -100,7 +102,7 @@ const TrainMarker = ({
     return null;
   }
 
-  if (showOnlyAvail && user) {
+  if (showOnlyAvail && user.type === "user") {
     return null;
   }
 
@@ -134,13 +136,13 @@ const TrainMarker = ({
         <Popup className="custom-popup" offset={[4, -14]} closeButton={false} autoPan={false}>
           <div className="flex gap-2">
             <div className="w-[50px] brightness-125 dark:brightness-105">
-              <img src={"/trains/" + trains[vehicles[0]?.name]?.img} alt="train" width={50} height={40} />
+              <img src={"/trains/" + trains[vehicles[0]]?.img} alt="train" width={50} height={40} />
             </div>
             <div className="flex flex-col justify-center text-sm leading-5">
               <h1>
                 {trainName} <span className="font-bold">{trainNumber}</span>
               </h1>
-              <span className="text-xs">{trains[vehicles[0]?.name]?.name}</span>
+              <span className="text-xs">{trains[vehicles[0]]?.name}</span>
             </div>
           </div>
           <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
@@ -164,7 +166,7 @@ const TrainMarker = ({
               </p>
             </div>
           </div>
-          {user && (
+          {user.type === "user" && (
             <>
               <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
               <div className="flex gap-2 items-center max-w-[200px]">

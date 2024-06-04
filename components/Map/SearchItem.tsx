@@ -28,7 +28,7 @@ const SearchItem = ({ item, setSelectedMarker, setSearchValue, setSelectedLocos 
               </div>
             )}
           </div>
-          <div className="flex flex-col flex-shrink items-start max-w-[190px]">
+          <div className="flex gap-0.5 flex-col flex-shrink items-start max-w-[190px]">
             <p className="text-sm font-medium dark:font-normal text-left">{item.label}</p>
             {item.username && (
               <p className="text-xs text-slate-950 dark:text-slate-200 dark:font-light truncate">{item.username}</p>

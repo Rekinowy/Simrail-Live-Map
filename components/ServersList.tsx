@@ -16,7 +16,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const ServersList = () => {
   const { t } = useTranslation();
 
-  const servers = useSWR("https://panel.simrail.eu:8084/servers-open", fetcher, { refreshInterval: 2000 });
+  const servers = useSWR("https://panel.simrail.eu:8084/servers-open", fetcher, { refreshInterval: 5000 });
 
   return (
     <section
@@ -30,14 +30,14 @@ const ServersList = () => {
         servers.data.data.map(({ id, ServerCode, ServerRegion, IsActive }: ServerDataType, index: number) => (
           <motion.div
             key={id}
-            initial={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.02 * index }}
+            transition={{ duration: 0.2, delay: 0.02 * index }}
           >
             <Link
               key={id}
               href={`/server/${ServerCode}`}
-              className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-light_primary_dark/70 to-light_primary/90 dark:from-primary/90 dark:to-primary_dark/80 hover:bg-light_primary_light dark:hover:bg-primary_dark text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-xl border-slate-400 hover:border-slate-600 dark:border-slate-800 dark:hover:border-slate-900 hover:scale-[1.025] transition duration-100`}
+              className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-light_primary_dark/70 to-light_primary/90 dark:from-primary/90 dark:to-primary_dark/80 hover:bg-light_primary_light dark:hover:bg-primary_dark text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-xl border-slate-400 hover:border-slate-600 dark:border-slate-800 dark:hover:border-slate-900 hover:scale-[1.01] transition duration-100`}
             >
               <div
                 className={`w-5 h-5 mx-2 rounded-full border border-slate-600 ${

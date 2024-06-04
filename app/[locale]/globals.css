@@ -10,7 +10,7 @@
 }
 
 html {
-  --map-tiles-filter: invert(0) brightness(0.9) grayscale(0.5);
+  --map-tiles-filter: invert(0) brightness(1) grayscale(0.4);
   --map-background: rgb(167, 170, 173);
   --map-control-background-color: rgba(214, 222, 234, 0.8);
   --map-control-border-color: 2px solid rgba(30, 41, 59, 0.393);

@@ -24,8 +24,8 @@ import RoutePath from "./Map/RoutePath";
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Map({ code }: { code: string }) {
-  const TRAINS_API_URL = `https://simrail-edr.de/api/train/${code}`;
-  const STATIONS_API_URL = `https://simrail-edr.de/api/stations/${code}`;
+  const TRAINS_API_URL = `/api/trains/${code}`;
+  const STATIONS_API_URL = `/api/stations/${code}`;
 
   const [selectedMarker, setSelectedMarker] = useState("");
   const [showTrains, setShowTrains] = useState(true);
@@ -49,17 +49,17 @@ export default function Map({ code }: { code: string }) {
   const [showPath, setShowPath] = useLocalStorage("showPath", true);
 
   const trains = useSWR(TRAINS_API_URL, fetcher, {
-    refreshInterval: 2500,
+    refreshInterval: 5000,
   });
 
   const stations = useSWR(STATIONS_API_URL, fetcher, {
-    refreshInterval: 2500,
+    refreshInterval: 5000,
   });
 
   useEffect(() => {
-    const results = filterSearchData(searchValue, trains.data?.data, stations.data?.data);
+    const results = filterSearchData(searchValue, trains.data, stations.data);
     setFilteredResults(results);
-  }, [searchValue, trains.data?.data, stations.data?.data]);
+  }, [searchValue, trains.data, stations.data?.data]);
 
   return (
     <NextUIProvider>
@@ -98,19 +98,19 @@ export default function Map({ code }: { code: string }) {
             );
           })}
 
-        {trains.data?.data.map((train: TrainDataType) => {
+        {trains.data?.map((train: TrainDataType) => {
           return (
             <TrainMarker
               key={train.id}
-              lat={train.latitude}
-              lng={train.longitude}
+              lat={train.lat}
+              lng={train.lng}
               speed={train.velocity}
-              trainNumber={train.train_number}
-              trainName={train.train_name}
-              vehicles={train.vehicle}
-              departure={train.start_station}
-              destination={train.end_station}
-              user={train?.steam_user}
+              trainNumber={train.number}
+              trainName={train.name}
+              vehicles={train.vehicles}
+              departure={train.departure}
+              destination={train.destination}
+              user={train.user}
               selectedTrain={selectedMarker}
               setSelectedTrain={setSelectedMarker}
               zoomLevel={zoomLevel}
@@ -125,17 +125,17 @@ export default function Map({ code }: { code: string }) {
           );
         })}
 
-        {stations.data?.data.map((station: StationDataType) => {
+        {stations.data?.map((station: StationDataType) => {
           return (
             <StationMarker
               key={station.id}
               stationName={station.name}
               stationPrefix={station.prefix}
-              stationImage={station.main_image_url}
-              difficulty={station.difficulty_level}
-              lat={station.latitude}
-              lng={station.longitude}
-              user={station.dispatched_by[0]?.steam_user}
+              stationImage={station.image}
+              difficulty={station.difficulty}
+              lat={station.lat}
+              lng={station.lng}
+              user={station.user}
               selectedStation={selectedMarker}
               setSelectedStation={setSelectedMarker}
               zoomLevel={zoomLevel}
@@ -155,19 +155,19 @@ export default function Map({ code }: { code: string }) {
         />
       </MapContainer>
 
-      {trains.data?.data.map((train: TrainDataType) => {
+      {trains.data?.map((train: TrainDataType) => {
         return (
-          selectedMarker == train.train_number && (
+          selectedMarker == train.number && (
             <TrainDetails
               key={train.id}
-              trainNumber={train.train_number}
-              trainName={train.train_name}
-              vehicles={train.vehicle}
-              departure={train.start_station}
-              destination={train.end_station}
+              trainNumber={train.number}
+              trainName={train.name}
+              vehicles={train.vehicles}
+              departure={train.departure}
+              destination={train.destination}
               speed={train.velocity}
-              user={train.steam_user}
-              timeOffset={train.server.timezone_offset}
+              user={train?.user}
+              timeOffset={train.timezone_offset}
               serverCode={code}
               view={trainDetailsView}
               setView={setTrainDetailsView}
