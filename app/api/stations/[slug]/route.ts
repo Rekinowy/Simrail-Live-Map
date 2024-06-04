@@ -11,8 +11,6 @@ interface Station {
   dispatched_by: [{ steam_user: { name: string; avatar: string; dispatcher_time: number; distance_meter: number } }];
 }
 
-// export const revalidate = 0;
-
 async function fetchStationData(slug: string) {
   const stationsApiUrl = `https://simrail-edr.de/api/stations/${slug}`;
 

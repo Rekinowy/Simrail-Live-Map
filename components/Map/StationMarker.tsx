@@ -100,7 +100,7 @@ const StationMarker = ({
               ))}
             </div>
           </div>
-          {user && (
+          {user.type === "user" && (
             <>
               <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
               <div className="flex gap-2 items-center max-w-[233px]">
