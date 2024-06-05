@@ -33,7 +33,7 @@ const TrainGeneralInfo = ({
   return (
     <>
       <div className="flex flex-col min-w-[120px] justify-center text-sm lg:text-base">
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-3">
               <SlSpeedometer className="w-5 h-4 text-primary_dark dark:text-light_gray" />
@@ -72,9 +72,6 @@ const TrainGeneralInfo = ({
                     {signalName}
                   </p>
                 </div>
-                {/* <p className="font-normal">
-                  {displaySignalSpeed} <span className="font-normal">({displaySignalDistance})</span>
-                </p> */}
                 <div>
                   <p className="font-medium dark:font-normal">{displaySignalSpeed}</p>
                   <p className="text-[10px] font-medium dark:font-normal lg:text-xs leading-4 lg:leading-5">
