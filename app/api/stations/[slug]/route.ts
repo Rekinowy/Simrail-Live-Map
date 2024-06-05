@@ -14,7 +14,7 @@ interface Station {
 async function fetchStationData(slug: string) {
   const stationsApiUrl = `https://simrail-edr.de/api/stations/${slug}`;
 
-  const stationsResponse = await fetch(stationsApiUrl, { next: { revalidate: 1 } });
+  const stationsResponse = await fetch(stationsApiUrl, { next: { revalidate: 0 } });
 
   const stations = await stationsResponse.json();
 

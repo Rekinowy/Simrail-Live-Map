@@ -28,8 +28,8 @@ async function fetchTrainData(slug: string) {
   const trainsUsersApiUrl = `https://simrail-edr.de/api/train/${slug}`;
 
   const [trainResponse, playerResponse] = await Promise.all([
-    fetch(trainsApiUrl, { next: { revalidate: 1 } }),
-    fetch(trainsUsersApiUrl, { next: { revalidate: 1 } }),
+    fetch(trainsApiUrl, { next: { revalidate: 0 } }),
+    fetch(trainsUsersApiUrl, { next: { revalidate: 0 } }),
   ]);
 
   const trains = await trainResponse.json();
