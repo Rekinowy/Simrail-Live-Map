@@ -68,7 +68,7 @@ const TrainGeneralInfo = ({
                   <div
                     className={`absolute w-1.5 h-1.5 rounded-full shadow-[0_0px_10px_3px_rgba(0,0,0,0.2)]  ${signalStyle}`}
                   ></div>
-                  <p className="font-semibold text-[7px] leading-[8px] text-primary_dark dark:text-light_gray">
+                  <p className="font-semibold text-[7px] leading-[7px] text-primary_dark dark:text-light_gray">
                     {signalName}
                   </p>
                 </div>
