@@ -19,6 +19,9 @@ const TrainDetails = ({
   destination,
   speed,
   user,
+  signal,
+  signalSpeed,
+  signalDistance,
   vehicles,
   timeOffset,
   serverCode,
@@ -47,6 +50,9 @@ const TrainDetails = ({
       departure={departure}
       destination={destination}
       speed={speed}
+      signal={signal}
+      signalSpeed={signalSpeed}
+      signalDistance={signalDistance}
       user={user}
       vehicles={vehicles}
       timeOffset={timeOffset}
@@ -106,6 +112,9 @@ const TrainDetails = ({
           departure={departure}
           destination={destination}
           speed={speed}
+          signal={signal}
+          signalSpeed={signalSpeed}
+          signalDistance={signalDistance}
           user={user}
           username={username}
         />

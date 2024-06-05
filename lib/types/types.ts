@@ -26,6 +26,9 @@ export type TrainDataType = {
   departure: string;
   destination: string;
   user: UserType;
+  signal: string;
+  signal_speed: number;
+  signal_distance: number;
   timezone_offset: number;
   view: string;
   setView: (view: string) => void;
@@ -95,6 +98,9 @@ export type TrainGeneralType = {
   departure: string;
   destination: string;
   speed: number;
+  signal: string;
+  signalSpeed: number;
+  signalDistance: number;
   user: UserType;
   username: string;
 };
@@ -124,6 +130,9 @@ export type TrainDetailsType = {
   destination: string;
   speed: number;
   user: UserType;
+  signal: string;
+  signalSpeed: number;
+  signalDistance: number;
   vehicles: [string];
   timeOffset: number;
   serverCode: string;

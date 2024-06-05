@@ -25,7 +25,6 @@ const TrainDetailsLite = ({
   setView,
   username,
   timetable,
-  showDetailsLite,
   serverCode,
   timeOffset,
 }: TrainDetailsType & {

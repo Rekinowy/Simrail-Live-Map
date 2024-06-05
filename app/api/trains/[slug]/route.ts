@@ -11,6 +11,9 @@ interface Train {
     Latititute: number;
     Longitute: number;
     Velocity: number;
+    SignalInFront: string;
+    SignalInFrontSpeed: number;
+    DistanceToSignalInFront: number;
     ControlledBySteamID: string;
   };
   Type: string;
@@ -55,6 +58,9 @@ async function fetchTrainData(slug: string) {
       lat: train.TrainData.Latititute,
       lng: train.TrainData.Longitute,
       velocity: train.TrainData.Velocity,
+      signal: train.TrainData.SignalInFront,
+      signal_speed: train.TrainData.SignalInFrontSpeed,
+      signal_distance: train.TrainData.DistanceToSignalInFront,
       user: {
         type: train.Type,
         id: train.TrainData.ControlledBySteamID,

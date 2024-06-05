@@ -166,6 +166,9 @@ export default function Map({ code }: { code: string }) {
               departure={train.departure}
               destination={train.destination}
               speed={train.velocity}
+              signal={train.signal}
+              signalSpeed={train.signal_speed}
+              signalDistance={train.signal_distance}
               user={train?.user}
               timeOffset={train.timezone_offset}
               serverCode={code}
