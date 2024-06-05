@@ -42,8 +42,8 @@ const TrainTimetable = ({
       {timetable?.map(
         (
           point: {
-            id: string;
-            station: { name: string };
+            id: number;
+            name: string;
             scheduled_arrival: string;
             scheduled_departure: string;
             arrived_station: string;
@@ -114,9 +114,9 @@ const TrainTimetable = ({
               >
                 <div className="flex flex-col w-full gap-1 text-xs lg:text-sm">
                   <div className="capitalize text-primary font-medium dark:font-normal dark:text-slate-100">
-                    {point.station.name.charAt(1) === point.station.name.charAt(1).toUpperCase()
-                      ? point.station.name.toLowerCase()
-                      : point.station.name}
+                    {point.name.charAt(1) === point.name.charAt(1).toUpperCase()
+                      ? point.name.toLowerCase()
+                      : point.name}
                   </div>
                   <div className=" text-primary dark:text-slate-300">
                     <p>

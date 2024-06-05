@@ -15,7 +15,7 @@ html {
   --map-control-background-color: rgba(214, 222, 234, 0.8);
   --map-control-border-color: 2px solid rgba(30, 41, 59, 0.393);
   --map-control-icons-color: rgba(43, 61, 79, 0.8);
-  --map-tooltip-background-color: rgb(214, 222, 234);
+  --map-tooltip-background-color: rgb(215, 223, 234);
   --map-tooltip-text-color: #1c2b3b;
 }
 html.dark {

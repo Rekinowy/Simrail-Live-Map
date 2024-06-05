@@ -34,9 +34,7 @@ const TrainDetailsLite = ({
 }) => {
   return (
     <div
-      className={`${
-        !showDetailsLite && "md:hidden"
-      } flex flex-col absolute px-2 py-2 w-[80%] max-w-[280px] md:max-w-[260px] bottom-8 right-1/2 md:right-3 z-[1000] max-md:transform max-md:translate-x-1/2 rounded-lg border-1 border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary/90 dark:bg-primary/90  backdrop-blur-sm ${
+      className={`flex flex-col absolute px-2 py-2 w-[80%] max-w-[280px] md:max-w-[260px] bottom-8 right-1/2 md:right-3 z-[1000] max-md:transform max-md:translate-x-1/2 rounded-lg border-1 border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary/90 dark:bg-primary/90  backdrop-blur-sm ${
         view === "timetable" ? "max-h-[60dvh]" : "max-h-[30dvh]"
       } transition-all`}
     >
@@ -127,7 +125,7 @@ const TrainDetailsLite = ({
         <>
           <div className="border-t m-2 opacity-20 border-primary dark:border-white"></div>
 
-          <TrainTimetable timetable={timetable.data?.data} serverCode={serverCode} timeOffset={timeOffset} />
+          <TrainTimetable timetable={timetable.data} serverCode={serverCode} timeOffset={timeOffset} />
         </>
       )}
     </div>

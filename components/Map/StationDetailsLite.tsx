@@ -14,7 +14,7 @@ const StationDetailsLite = ({
   user: UserType;
 }) => {
   return (
-    <div className="absolute flex md:hidden w-[80%] max-w-[280px] md:max-w-[260px] justify-evenly gap-2 bottom-8 right-1/2 md:right-3 max-md:transform max-md:translate-x-1/2 p-2 z-[1000] rounded-xl border-1 border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white text-base bg-light_primary dark:bg-primary bg-opacity-90 backdrop-blur-sm">
+    <div className="absolute flex w-[80%] max-w-[280px] md:max-w-[260px] justify-evenly gap-2 bottom-8 right-1/2 md:right-3 max-md:transform max-md:translate-x-1/2 p-2 z-[1000] rounded-xl border-1 border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white text-base bg-light_primary dark:bg-primary bg-opacity-90 backdrop-blur-sm transition-all">
       <div className="flex flex-col min-w-[40%] justify-center items-center">
         <div className="text-sm text-center border-2 min-w-[30px] font-bold text-slate-200 border-slate-300 ring-2 ring-slate-400 dark:ring-0 rounded-[4px] px-2 py-0.5 my-2 bg-blue-700">
           {stationPrefix}
