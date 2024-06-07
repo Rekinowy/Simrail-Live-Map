@@ -126,7 +126,7 @@ const TrainGeneralInfo = ({
                         return (
                           <li>
                             <div className="flex">
-                              <p className="font-light w-8">{wagon.count} &times;</p>
+                              <p className="font-light w-8 lg:w-9">{wagon.count} &times;</p>
                               <p>{wagon.name}</p>
                             </div>
                           </li>
@@ -137,7 +137,7 @@ const TrainGeneralInfo = ({
                 </div>
               ) : (
                 <div className="flex text-primary_dark dark:text-gray-200 ">
-                  <p className="font-light w-8">{wagonsList[0].count} &times;</p>
+                  <p className="font-light w-8 lg:w-9">{wagonsList[0].count} &times;</p>
                   <p>{wagonsList[0].name}</p>
                 </div>
               )}
