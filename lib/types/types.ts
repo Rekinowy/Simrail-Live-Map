@@ -103,6 +103,8 @@ export type TrainGeneralType = {
   signalDistance: number;
   user: UserType;
   username: string;
+  showSignalInfo: boolean;
+  wagons: { list: { name: string; count: number }[]; counter: number };
 };
 
 export type StationMarkerProps = {
@@ -143,6 +145,7 @@ export type TrainDetailsType = {
   showPath: boolean;
   setShowPath: React.Dispatch<React.SetStateAction<boolean>>;
   showDetailsLite: boolean;
+  showSignalInfo: boolean;
 };
 
 export type StationDetailsType = {
@@ -179,6 +182,8 @@ export type SettingsTabTypes = {
   setShowStations: (value: boolean) => void;
   showDetailsLite: boolean;
   setShowDetailsLite: (value: boolean) => void;
+  showSignalInfo: boolean;
+  setShowSignalInfo: (value: boolean) => void;
 };
 
 export type StationsPosType = { [key: string]: LatLngExpression };

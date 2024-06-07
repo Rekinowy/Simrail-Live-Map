@@ -1,4 +1,4 @@
-import { trains } from "../constants";
+import { trains, wagonNames } from "../constants";
 import { SearchResultType, StationDataType, TrainDataType } from "../types/types";
 
 export const filterSearchData = (
@@ -103,7 +103,6 @@ export const calcDelay = (
   let scheduledDateAdjusted;
 
   if (timeDifference > 86400000) {
-    // 86400000 ms = 1 day
     scheduledDateAdjusted = new Date(
       actualDate.getFullYear(),
       actualDate.getMonth(),
@@ -198,4 +197,40 @@ export const calculateRotationAngle = (prevPos: any, currentPos: any) => {
   const radiansBearing = Math.atan2(y, x);
   const radiansToDegrees = (radiansBearing * 180) / Math.PI;
   return radiansToDegrees;
+};
+
+export const transformVehicles = (vehicles: string[]) => {
+  const wagons: string[] = [];
+  const locomotives: string[] = [vehicles[0]];
+
+  vehicles.slice(1).forEach((vehicle, index) => {
+    const isLocomotive =
+      vehicle.startsWith("EN") ||
+      vehicle.startsWith("Elf") ||
+      (vehicle.startsWith("201E") && index === 0) ||
+      (vehicle.startsWith("4E") && index === 0);
+
+    if (isLocomotive) {
+      locomotives.push(vehicle);
+    } else {
+      const key = Object.keys(wagonNames).find((key) => vehicle.startsWith(key));
+      key && wagons.push(wagonNames[key] || vehicle);
+    }
+  });
+
+  const wagonCounts: { [key: string]: number } = {};
+  wagons.forEach((wagon) => {
+    wagonCounts[wagon] = (wagonCounts[wagon] || 0) + 1;
+  });
+
+  const transformedWagons = Object.entries(wagonCounts).map(([wagon, count]) => ({ name: wagon, count }));
+
+  return { wagons: { list: transformedWagons, counter: wagons.length }, locomotives };
+};
+
+export const calculateDistanceIn5Seconds = (speed: number): number => {
+  const speedInMetersPerSecond = (speed * 1000) / 3600;
+  const distanceIn5Seconds = Math.round(speedInMetersPerSecond * 5);
+
+  return distanceIn5Seconds;
 };

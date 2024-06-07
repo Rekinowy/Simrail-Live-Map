@@ -84,6 +84,38 @@ export const locos = [
   },
 ] as const;
 
+export const wagonNames: { [key: string]: string } = {
+  "11xa/111A_50 51 20-00 608": "B10ou 111A",
+  "11xa/111A_50 51 20-08 607": "B10nou 111A",
+  "11xa/111A_51 51 20-70 829": "B10ou 111A",
+  "11xa/111A_51 51 20-71 102": "B10nouz 111A",
+
+  "11xa/112A_50 51 19-00 189": "Adnu 112A",
+  "11xa/112A_50 51 19-08 095": "Adnu 112A",
+  "11xa/112A_50 51 19-08 136": "A9ou 112A",
+  "11xa/112A_51 51 19-70 003": "A9ou 112A",
+
+  "406Ra": "Zaes 406Ra",
+  "408S/408S": "Uacs 408S",
+  "412W": "Eaos 412W",
+  "424Z": "Res 424Z",
+  "441V": "Falns 441V",
+
+  "Z2/a9emnouz": "A9emnouz B91",
+  "Z2/a9mnouz": "A9mnouz B91",
+  "Z2/b10bmnouz": "B10bmnouz 156A",
+  "Z2/b11gmnouz": "B11gmnouz B91",
+  "Z2/b11mnouz": "B11mnouz G90",
+  "Z2/wrmnouz": "WRmnouz 406A",
+
+  "201E/ET22-243": "ET22-243 (cold)",
+  "201E/ET22-256": "ET22-256 (cold)",
+  "201E/ET22-644": "ET22-644 (cold)",
+  "201E/ET22-836": "ET22-836 (cold)",
+  "201E/ET22-911": "ET22-911 (cold)",
+  "201E/ET22-1163": "ET22-1163 (cold)",
+} as const;
+
 export const trainStops = [
   { name: "Będzin", pos: [50.30898, 19.14142] },
   { name: "Będzin Ksawera", pos: [50.330615, 19.15847] },

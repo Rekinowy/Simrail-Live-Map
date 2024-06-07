@@ -42,6 +42,7 @@ export default function Map({ code }: { code: string }) {
   const [stationLabelZoomLevel, setStationLabelZoomLevel] = useLocalStorage("stationLabelZoomLevel", 12);
   const [trainStopsZoomLevel, setTrainStopsZoomLevel] = useLocalStorage("trainStopsZoomLevel", 12);
   const [showTrainStops, setShowTrainStops] = useLocalStorage("showTrainStops", true);
+  const [showSignalInfo, setShowSignalInfo] = useLocalStorage("showSignalInfo", true);
   const [showOnlyAvail, setShowOnlyAvail] = useLocalStorage("showOnlyAvail", false);
   const [showDetailsLite, setShowDetailsLite] = useLocalStorage("showDetailsLite", false);
   const [trainDetailsView, setTrainDetailsView] = useLocalStorage("trainDetailsView", "general");
@@ -179,6 +180,7 @@ export default function Map({ code }: { code: string }) {
               showPath={showPath}
               setShowPath={setShowPath}
               showDetailsLite={showDetailsLite}
+              showSignalInfo={showSignalInfo}
             />
           )
         );
@@ -216,6 +218,8 @@ export default function Map({ code }: { code: string }) {
           setShowStations={setShowStations}
           showDetailsLite={showDetailsLite}
           setShowDetailsLite={setShowDetailsLite}
+          showSignalInfo={showSignalInfo}
+          setShowSignalInfo={setShowSignalInfo}
         />
       )}
     </NextUIProvider>

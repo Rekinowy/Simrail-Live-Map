@@ -11,6 +11,7 @@ import { fetcher } from "../Map";
 import { TrainDetailsType } from "@/lib/types/types";
 import { PiPath, PiPathBold } from "react-icons/pi";
 import TrainDetailsLite from "./TrainDetailsLite";
+import { transformVehicles } from "@/lib/utils/utils";
 
 const TrainDetails = ({
   trainNumber,
@@ -32,6 +33,7 @@ const TrainDetails = ({
   showPath,
   setShowPath,
   showDetailsLite,
+  showSignalInfo,
 }: TrainDetailsType) => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 839 });
@@ -42,6 +44,10 @@ const TrainDetails = ({
   const timetable = useSWR(`/api/timetable/${serverCode}/${trainNumber}`, fetcher, {
     refreshInterval: 5000,
   });
+
+  const vehicleData = transformVehicles(vehicles);
+  const wagons = vehicleData.wagons;
+  const locomotives = vehicleData.locomotives;
 
   return showLite ? (
     <TrainDetailsLite
@@ -66,6 +72,7 @@ const TrainDetails = ({
       username={username}
       timetable={timetable}
       showDetailsLite={showDetailsLite}
+      showSignalInfo={showSignalInfo}
     />
   ) : (
     <div className="flex absolute flex-col gap-4 top-2.5 right-3 w-64 lg:w-72 max-h-[80dvh] p-4 z-[1000] rounded-lg border-1 shadow-lg text-base border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary/90 dark:bg-primary/90 backdrop-blur-sm">
@@ -77,7 +84,18 @@ const TrainDetails = ({
           <h1 className="text-lg lg:text-xl">
             {trainName} <span className="font-bold">{trainNumber}</span>
           </h1>
-          <span className="text-sm lg:text-base">{trains[vehicles[0]]?.name}</span>
+          <h2 className="text-sm lg:text-base">{trains[locomotives[0]]?.name}</h2>
+
+          {locomotives.length > 1 && (
+            <p className="text-xs text-gray-300">
+              {locomotives.slice(1).map((locomotive, index) => (
+                <span key={index}>
+                  {trains[locomotive]?.name}
+                  {index !== locomotives.length - 2 && ", "}
+                </span>
+              ))}
+            </p>
+          )}
         </div>
       </div>
       <div>
@@ -117,6 +135,8 @@ const TrainDetails = ({
           signalDistance={signalDistance}
           user={user}
           username={username}
+          showSignalInfo={showSignalInfo}
+          wagons={wagons}
         />
       )}
       {view === "timetable" && (

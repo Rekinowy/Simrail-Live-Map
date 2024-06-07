@@ -33,8 +33,8 @@ async function fetchStationData(slug: string) {
       lng: station.longitude,
       user: {
         type: userType,
-        name: userType === "user" ? station.dispatched_by[0]?.steam_user.name : null,
-        avatar: userType === "user" ? station.dispatched_by[0]?.steam_user.avatar : null,
+        name: userType === "user" ? station.dispatched_by[0]?.steam_user?.name : null,
+        avatar: userType === "user" ? station.dispatched_by[0]?.steam_user?.avatar : null,
         dispatcher_time: userType === "user" ? station.dispatched_by[0]?.steam_user?.dispatcher_time : null,
         distance: userType === "user" ? station.dispatched_by[0]?.steam_user?.distance_meter : null,
       },
