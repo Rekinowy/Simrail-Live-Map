@@ -97,7 +97,7 @@ export const wagonNames: { [key: string]: WagonInfo } = {
 
   "406Ra": { name: "Zaes (406Ra)", length: 12.3, weight: 23 },
   "406Rb": { name: "Zas (406Rb)", length: 12.3, weight: 23 },
-  "408S/408S": { name: "Uacs (408S)", length: 14, weight: 24.5 },
+  "408S/408S": { name: "Uacs (408S)", length: 14.1, weight: 24.5 },
   "412W": { name: "Eaos (412W)", length: 14.05, weight: 20 },
   "424Z": { name: "Res (424Z)", length: 19.93, weight: 22 },
   "441V": { name: "Falns (441V)", length: 13.34, weight: 26 },
