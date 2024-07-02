@@ -5,26 +5,38 @@ import { ImArrowLeft } from "react-icons/im";
 import { IoMdSettings } from "react-icons/io";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { useTheme } from "@/context/ThemeContext";
+import { FaFilter } from "react-icons/fa";
 
-const MapControls = ({ setOpenSettings }: { setOpenSettings: Function }) => {
+const MapControls = ({ setOpenSettings, setOpenFilter }: { setOpenSettings: Function; setOpenFilter: Function }) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <>
       <Control prepend position="topleft">
-        <Link
-          href="/"
-          className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm"
-        >
+        <Link href="/" className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm">
           <ImArrowLeft className="w-3 h-3 text-primary dark:text-light_gray" />
         </Link>
       </Control>
       <Control position="topleft">
         <button
           className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm"
-          onClick={() => setOpenSettings((prev: boolean) => !prev)}
+          onClick={() => {
+            setOpenSettings((prev: boolean) => !prev);
+            setOpenFilter(false);
+          }}
         >
           <IoMdSettings className="w-4 h-4 text-primary dark:text-light_gray" />
+        </button>
+      </Control>
+      <Control position="topleft">
+        <button
+          className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm"
+          onClick={() => {
+            setOpenFilter((prev: boolean) => !prev);
+            setOpenSettings(false);
+          }}
+        >
+          <FaFilter className="w-3 h-3 text-primary dark:text-light_gray" />
         </button>
       </Control>
       <Control position="topleft">

@@ -20,6 +20,7 @@ import { stationIcon, trainStops } from "@/lib/constants";
 import { SearchResultType, StationDataType, TrainDataType } from "@/lib/types/types";
 import { useLocalStorage } from "@/lib/hooks/hooks";
 import RoutePath from "./Map/RoutePath";
+import FilterTab from "./Map/FilterTab";
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -32,6 +33,7 @@ export default function Map({ code }: { code: string }) {
   const [showStations, setShowStations] = useState(true);
   const [zoomLevel, setZoomLevel] = useState(8);
   const [openSettings, setOpenSettings] = useState(false);
+  const [openFilter, setOpenFilter] = useState(false);
   const [selectedLocos, setSelectedLocos] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredResults, setFilteredResults] = useState<SearchResultType[]>([]);
@@ -72,7 +74,7 @@ export default function Map({ code }: { code: string }) {
         />
         {showPath && <RoutePath selectedTrain={selectedMarker} />}
 
-        <MapControls setOpenSettings={setOpenSettings} />
+        <MapControls setOpenSettings={setOpenSettings} setOpenFilter={setOpenFilter} />
 
         {showTrainStops &&
           zoomLevel >= trainStopsZoomLevel &&
@@ -198,8 +200,6 @@ export default function Map({ code }: { code: string }) {
           setOpenSettings={setOpenSettings}
           showTrainStops={showTrainStops}
           setShowTrainStops={setShowTrainStops}
-          showOnlyAvail={showOnlyAvail}
-          setShowOnlyAvail={setShowOnlyAvail}
           showMarkerLabels={showMarkerLabels}
           setShowMarkerLabels={setShowMarkerLabels}
           showStationLabels={showStationLabels}
@@ -210,8 +210,6 @@ export default function Map({ code }: { code: string }) {
           setStationLabelZoomLevel={setStationLabelZoomLevel}
           trainStopsZoomLevel={trainStopsZoomLevel}
           setTrainStopsZoomLevel={setTrainStopsZoomLevel}
-          selectedLocos={selectedLocos}
-          setSelectedLocos={setSelectedLocos}
           showTrains={showTrains}
           setShowTrains={setShowTrains}
           showStations={showStations}
@@ -220,6 +218,15 @@ export default function Map({ code }: { code: string }) {
           setShowDetailsLite={setShowDetailsLite}
           showSignalInfo={showSignalInfo}
           setShowSignalInfo={setShowSignalInfo}
+        />
+      )}
+      {openFilter && (
+        <FilterTab
+          setOpenFilter={setOpenFilter}
+          showOnlyAvail={showOnlyAvail}
+          setShowOnlyAvail={setShowOnlyAvail}
+          selectedLocos={selectedLocos}
+          setSelectedLocos={setSelectedLocos}
         />
       )}
     </NextUIProvider>

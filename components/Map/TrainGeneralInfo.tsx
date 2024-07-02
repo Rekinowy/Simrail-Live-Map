@@ -2,9 +2,10 @@
 
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
+import { TbWeight } from "react-icons/tb";
 import { FaRoute, FaUserAlt } from "react-icons/fa";
 import { TrainGeneralType } from "@/lib/types/types";
-import { PiTrafficSignalBold } from "react-icons/pi";
+import { PiArrowsHorizontalBold, PiTrafficSignalBold } from "react-icons/pi";
 import { GiCoalWagon } from "react-icons/gi";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { useState } from "react";
@@ -21,12 +22,12 @@ const TrainGeneralInfo = ({
   username,
   showSignalInfo,
   wagons,
+  totalLength,
+  totalWeight,
 }: TrainGeneralType) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const wagonsList = wagons.list;
-
-  console.log(wagonsList);
 
   let signalName = "";
   if (signal) {
@@ -57,7 +58,7 @@ const TrainGeneralInfo = ({
   return (
     <>
       <div className="flex flex-col min-w-[120px] justify-center text-sm lg:text-base">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-3">
               <SlSpeedometer className="w-5 h-4 text-primary_dark dark:text-light_gray" />
@@ -105,44 +106,58 @@ const TrainGeneralInfo = ({
               </div>
             </div>
           )}
-          {wagonsList.length > 0 && (
-            <div className="flex gap-3">
-              <div>
-                <GiCoalWagon className="w-5 h-4 mt-0.5 text-primary_dark dark:text-light_gray" />
+          <div className="flex flex-col gap-2">
+            <div className="flex dark:font-light">
+              <div className="flex items-center gap-3 w-1/2">
+                <PiArrowsHorizontalBold className="w-5 h-4 text-primary_dark dark:text-light_gray" />
+                <p>{totalLength} m</p>
               </div>
-              {wagonsList.length > 1 ? (
-                <div className="flex flex-col w-full gap-2">
-                  <button onClick={toggleList} className="flex items-center justify-between">
-                    <p className="leading-5 dark:font-light">&times; {wagons.counter}</p>
-                    <TiArrowSortedDown
-                      className={`w-5 h-5 text-primary_dark dark:text-light_gray transition-all ${
-                        isExpanded ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {isExpanded && (
-                    <ul className="text-primary_dark dark:text-gray-200 list-disc">
-                      {wagonsList.map((wagon: { name: string; count: number }) => {
-                        return (
-                          <li>
-                            <div className="flex">
-                              <p className="font-light w-8 lg:w-9">{wagon.count} &times;</p>
-                              <p>{wagon.name}</p>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-                </div>
-              ) : (
-                <div className="flex text-primary_dark dark:text-gray-200 ">
-                  <p className="font-light w-8 lg:w-9">{wagonsList[0].count} &times;</p>
-                  <p>{wagonsList[0].name}</p>
+              {wagons.counter < 13 && (
+                <div className="flex items-center gap-3 w-1/2">
+                  <TbWeight className="w-5 h-4 text-primary_dark dark:text-light_gray" />
+                  <p>{totalWeight} t</p>
                 </div>
               )}
             </div>
-          )}
+            {wagonsList.length > 0 && (
+              <div className="flex gap-3">
+                <div>
+                  <GiCoalWagon className="w-5 h-4 mt-0.5 text-primary_dark dark:text-light_gray" />
+                </div>
+                {wagonsList.length > 1 ? (
+                  <div className="flex flex-col w-full gap-2">
+                    <button onClick={toggleList} className="flex items-center justify-between">
+                      <p className="leading-5 dark:font-light">&times; {wagons.counter}</p>
+                      <TiArrowSortedDown
+                        className={`w-5 h-5 text-primary_dark dark:text-light_gray transition-all ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    {isExpanded && (
+                      <ul className="text-primary_dark dark:text-gray-200 list-disc">
+                        {wagonsList.map((wagon: { name: string; count: number }) => {
+                          return (
+                            <li>
+                              <div className="flex">
+                                <p className="font-light w-8 lg:w-9">{wagon.count} &times;</p>
+                                <p>{wagon.name}</p>
+                              </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex text-primary_dark dark:text-gray-200 ">
+                    <p className="dark:font-light w-8 lg:w-9 leading-[22px]">{wagonsList[0].count} &times;</p>
+                    <p className="leading-[22px]">{wagonsList[0].name}</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
         {user.type === "user" && (
           <>

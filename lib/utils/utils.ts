@@ -202,6 +202,8 @@ export const calculateRotationAngle = (prevPos: any, currentPos: any) => {
 export const transformVehicles = (vehicles: string[]) => {
   const wagons: string[] = [];
   const locomotives: string[] = [vehicles[0]];
+  let totalWeight = trains[vehicles[0]]?.weight || 0;
+  let totalLength = trains[vehicles[0]]?.length || 0;
 
   vehicles.slice(1).forEach((vehicle, index) => {
     const isLocomotive =
@@ -212,9 +214,15 @@ export const transformVehicles = (vehicles: string[]) => {
 
     if (isLocomotive) {
       locomotives.push(vehicle);
+      totalWeight += trains[vehicle]?.weight || 0;
+      totalLength += trains[vehicle]?.length || 0;
     } else {
       const key = Object.keys(wagonNames).find((key) => vehicle.startsWith(key));
-      key && wagons.push(wagonNames[key] || vehicle);
+      key && wagons.push(wagonNames[key].name || vehicle);
+      if (key && wagonNames[key]) {
+        totalWeight += wagonNames[key].weight || 0;
+        totalLength += wagonNames[key].length || 0;
+      }
     }
   });
 
@@ -225,7 +233,7 @@ export const transformVehicles = (vehicles: string[]) => {
 
   const transformedWagons = Object.entries(wagonCounts).map(([wagon, count]) => ({ name: wagon, count }));
 
-  return { wagons: { list: transformedWagons, counter: wagons.length }, locomotives };
+  return { wagons: { list: transformedWagons, counter: wagons.length }, locomotives, totalWeight, totalLength };
 };
 
 export const calculateDistanceIn5Seconds = (speed: number): number => {

@@ -48,6 +48,8 @@ const TrainDetails = ({
   const vehicleData = transformVehicles(vehicles);
   const wagons = vehicleData.wagons;
   const locomotives = vehicleData.locomotives;
+  const totalLength = Math.round(vehicleData.totalLength);
+  const totalWeight = Math.round(vehicleData.totalWeight);
 
   return showLite ? (
     <TrainDetailsLite
@@ -137,6 +139,8 @@ const TrainDetails = ({
           username={username}
           showSignalInfo={showSignalInfo}
           wagons={wagons}
+          totalLength={totalLength}
+          totalWeight={totalWeight}
         />
       )}
       {view === "timetable" && (

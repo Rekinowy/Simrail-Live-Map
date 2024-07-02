@@ -1,5 +1,4 @@
-import { locos } from "@/lib/constants";
-import { Button, Select, SelectItem, Slider, Switch } from "@nextui-org/react";
+import { Button, Slider, Switch } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import LanguageChanger from "../LanguageSelector";
 import { SettingsTabTypes } from "@/lib/types/types";
@@ -30,8 +29,6 @@ const SettingsTab = ({
   setOpenSettings,
   showTrainStops,
   setShowTrainStops,
-  showOnlyAvail,
-  setShowOnlyAvail,
   showMarkerLabels,
   setShowMarkerLabels,
   showStationLabels,
@@ -42,8 +39,6 @@ const SettingsTab = ({
   setStationLabelZoomLevel,
   trainStopsZoomLevel,
   setTrainStopsZoomLevel,
-  selectedLocos,
-  setSelectedLocos,
   showTrains,
   setShowTrains,
   showStations,
@@ -56,7 +51,7 @@ const SettingsTab = ({
   const { t } = useTranslation();
 
   return (
-    <div className="absolute flex flex-col gap-2 top-[10%] left-[50px] w-[360px] max-h-[85%] z-[1200] p-2 rounded-md border-1 border-slate-400 dark:border-slate-800 shadow-lg text-primary dark:text-light_gray bg-light_primary/50 dark:bg-primary/70 cursor-default max-sm:scale-85 max-sm:w-[340px] max-sm:left-1/2 max-sm:top-1/2 max-sm:transform max-sm:-translate-x-1/2 max-sm:-translate-y-1/2">
+    <div className="absolute flex flex-col gap-2 top-[124px] left-[50px] w-[360px] max-h-[90%] z-[1200] p-2 rounded-md border-1 border-slate-400 dark:border-slate-800 shadow-lg text-primary dark:text-light_gray bg-light_primary/50 dark:bg-primary/70 cursor-default max-sm:scale-85 max-sm:w-[340px] max-sm:left-1/2 max-sm:top-[72px] max-sm:transform max-sm:-translate-x-1/2">
       <div className="absolute w-full h-full top-0 left-0 backdrop-blur-md rounded-lg -z-10" />
       <div className="flex flex-col gap-2 overflow-auto scrollbar-thin scrollbar-thumb-light_primary_dark dark:scrollbar-thumb-primary_dark/80 scrollbar-track-light_primary_light/60 dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
         <div className="flex flex-col gap-2 py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
@@ -219,40 +214,6 @@ const SettingsTab = ({
             size="sm"
             classNames={switchStyles}
           />
-        </div>
-        <div className="flex py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
-          <p className="px-3 text-medium">{t("Settings:only_available")}</p>
-          <Switch
-            name="Show only available"
-            defaultSelected={showOnlyAvail}
-            onChange={() => setShowOnlyAvail(!showOnlyAvail)}
-            color="default"
-            size="sm"
-            classNames={switchStyles}
-          />
-        </div>
-
-        <div className="flex flex-col gap-2 py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
-          <p className="px-3 text-medium">{t("Settings:filter")}</p>
-          <Select
-            name="filter by locomotive"
-            aria-label="filter by locomotive"
-            placeholder={t("Settings:all")}
-            selectionMode="multiple"
-            radius="sm"
-            selectedKeys={selectedLocos ? selectedLocos : "all"}
-            style={{ height: "40px" }}
-            classNames={selectStyles}
-            onChange={(value) => {
-              value.target.value.length > 0 ? setSelectedLocos(value.target.value.split(",")) : setSelectedLocos([]);
-            }}
-          >
-            {locos.map((loco) => (
-              <SelectItem key={loco.name} value={loco.name}>
-                {loco.label}
-              </SelectItem>
-            ))}
-          </Select>
         </div>
       </div>
       <div className="flex w-full justify-center">

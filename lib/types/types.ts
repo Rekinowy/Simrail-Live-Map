@@ -4,7 +4,15 @@ export type TrainsType = {
   [key: string]: {
     img: string;
     name: string;
+    length: number;
+    weight: number;
   };
+};
+
+export type WagonInfo = {
+  name: string;
+  length: number;
+  weight: number;
 };
 
 export type UserType = {
@@ -105,6 +113,8 @@ export type TrainGeneralType = {
   username: string;
   showSignalInfo: boolean;
   wagons: { list: { name: string; count: number }[]; counter: number };
+  totalLength: number;
+  totalWeight: number;
 };
 
 export type StationMarkerProps = {
@@ -158,12 +168,18 @@ export type StationDetailsType = {
   showDetailsLite: boolean;
 };
 
+export type FilterTabTypes = {
+  setOpenFilter: (value: boolean) => void;
+  showOnlyAvail: boolean;
+  setShowOnlyAvail: (value: boolean) => void;
+  selectedLocos: string[];
+  setSelectedLocos: (value: any) => void;
+};
+
 export type SettingsTabTypes = {
   setOpenSettings: (value: boolean) => void;
   showTrainStops: boolean;
   setShowTrainStops: (value: boolean) => void;
-  showOnlyAvail: boolean;
-  setShowOnlyAvail: (value: boolean) => void;
   showMarkerLabels: boolean;
   setShowMarkerLabels: (value: boolean) => void;
   showStationLabels: boolean;
@@ -174,8 +190,6 @@ export type SettingsTabTypes = {
   setStationLabelZoomLevel: (value: any) => void;
   trainStopsZoomLevel: number;
   setTrainStopsZoomLevel: (value: any) => void;
-  selectedLocos: string[];
-  setSelectedLocos: (value: any) => void;
   showTrains: boolean;
   setShowTrains: (value: boolean) => void;
   showStations: boolean;
