@@ -85,15 +85,15 @@ export const locos = [
 ] as const;
 
 export const wagonNames: { [key: string]: WagonInfo } = {
-  "11xa/111A_50 51 20-00 608": { name: "B10ou (111A)", length: 24.58, weight: 40 },
-  "11xa/111A_50 51 20-08 607": { name: "B10nou (111A)", length: 24.58, weight: 40 },
-  "11xa/111A_51 51 20-70 829": { name: "B10ou (111A)", length: 24.58, weight: 40 },
-  "11xa/111A_51 51 20-71 102": { name: "B10nouz (111A)", length: 24.58, weight: 40 },
+  "11xa/111A_50 51 20-00 608": { name: "B10ou (111A)", length: 24.52, weight: 40 },
+  "11xa/111A_50 51 20-08 607": { name: "B10nou (111A)", length: 24.52, weight: 40 },
+  "11xa/111A_51 51 20-70 829": { name: "B10ou (111A)", length: 24.52, weight: 40 },
+  "11xa/111A_51 51 20-71 102": { name: "B10nouz (111A)", length: 24.52, weight: 40 },
 
-  "11xa/112A_50 51 19-00 189": { name: "Adnu (112A)", length: 24.58, weight: 40 },
-  "11xa/112A_50 51 19-08 095": { name: "Adnu (112A)", length: 24.58, weight: 40 },
-  "11xa/112A_50 51 19-08 136": { name: "A9ou (112A)", length: 24.58, weight: 40 },
-  "11xa/112A_51 51 19-70 003": { name: "A9ou (112A)", length: 24.58, weight: 40 },
+  "11xa/112A_50 51 19-00 189": { name: "Adnu (112A)", length: 24.52, weight: 40 },
+  "11xa/112A_50 51 19-08 095": { name: "Adnu (112A)", length: 24.52, weight: 40 },
+  "11xa/112A_50 51 19-08 136": { name: "A9ou (112A)", length: 24.52, weight: 40 },
+  "11xa/112A_51 51 19-70 003": { name: "A9ou (112A)", length: 24.52, weight: 40 },
 
   "406Ra": { name: "Zaes (406Ra)", length: 12.3, weight: 23 },
   "406Rb": { name: "Zas (406Rb)", length: 12.3, weight: 23 },
