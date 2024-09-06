@@ -27,8 +27,8 @@ async function fetchStationData(slug: string) {
       let userData = {
         type: userType,
         id: userType === "user" ? station.DispatchedBy[0]?.SteamId : null,
-        name: userType === null,
-        avatar: userType === null,
+        name: null,
+        avatar: null,
         profileUrl: null,
         dispatcher_time: null,
         distance: null,

@@ -43,8 +43,9 @@ async function fetchTrainData(slug: string) {
 
   const processedData = await Promise.all(
     trainsData.map(async (train: Train) => {
-      const player = playersData.find((player: Player) => player.train_number.toString() === train.TrainNoLocal);
-      const steamID = player?.steam_user?.profile_link.match(/profiles\/(\d+)\//)[1];
+      const player = playersData.find((player: Player) => player?.train_number?.toString() === train.TrainNoLocal);
+      // const steamID = player?.steam_user?.profile_link?.match(/profiles\/(\d+)\//)[1];
+      const steamID = "0";
 
       let userData = {
         type: train?.Type,
@@ -56,9 +57,9 @@ async function fetchTrainData(slug: string) {
         distance: player?.steam_user?.distance_meter,
       };
 
-      if (train.Type === "user" && (!player || steamID !== train?.TrainData.ControlledBySteamID)) {
+      if (train.Type === "user" && (!player || steamID !== train?.TrainData?.ControlledBySteamID)) {
         try {
-          const userApiUrl = `https://simrail-edr.emeraldnetwork.xyz/steam/${train.TrainData.ControlledBySteamID}`;
+          const userApiUrl = `https://simrail-edr.emeraldnetwork.xyz/steam/${train?.TrainData?.ControlledBySteamID}`;
           const response = await fetch(userApiUrl);
           const steamUser = await response.json();
 
@@ -83,12 +84,12 @@ async function fetchTrainData(slug: string) {
         departure: train.StartStation,
         destination: train.EndStation,
         vehicles: train.Vehicles,
-        lat: train.TrainData.Latititute,
-        lng: train.TrainData.Longitute,
-        velocity: train.TrainData.Velocity,
-        signal: train.TrainData.SignalInFront,
-        signal_speed: train.TrainData.SignalInFrontSpeed,
-        signal_distance: train.TrainData.DistanceToSignalInFront,
+        lat: train.TrainData?.Latititute,
+        lng: train.TrainData?.Longitute,
+        velocity: train.TrainData?.Velocity,
+        signal: train.TrainData?.SignalInFront,
+        signal_speed: train.TrainData?.SignalInFrontSpeed,
+        signal_distance: train.TrainData?.DistanceToSignalInFront,
         user: userData,
         timezone_offset: player ? player.server?.timezone_offset : 0,
       };
