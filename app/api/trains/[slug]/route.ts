@@ -41,37 +41,59 @@ async function fetchTrainData(slug: string) {
   const trainsData = trains.data;
   const playersData = players.data;
 
-  const processedData = trainsData.map((train: Train) => {
-    const player = playersData.find((player: Player) => player.train_number.toString() === train.TrainNoLocal);
+  const processedData = await Promise.all(
+    trainsData.map(async (train: Train) => {
+      const player = playersData.find((player: Player) => player.train_number.toString() === train.TrainNoLocal);
+      const steamID = player?.steam_user?.profile_link.match(/profiles\/(\d+)\//)[1];
 
-    if (train.EndStation === "Tarnowskie GóryTGD C") {
-      train.EndStation = "Tarnowskie Góry TGD C";
-    }
+      let userData = {
+        type: train?.Type,
+        id: train?.TrainData.ControlledBySteamID,
+        name: player?.steam_user?.name,
+        avatar: player?.steam_user?.avatar,
+        profileUrl: player?.steam_user?.profile_link,
+        dispatcher_time: player?.steam_user?.dispatcher_time,
+        distance: player?.steam_user?.distance_meter,
+      };
 
-    return {
-      id: train.id,
-      name: train.TrainName,
-      number: train.TrainNoLocal,
-      departure: train.StartStation,
-      destination: train.EndStation,
-      vehicles: train.Vehicles,
-      lat: train.TrainData.Latititute,
-      lng: train.TrainData.Longitute,
-      velocity: train.TrainData.Velocity,
-      signal: train.TrainData.SignalInFront,
-      signal_speed: train.TrainData.SignalInFrontSpeed,
-      signal_distance: train.TrainData.DistanceToSignalInFront,
-      user: {
-        type: train.Type,
-        id: train.TrainData.ControlledBySteamID,
-        name: player && player.type === "user" ? player.steam_user?.name : null,
-        avatar: player && player.type === "user" ? player.steam_user?.avatar : null,
-        dispatcher_time: player && player.type === "user" ? player.steam_user?.dispatcher_time : null,
-        distance: player && player.type === "user" ? player.steam_user?.distance_meter : null,
-      },
-      timezone_offset: player ? player.server?.timezone_offset : 0,
-    };
-  });
+      if (train.Type === "user" && (!player || steamID !== train?.TrainData.ControlledBySteamID)) {
+        try {
+          const userApiUrl = `https://simrail-edr.emeraldnetwork.xyz/steam/${train.TrainData.ControlledBySteamID}`;
+          const response = await fetch(userApiUrl);
+          const steamUser = await response.json();
+
+          if (steamUser) {
+            userData.name = steamUser.personaname;
+            userData.avatar = steamUser.avatar;
+            userData.profileUrl = steamUser.profileurl;
+          }
+        } catch (error) {
+          console.error("Błąd podczas pobierania danych z API Steam:", error);
+        }
+      }
+
+      if (train.EndStation === "Tarnowskie GóryTGD C") {
+        train.EndStation = "Tarnowskie Góry TGD C";
+      }
+
+      return {
+        id: train.id,
+        name: train.TrainName,
+        number: train.TrainNoLocal,
+        departure: train.StartStation,
+        destination: train.EndStation,
+        vehicles: train.Vehicles,
+        lat: train.TrainData.Latititute,
+        lng: train.TrainData.Longitute,
+        velocity: train.TrainData.Velocity,
+        signal: train.TrainData.SignalInFront,
+        signal_speed: train.TrainData.SignalInFrontSpeed,
+        signal_distance: train.TrainData.DistanceToSignalInFront,
+        user: userData,
+        timezone_offset: player ? player.server?.timezone_offset : 0,
+      };
+    })
+  );
 
   return processedData;
 }

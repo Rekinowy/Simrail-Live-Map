@@ -2,17 +2,17 @@
 
 interface Station {
   id: number;
-  name: string;
-  prefix: string;
-  difficulty_level: string;
-  main_image_url: string;
-  latitude: number;
-  longitude: number;
-  dispatched_by: [{ steam_user: { name: string; avatar: string; dispatcher_time: number; distance_meter: number } }];
+  Name: string;
+  Prefix: string;
+  DifficultyLevel: string;
+  MainImageURL: string;
+  Latititude: number;
+  Longitude: number;
+  DispatchedBy: [{ SteamId: string }];
 }
 
 async function fetchStationData(slug: string) {
-  const stationsApiUrl = `https://simrail-edr.de/api/stations/${slug}`;
+  const stationsApiUrl = `https://panel.simrail.eu:8084/stations-open?serverCode=${slug}`;
 
   const stationsResponse = await fetch(stationsApiUrl, { next: { revalidate: 0 } });
 
@@ -20,26 +20,48 @@ async function fetchStationData(slug: string) {
 
   const stationsData = stations.data;
 
-  const processedData = stationsData.map((station: Station) => {
-    const userType = station.dispatched_by.length ? "user" : "bot";
+  const processedData = await Promise.all(
+    stationsData.map(async (station: Station) => {
+      const userType = station.DispatchedBy.length ? "user" : "bot";
 
-    return {
-      id: station.id,
-      name: station.name,
-      prefix: station.prefix,
-      difficulty: station.difficulty_level,
-      image: station.main_image_url,
-      lat: station.latitude,
-      lng: station.longitude,
-      user: {
+      let userData = {
         type: userType,
-        name: userType === "user" ? station.dispatched_by[0]?.steam_user?.name : null,
-        avatar: userType === "user" ? station.dispatched_by[0]?.steam_user?.avatar : null,
-        dispatcher_time: userType === "user" ? station.dispatched_by[0]?.steam_user?.dispatcher_time : null,
-        distance: userType === "user" ? station.dispatched_by[0]?.steam_user?.distance_meter : null,
-      },
-    };
-  });
+        id: userType === "user" ? station.DispatchedBy[0]?.SteamId : null,
+        name: userType === null,
+        avatar: userType === null,
+        profileUrl: null,
+        dispatcher_time: null,
+        distance: null,
+      };
+
+      if (userType === "user" && userData.id) {
+        try {
+          const userApiUrl = `https://simrail-edr.emeraldnetwork.xyz/steam/${userData.id}`;
+          const response = await fetch(userApiUrl);
+          const steamUser = await response.json();
+
+          if (steamUser) {
+            userData.name = steamUser.personaname;
+            userData.avatar = steamUser.avatar;
+            userData.profileUrl = steamUser.profileurl;
+          }
+        } catch (error) {
+          console.error("Błąd podczas pobierania danych z API Steam:", error);
+        }
+      }
+
+      return {
+        id: station.id,
+        name: station.Name,
+        prefix: station.Prefix,
+        difficulty: station.DifficultyLevel,
+        image: station.MainImageURL,
+        lat: station.Latititude,
+        lng: station.Longitude,
+        user: userData,
+      };
+    })
+  );
 
   return processedData;
 }
