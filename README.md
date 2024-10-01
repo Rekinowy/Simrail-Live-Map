@@ -1,36 +1,33 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# SimRail Live Map
 
-First, run the development server:
+SimRail Live Map is a web application built with React, Next.js and Leaflet library that displays a live map for the multiplayer train simulation game **SimRail**. It allows you to track the real-time position of trains and signal boxes, as well as view details such as speed, mass, length, schedules, delays, and the players controlling them.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can access the live map at: [SimRail Live Map](https://simrail-live-map.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Real-time Map**: Displays the position of trains and signal boxes in real-time.
+- **Train Information**: Provides detailed data on:
+  - Current speed
+  - Mass and length of the train
+  - Schedule and delays
+- **Player Information**: Shows the players controlling trains and signal boxes.
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+1. After starting the app, select the game server you want to monitor.
+2. The map will display current trains and signal boxes positions.
+3. By clicking on a train, you can view detailed information such as:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Speed
+- Mass and length
+- Planned and actual arrival times
+- Information about the player controlling the train
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License. See the LICENSE file for more details.
