@@ -27,7 +27,3 @@ You can access the live map at: [SimRail Live Map](https://simrail-live-map.verc
 - Mass and length
 - Planned and actual arrival times
 - Information about the player controlling the train
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
