@@ -15,11 +15,13 @@ const Header = () => {
   return (
     <header className="flex w-full z-10 gap-2 items-center justify-between">
       <div className="flex gap-3 items-center">
-        <Image width={72} height={72} src={"/favicon.png"} alt="logo"></Image>
-        <h1 className="pt-1 text-4xl leading-[0.8] font-medium">
-          <span className="tracking-wider text-light_primary_light">SimRail</span>
+        <div className="w-16 h-16 md:w-[72px] md:h-[72px]">
+          <Image width={72} height={72} src={"/favicon.png"} alt="logo" className="shadow-lg" />
+        </div>
+        <h1 className="md:pt-1 font-medium leading-3" style={{ textShadow: "2px 2px 2px #1d2935" }}>
+          <span className="text-3xl md:text-4xl tracking-wider text-light_primary_light">SimRail</span>
           <br />
-          <span className="tracking-[0.2em] text-2xl text-light_gray">Live Map</span>
+          <span className="text-xl md:text-2xl tracking-[0.2em] text-light_gray">Live Map</span>
         </h1>
       </div>
       <div className="flex gap-4">
