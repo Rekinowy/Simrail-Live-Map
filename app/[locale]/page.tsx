@@ -19,7 +19,7 @@ const Home = async ({ params: { locale } }: { params: { locale: string } }) => {
         loop
       />
       <main className="flex flex-col h-[100dvh] items-center p-4">
-        <header className="flex z-10 gap-4 items-center place-self-start">
+        <header className="flex z-10 gap-2 items-center place-self-start">
           <Image width={72} height={72} src={"/favicon.png"} alt="logo"></Image>
           <h1 className="text-3xl leading-none font-medium">
             <span className="tracking-wide">Simrail</span>
