@@ -16,10 +16,10 @@ const Header = () => {
     <header className="flex w-full z-10 gap-2 items-center justify-between">
       <div className="flex gap-3 items-center">
         <Image width={72} height={72} src={"/favicon.png"} alt="logo"></Image>
-        <h1 className="text-3xl leading-[0.9] font-medium">
+        <h1 className="pt-1 text-4xl leading-[0.8] font-medium">
           <span className="tracking-wider text-light_primary_light">SimRail</span>
           <br />
-          <span className="tracking-widest text-2xl text-light_gray">Live Map</span>
+          <span className="tracking-[0.2em] text-2xl text-light_gray">Live Map</span>
         </h1>
       </div>
       <div className="flex gap-4">
