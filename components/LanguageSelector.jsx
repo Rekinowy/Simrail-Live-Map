@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import i18nConfig from "@/i18nConfig";
 import { Select, SelectItem } from "@nextui-org/react";
 
-export default function LanguageSelector({ selectStyles }) {
+export default function LanguageSelector({ selectStyles, isHome = false }) {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
   const router = useRouter();
@@ -29,15 +29,10 @@ export default function LanguageSelector({ selectStyles }) {
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
     // redirect to the new locale path
-    if (
-      currentLocale === i18nConfig.defaultLocale &&
-      !i18nConfig.prefixDefault
-    ) {
+    if (currentLocale === i18nConfig.defaultLocale && !i18nConfig.prefixDefault) {
       router.push("/" + newLocale + currentPathname);
     } else {
-      router.push(
-        currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
-      );
+      router.push(currentPathname.replace(`/${currentLocale}`, `/${newLocale}`));
     }
 
     router.refresh();
@@ -49,22 +44,34 @@ export default function LanguageSelector({ selectStyles }) {
       aria-label="language"
       radius="sm"
       placeholder={
-        languages.find((lang) => lang.locale === currentLocale)?.label
+        isHome ? (
+          <img className="w-5 h-5" src={languages.find((lang) => lang.locale === currentLocale)?.flag} alt="flag" />
+        ) : (
+          languages.find((lang) => lang.locale === currentLocale)?.label
+        )
       }
       value={currentLocale}
-      style={{ height: "40px" }}
+      style={isHome ? { height: "56px" } : { height: "40px" }}
       classNames={selectStyles}
       onChange={handleChange}
     >
-      {languages.map((lang) => (
-        <SelectItem
-          key={lang.locale}
-          value={lang.label}
-          startContent={<img className="w-3 h-3" src={lang.flag} alt="flag" />}
-        >
-          {lang.label}
-        </SelectItem>
-      ))}
+      {languages.map(
+        (lang) =>
+          lang.locale !== currentLocale && (
+            <SelectItem
+              key={lang.locale}
+              value={lang.label}
+              style={{
+                margin: "auto",
+                width: "100%",
+                margin: "auto",
+              }}
+              startContent={<img className={isHome ? "w-5 h-5" : "w-3 h-3"} src={lang.flag} alt="flag" />}
+            >
+              {isHome ? "" : lang.label}
+            </SelectItem>
+          )
+      )}
     </Select>
   );
 }
