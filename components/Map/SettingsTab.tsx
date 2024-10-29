@@ -207,22 +207,22 @@ const SettingsTab = ({
           />
         </div>
         <div className="flex py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
-          <p className="px-3 text-medium">{t("Settings:details_view")}</p>
+          <p className="px-3 text-medium">{t("Settings:server_counter")}</p>
           <Switch
-            name="Change details view"
-            defaultSelected={showDetailsLite}
-            onChange={() => setShowDetailsLite(!showDetailsLite)}
+            name="Show server info"
+            defaultSelected={showServerCounter}
+            onChange={() => setShowServerCounter(!showServerCounter)}
             color="default"
             size="sm"
             classNames={switchStyles}
           />
         </div>
         <div className="flex py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
-          <p className="px-3 text-medium">{t("Settings:server_counter")}</p>
+          <p className="px-3 text-medium">{t("Settings:details_view")}</p>
           <Switch
-            name="Show server info"
-            defaultSelected={showServerCounter}
-            onChange={() => setShowServerCounter(!showServerCounter)}
+            name="Change details view"
+            defaultSelected={showDetailsLite}
+            onChange={() => setShowDetailsLite(!showDetailsLite)}
             color="default"
             size="sm"
             classNames={switchStyles}
