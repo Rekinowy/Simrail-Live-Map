@@ -73,6 +73,13 @@ export type SearchBoxProps = {
   filteredResults: SearchResultType[];
 };
 
+export type ServerCounterProps = {
+  serverCode: string;
+  totalTrains: number;
+  userTrainsCount: number;
+  selectedMarker: string;
+};
+
 export type SearchItemProps = {
   item: SearchResultType;
   setSelectedMarker: (label: string) => void;

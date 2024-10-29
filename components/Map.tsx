@@ -21,6 +21,8 @@ import { SearchResultType, StationDataType, TrainDataType } from "@/lib/types/ty
 import { useLocalStorage } from "@/lib/hooks/hooks";
 import RoutePath from "./Map/RoutePath";
 import FilterTab from "./Map/FilterTab";
+import ServerCounter from "./Map/ServerCounter";
+import { useMediaQuery } from "react-responsive";
 
 export const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -58,6 +60,10 @@ export default function Map({ code }: { code: string }) {
   const stations = useSWR(STATIONS_API_URL, fetcher, {
     refreshInterval: 5000,
   });
+
+  const isMobile = useMediaQuery({ maxWidth: 839 });
+  const totalTrains = trains.data?.length || 0;
+  const userTrainsCount = trains.data?.filter((train: TrainDataType) => train.user?.type === "user").length || 0;
 
   useEffect(() => {
     const results = filterSearchData(searchValue, trains.data, stations.data);
@@ -227,6 +233,15 @@ export default function Map({ code }: { code: string }) {
           setShowOnlyAvail={setShowOnlyAvail}
           selectedLocos={selectedLocos}
           setSelectedLocos={setSelectedLocos}
+        />
+      )}
+
+      {(!isMobile || (isMobile && !selectedMarker)) && (
+        <ServerCounter
+          serverCode={code}
+          totalTrains={totalTrains}
+          userTrainsCount={userTrainsCount}
+          selectedMarker={selectedMarker}
         />
       )}
     </NextUIProvider>
