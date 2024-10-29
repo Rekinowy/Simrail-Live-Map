@@ -47,11 +47,13 @@ const SettingsTab = ({
   setShowDetailsLite,
   showSignalInfo,
   setShowSignalInfo,
+  showServerCounter,
+  setShowServerCounter,
 }: SettingsTabTypes) => {
   const { t } = useTranslation();
 
   return (
-    <div className="absolute flex flex-col gap-2 top-[124px] left-[50px] w-[360px] max-h-[90%] z-[1200] p-2 rounded-md border-1 border-slate-400 dark:border-slate-800 shadow-lg text-primary dark:text-light_gray bg-light_primary/50 dark:bg-primary/70 cursor-default max-sm:scale-85 max-sm:w-[340px] max-sm:left-1/2 max-sm:top-[72px] max-sm:transform max-sm:-translate-x-1/2">
+    <div className="absolute flex flex-col gap-2 top-[52px] left-[50px] w-[360px] max-h-[95%] z-[1300] p-2 rounded-md border-1 border-slate-400 dark:border-slate-800 shadow-lg text-primary dark:text-light_gray bg-light_primary/50 dark:bg-primary/70 cursor-default max-sm:scale-85 max-sm:w-[340px] max-sm:left-1/2 max-sm:top-8 max-sm:transform max-sm:-translate-x-1/2">
       <div className="absolute w-full h-full top-0 left-0 backdrop-blur-md rounded-lg -z-10" />
       <div className="flex flex-col gap-2 overflow-auto scrollbar-thin scrollbar-thumb-light_primary_dark dark:scrollbar-thumb-primary_dark/80 scrollbar-track-light_primary_light/60 dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
         <div className="flex flex-col gap-2 py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
@@ -215,7 +217,19 @@ const SettingsTab = ({
             classNames={switchStyles}
           />
         </div>
+        <div className="flex py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
+          <p className="px-3 text-medium">{t("Settings:server_counter")}</p>
+          <Switch
+            name="Show server info"
+            defaultSelected={showServerCounter}
+            onChange={() => setShowServerCounter(!showServerCounter)}
+            color="default"
+            size="sm"
+            classNames={switchStyles}
+          />
+        </div>
       </div>
+      {/* "Done" button */}
       <div className="flex w-full justify-center">
         <Button
           name="Show labels"

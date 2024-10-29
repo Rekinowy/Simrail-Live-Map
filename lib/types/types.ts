@@ -207,6 +207,8 @@ export type SettingsTabTypes = {
   setShowDetailsLite: (value: boolean) => void;
   showSignalInfo: boolean;
   setShowSignalInfo: (value: boolean) => void;
+  showServerCounter: boolean;
+  setShowServerCounter: (value: boolean) => void;
 };
 
 export type StationsPosType = { [key: string]: LatLngExpression };

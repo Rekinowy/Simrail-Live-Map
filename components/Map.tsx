@@ -52,6 +52,7 @@ export default function Map({ code }: { code: string }) {
   const [trainDetailsView, setTrainDetailsView] = useLocalStorage("trainDetailsView", "general");
   const [followTrain, setFollowTrain] = useLocalStorage("followTrain", true);
   const [showPath, setShowPath] = useLocalStorage("showPath", true);
+  const [showServerCounter, setShowServerCounter] = useLocalStorage("showServerCounter", true);
 
   const trains = useSWR(TRAINS_API_URL, fetcher, {
     refreshInterval: 5000,
@@ -227,6 +228,8 @@ export default function Map({ code }: { code: string }) {
           setShowDetailsLite={setShowDetailsLite}
           showSignalInfo={showSignalInfo}
           setShowSignalInfo={setShowSignalInfo}
+          showServerCounter={showServerCounter}
+          setShowServerCounter={setShowServerCounter}
         />
       )}
       {openFilter && (
@@ -239,7 +242,7 @@ export default function Map({ code }: { code: string }) {
         />
       )}
 
-      {(!isMobile || (isMobile && !selectedMarker)) && (
+      {showServerCounter && (!isMobile || (isMobile && !selectedMarker)) && (
         <ServerCounter
           serverCode={code}
           totalTrains={totalTrains}

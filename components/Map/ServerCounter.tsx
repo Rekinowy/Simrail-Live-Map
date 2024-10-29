@@ -1,5 +1,4 @@
 import { ServerCounterProps } from "@/lib/types/types";
-import { FaUsers } from "react-icons/fa";
 import { GiLever } from "react-icons/gi";
 import { TbTrain } from "react-icons/tb";
 
