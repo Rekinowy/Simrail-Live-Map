@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import useSWR from "swr";
 import { motion } from "framer-motion";
+import { PiTrafficSignalThin } from "react-icons/pi";
 
 type ServerDataType = {
   id: string;
@@ -39,11 +40,16 @@ const ServersList = () => {
               href={`/server/${ServerCode}`}
               className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-light_primary_dark/70 to-light_primary/90 dark:from-primary/90 dark:to-primary_dark/80 hover:bg-light_primary_light dark:hover:bg-primary_dark text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-xl border-slate-400 hover:border-slate-600 dark:border-slate-800 dark:hover:border-slate-900 hover:scale-[1.01] transition duration-100`}
             >
-              <div
-                className={`w-5 h-5 mx-2 rounded-full border border-slate-600 ${
-                  IsActive ? "bg-green-700" : "bg-red-700"
-                }`}
-              ></div>
+              <div className="relative p-1 sm:p-2">
+                <PiTrafficSignalThin className="relative w-8 sm:w-10 h-8 sm:h-10 text-primary dark:text-slate-200" />
+                <div
+                  className={`absolute w-2 sm:w-2.5 h-2 sm:h-2.5 left-4 sm:left-[23px] rounded-full shadow-[0_0px_10px_3px_rgba(0,0,0,0.2)] ${
+                    IsActive
+                      ? "top-[11.5px] sm:top-[17.5px] bg-green-600 shadow-green-600"
+                      : "top-[21px] sm:top-[29px] bg-red-600 shadow-red-600"
+                  }`}
+                />
+              </div>
 
               <div className="flex-col flex-grow text-center uppercase">
                 <p className="text-lg font-medium sm:text-2xl mb-1">{ServerCode}</p>
