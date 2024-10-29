@@ -77,6 +77,8 @@ export type ServerCounterProps = {
   serverCode: string;
   totalTrains: number;
   userTrainsCount: number;
+  totalStations: number;
+  userStationsCount: number;
   selectedMarker: string;
 };
 

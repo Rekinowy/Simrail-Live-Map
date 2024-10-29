@@ -64,6 +64,9 @@ export default function Map({ code }: { code: string }) {
   const isMobile = useMediaQuery({ maxWidth: 839 });
   const totalTrains = trains.data?.length || 0;
   const userTrainsCount = trains.data?.filter((train: TrainDataType) => train.user?.type === "user").length || 0;
+  const totalStations = stations.data?.length || 0;
+  const userStationsCount =
+    stations.data?.filter((station: StationDataType) => station.user?.type === "user").length || 0;
 
   useEffect(() => {
     const results = filterSearchData(searchValue, trains.data, stations.data);
@@ -241,6 +244,8 @@ export default function Map({ code }: { code: string }) {
           serverCode={code}
           totalTrains={totalTrains}
           userTrainsCount={userTrainsCount}
+          totalStations={totalStations}
+          userStationsCount={userStationsCount}
           selectedMarker={selectedMarker}
         />
       )}
