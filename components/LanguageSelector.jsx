@@ -16,6 +16,7 @@ export default function LanguageSelector({ selectStyles, isHome = false }) {
     { locale: "en", label: "English", flag: "/gb.svg" },
     { locale: "pl", label: "Polski", flag: "/pl.svg" },
     { locale: "de", label: "Deutsch", flag: "/de.svg" },
+    { locale: "fr", label: "Français", flag: "/fr.svg" },
   ];
 
   const handleChange = (e) => {
