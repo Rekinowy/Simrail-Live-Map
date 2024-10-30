@@ -78,7 +78,7 @@ export default function Map({ code }: { code: string }) {
     <NextUIProvider>
       <MapContainer className="flex w-full h-[100dvh]" center={[51.2546195, 20.1220594]} zoom={8}>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | SimRail Live Map'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | Created by <a href="https://buymeacoffee.com/baru94devm">Rekinowy ☕</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           className="map-tiles transition-all"
         />
