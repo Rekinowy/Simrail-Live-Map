@@ -24,8 +24,15 @@ const Home = async ({ params: { locale } }: { params: { locale: string } }) => {
           <h2 style={{ textShadow: "1px 1px 1px #1d2935" }}>{t("header")}</h2>
         </section>
         <ServersList />
-        <footer className="lg:absolute md:bottom-4 pt-4 text-[0.75em] text-light_primary_light dark:text-light_primary_dark opacity-30 ">
-          Created by Rekinowy
+        <footer className="lg:absolute md:bottom-4 pt-4 text-sm text-light_primary_light dark:text-light_primary_dark opacity-50 ">
+          Created by{" "}
+          <a
+            href="https://buymeacoffee.com/baru94devm
+"
+            className="font-medium opacity-100"
+          >
+            Rekinowy ☕
+          </a>
         </footer>
       </main>
     </TranslationsProvider>
