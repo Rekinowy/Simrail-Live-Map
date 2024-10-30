@@ -163,7 +163,7 @@ const TrainTimetable = ({
                           )}{" "}
                         </span>
                       )} */}
-                      {lastPassedStationIndex < index &&
+                      {/* {lastPassedStationIndex < index &&
                         scheduledArrival == scheduledDeparture &&
                         actualArrival &&
                         !actualDeparture &&
@@ -185,7 +185,7 @@ const TrainTimetable = ({
                               timetable[index - 1]?.passed_station
                             )}{" "}
                           </span>
-                        )}
+                        )} */}
                     </p>
                   </div>
                 </div>
