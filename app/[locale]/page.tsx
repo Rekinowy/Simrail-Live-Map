@@ -25,7 +25,7 @@ const Home = async ({ params: { locale } }: { params: { locale: string } }) => {
         </section>
         <ServersList />
         <footer className="lg:absolute md:bottom-4 pt-4 text-sm text-light_primary_light dark:text-light_primary_dark opacity-50 ">
-          Created by{" "}
+          © 2024 | Created by{" "}
           <a
             href="https://buymeacoffee.com/baru94devm
 "
