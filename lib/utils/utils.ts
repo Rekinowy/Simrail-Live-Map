@@ -137,27 +137,27 @@ export const calcDelay = (
     differenceInMinutes += 1440;
   }
 
-  if (["pl2", "pl4", "fr1", "es1", "cz1", "de1", "de3"].includes(serverCode) && timezoneOffset !== 2) {
-    differenceInMinutes += (timezoneOffset + 2) * 60;
-  } else if (["pl3", "de4"].includes(serverCode) && timezoneOffset !== -8) {
-    differenceInMinutes += (timezoneOffset - 11) * 60;
-  } else if (["pl8"].includes(serverCode) && timezoneOffset !== -4) {
-    differenceInMinutes += (timezoneOffset - 5) * 60;
-  } else if (["ua1"].includes(serverCode) && timezoneOffset !== 2) {
-    differenceInMinutes += (timezoneOffset + 3) * 60;
-  } else if (["en2"].includes(serverCode) && timezoneOffset !== -12) {
-    differenceInMinutes += (timezoneOffset - 11) * 60;
-  } else if (["en3"].includes(serverCode) && timezoneOffset !== -5) {
-    differenceInMinutes += (timezoneOffset - 4) * 60;
-  } else if (["cn1"].includes(serverCode) && timezoneOffset !== 8) {
-    differenceInMinutes += (timezoneOffset + 9) * 60;
-  }
+  // if (["pl2", "pl4", "fr1", "es1", "cz1", "de1", "de3"].includes(serverCode) && timezoneOffset !== 1) {
+  //   differenceInMinutes += (timezoneOffset + 1) * 60;
+  // } else if (["pl3", "de4"].includes(serverCode) && timezoneOffset !== -9) {
+  //   differenceInMinutes += (timezoneOffset - 11) * 60;
+  // } else if (["pl8"].includes(serverCode) && timezoneOffset !== -4) {
+  //   differenceInMinutes += (timezoneOffset - 5) * 60;
+  // } else if (["ua1"].includes(serverCode) && timezoneOffset !== 2) {
+  //   differenceInMinutes += (timezoneOffset + 3) * 60;
+  // } else if (["en2"].includes(serverCode) && timezoneOffset !== -12) {
+  //   differenceInMinutes += (timezoneOffset - 11) * 60;
+  // } else if (["en3"].includes(serverCode) && timezoneOffset !== -5) {
+  //   differenceInMinutes += (timezoneOffset - 4) * 60;
+  // } else if (["cn1"].includes(serverCode) && timezoneOffset !== 8) {
+  //   differenceInMinutes += (timezoneOffset + 9) * 60;
+  // }
 
-  if (["en3", "cn1"].includes(serverCode) && differenceInMinutes) {
-    differenceInMinutes += -60;
-  } else if (["eu3", "hu1"].includes(serverCode) && differenceInMinutes) {
-    differenceInMinutes += 120;
-  }
+  // if (["en3", "cn1"].includes(serverCode) && differenceInMinutes) {
+  //   differenceInMinutes += -60;
+  // } else if (["eu3", "hu1"].includes(serverCode) && differenceInMinutes) {
+  //   differenceInMinutes += 120;
+  // }
 
   if (!actual) return;
 

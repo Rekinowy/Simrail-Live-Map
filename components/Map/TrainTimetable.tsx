@@ -123,7 +123,7 @@ const TrainTimetable = ({
                       {point.scheduled_arrival && scheduledArrival !== scheduledDeparture && (
                         <>
                           {scheduledArrival}
-                          {/* {arrivalDelay != 0 && arrivalDelay && lastPassedStationIndex + 2 > index && (
+                          {arrivalDelay != 0 && arrivalDelay && lastPassedStationIndex + 2 > index && (
                             <span
                               className={`text-[10px] lg:text-xs font-medium dark:font-normal ${
                                 arrivalDelay < 0
@@ -140,12 +140,12 @@ const TrainTimetable = ({
                                 timetable[index - 1]?.arrived_station
                               )}{" "}
                             </span>
-                          )} */}
+                          )}
                           <span>{" — "}</span>
                         </>
                       )}
                       {scheduledDeparture}
-                      {/* {lastPassedStationIndex + 1 > index && departureDelay != 0 && departureDelay && (
+                      {lastPassedStationIndex + 1 > index && departureDelay != 0 && departureDelay && (
                         <span
                           className={`text-[10px] lg:text-xs font-medium dark:font-normal ${
                             departureDelay < 0
@@ -162,8 +162,8 @@ const TrainTimetable = ({
                             timetable[index - 1]?.passed_station
                           )}{" "}
                         </span>
-                      )} */}
-                      {/* {lastPassedStationIndex < index &&
+                      )}
+                      {lastPassedStationIndex < index &&
                         scheduledArrival == scheduledDeparture &&
                         actualArrival &&
                         !actualDeparture &&
@@ -185,7 +185,7 @@ const TrainTimetable = ({
                               timetable[index - 1]?.passed_station
                             )}{" "}
                           </span>
-                        )} */}
+                        )}
                     </p>
                   </div>
                 </div>
