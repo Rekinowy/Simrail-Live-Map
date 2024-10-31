@@ -23,7 +23,7 @@ const ServersList = () => {
     <section
       className={`${
         servers.data?.data
-          ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-4 md:gap-6"
+          ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full lg:mb-4 gap-4 md:gap-6"
           : "flex w-full items-center justify-center"
       } p-4 max-w-screen-lg rounded-xl border border-light_primary/50 dark:border-primary shadow-lg bg-light_primary/30 dark:bg-primary/50 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-hide`}
     >

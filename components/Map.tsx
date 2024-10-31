@@ -84,7 +84,12 @@ export default function Map({ code }: { code: string }) {
         />
         {showPath && <RoutePath selectedTrain={selectedMarker} />}
 
-        <MapControls setOpenSettings={setOpenSettings} setOpenFilter={setOpenFilter} />
+        <MapControls
+          openSettings={openSettings}
+          setOpenSettings={setOpenSettings}
+          openFilter={openFilter}
+          setOpenFilter={setOpenFilter}
+        />
 
         {showTrainStops &&
           zoomLevel >= trainStopsZoomLevel &&

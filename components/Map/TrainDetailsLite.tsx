@@ -1,4 +1,5 @@
 import TrainTimetable from "./TrainTimetable";
+import TrainInfoLite from "./TrainInfoLite";
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
@@ -8,6 +9,7 @@ import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
 import { trains } from "@/lib/constants";
 import { TrainDetailsType } from "@/lib/types/types";
 import React from "react";
+import { IoInformationCircle, IoInformationCircleOutline } from "react-icons/io5";
 
 const TrainDetailsLite = ({
   view,
@@ -18,23 +20,34 @@ const TrainDetailsLite = ({
   departure,
   destination,
   user,
+  username,
   follow,
   setFollow,
   showPath,
   setShowPath,
   setView,
-  username,
   timetable,
   serverCode,
   timeOffset,
+  signal,
+  signalSpeed,
+  signalDistance,
+  showSignalInfo,
+  wagons,
+  totalLength,
+  totalWeight,
 }: TrainDetailsType & {
   username: string;
   timetable: any;
+  wagons: { list: { name: string; count: number }[]; counter: number };
+  totalLength: number;
+  totalWeight: number;
 }) => {
+  console.log("DetailsLite: ", signal);
   return (
     <div
       className={`flex flex-col absolute px-2 py-2 w-[80%] max-w-[280px] md:max-w-[260px] bottom-8 right-1/2 md:right-3 z-[1000] max-md:transform max-md:translate-x-1/2 rounded-lg border-1 border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary/90 dark:bg-primary/90 backdrop-blur-sm ${
-        view === "timetable" ? "max-h-[60dvh]" : "max-h-[30dvh]"
+        view === "timetable" ? "max-h-[70dvh]" : "max-h-[30dvh]"
       } transition-all`}
     >
       <div className="flex">
@@ -113,13 +126,34 @@ const TrainDetailsLite = ({
             onClick={() => setView(view === "general" ? "timetable" : "general")}
           >
             {view === "timetable" ? (
+              <IoInformationCircle className="w-4 h-4 m-auto" />
+            ) : (
+              <IoInformationCircleOutline className="w-4 h-4 m-auto" />
+            )}
+            {/* {view === "timetable" ? (
               <BsCalendar2WeekFill className="w-3.5 h-3.5 m-auto" />
             ) : (
               <BsCalendar2Week className="w-3.5 h-3.5 m-auto" />
-            )}
+            )} */}
           </button>
         </div>
       </div>
+      {view === "timetable" && (
+        <>
+          <div className="border-t m-2 opacity-20 border-primary dark:border-white" />
+
+          <TrainInfoLite
+            signal={signal}
+            showSignalInfo={showSignalInfo}
+            signalSpeed={signalSpeed}
+            signalDistance={signalDistance}
+            speed={speed}
+            totalLength={totalLength}
+            totalWeight={totalWeight}
+            wagons={wagons}
+          />
+        </>
+      )}
       {view === "timetable" && (
         <>
           <div className="border-t m-2 opacity-20 border-primary dark:border-white"></div>

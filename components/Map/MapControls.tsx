@@ -7,7 +7,17 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { useTheme } from "@/context/ThemeContext";
 import { FaFilter } from "react-icons/fa";
 
-const MapControls = ({ setOpenSettings, setOpenFilter }: { setOpenSettings: Function; setOpenFilter: Function }) => {
+const MapControls = ({
+  openSettings,
+  setOpenSettings,
+  openFilter,
+  setOpenFilter,
+}: {
+  openSettings: boolean;
+  setOpenSettings: Function;
+  openFilter: boolean;
+  setOpenFilter: Function;
+}) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -19,7 +29,9 @@ const MapControls = ({ setOpenSettings, setOpenFilter }: { setOpenSettings: Func
       </Control>
       <Control position="topleft">
         <button
-          className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm"
+          className={`flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm ${
+            openSettings ? "bg-light_primary_light dark:bg-primary_dark" : ""
+          }`}
           onClick={() => {
             setOpenSettings((prev: boolean) => !prev);
             setOpenFilter(false);
@@ -30,7 +42,9 @@ const MapControls = ({ setOpenSettings, setOpenFilter }: { setOpenSettings: Func
       </Control>
       <Control position="topleft">
         <button
-          className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm"
+          className={`flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm ${
+            openFilter ? "bg-light_primary_light dark:bg-primary_dark" : ""
+          }`}
           onClick={() => {
             setOpenFilter((prev: boolean) => !prev);
             setOpenSettings(false);

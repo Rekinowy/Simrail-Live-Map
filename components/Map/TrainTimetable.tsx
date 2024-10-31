@@ -83,7 +83,8 @@ const TrainTimetable = ({
             <li
               ref={index === lastPassedStationIndex ? lastPassedStationRef : null}
               key={point.id}
-              className="flex gap-4"
+              className="flex gap-4
+"
             >
               <div className="relative flex justify-center items-center">
                 <div

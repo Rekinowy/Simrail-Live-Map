@@ -51,6 +51,8 @@ const TrainDetails = ({
   const totalLength = Math.round(vehicleData.totalLength);
   const totalWeight = Math.round(vehicleData.totalWeight);
 
+  console.log("Details: ", signal);
+
   return showLite ? (
     <TrainDetailsLite
       trainNumber={trainNumber}
@@ -75,6 +77,9 @@ const TrainDetails = ({
       timetable={timetable}
       showDetailsLite={showDetailsLite}
       showSignalInfo={showSignalInfo}
+      wagons={wagons}
+      totalLength={totalLength}
+      totalWeight={totalWeight}
     />
   ) : (
     <div className="flex absolute flex-col gap-4 top-2.5 right-3 w-64 lg:w-72 max-h-[80dvh] p-4 z-[1000] rounded-lg border-1 shadow-lg text-base border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary/90 dark:bg-primary/90 backdrop-blur-sm">
