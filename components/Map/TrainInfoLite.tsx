@@ -59,16 +59,16 @@ const TrainInfoLite = ({
       : "top-[11.5px] bg-yellow-600 shadow-yellow-600";
 
   return (
-    <div className="grid gap-1 mx-1">
+    <div className="grid gap-2 mx-1">
       <div className="flex items-center">
-        <div className="flex flex-col w-1/2 px-1 gap-1 text-sm dark:font-light">
+        <div className="flex flex-col w-1/2 px-1 gap-1 text-xs dark:font-light">
           <div className="flex items-center gap-3">
-            <PiArrowsHorizontalBold className="w-5 h-4 text-primary_dark dark:text-light_gray" />
+            <PiArrowsHorizontalBold className="w-4 h-3 text-primary_dark dark:text-light_gray" />
             <p>{totalLength} m</p>
           </div>
           {wagons.counter < 12 && (
             <div className="flex items-center gap-3">
-              <TbWeight className="w-5 h-4 text-primary_dark dark:text-light_gray" />
+              <TbWeight className="w-4 h-3 text-primary_dark dark:text-light_gray" />
               <p>{totalWeight} t</p>
             </div>
           )}
@@ -94,9 +94,9 @@ const TrainInfoLite = ({
         )}
       </div>
       {wagonsList.length > 0 && (
-        <div className="flex gap-3 px-1 text-sm">
+        <div className="flex gap-3 px-1 text-xs">
           <div>
-            <GiCoalWagon className="w-5 h-4 mt-0.5 text-primary_dark dark:text-light_gray" />
+            <GiCoalWagon className="w-4 h-3.5 mt-0.5 text-primary_dark dark:text-light_gray" />
           </div>
           {wagonsList.length > 1 ? (
             <div className="flex flex-col w-full gap-2">
@@ -109,7 +109,7 @@ const TrainInfoLite = ({
                 />
               </button>
               {isExpanded && (
-                <ul className="text-primary_dark dark:text-gray-200 list-disc">
+                <ul className="text-primary_dark dark:text-gray-200 list-disc px-3">
                   {wagonsList.map((wagon: { name: string; count: number }) => {
                     return (
                       <li>
