@@ -87,7 +87,7 @@ const TrainInfoLite = ({
               </div>
               <div className="">
                 <p className="text-xs font-medium dark:font-normal">{displaySignalSpeed}</p>
-                <p className="text-[8px] lg:text-xs">({displaySignalDistance})</p>
+                <p className="text-[9px]">({displaySignalDistance})</p>
               </div>
             </div>
           </div>
