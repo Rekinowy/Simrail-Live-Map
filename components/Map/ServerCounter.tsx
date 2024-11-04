@@ -22,7 +22,7 @@ const ServerCounter = ({
     refreshInterval: 0,
   });
 
-  const [currentTime, setCurrentTime] = useState<string>("Loading...");
+  const [currentTime, setCurrentTime] = useState<string>("--:--");
   const [showColon, setShowColon] = useState<boolean>(true);
 
   useEffect(() => {
