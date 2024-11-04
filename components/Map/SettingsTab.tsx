@@ -60,6 +60,17 @@ const SettingsTab = ({
           <p className="px-3 text-medium">{t("Settings:language")}</p>
           <LanguageChanger selectStyles={selectStyles} />
         </div>
+        <div className="flex py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
+          <p className="px-3 text-medium">{t("Settings:server_counter")}</p>
+          <Switch
+            name="Show server info"
+            defaultSelected={showServerCounter}
+            onChange={() => setShowServerCounter(!showServerCounter)}
+            color="default"
+            size="sm"
+            classNames={switchStyles}
+          />
+        </div>
         <div className="flex flex-col gap-2 py-2 rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
           <div className="flex w-full justify-between">
             <p className="px-3">{t("Settings:trains")}</p>
@@ -206,17 +217,7 @@ const SettingsTab = ({
             classNames={switchStyles}
           />
         </div>
-        <div className="flex py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
-          <p className="px-3 text-medium">{t("Settings:server_counter")}</p>
-          <Switch
-            name="Show server info"
-            defaultSelected={showServerCounter}
-            onChange={() => setShowServerCounter(!showServerCounter)}
-            color="default"
-            size="sm"
-            classNames={switchStyles}
-          />
-        </div>
+
         <div className="flex py-2 w-full justify-between rounded-md bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
           <p className="px-3 text-medium">{t("Settings:details_view")}</p>
           <Switch

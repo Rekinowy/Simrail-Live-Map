@@ -7,11 +7,10 @@ import { useMediaQuery } from "react-responsive";
 
 import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
 
-import { fetcher } from "../Map";
 import { TrainDetailsType } from "@/lib/types/types";
 import { PiPath, PiPathBold } from "react-icons/pi";
 import TrainDetailsLite from "./TrainDetailsLite";
-import { transformVehicles } from "@/lib/utils/utils";
+import { fetcher, transformVehicles } from "@/lib/utils/utils";
 
 const TrainDetails = ({
   trainNumber,
@@ -50,8 +49,6 @@ const TrainDetails = ({
   const locomotives = vehicleData.locomotives;
   const totalLength = Math.round(vehicleData.totalLength);
   const totalWeight = Math.round(vehicleData.totalWeight);
-
-  console.log("Details: ", signal);
 
   return showLite ? (
     <TrainDetailsLite

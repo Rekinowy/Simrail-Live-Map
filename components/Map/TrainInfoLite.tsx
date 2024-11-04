@@ -3,7 +3,7 @@
 import { calculateDistanceIn5Seconds } from "@/lib/utils/utils";
 import { useState } from "react";
 import { GiCoalWagon } from "react-icons/gi";
-import { PiArrowsHorizontalBold, PiTrafficSignal, PiTrafficSignalBold } from "react-icons/pi";
+import { PiArrowsHorizontalBold, PiTrafficSignal } from "react-icons/pi";
 import { TbWeight } from "react-icons/tb";
 import { TiArrowSortedDown } from "react-icons/ti";
 
@@ -103,7 +103,7 @@ const TrainInfoLite = ({
               <button onClick={toggleList} className="flex items-center justify-between">
                 <p className="leading-5 dark:font-light">&times; {wagons.counter}</p>
                 <TiArrowSortedDown
-                  className={`w-5 h-5 text-primary_dark dark:text-light_gray transition-all ${
+                  className={`w-4 h-4 text-primary_dark dark:text-light_gray transition-all ${
                     isExpanded ? "rotate-180" : ""
                   }`}
                 />

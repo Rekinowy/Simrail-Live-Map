@@ -62,6 +62,7 @@ export default function LanguageSelector({ selectStyles, isHome = false }) {
             <SelectItem
               key={lang.locale}
               value={lang.label}
+              textValue={lang.label}
               style={{
                 margin: "auto",
                 width: "100%",
