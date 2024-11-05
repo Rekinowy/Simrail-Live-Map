@@ -129,7 +129,7 @@ const TrainTimetable = ({
                           {scheduledArrival}
                           {arrivalDelay != 0 && arrivalDelay && lastPassedStationIndex + 2 > index && (
                             <span
-                              className={`text-[10px] lg:text-xs font-medium dark:font-normal ${
+                              className={`${showDetailsLite ? "text-[10px]" : "text-xs"} font-medium dark:font-normal ${
                                 arrivalDelay < 0
                                   ? "text-lime-700 dark:text-lime-600"
                                   : arrivalDelay < 10
@@ -151,7 +151,7 @@ const TrainTimetable = ({
                       {scheduledDeparture}
                       {lastPassedStationIndex + 1 > index && departureDelay != 0 && departureDelay && (
                         <span
-                          className={`text-[10px] lg:text-xs font-medium dark:font-normal ${
+                          className={`${showDetailsLite ? "text-[10px]" : "text-xs"} font-medium dark:font-normal ${
                             departureDelay < 0
                               ? "text-lime-700 dark:text-lime-600"
                               : departureDelay < 10
@@ -174,7 +174,7 @@ const TrainTimetable = ({
                         arrivalDelay != 0 &&
                         arrivalDelay && (
                           <span
-                            className={`text-[10px] lg:text-xs font-medium dark:font-normal  ${
+                            className={`${showDetailsLite ? "text-[10px]" : "text-xs"} font-medium dark:font-normal  ${
                               arrivalDelay < 0
                                 ? "text-lime-700 dark:text-lime-600"
                                 : arrivalDelay < 10
@@ -203,11 +203,14 @@ const TrainTimetable = ({
                   )}
                 {point.stop_type == "PH" && (
                   <div className="flex flex-col gap-2">
-                    <div className="min-w-[32px] px-1 mt-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-200 dark:text-slate-300 border bg-lime-600 border-lime-700 dark:bg-lime-800 dark:border-lime-700">
+                    <div
+                      className={`min-w-[32px] px-1 mt-0.5 text-[10px]
+                      leading-4 text-center rounded-md text-slate-200 dark:text-slate-300 border bg-lime-600 border-lime-700 dark:bg-lime-800 dark:border-lime-700`}
+                    >
                       ph
                     </div>
                     {point.terminal && (
-                      <div className=" min-w-[32px] px-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-200 dark:text-slate-300 bg-slate-600 dark:bg-slate-700 border border-slate-700 dark:border-slate-600">
+                      <div className="min-w-[32px] px-0.5 text-[10px] leading-4 lg:text-xs text-center rounded-md text-slate-200 dark:text-slate-300 bg-slate-600 dark:bg-slate-700 border border-slate-700 dark:border-slate-600">
                         {point.terminal}/{point.track}
                       </div>
                     )}
