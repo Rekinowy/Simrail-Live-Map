@@ -154,7 +154,12 @@ const TrainDetails = ({
         />
       )}
       {view === "timetable" && (
-        <TrainTimetable timetable={timetable?.data} serverCode={serverCode} timeOffset={timeOffset} />
+        <TrainTimetable
+          timetable={timetable?.data}
+          serverCode={serverCode}
+          timeOffset={timeOffset}
+          showDetailsLite={showDetailsLite}
+        />
       )}
       <button
         className={`absolute top-3 right-3 flex items-center gap-1 p-1 rounded-lg  ${

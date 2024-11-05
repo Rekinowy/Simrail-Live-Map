@@ -59,7 +59,7 @@ const TrainInfoLite = ({
       : "top-[11.5px] bg-yellow-600 shadow-yellow-600";
 
   return (
-    <div className="grid gap-2 mx-1">
+    <div className="grid gap-1 mx-1">
       <div className="flex items-center">
         <div className="flex flex-col w-1/2 px-1 gap-1 text-xs dark:font-light">
           <div className="flex items-center gap-3">

@@ -2,7 +2,7 @@ import TrainTimetable from "./TrainTimetable";
 import TrainInfoLite from "./TrainInfoLite";
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
-import { FaUserAlt } from "react-icons/fa";
+import { FaRoute, FaUserAlt } from "react-icons/fa";
 import { BsCalendar2Week, BsCalendar2WeekFill } from "react-icons/bs";
 import { PiPath, PiPathBold } from "react-icons/pi";
 import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
@@ -93,10 +93,18 @@ const TrainDetailsLite = ({
           </div>
           {user.type === "user" && (
             <>
-              <div className="border-t my-2 opacity-30 border-primary dark:border-white"></div>
-              <div className="flex gap-2 items-center max-w-[140px] md:max-w-[120px]">
-                <FaUserAlt className="w-4 text-primary_dark dark:text-light_gray" />
-                <span className="font-medium truncate">{username}</span>
+              <div className="border-t my-2 opacity-30 border-primary dark:border-white" />
+              <div className="flex flex-col gap-0.5">
+                <div className="flex gap-2 items-center max-w-[140px] md:max-w-[120px]">
+                  <FaUserAlt className="w-4 text-primary_dark dark:text-light_gray" />
+                  <span className="font-medium truncate">{username}</span>
+                </div>
+                {user.distance && user.distance !== 0 && (
+                  <div className="flex gap-2 items-center max-w-[140px] md:max-w-[120px]">
+                    <FaRoute className="w-4 h-2.5 text-primary_dark dark:text-light_gray" />
+                    <span className="truncate text-[10px]">{Math.round(user.distance / 1000)} km</span>
+                  </div>
+                )}
               </div>
             </>
           )}
@@ -129,12 +137,19 @@ const TrainDetailsLite = ({
             ) : (
               <IoInformationCircleOutline className="w-4 h-4 m-auto" />
             )}
-            {/* {view === "timetable" ? (
+          </button>
+          {/* <button
+            className={`w-7 h-7 p-0.5 rounded-lg ${
+              view === "timetable" ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
+            } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
+            onClick={() => setView(view === "general" ? "timetable" : "general")}
+          >
+            {view === "timetable" ? (
               <BsCalendar2WeekFill className="w-3.5 h-3.5 m-auto" />
             ) : (
               <BsCalendar2Week className="w-3.5 h-3.5 m-auto" />
-            )} */}
-          </button>
+            )}
+          </button> */}
         </div>
       </div>
       {view === "timetable" && (
@@ -157,7 +172,7 @@ const TrainDetailsLite = ({
         <>
           <div className="border-t m-2 opacity-20 border-primary dark:border-white"></div>
 
-          <TrainTimetable timetable={timetable.data} serverCode={serverCode} timeOffset={timeOffset} />
+          <TrainTimetable timetable={timetable.data} serverCode={serverCode} timeOffset={timeOffset} showDetailsLite />
         </>
       )}
     </div>
