@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 import { PiTrafficSignalThin } from "react-icons/pi";
-import { fetcher } from "@/lib/utils/utils";
 
 type ServerDataType = {
   id: string;
@@ -13,6 +12,7 @@ type ServerDataType = {
   ServerRegion: string;
   IsActive: boolean;
 };
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ServersList = () => {
   const { t } = useTranslation();

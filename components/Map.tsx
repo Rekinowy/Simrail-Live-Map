@@ -6,7 +6,6 @@ import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
 import { NextUIProvider } from "@nextui-org/system";
 import useSWR from "swr";
-import { format } from "date-fns";
 
 import TrainMarker from "./Map/TrainMarker";
 import StationMarker from "./Map/StationMarker";
@@ -16,7 +15,7 @@ import SearchBox from "./Map/SearchBox";
 import TrainDetails from "./Map/TrainDetails";
 import MapControls from "./Map/MapControls";
 
-import { fetcher, filterSearchData } from "@/lib/utils/utils";
+import { filterSearchData } from "@/lib/utils/utils";
 import { stationIcon, trainStops } from "@/lib/constants";
 import { SearchResultType, StationDataType, TrainDataType } from "@/lib/types/types";
 import { useLocalStorage } from "@/lib/hooks/hooks";
@@ -25,7 +24,7 @@ import FilterTab from "./Map/FilterTab";
 import ServerCounter from "./Map/ServerCounter";
 import { useMediaQuery } from "react-responsive";
 
-// export const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Map({ code }: { code: string }) {
   const TRAINS_API_URL = `/api/trains/${code}`;

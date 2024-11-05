@@ -6,9 +6,10 @@ import useSWR from "swr";
 
 import { GiLever } from "react-icons/gi";
 import { TbTrain } from "react-icons/tb";
-import { fetcher } from "@/lib/utils/utils";
 import { useEffect, useState } from "react";
 import { IoMdTime } from "react-icons/io";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ServerCounter = ({
   serverCode,

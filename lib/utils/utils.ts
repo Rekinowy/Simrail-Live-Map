@@ -242,5 +242,3 @@ export const calculateDistanceIn5Seconds = (speed: number): number => {
 
   return distanceIn5Seconds;
 };
-
-export const fetcher = (url: string) => fetch(url).then((res) => res.json());

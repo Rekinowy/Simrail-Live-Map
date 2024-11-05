@@ -10,8 +10,10 @@ import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
 import { TrainDetailsType } from "@/lib/types/types";
 import { PiPath, PiPathBold } from "react-icons/pi";
 import TrainDetailsLite from "./TrainDetailsLite";
-import { fetcher, transformVehicles } from "@/lib/utils/utils";
+import { transformVehicles } from "@/lib/utils/utils";
 import { cargoTrainsData } from "@/lib/constants/cargoTrainsData";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const TrainDetails = ({
   trainNumber,
