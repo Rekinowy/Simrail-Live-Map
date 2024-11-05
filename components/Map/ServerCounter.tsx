@@ -7,7 +7,6 @@ import useSWR from "swr";
 import { GiLever } from "react-icons/gi";
 import { TbTrain } from "react-icons/tb";
 import { useEffect, useState } from "react";
-import { IoMdTime } from "react-icons/io";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -24,18 +23,23 @@ const ServerCounter = ({
   });
 
   const [currentTime, setCurrentTime] = useState<string>("");
+  const [currentDate, setCurrentDate] = useState<string>("");
   const [showColon, setShowColon] = useState<boolean>(true);
+
+  console.log(serverTime.data);
 
   useEffect(() => {
     if (serverTime.data) {
-      const initialTime = new Date(serverTime.data);
-      initialTime.setHours(initialTime.getHours() - 1);
-      setCurrentTime(initialTime.toLocaleTimeString());
+      const serverDate = new Date(serverTime.data);
+      serverDate.setHours(serverDate.getHours() - 1);
+      setCurrentTime(serverDate.toLocaleTimeString());
+      setCurrentDate(serverDate.toLocaleDateString());
 
       const interval = setInterval(() => {
-        initialTime.setSeconds(initialTime.getSeconds() + 1);
+        serverDate.setSeconds(serverDate.getSeconds() + 1);
         setShowColon((prev) => !prev);
-        setCurrentTime(initialTime.toLocaleTimeString());
+        setCurrentTime(serverDate.toLocaleTimeString());
+        setCurrentDate(serverDate.toLocaleDateString());
       }, 1000);
 
       return () => clearInterval(interval);
@@ -45,34 +49,34 @@ const ServerCounter = ({
   const formatTime = (time: string) => {
     const [hours, minutes, seconds] = time.split(":");
     return (
-      <>
-        <span>
+      <div className="flex flex-col items-center justify-center">
+        <div className="text-sm leading-4">
           {hours}
-          {showColon ? ":" : " "}
-          {minutes}
-        </span>
-        {/* <span className="opacity-70">:{seconds}</span> */}
-      </>
+          {/* {showColon ? ":" : " "} */}:{minutes}
+          <span className="opacity-60">
+            {/* {showColon ? ":" : " "} */}:{seconds}
+          </span>
+        </div>
+        <div className="text-[10px] leading-3 tracking-widest opacity-80">{currentDate}</div>
+      </div>
     );
   };
 
   return (
-    <div className="absolute bottom-5 md:bottom-4 left-3 z-[1200] h-12 md:h-12 flex gap-2 items-center p-2 text-slate-700/90 dark:text-light_gray/90 bg-light_primary/80 dark:bg-primary/80 shadow-xl border-1 border-slate-400 dark:border-slate-800 rounded-lg ">
-      <div className="py-2">
-        <div className="font-medium text-center leading-[1.3rem]">{serverCode.toUpperCase()}</div>
-        <div className="flex text-xs gap-1">
-          {/* <IoMdTime className="w-3 h-4" /> */}
-          {formatTime(currentTime)}
-        </div>
+    <div className="absolute bottom-5 md:bottom-4 left-3 z-[1200] flex flex-col gap-0.5 md:gap-1 items-center px-2 py-1 text-slate-700/90 dark:text-light_gray/90 bg-light_primary/80 dark:bg-primary/80 shadow-xl border-1 border-slate-400 dark:border-slate-800 rounded-lg ">
+      <div className="flex items-center justify-around justi gap-2 w-full h-8">
+        <div className="font-medium text-center text-lg leading-[1.3rem]">{serverCode.toUpperCase()}</div>
+        <div className="border-l w-fit h-5/6 dark:border-light_primary/40 border-primary/40 " />
+        <div className="flex text-xs gap-1 font-medium">{formatTime(currentTime)}</div>
       </div>
-      <div className="border-l-2 w-fit h-full dark:border-light_primary/40 border-primary/40 " />
-      <div className="text-xs md:text-sm">
-        <div className="flex items-center font-medium gap-2">
-          <TbTrain className="w-3 md:w-4 h-3 md:h-4" />
+      <div className="border-t w-full dark:border-light_primary/40 border-primary/40"></div>
+      <div className="flex justify-evenly gap-2 w-full text-xs">
+        <div className="flex items-center font-medium gap-1">
+          <TbTrain className="w-3 md:w-3.5 h-3.5" />
           {userTrainsCount}/{totalTrains}
         </div>
-        <div className="flex items-center font-medium gap-2">
-          <GiLever className="w-3 md:w-4 h-3 md:h-4" />
+        <div className="flex items-center font-medium gap-1">
+          <GiLever className="w-3 md:w-3.5 h-3.5" />
           {userStationsCount}/{totalStations}
         </div>
       </div>

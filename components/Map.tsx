@@ -14,15 +14,15 @@ import SettingsTab from "./Map/SettingsTab";
 import SearchBox from "./Map/SearchBox";
 import TrainDetails from "./Map/TrainDetails";
 import MapControls from "./Map/MapControls";
+import RoutePath from "./Map/RoutePath";
+import FilterTab from "./Map/FilterTab";
 
 import { filterSearchData } from "@/lib/utils/utils";
 import { stationIcon, trainStops } from "@/lib/constants";
 import { SearchResultType, StationDataType, TrainDataType } from "@/lib/types/types";
 import { useLocalStorage } from "@/lib/hooks/hooks";
-import RoutePath from "./Map/RoutePath";
-import FilterTab from "./Map/FilterTab";
-import ServerCounter from "./Map/ServerCounter";
 import { useMediaQuery } from "react-responsive";
+import ServerCounter from "./Map/ServerCounter";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
