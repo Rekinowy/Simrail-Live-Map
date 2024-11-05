@@ -94,7 +94,7 @@ const TrainInfoLite = ({
       {wagonsList.length > 0 && (
         <div className="flex gap-3 px-1 text-xs">
           <div>
-            <GiCoalWagon className="w-4 h-3.5 mt-0.5 text-primary_dark dark:text-light_gray" />
+            <GiCoalWagon className="w-4 h-3 mt-[3.5px] text-primary_dark dark:text-light_gray" />
           </div>
           {wagonsList.length > 1 ? (
             <div className="flex flex-col w-full gap-2">
@@ -112,7 +112,7 @@ const TrainInfoLite = ({
                     return (
                       <li>
                         <div className="flex">
-                          <p className="font-light w-8 lg:w-9">{wagon.count} &times;</p>
+                          <p className="font-light w-6">{wagon.count} &times;</p>
                           <p>{wagon.name}</p>
                         </div>
                       </li>
@@ -123,7 +123,7 @@ const TrainInfoLite = ({
             </div>
           ) : (
             <div className="flex text-primary_dark dark:text-gray-200 ">
-              <p className="dark:font-light w-8 lg:w-9 leading-[22px]">{wagonsList[0].count} &times;</p>
+              <p className="dark:font-light w-8 leading-[22px]">{wagonsList[0].count} &times;</p>
               <p className="leading-[22px]">{wagonsList[0].name}</p>
             </div>
           )}
