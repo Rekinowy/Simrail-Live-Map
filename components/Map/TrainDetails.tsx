@@ -11,6 +11,7 @@ import { TrainDetailsType } from "@/lib/types/types";
 import { PiPath, PiPathBold } from "react-icons/pi";
 import TrainDetailsLite from "./TrainDetailsLite";
 import { fetcher, transformVehicles } from "@/lib/utils/utils";
+import { cargoTrainsData } from "@/lib/constants/cargoTrainsData";
 
 const TrainDetails = ({
   trainNumber,
@@ -47,8 +48,13 @@ const TrainDetails = ({
   const vehicleData = transformVehicles(vehicles);
   const wagons = vehicleData.wagons;
   const locomotives = vehicleData.locomotives;
-  const totalLength = Math.round(vehicleData.totalLength);
-  const totalWeight = Math.round(vehicleData.totalWeight);
+  let totalLength = Math.round(vehicleData.totalLength);
+  let totalWeight = Math.round(vehicleData.totalWeight);
+
+  if (trainNumber.length >= 6 && cargoTrainsData[trainNumber as keyof typeof cargoTrainsData]) {
+    totalLength = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].length;
+    totalWeight = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].weight;
+  }
 
   return showLite ? (
     <TrainDetailsLite

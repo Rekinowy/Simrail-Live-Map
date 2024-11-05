@@ -66,12 +66,10 @@ const TrainInfoLite = ({
             <PiArrowsHorizontalBold className="w-4 h-3 text-primary_dark dark:text-light_gray" />
             <p>{totalLength} m</p>
           </div>
-          {wagons.counter < 12 && (
-            <div className="flex items-center gap-3">
-              <TbWeight className="w-4 h-3 text-primary_dark dark:text-light_gray" />
-              <p>{totalWeight} t</p>
-            </div>
-          )}
+          <div className="flex items-center gap-3">
+            <TbWeight className="w-4 h-3 text-primary_dark dark:text-light_gray" />
+            <p>{totalWeight} t</p>
+          </div>
         </div>
         {signal && showSignalInfo && (
           <div className="flex flex-col px-1 gap-2 w-1/2">

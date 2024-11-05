@@ -112,12 +112,10 @@ const TrainGeneralInfo = ({
                 <PiArrowsHorizontalBold className="w-5 h-4 text-primary_dark dark:text-light_gray" />
                 <p>{totalLength} m</p>
               </div>
-              {wagons.counter < 12 && (
-                <div className="flex items-center gap-3 w-1/2">
-                  <TbWeight className="w-5 h-4 text-primary_dark dark:text-light_gray" />
-                  <p>{totalWeight} t</p>
-                </div>
-              )}
+              <div className="flex items-center gap-3 w-1/2">
+                <TbWeight className="w-5 h-4 text-primary_dark dark:text-light_gray" />
+                <p>{totalWeight} t</p>
+              </div>
             </div>
             {wagonsList.length > 0 && (
               <div className="flex gap-3">
