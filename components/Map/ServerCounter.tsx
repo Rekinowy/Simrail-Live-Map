@@ -24,7 +24,7 @@ const ServerCounter = ({
 
   const [currentTime, setCurrentTime] = useState<string>("");
   const [currentDate, setCurrentDate] = useState<string>("");
-  const [showColon, setShowColon] = useState<boolean>(true);
+  // const [showColon, setShowColon] = useState<boolean>(true);
 
   console.log(serverTime.data);
 
@@ -37,7 +37,7 @@ const ServerCounter = ({
 
       const interval = setInterval(() => {
         serverDate.setSeconds(serverDate.getSeconds() + 1);
-        setShowColon((prev) => !prev);
+        // setShowColon((prev) => !prev);
         setCurrentTime(serverDate.toLocaleTimeString());
         setCurrentDate(serverDate.toLocaleDateString());
       }, 1000);
@@ -57,13 +57,13 @@ const ServerCounter = ({
             {/* {showColon ? ":" : " "} */}:{seconds}
           </span>
         </div>
-        <div className="text-[10px] leading-3 tracking-widest opacity-80">{currentDate}</div>
+        <div className="text-[10px] leading-3 tracking-wider opacity-80">{currentDate}</div>
       </div>
     );
   };
 
   return (
-    <div className="absolute bottom-5 md:bottom-4 left-3 z-[1200] flex flex-col gap-0.5 md:gap-1 items-center px-2 py-1 text-slate-700/90 dark:text-light_gray/90 bg-light_primary/80 dark:bg-primary/80 shadow-xl border-1 border-slate-400 dark:border-slate-800 rounded-lg ">
+    <div className="absolute bottom-5 md:bottom-4 left-3 z-[1200] min-w-[122px] flex flex-col gap-0.5 md:gap-1 items-center px-2 py-1 text-slate-700/90 dark:text-light_gray/90 bg-light_primary/80 dark:bg-primary/80 shadow-xl border-1 border-slate-400 dark:border-slate-800 rounded-lg ">
       <div className="flex items-center justify-around justi gap-2 w-full h-8">
         <div className="font-medium text-center text-lg leading-[1.3rem]">{serverCode.toUpperCase()}</div>
         <div className="border-l w-fit h-5/6 dark:border-light_primary/40 border-primary/40 " />
