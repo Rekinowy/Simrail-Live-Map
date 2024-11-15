@@ -26,8 +26,6 @@ const ServerCounter = ({
   const [currentDate, setCurrentDate] = useState<string>("");
   // const [showColon, setShowColon] = useState<boolean>(true);
 
-  console.log(serverTime.data);
-
   useEffect(() => {
     if (serverTime.data) {
       const serverDate = new Date(serverTime.data);

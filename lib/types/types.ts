@@ -18,6 +18,7 @@ export type WagonInfo = {
 export type UserType = {
   name: string;
   avatar: string;
+  profileUrl: string;
   type: "bot" | "user";
   distance: number;
   dispatcher_time: number;

@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { TbWeight } from "react-icons/tb";
 import { FaRoute, FaUserAlt } from "react-icons/fa";
 import { TrainGeneralType } from "@/lib/types/types";
 import { PiArrowsHorizontalBold, PiTrafficSignalBold } from "react-icons/pi";
+import { FiExternalLink } from "react-icons/fi";
 import { GiCoalWagon } from "react-icons/gi";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { useState } from "react";
@@ -162,7 +164,12 @@ const TrainGeneralInfo = ({
             <div className="border-t my-3 opacity-30 border-primary dark:border-white"></div>
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-5 h-3.5 text-primary_dark dark:text-light_gray" />
-              <span className="font-medium overflow-hidden text-overflow-ellipsis break-words">{username}</span>
+              <Link
+                className="group flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words hover:underline"
+                href={user.profileUrl}
+              >
+                {username} <FiExternalLink className="w-2.5 h-5 opacity-50 group-hover:opacity-100" />
+              </Link>
             </div>
             {user.distance && user.distance !== 0 && (
               <div className="mt-1 flex gap-3 items-center">
