@@ -28,6 +28,7 @@ async function fetchStationData(slug: string) {
         type: userType,
         id: userType === "user" ? station.DispatchedBy[0]?.SteamId : null,
         name: null,
+        score: null,
         avatar: null,
         profileUrl: null,
         dispatcher_time: null,
@@ -44,6 +45,16 @@ async function fetchStationData(slug: string) {
             userData.name = steamUser.personaname;
             userData.avatar = steamUser.avatar;
             userData.profileUrl = steamUser.profileurl;
+
+            const distanceApiUrl = `https://simrail-edr.de/api/steam/leaderboard?filter%5Bname%5D=${userData.name}`;
+            const distanceResponse = await fetch(distanceApiUrl);
+            const distanceData = await distanceResponse.json();
+
+            if (distanceData) {
+              userData.distance = distanceData.data[0].distance;
+              userData.dispatcher_time = distanceData.data[0].dispatcher_time;
+              userData.score = distanceData.data[0].score;
+            }
           }
         } catch (error) {
           console.error("Błąd podczas pobierania danych z API Steam:", error);
