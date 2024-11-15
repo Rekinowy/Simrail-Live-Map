@@ -50,7 +50,7 @@ async function fetchStationData(slug: string) {
             const distanceResponse = await fetch(distanceApiUrl);
             const distanceData = await distanceResponse.json();
 
-            if (distanceData) {
+            if (distanceData.data[0]) {
               userData.distance = distanceData.data[0].distance;
               userData.dispatcher_time = distanceData.data[0].dispatcher_time;
               userData.score = distanceData.data[0].score;
