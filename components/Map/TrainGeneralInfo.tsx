@@ -60,7 +60,7 @@ const TrainGeneralInfo = ({
   return (
     <>
       <div className="flex flex-col min-w-[120px] justify-center text-sm lg:text-base">
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-3">
               <SlSpeedometer className="w-5 h-4 text-primary_dark dark:text-light_gray" />
@@ -86,9 +86,10 @@ const TrainGeneralInfo = ({
                 </p>
               </div>
             </div>
+            <div className="border-t mt-2 opacity-10 border-primary dark:border-white" />
           </div>
           {signal && showSignalInfo && (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <div className="relative flex flex-col w-5 items-center gap-1">
                   <PiTrafficSignalBold className="relative w-5 h-5 text-primary_dark dark:text-light_gray" />
@@ -161,7 +162,7 @@ const TrainGeneralInfo = ({
         </div>
         {user.type === "user" && (
           <>
-            <div className="border-t my-3 opacity-30 border-primary dark:border-white"></div>
+            <div className="border-t my-4 opacity-30 border-primary dark:border-white" />
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-5 h-3.5 text-primary_dark dark:text-light_gray" />
               <Link
