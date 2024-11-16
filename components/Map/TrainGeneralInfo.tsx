@@ -173,6 +173,7 @@ const TrainGeneralInfo = ({
                 <Link
                   className="group flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words hover:underline"
                   href={user.profileUrl}
+                  target="_blank"
                 >
                   {username} <FiExternalLink className="w-2.5 h-5 opacity-50 group-hover:opacity-100" />
                 </Link>
