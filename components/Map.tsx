@@ -23,6 +23,7 @@ import { SearchResultType, StationDataType, TrainDataType } from "@/lib/types/ty
 import { useLocalStorage } from "@/lib/hooks/hooks";
 import { useMediaQuery } from "react-responsive";
 import ServerCounter from "./Map/ServerCounter";
+import CustomAttribution from "./UI/CustomAttribution";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -77,16 +78,15 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   console.log(locale);
   return (
     <NextUIProvider>
-      <MapContainer className="flex w-full h-[100dvh]" center={[51.2546195, 20.1220594]} zoom={8}>
-        <TileLayer
-          attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | Created by <a href=${
-            locale === "pl" ? "https://buycoffee.to/rekinowy" : "https://buymeacoffee.com/baru94devm"
-          }>Rekinowy ☕</a>`}
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          className="map-tiles transition-all"
-        />
+      <MapContainer
+        className="flex w-full h-[100dvh]"
+        center={[51.2546195, 20.1220594]}
+        zoom={8}
+        attributionControl={false}
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" className="map-tiles transition-all" />
         {showPath && <RoutePath selectedTrain={selectedMarker} />}
-
+        <CustomAttribution />
         <MapControls
           openSettings={openSettings}
           setOpenSettings={setOpenSettings}
