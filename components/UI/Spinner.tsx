@@ -4,7 +4,7 @@ const Spinner = () => {
   const { t } = useTranslation();
 
   return (
-    <div role="status" className="flex justify-center items-center h-[200px]">
+    <div role="status" className="flex justify-center items-center py-8">
       <svg
         aria-hidden="true"
         className="w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-gray-500"
