@@ -86,7 +86,7 @@ const TrainGeneralInfo = ({
                 </p>
               </div>
             </div>
-            <div className="border-t mt-2 opacity-10 border-primary dark:border-white" />
+            <div className="border-t mt-2 w-[95%] self-center opacity-10 border-primary dark:border-white" />
           </div>
           {signal && showSignalInfo && (
             <div className="flex flex-col gap-4">
@@ -162,7 +162,7 @@ const TrainGeneralInfo = ({
         </div>
         {user.type === "user" && (
           <>
-            <div className="border-t my-4 opacity-30 border-primary dark:border-white" />
+            <div className="border-t mt-4 mb-3 w-[95%] self-center opacity-30 border-primary dark:border-white" />
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-5 h-3.5 text-primary_dark dark:text-light_gray" />
               {user.score === null ? (
