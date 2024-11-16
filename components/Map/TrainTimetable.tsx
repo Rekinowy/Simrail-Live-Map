@@ -1,6 +1,6 @@
 import { calcDelay, formatDelay, formatTime } from "@/lib/utils/utils";
 import { useEffect, useRef } from "react";
-import Spinner from "../ui/Spinner";
+import Spinner from "../UI/Spinner";
 
 const TrainTimetable = ({
   timetable,
