@@ -79,7 +79,7 @@ const ServerCounter = ({
           <TbTrain className="w-3 md:w-3.5 h-3.5" />
           {userTrainsCount}/{totalTrains}
         </div>
-        <div className="flex w-1/2 items-center justify-end font-medium gap-1">
+        <div className="flex w-1/2 items-center font-medium gap-1">
           <GiLever className="w-3 md:w-3.5 h-3.5" />
           {userStationsCount}/{totalStations}
         </div>
