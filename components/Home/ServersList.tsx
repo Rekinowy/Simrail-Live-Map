@@ -1,11 +1,11 @@
 "use client";
 
+import Spinner from "../ui/Spinner";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 import { PiTrafficSignalThin } from "react-icons/pi";
-import Spinner from "../ui/Spinner";
 
 type ServerDataType = {
   id: string;
