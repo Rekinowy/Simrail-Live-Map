@@ -75,7 +75,6 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
     setFilteredResults(results);
   }, [searchValue, trains.data, stations.data?.data]);
 
-  console.log(locale);
   return (
     <NextUIProvider>
       <MapContainer
@@ -86,7 +85,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" className="map-tiles transition-all" />
         {showPath && <RoutePath selectedTrain={selectedMarker} />}
-        <CustomAttribution />
+        <CustomAttribution locale={locale} />
         <MapControls
           openSettings={openSettings}
           setOpenSettings={setOpenSettings}
