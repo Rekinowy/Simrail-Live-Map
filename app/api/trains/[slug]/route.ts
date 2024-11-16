@@ -44,17 +44,17 @@ async function fetchTrainData(slug: string) {
   const processedData = await Promise.all(
     trainsData.map(async (train: Train) => {
       const player = playersData.find((player: Player) => player?.train_number?.toString() === train.TrainNoLocal);
-      // const steamID = player?.steam_user?.profile_link?.match(/profiles\/(\d+)\//)[1];
       const steamID = "0";
 
       let userData = {
         type: train?.Type,
         id: train?.TrainData.ControlledBySteamID,
         name: player?.steam_user?.name,
+        score: player?.steam_user?.score || null,
         avatar: player?.steam_user?.avatar,
         profileUrl: player?.steam_user?.profile_link,
-        dispatcher_time: player?.steam_user?.dispatcher_time,
-        distance: player?.steam_user?.distance_meter,
+        dispatcher_time: player?.steam_user?.dispatcher_time || null,
+        distance: player?.steam_user?.distance_meter || null,
       };
 
       if (train.Type === "user" && (!player || steamID !== train?.TrainData?.ControlledBySteamID)) {

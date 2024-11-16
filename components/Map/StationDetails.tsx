@@ -48,12 +48,18 @@ const StationDetails = ({
           <div className="flex flex-col gap-1">
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-4 h-3.5 text-primary_dark dark:text-light_gray" />
-              <Link
-                className="group flex gap-1.5 font-medium text-md overflow-hidden text-overflow-ellipsis break-words hover:underline !text-primary_dark dark:!text-white"
-                href={user.profileUrl}
-              >
-                {username} <FiExternalLink className="w-2.5 h-5 opacity-50 group-hover:opacity-100" />
-              </Link>
+              {user.score === null ? (
+                <div className=" flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words">
+                  {username}
+                </div>
+              ) : (
+                <Link
+                  className="group flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words hover:underline"
+                  href={user.profileUrl}
+                >
+                  {username} <FiExternalLink className="w-2.5 h-5 opacity-50 group-hover:opacity-100" />
+                </Link>
+              )}
             </div>
             {user.dispatcher_time && user.dispatcher_time !== 0 && (
               <div className="flex gap-3">

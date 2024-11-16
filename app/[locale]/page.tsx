@@ -29,9 +29,8 @@ const Home = async ({ params: { locale } }: { params: { locale: string } }) => {
         <footer className="lg:absolute bottom-4 pt-4 text-sm text-light_primary_light dark:text-light_primary_dark opacity-50 ">
           © 2024 | Created by{" "}
           <a
-            href="https://buymeacoffee.com/baru94devm
-"
-            className="font-medium opacity-100"
+            href={locale === "pl" ? "https://buycoffee.to/rekinowy" : "https://buymeacoffee.com/baru94devm"}
+            className="font-medium opacity-100 hover:underline"
           >
             Rekinowy ☕
           </a>

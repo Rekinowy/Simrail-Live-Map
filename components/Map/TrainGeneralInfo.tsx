@@ -165,12 +165,18 @@ const TrainGeneralInfo = ({
             <div className="border-t my-4 opacity-30 border-primary dark:border-white" />
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-5 h-3.5 text-primary_dark dark:text-light_gray" />
-              <Link
-                className="group flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words hover:underline"
-                href={user.profileUrl}
-              >
-                {username} <FiExternalLink className="w-2.5 h-5 opacity-50 group-hover:opacity-100" />
-              </Link>
+              {user.score === null ? (
+                <div className=" flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words">
+                  {username}
+                </div>
+              ) : (
+                <Link
+                  className="group flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words hover:underline"
+                  href={user.profileUrl}
+                >
+                  {username} <FiExternalLink className="w-2.5 h-5 opacity-50 group-hover:opacity-100" />
+                </Link>
+              )}
             </div>
             {user.distance && user.distance !== 0 && (
               <div className="mt-1 flex gap-3 items-center">

@@ -13,7 +13,7 @@ const MapPage = async ({ params }: { params: { code: string; locale: string } })
 
   return (
     <TranslationsProvider locale={params.locale} namespaces={i18nNamespaces} resources={resources}>
-      <DynamicMap code={params.code} />
+      <DynamicMap code={params.code} locale={params.locale} />
     </TranslationsProvider>
   );
 };
