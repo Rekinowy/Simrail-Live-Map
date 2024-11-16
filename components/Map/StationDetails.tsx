@@ -48,7 +48,7 @@ const StationDetails = ({
           <div className="flex flex-col gap-1">
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-4 h-3.5 text-primary_dark dark:text-light_gray" />
-              {user.score === null ? (
+              {user.score === null || user.score === undefined ? (
                 <div className=" flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words">
                   {username}
                 </div>
