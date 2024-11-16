@@ -57,7 +57,10 @@ async function fetchStationData(slug: string) {
             }
           }
         } catch (error) {
-          console.error("Błąd podczas pobierania danych z API Steam:", error);
+          console.error(
+            `Błąd podczas pobierania danych użytkownika ${userData.id} do API Stations z API Steam:`,
+            error
+          );
         }
       }
 

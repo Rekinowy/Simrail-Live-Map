@@ -69,7 +69,10 @@ async function fetchTrainData(slug: string) {
             userData.profileUrl = steamUser.profileurl;
           }
         } catch (error) {
-          console.error("Błąd podczas pobierania danych z API Steam:", error);
+          console.error(
+            `Błąd podczas pobierania danych użytkownika ${train?.TrainData?.ControlledBySteamID} do API Stations z API Steam:`,
+            error
+          );
         }
       }
 
