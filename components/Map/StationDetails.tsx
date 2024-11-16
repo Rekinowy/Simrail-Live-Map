@@ -54,7 +54,7 @@ const StationDetails = ({
                 </div>
               ) : (
                 <Link
-                  className="group flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words hover:underline"
+                  className="group flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words !text-primary_dark dark:!text-white hover:underline"
                   href={user.profileUrl}
                 >
                   {username} <FiExternalLink className="w-2.5 h-5 opacity-50 group-hover:opacity-100" />
