@@ -19,7 +19,7 @@ const SupportModal = ({ setModalOpen }: { setModalOpen: (open: boolean) => void 
         <div className="flex flex-col gap-6 p-5 w-full justify-between rounded-lg bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800">
           <div className="max-w-[278px] text-xl text-center pb-2 tracking-wide">{t("Home:support_me")}</div>
           <Link
-            href="https://buymeacoffee.com/baru94devm"
+            href="https://buymeacoffee.com/rekinowy"
             target="_blank"
             className="group flex justify-between gap-4 p-2 h-14 bg-yellow-500 rounded-md border border-primary/50 hover:border-primary hover:scale-[1.02] transition-all"
           >
