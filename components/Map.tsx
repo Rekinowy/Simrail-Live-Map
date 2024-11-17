@@ -93,6 +93,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
           setOpenSettings={setOpenSettings}
           openFilter={openFilter}
           setOpenFilter={setOpenFilter}
+          setModalOpen={setModalOpen}
         />
 
         {showTrainStops &&

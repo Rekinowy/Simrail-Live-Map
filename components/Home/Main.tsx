@@ -22,7 +22,7 @@ const Main = ({ title }: { title: string }) => {
       <ServersList isModalOpen={isModalOpen} />
       <footer className="absolute bottom-4 pt-4 text-sm text-light_primary_light dark:text-light_primary_dark opacity-50 ">
         © 2024 | Created by{" "}
-        <a href={`mailto:baru94.dev@gmail.com`} className="font-medium opacity-100 hover:underline">
+        <a href={`mailto:rekinowy994@gmail.com`} className="font-medium opacity-100 hover:underline">
           Rekinowy <MdEmail className="inline w-5 h-4 mb-0.5" />
         </a>
       </footer>

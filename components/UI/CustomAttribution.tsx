@@ -22,8 +22,6 @@ const CustomAttribution = ({ locale, setModalOpen }: { locale: string; setModalO
       </a>{" "}
       | Created by{" "}
       <p
-        // href={locale === "pl" ? "https://buycoffee.to/rekinowy" : "https://buymeacoffee.com/baru94devm"}
-        // target="_blank"
         onClick={handleOpenModal}
         className="!text-slate-700/90 dark:!text-light_gray/90 px-1 hover:underline cursor-pointer"
       >

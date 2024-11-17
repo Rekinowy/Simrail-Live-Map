@@ -6,19 +6,25 @@ import { IoMdSettings } from "react-icons/io";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { useTheme } from "@/context/ThemeContext";
 import { FaFilter } from "react-icons/fa";
+import { SiBuymeacoffee } from "react-icons/si";
 
 const MapControls = ({
   openSettings,
   setOpenSettings,
   openFilter,
   setOpenFilter,
+  setModalOpen,
 }: {
   openSettings: boolean;
   setOpenSettings: Function;
   openFilter: boolean;
   setOpenFilter: Function;
+  setModalOpen: Function;
 }) => {
   const { theme, toggleTheme } = useTheme();
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
 
   return (
     <>
@@ -65,6 +71,14 @@ const MapControls = ({
           )}
         </button>
       </Control>
+      {/* <Control position="topleft">
+        <button
+          className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm !bg-green-700 dark:!bg-green-800"
+          onClick={handleOpenModal}
+        >
+          <SiBuymeacoffee className="w-4 h-4 text-light_gray" />
+        </button>
+      </Control> */}
     </>
   );
 };
