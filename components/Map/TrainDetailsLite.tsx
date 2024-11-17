@@ -102,7 +102,7 @@ const TrainDetailsLite = ({
                 {user.distance && user.distance !== 0 && (
                   <div className="flex gap-2 items-center max-w-[140px] md:max-w-[120px]">
                     <FaRoute className="w-4 h-2.5 text-primary_dark dark:text-light_gray" />
-                    <span className="truncate text-[10px]">{Math.round(user.distance / 1000)} km</span>
+                    <span className="truncate text-[11px]">{Math.round(user.distance / 1000)} km</span>
                   </div>
                 )}
               </div>
