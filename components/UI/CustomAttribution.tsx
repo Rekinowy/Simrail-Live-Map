@@ -1,4 +1,8 @@
-const CustomAttribution = ({ locale }: { locale: string }) => {
+const CustomAttribution = ({ locale, setModalOpen }: { locale: string; setModalOpen: (open: boolean) => void }) => {
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
   return (
     <footer className="z-[800] absolute flex items-center right-0 bottom-0 text-slate-700/80 dark:text-light_gray/80 pl-0.5 bg-light_primary/80 dark:bg-primary/80 rounded-l-md border border-primary/30 ">
       <a href="https://leafletjs.com/" target="_blank">
@@ -17,13 +21,14 @@ const CustomAttribution = ({ locale }: { locale: string }) => {
         OpenStreetMap
       </a>{" "}
       | Created by{" "}
-      <a
-        href={locale === "pl" ? "https://buycoffee.to/rekinowy" : "https://buymeacoffee.com/baru94devm"}
-        target="_blank"
-        className="!text-slate-700/90 dark:!text-light_gray/90 px-1 hover:underline"
+      <p
+        // href={locale === "pl" ? "https://buycoffee.to/rekinowy" : "https://buymeacoffee.com/baru94devm"}
+        // target="_blank"
+        onClick={handleOpenModal}
+        className="!text-slate-700/90 dark:!text-light_gray/90 px-1 hover:underline cursor-pointer"
       >
         Rekinowy ☕
-      </a>
+      </p>
     </footer>
   );
 };

@@ -233,7 +233,6 @@ const SettingsTab = ({
       {/* "Done" button */}
       <div className="flex w-full justify-center">
         <Button
-          name="Show labels"
           className="w-full bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800 text-sm"
           size="sm"
           onClick={() => setOpenSettings(false)}

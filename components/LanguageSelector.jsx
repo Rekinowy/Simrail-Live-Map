@@ -46,13 +46,17 @@ export default function LanguageSelector({ selectStyles, isHome = false }) {
       radius="sm"
       placeholder={
         isHome ? (
-          <img className="w-5 h-5" src={languages.find((lang) => lang.locale === currentLocale)?.flag} alt="flag" />
+          <img
+            className="w-4 sm:w-5 h-4 sm:h-5"
+            src={languages.find((lang) => lang.locale === currentLocale)?.flag}
+            alt="flag"
+          />
         ) : (
           languages.find((lang) => lang.locale === currentLocale)?.label
         )
       }
       value={currentLocale}
-      style={isHome ? { height: "56px" } : { height: "40px" }}
+      style={!isHome ? { height: "40px" } : {}}
       classNames={selectStyles}
       onChange={handleChange}
     >
@@ -68,7 +72,7 @@ export default function LanguageSelector({ selectStyles, isHome = false }) {
                 width: "100%",
                 margin: "auto",
               }}
-              startContent={<img className={isHome ? "w-5 h-5" : "w-3 h-3"} src={lang.flag} alt="flag" />}
+              startContent={<img className={isHome ? "w-4 md:w-5 h-4 md:h-5" : "w-3 h-3"} src={lang.flag} alt="flag" />}
             >
               {isHome ? "" : lang.label}
             </SelectItem>

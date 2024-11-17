@@ -24,6 +24,7 @@ import { useLocalStorage } from "@/lib/hooks/hooks";
 import { useMediaQuery } from "react-responsive";
 import ServerCounter from "./Map/ServerCounter";
 import CustomAttribution from "./UI/CustomAttribution";
+import SupportModal from "./Home/SupportModal";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -40,6 +41,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   const [selectedLocos, setSelectedLocos] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredResults, setFilteredResults] = useState<SearchResultType[]>([]);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const [showMarkerLabels, setShowMarkerLabels] = useLocalStorage("showMarkerLabels", true);
   const [showStationLabels, setShowStationLabels] = useLocalStorage("showStationLabels", true);
@@ -85,7 +87,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" className="map-tiles transition-all" />
         {showPath && <RoutePath selectedTrain={selectedMarker} />}
-        <CustomAttribution locale={locale} />
+        <CustomAttribution locale={locale} setModalOpen={setModalOpen} />
         <MapControls
           openSettings={openSettings}
           setOpenSettings={setOpenSettings}
@@ -259,6 +261,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
           selectedMarker={selectedMarker}
         />
       )}
+      {isModalOpen && <SupportModal setModalOpen={setModalOpen} />}
     </NextUIProvider>
   );
 }

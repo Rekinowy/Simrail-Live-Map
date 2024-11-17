@@ -2,7 +2,7 @@ import TranslationsProvider from "@/lib/utils/TranslationsProvider";
 import initTranslations from "@/lib/utils/i18n";
 import dynamic from "next/dynamic";
 
-const i18nNamespaces = ["Details", "Searchbox", "Settings"];
+const i18nNamespaces = ["Details", "Searchbox", "Settings", "Home"];
 
 const MapPage = async ({ params }: { params: { code: string; locale: string } }) => {
   const DynamicMap = dynamic(() => import("../../../../components/Map"), {

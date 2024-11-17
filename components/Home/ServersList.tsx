@@ -15,7 +15,7 @@ type ServerDataType = {
 };
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-const ServersList = () => {
+const ServersList = ({ isModalOpen }: { isModalOpen: boolean }) => {
   const { t } = useTranslation();
 
   const servers = useSWR("https://panel.simrail.eu:8084/servers-open", fetcher, { refreshInterval: 5000 });
@@ -26,7 +26,9 @@ const ServersList = () => {
         servers.data?.data
           ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full lg:mb-4 gap-4 md:gap-6"
           : "flex w-full items-center justify-center"
-      } p-4 min-h-[50%] max-w-screen-lg rounded-xl border border-light_primary/50 dark:border-primary shadow-lg bg-light_primary/30 dark:bg-primary/50 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-hide`}
+      } p-4 mb-10 min-h-[50%] max-w-screen-lg rounded-lg border border-light_primary/50 dark:border-primary shadow-lg bg-light_primary/30 dark:bg-primary/50 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-thin scrollbar-thumb-light_primary_dark dark:scrollbar-thumb-primary_dark/80   scrollbar-thumb-rounded-xl scrollbar-track-transparent ${
+        isModalOpen && "hidden"
+      }`}
     >
       {servers.data?.data ? (
         servers.data.data.map(({ id, ServerCode, ServerRegion, IsActive }: ServerDataType, index: number) => (
@@ -39,7 +41,7 @@ const ServersList = () => {
             <Link
               key={id}
               href={`/server/${ServerCode}`}
-              className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-light_primary_dark/70 to-light_primary/90 dark:from-primary/90 dark:to-primary_dark/80 hover:bg-light_primary_light dark:hover:bg-primary_dark text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-xl border-slate-400 hover:border-slate-600 dark:border-slate-800 dark:hover:border-slate-900 hover:scale-[1.01] transition duration-100`}
+              className={`flex sm:h-28 px-2 py-3 items-center bg-gradient-to-tr from-light_primary_dark/70 to-light_primary/90 dark:from-primary/90 dark:to-primary_dark/80 hover:bg-light_primary_light dark:hover:bg-primary_dark text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-lg border-slate-400 hover:border-slate-600 dark:border-slate-800 dark:hover:border-slate-900 hover:scale-[1.01] transition duration-100`}
             >
               <div className="relative p-1 sm:p-2">
                 <PiTrafficSignalThin className="relative w-8 sm:w-10 h-8 sm:h-10 text-primary dark:text-slate-200" />

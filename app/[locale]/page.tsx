@@ -1,5 +1,4 @@
-import Header from "@/components/Home/Header";
-import ServersList from "@/components/Home/ServersList";
+import Main from "@/components/Home/Main";
 import initTranslations from "@/lib/utils/i18n";
 import TranslationsProvider from "@/lib/utils/TranslationsProvider";
 
@@ -13,29 +12,14 @@ const Home = async ({ params: { locale } }: { params: { locale: string } }) => {
       <div>
         <video
           className="fixed h-screen w-screen object-cover opacity-20"
-          src="/simrail-trailer.mp4"
+          src="/simrail-trailer-480.mp4"
           playsInline
           autoPlay
           muted
           loop
         />
       </div>
-      <main className="flex flex-col h-[100dvh] items-center p-4 lg:p-8">
-        <Header />
-        <section className="pt-8 pb-4 md:pb-8 text-3xl sm:text-4xl md:text-5xl text-slate-200 font-roboto drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-          <h2 style={{ textShadow: "1px 1px 1px #1d2935" }}>{t("header")}</h2>
-        </section>
-        <ServersList />
-        <footer className="lg:absolute bottom-4 pt-4 text-sm text-light_primary_light dark:text-light_primary_dark opacity-50 ">
-          © 2024 | Created by{" "}
-          <a
-            href={locale === "pl" ? "https://buycoffee.to/rekinowy" : "https://buymeacoffee.com/baru94devm"}
-            className="font-medium opacity-100 hover:underline"
-          >
-            Rekinowy ☕
-          </a>
-        </footer>
-      </main>
+      <Main title={t("header")} />
     </TranslationsProvider>
   );
 };
