@@ -129,9 +129,9 @@ const TrainMarker = ({
           mouseover: (event) => {
             event.target.openPopup();
           },
-          mouseout: (event) => {
-            event.target.closePopup();
-          },
+          // mouseout: (event) => {
+          //   event.target.closePopup();
+          // },
         }}
       >
         {showMarkerLabels && zoomLevel >= labelZoomLevel && (
@@ -141,7 +141,7 @@ const TrainMarker = ({
         )}
         <Popup className="custom-popup" offset={[4, -14]} closeButton={false} autoPan={false}>
           <div className="flex gap-2 items-center">
-            <div className="w-[50px] brightness-125 dark:brightness-105">
+            <div className="flex items-center w-[50px] h-[46px] brightness-125 dark:brightness-105">
               <img src={"/trains/" + trains[vehicles[0]]?.img} alt="train" width={50} height={40} />
             </div>
             <div className="flex flex-col justify-center text-sm leading-5">
