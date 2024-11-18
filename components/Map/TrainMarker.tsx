@@ -129,9 +129,9 @@ const TrainMarker = ({
           mouseover: (event) => {
             event.target.openPopup();
           },
-          // mouseout: (event) => {
-          //   event.target.closePopup();
-          // },
+          mouseout: (event) => {
+            event.target.closePopup();
+          },
         }}
       >
         {showMarkerLabels && zoomLevel >= labelZoomLevel && (
