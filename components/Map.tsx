@@ -18,7 +18,7 @@ import RoutePath from "./Map/RoutePath";
 import FilterTab from "./Map/FilterTab";
 
 import { filterSearchData } from "@/lib/utils/utils";
-import { stationIcon, trainStops } from "@/lib/constants";
+import { newStationIcon, newTrainStops, stationIcon, trainStops } from "@/lib/constants";
 import { SearchResultType, StationDataType, TrainDataType } from "@/lib/types/types";
 import { useLocalStorage } from "@/lib/hooks/hooks";
 import { useMediaQuery } from "react-responsive";
@@ -115,6 +115,32 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
                 }}
               >
                 <Popup closeButton={false} offset={[-2, 10]} className="custom-popup train-stop">
+                  <div className="w-full text-center">{station.name}</div>
+                </Popup>
+              </Marker>
+            );
+          })}
+
+        {/* New train stops */}
+        {showTrainStops &&
+          zoomLevel >= trainStopsZoomLevel &&
+          newTrainStops.map((station: any) => {
+            return (
+              <Marker
+                key={station.name}
+                position={station.pos}
+                icon={newStationIcon}
+                zIndexOffset={-100}
+                eventHandlers={{
+                  mouseover: (event) => {
+                    event.target.openPopup();
+                  },
+                  mouseout: (event) => {
+                    event.target.closePopup();
+                  },
+                }}
+              >
+                <Popup closeButton={false} offset={[-2, 10]} className="custom-popup train-stop new-station-popup">
                   <div className="w-full text-center">{station.name}</div>
                 </Popup>
               </Marker>

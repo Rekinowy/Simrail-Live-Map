@@ -16,6 +16,7 @@ html {
   --map-control-border-color: 2px solid rgba(30, 41, 59, 0.393);
   --map-control-icons-color: rgba(43, 61, 79, 0.8);
   --map-tooltip-background-color: rgb(215, 223, 234);
+  --map-tooltip-background-color-gray: rgb(205, 205, 205);
   --map-tooltip-text-color: #1c2b3b;
 }
 html.dark {
@@ -25,6 +26,7 @@ html.dark {
   --map-control-border-color: 2px solid rgba(30, 41, 59, 0.3);
   --map-control-icons-color: rgb(212, 206, 206);
   --map-tooltip-background-color: rgb(43, 61, 79, 1);
+  --map-tooltip-background-color-gray: rgb(76, 77, 78);
   --map-tooltip-text-color: rgb(234, 237, 241);
 }
 
@@ -70,6 +72,10 @@ html.dark {
   color: var(--map-tooltip-text-color);
   font-size: 12px;
 }
+.custom-popup.new-station-popup .leaflet-popup-content-wrapper {
+  background: var(--map-tooltip-background-color-gray);
+  opacity: 90%;
+}
 
 .custom-popup .leaflet-popup-content-wrapper p {
   margin: 2px !important;
@@ -93,6 +99,11 @@ html.dark {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 14px solid var(--map-tooltip-background-color);
+}
+.custom-popup.new-station-popup .leaflet-popup-tip {
+  background: var(--map-tooltip-background-color-gray);
+  border-top: var(--map-tooltip-background-color-gray);
+  opacity: 90%;
 }
 
 .leaflet-popup-content {

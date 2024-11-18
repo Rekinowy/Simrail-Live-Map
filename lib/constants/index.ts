@@ -176,6 +176,59 @@ export const trainStops = [
   { name: "Zawiercie", pos: [50.48102, 19.42313] },
 ] as const;
 
+export const newTrainStops = [
+  // Tunel - Kraków
+  { name: "Baranówka", pos: [50.14658, 20.09541] },
+  { name: "Dziadówki", pos: [50.39915, 20.00838] },
+  { name: "Goszcza", pos: [50.18465, 20.06124] },
+  { name: "Kamieńczyce", pos: [50.32735, 20.00574] },
+  { name: "Kraków Batowice", pos: [50.10753, 19.99547] },
+  { name: "Kraków Główny", pos: [50.06867, 19.94781] },
+  { name: "Łuczyce", pos: [50.1626, 20.0745] },
+  { name: "Miechów", pos: [50.3536, 20.01074] },
+  { name: "Niedźwiedź", pos: [50.20433, 20.08093] },
+  { name: "Słomniki", pos: [50.24943, 20.0637] },
+  { name: "Słomniki Miasto", pos: [50.23587, 20.07636] },
+  { name: "Smroków", pos: [50.27471, 20.04668] },
+  { name: "Szczepanowice", pos: [50.30115, 20.02466] },
+  { name: "Zastów", pos: [50.12378, 20.06908] },
+
+  // Łódź DLC
+  { name: "Bedoń", pos: [51.73199, 19.64235] },
+  { name: "Dąbrowice Skierniewickie", pos: [51.933375, 20.10238] },
+  { name: "Gałkówek", pos: [51.72982, 19.73182] },
+  { name: "Jesionka", pos: [52.01482, 20.33472] },
+  { name: "Justynów", pos: [51.730913, 19.6836] },
+  { name: "Koluszki", pos: [51.74385, 19.81862] },
+  { name: "Krosnowa", pos: [51.86341, 19.9232] },
+  { name: "Lipce Reymontowskie", pos: [51.90521, 19.94309] },
+  { name: "Łódź Andrzejów", pos: [51.741025, 19.61715] },
+  { name: "Łódź Chojny", pos: [51.72641, 19.48421] },
+  { name: "Łódź Dąbrowa", pos: [51.7359, 19.51061] },
+  { name: "Łódź Lublinek", pos: [51.720916, 19.35928] },
+  { name: "Łódź Olechów Wiadukt", pos: [51.72369, 19.54367] },
+  { name: "Łódź Olechów Wschód", pos: [51.7298, 19.59477] },
+  { name: "Łódź Olechów Zachód", pos: [51.72493, 19.5592] },
+  { name: "Łódź Pabianicka", pos: [51.72622, 19.4453] },
+  { name: "Łódź Retkinia", pos: [51.74035, 19.40658] },
+  { name: "Łódź Widzew", pos: [51.76311, 19.54381] },
+  { name: "Łódź Zarzew", pos: [51.7517, 19.51324] },
+  { name: "Maków", pos: [51.94222, 20.045723] },
+  { name: "Międzyborów", pos: [52.06361, 20.48248] },
+  { name: "Pabianice", pos: [51.66093, 19.32497] },
+  { name: "Pabianice Północne", pos: [51.66985, 19.34189] },
+  { name: "Płyćwia", pos: [51.91756, 20.00343] },
+  { name: "Przyłęk Duży", pos: [51.84086, 19.91729] },
+  { name: "Radziwiłłów Mazowiecki", pos: [52.00033, 20.29049] },
+  { name: "Rogów", pos: [51.817935, 19.88601] },
+  { name: "Skierniewice", pos: [51.96762, 20.15144] },
+  { name: "Skierniewice Rawka", pos: [51.97758, 20.22131] },
+  { name: "Sucha Żyrardowska", pos: [52.022875, 20.35938] },
+  { name: "Wągry", pos: [51.79102, 19.84925] },
+  { name: "Żakowice", pos: [51.73218, 19.79106] },
+  { name: "Żyrardów", pos: [52.05246, 20.44899] },
+] as const;
+
 export const stationsPos: StationsPosType = {
   "Biała Rawska": [51.794803619385, 20.439792633057],
   Bukowno: [50.264113162983, 19.452883246473],
@@ -215,6 +268,13 @@ export const stationsPos: StationsPosType = {
 
 export const stationIcon = new Icon({
   iconUrl: "/station.png",
+  iconSize: [18, 18],
+  iconAnchor: [10, 10],
+  popupAnchor: [3, -12],
+});
+export const newStationIcon = new Icon({
+  iconUrl: "/station-new.png",
+  className: "opacity-60",
   iconSize: [18, 18],
   iconAnchor: [10, 10],
   popupAnchor: [3, -12],
