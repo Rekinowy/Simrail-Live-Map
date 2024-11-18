@@ -25,10 +25,12 @@ const TrainMarker = ({
   zoomLevel,
   showTrains,
   showOnlyAvail,
+  hideDLC,
   showMarkerLabels,
   labelZoomLevel,
   selectedLocos,
   follow,
+  isDLC,
 }: TrainMarkerProps) => {
   const username = user?.name || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
@@ -40,13 +42,6 @@ const TrainMarker = ({
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
   const [rotationAngle, setRotationAngle] = useState(0);
   const duration = 1000;
-
-  const isDLC = vehicles.some(
-    (vehicle) =>
-      vehicle.toLowerCase().includes("et22") ||
-      vehicle.toLowerCase().includes("441v") ||
-      vehicle.toLowerCase().includes("406r")
-  );
 
   // Set marker rotation and follow
   useEffect(() => {
@@ -110,6 +105,10 @@ const TrainMarker = ({
   }
 
   if (showOnlyAvail && user.type === "user") {
+    return null;
+  }
+
+  if (hideDLC && isDLC) {
     return null;
   }
 

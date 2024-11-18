@@ -41,6 +41,7 @@ export type TrainDataType = {
   signal_distance: number;
   timezone_offset: number;
   view: string;
+  isDLC: boolean;
   setView: (view: string) => void;
   followTrain: boolean;
   setFollowTrain: (follow: boolean) => void;
@@ -106,11 +107,13 @@ export type TrainMarkerProps = {
   zoomLevel: number;
   showTrains: boolean;
   showOnlyAvail: boolean;
+  hideDLC: boolean;
   showMarkerLabels: boolean;
   labelZoomLevel: number;
   selectedLocos: string[];
   serverCode: string;
   follow: boolean;
+  isDLC: boolean;
 };
 
 export type TrainGeneralType = {
@@ -167,6 +170,7 @@ export type TrainDetailsType = {
   setShowPath: React.Dispatch<React.SetStateAction<boolean>>;
   showDetailsLite: boolean;
   showSignalInfo: boolean;
+  isDLC: boolean;
 };
 
 export type StationDetailsType = {
@@ -183,6 +187,8 @@ export type FilterTabTypes = {
   setOpenFilter: (value: boolean) => void;
   showOnlyAvail: boolean;
   setShowOnlyAvail: (value: boolean) => void;
+  hideDLC: boolean;
+  setHideDLC: (value: boolean) => void;
   selectedLocos: string[];
   setSelectedLocos: (value: any) => void;
 };

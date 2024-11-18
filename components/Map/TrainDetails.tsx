@@ -36,6 +36,7 @@ const TrainDetails = ({
   setShowPath,
   showDetailsLite,
   showSignalInfo,
+  isDLC,
 }: TrainDetailsType) => {
   const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 839 });
@@ -52,10 +53,6 @@ const TrainDetails = ({
   const locomotives = vehicleData.locomotives;
   let totalLength = Math.round(vehicleData.totalLength);
   let totalWeight = Math.round(vehicleData.totalWeight);
-
-  const isDLC =
-    locomotives.some((locomotive) => trains[locomotive]?.name.includes("ET22")) ||
-    wagons.list.some((wagon) => wagon.name.includes("441V") || wagon.name.includes("406R"));
 
   if (trainNumber.length >= 6 && cargoTrainsData[trainNumber as keyof typeof cargoTrainsData]) {
     totalLength = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].length;

@@ -51,6 +51,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   const [showTrainStops, setShowTrainStops] = useLocalStorage("showTrainStops", true);
   const [showSignalInfo, setShowSignalInfo] = useLocalStorage("showSignalInfo", true);
   const [showOnlyAvail, setShowOnlyAvail] = useLocalStorage("showOnlyAvail", false);
+  const [hideDLC, setHideDLC] = useLocalStorage("hideDLC", false);
   const [showDetailsLite, setShowDetailsLite] = useLocalStorage("showDetailsLite", false);
   const [trainDetailsView, setTrainDetailsView] = useLocalStorage("trainDetailsView", "general");
   const [followTrain, setFollowTrain] = useLocalStorage("followTrain", true);
@@ -160,11 +161,13 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
               departure={train.departure}
               destination={train.destination}
               user={train.user}
+              isDLC={train.isDLC}
               selectedTrain={selectedMarker}
               setSelectedTrain={setSelectedMarker}
               zoomLevel={zoomLevel}
               showTrains={showTrains}
               showOnlyAvail={showOnlyAvail}
+              hideDLC={hideDLC}
               showMarkerLabels={showMarkerLabels}
               labelZoomLevel={trainLabelZoomLevel}
               selectedLocos={selectedLocos}
@@ -220,6 +223,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
               signalDistance={train.signal_distance}
               user={train?.user}
               timeOffset={train.timezone_offset}
+              isDLC={train.isDLC}
               serverCode={code}
               view={trainDetailsView}
               setView={setTrainDetailsView}
@@ -273,6 +277,8 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
           setOpenFilter={setOpenFilter}
           showOnlyAvail={showOnlyAvail}
           setShowOnlyAvail={setShowOnlyAvail}
+          hideDLC={hideDLC}
+          setHideDLC={setHideDLC}
           selectedLocos={selectedLocos}
           setSelectedLocos={setSelectedLocos}
         />

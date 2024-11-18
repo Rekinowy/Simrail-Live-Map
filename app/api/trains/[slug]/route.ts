@@ -6,7 +6,7 @@ interface Train {
   TrainNoLocal: string;
   StartStation: string;
   EndStation: string;
-  Vehicles: string;
+  Vehicles: string[];
   TrainData: {
     Latititute: number;
     Longitute: number;
@@ -41,6 +41,8 @@ async function fetchTrainData(slug: string) {
   const trainsData = trains.data;
   const playersData = players.data;
 
+  const vehicleDLC = ["ET22", "406R", "441V"];
+
   const processedData = await Promise.all(
     trainsData.map(async (train: Train) => {
       const player = playersData.find((player: Player) => player?.train_number?.toString() === train.TrainNoLocal);
@@ -56,6 +58,10 @@ async function fetchTrainData(slug: string) {
         dispatcher_time: player?.steam_user?.dispatcher_time || null,
         distance: player?.steam_user?.distance_meter || null,
       };
+
+      const isDLC = train.Vehicles.some((vehicle) =>
+        vehicleDLC.some((keyword) => vehicle.toLowerCase().includes(keyword.toLowerCase()))
+      );
 
       if (train.Type === "user" && (!player || steamID !== train?.TrainData?.ControlledBySteamID)) {
         try {
@@ -94,6 +100,7 @@ async function fetchTrainData(slug: string) {
         signal_speed: train.TrainData?.SignalInFrontSpeed,
         signal_distance: train.TrainData?.DistanceToSignalInFront,
         user: userData,
+        isDLC: isDLC,
         timezone_offset: player ? player.server?.timezone_offset : 0,
       };
     })
