@@ -36,12 +36,14 @@ const TrainDetailsLite = ({
   wagons,
   totalLength,
   totalWeight,
+  isDLC,
 }: TrainDetailsType & {
   username: string;
   timetable: any;
   wagons: { list: { name: string; count: number }[]; counter: number };
   totalLength: number;
   totalWeight: number;
+  isDLC: boolean;
 }) => {
   return (
     <div
@@ -60,6 +62,11 @@ const TrainDetailsLite = ({
             </h1>
             <p className="text-center leading-3 text-[10px]">{trains[vehicles[0]]?.name}</p>
           </div>
+          {isDLC && (
+            <div className="border border-primary dark:border-light_primary_dark mt-1 bg-light_primary_dark dark:bg-primary_light px-1 rounded-[3px] text-[8px] leading-3 font-medium opacity-80">
+              DLC
+            </div>
+          )}
         </div>
         <div className="border-l w-fit border-t opacity-30 border-primary dark:border-white ml-2"></div>
         <div className="flex flex-col w-7/12 mx-2 justify-center text-xs">

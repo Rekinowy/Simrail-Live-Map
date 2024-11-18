@@ -41,7 +41,12 @@ const TrainMarker = ({
   const [rotationAngle, setRotationAngle] = useState(0);
   const duration = 1000;
 
-  // const selectedTrainNumbers = [];
+  const isDLC = vehicles.some(
+    (vehicle) =>
+      vehicle.toLowerCase().includes("et22") ||
+      vehicle.toLowerCase().includes("441v") ||
+      vehicle.toLowerCase().includes("406r")
+  );
 
   // Set marker rotation and follow
   useEffect(() => {
@@ -51,6 +56,8 @@ const TrainMarker = ({
       setHasPositionChanged(true);
 
       // Coordinates to local storage
+
+      // const selectedTrainNumbers = [];
 
       // if (selectedTrainNumbers.includes(trainNumber)) {
       //   const coordinates = JSON.parse(localStorage.getItem(`coordinates_${trainNumber}`) || "[]");
@@ -134,7 +141,7 @@ const TrainMarker = ({
           </Tooltip>
         )}
         <Popup className="custom-popup" offset={[4, -14]} closeButton={false} autoPan={false}>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <div className="w-[50px] brightness-125 dark:brightness-105">
               <img src={"/trains/" + trains[vehicles[0]]?.img} alt="train" width={50} height={40} />
             </div>
@@ -143,6 +150,11 @@ const TrainMarker = ({
                 {trainName} <span className="font-bold">{trainNumber}</span>
               </h1>
               <span className="text-xs">{trains[vehicles[0]]?.name}</span>
+              {isDLC && (
+                <div className="border w-fit border-primary dark:border-light_primary_dark mt-1 bg-light_primary_dark dark:bg-primary_light px-[3px] rounded-[3px] text-[8px] leading-3 font-medium opacity-80">
+                  DLC
+                </div>
+              )}
             </div>
           </div>
           <div className="border-t border-primary dark:border-white my-1.5 opacity-30"></div>
