@@ -1,6 +1,7 @@
 import { calcDelay, formatDelay, formatTime } from "@/lib/utils/utils";
 import { useEffect, useRef } from "react";
 import Spinner from "../UI/Spinner";
+import { useTranslation } from "react-i18next";
 
 const TrainTimetable = ({
   timetable,
@@ -13,6 +14,7 @@ const TrainTimetable = ({
   timeOffset: number;
   showDetailsLite: boolean;
 }) => {
+  const { t } = useTranslation();
   const lastPassedStationRef = useRef(null);
   let timezoneOffset = timeOffset || 0;
 
@@ -43,7 +45,14 @@ const TrainTimetable = ({
 
   return (
     <>
-      {timetable ? (
+      {!timetable ? (
+        <Spinner />
+      ) : timetable.length === 0 ? (
+        <div className="py-4 text-center opacity-70">
+          <h1 className="text-sm pb-2">{t("timetable_unavailable")}</h1>
+          <h2>Sorry! 😟</h2>
+        </div>
+      ) : (
         <ul className="flex flex-col mx-2 md:mx-0 pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-light_primary_dark dark:scrollbar-thumb-primary_dark/80 scrollbar-track-light_primary_light/60 dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
           {timetable?.map(
             (
@@ -229,8 +238,6 @@ const TrainTimetable = ({
             }
           )}
         </ul>
-      ) : (
-        <Spinner />
       )}
     </>
   );
