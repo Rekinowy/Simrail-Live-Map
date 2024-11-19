@@ -99,11 +99,6 @@ const TrainDetails = ({
             {trainName} <span className="font-bold">{trainNumber}</span>
           </h1>
           <h2 className="text-sm lg:text-base">{trains[locomotives[0]]?.name}</h2>
-          {isDLC && (
-            <div className="border border-primary dark:border-light_primary_dark mt-2 bg-light_primary_dark dark:bg-primary_light px-1 rounded-[4px] text-[10px] leading-4 font-medium opacity-80">
-              DLC
-            </div>
-          )}
 
           {locomotives.length > 1 && (
             <p className="text-xs text-gray-300">
@@ -114,6 +109,11 @@ const TrainDetails = ({
                 </span>
               ))}
             </p>
+          )}
+          {isDLC && (
+            <div className="border border-primary dark:border-light_primary_dark mt-2 bg-light_primary_dark dark:bg-primary_light px-1 rounded-[4px] text-[10px] leading-4 font-medium opacity-80">
+              DLC
+            </div>
           )}
         </div>
       </div>
