@@ -1,4 +1,4 @@
-export const tooltipDelay = 1500;
+export const tooltipDelay = 1000;
 
 // export const tooltipStyle = {
 //   base: ["before:bg-light_primary_light dark:before:bg-primary_dark"],

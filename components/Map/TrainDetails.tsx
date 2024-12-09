@@ -121,7 +121,7 @@ const TrainDetails = ({
           {isDLC && (
             <Tooltip
               content={t("Details:dlc_cp")}
-              delay={tooltipDelay}
+              delay={500}
               showArrow={true}
               classNames={tooltipStyle}
               placement="bottom"
