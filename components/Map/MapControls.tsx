@@ -8,8 +8,15 @@ import { useTheme } from "@/context/ThemeContext";
 import { FaFilter } from "react-icons/fa";
 // import { SiBuymeacoffee } from "react-icons/si";
 import { Tooltip } from "@nextui-org/tooltip";
-import { tooltipDelay, tooltipStyle } from "@/lib/constants/uistyles";
+import { tooltipDelay } from "@/lib/constants/uistyles";
 import { useTranslation } from "react-i18next";
+
+const tooltipStyle = {
+  content: [
+    "p-1.5 shadow-xl rounded-md",
+    "text-[10px] text-primary dark:text-light_gray bg-light_primary_light dark:bg-primary_dark",
+  ],
+};
 
 const MapControls = ({
   openSettings,

@@ -11,9 +11,17 @@ import TrainDetailsLite from "./TrainDetailsLite";
 import { transformVehicles } from "@/lib/utils/utils";
 import { cargoTrainsData } from "@/lib/constants/cargoTrainsData";
 import { Tooltip } from "@nextui-org/tooltip";
-import { tooltipDelay, tooltipStyle } from "@/lib/constants/uistyles";
+import { tooltipDelay } from "@/lib/constants/uistyles";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const tooltipStyle = {
+  base: ["before:bg-light_primary_light dark:before:bg-primary_dark"],
+  content: [
+    "p-1.5 shadow-xl rounded-md",
+    "text-[10px] text-primary dark:text-light_gray bg-light_primary_light dark:bg-primary_dark",
+  ],
+};
 
 const TrainDetails = ({
   trainNumber,

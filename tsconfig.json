@@ -31,7 +31,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/LanguageSelector.jsx",
-    "lib/constants/uistyles.js"
+    "lib/constants/uistyles.ts"
   ],
   "exclude": ["node_modules"]
 }

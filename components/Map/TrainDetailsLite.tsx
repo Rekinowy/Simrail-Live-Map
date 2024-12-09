@@ -11,9 +11,16 @@ import { TrainDetailsType } from "@/lib/types/types";
 import React from "react";
 import { IoInformationCircle, IoInformationCircleOutline } from "react-icons/io5";
 import { Tooltip } from "@nextui-org/tooltip";
-import { tooltipDelay, tooltipStyle } from "@/lib/constants/uistyles";
+import { tooltipDelay } from "@/lib/constants/uistyles";
 import { useTranslation } from "react-i18next";
 
+const tooltipStyle = {
+  base: ["before:bg-light_primary_light dark:before:bg-primary_dark"],
+  content: [
+    "p-1.5 shadow-xl rounded-md",
+    "text-[10px] text-primary dark:text-light_gray bg-light_primary_light dark:bg-primary_dark",
+  ],
+};
 const TrainDetailsLite = ({
   view,
   trainName,
@@ -68,9 +75,17 @@ const TrainDetailsLite = ({
             <p className="text-center leading-3 text-[10px]">{trains[vehicles[0]]?.name}</p>
           </div>
           {isDLC && (
-            <div className="border border-primary dark:border-light_primary_dark mt-1 bg-light_primary_dark dark:bg-primary_light px-1 rounded-[3px] text-[8px] leading-3 font-medium opacity-80">
-              DLC
-            </div>
+            <Tooltip
+              content={t("Details:dlc_cp")}
+              delay={tooltipDelay}
+              showArrow={true}
+              classNames={tooltipStyle}
+              placement="bottom"
+            >
+              <div className="border border-primary dark:border-light_primary_dark mt-1 bg-light_primary_dark dark:bg-primary_light px-1 rounded-[3px] text-[8px] leading-3 font-medium opacity-80 cursor-help">
+                DLC
+              </div>
+            </Tooltip>
           )}
         </div>
         <div className="border-l w-fit border-t opacity-30 border-primary dark:border-white ml-2"></div>

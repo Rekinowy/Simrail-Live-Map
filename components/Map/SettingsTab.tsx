@@ -2,7 +2,28 @@ import { Button, Slider, Switch } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import LanguageChanger from "../LanguageSelector";
 import { SettingsTabTypes } from "@/lib/types/types";
-import { selectStyles, sliderStyles, switchStyles } from "@/lib/constants/uistyles";
+
+const switchStyles = {
+  thumb: "bg-primary_light dark:bg-light_gray",
+  wrapper:
+    "mx-2 bg-light_primary_light group-data-[selected=true]:bg-light_primary_dark dark:bg-gray-800 dark:group-data-[selected=true]:bg-gray-500",
+};
+
+const sliderStyles = {
+  base: "max-w-md gap-2",
+  label: "text-base",
+  value: "text-md",
+  filler: "bg-primary_light dark:bg-light_gray",
+  track: "bg-gray-200 border-l-primary dark:bg-gray-600/50 dark:border-l-slate-300",
+  step: "data-[in-range=false]:bg-slate-300 data-[in-range=true]:bg-primary dark:data-[in-range=false]:bg-primary_dark/50 dark:data-[in-range=true]:bg-light_gray",
+};
+
+const selectStyles = {
+  base: "px-2",
+  trigger:
+    "border border-slate-400 dark:border-slate-800 bg-light_primary_light hover:bg-light_primary_light/80 dark:bg-primary_dark dark:hover:bg-primary_dark/70 transition",
+  popoverContent: "rounded-lg text-primary bg-slate-200 dark:bg-primary_dark dark:text-light_gray",
+};
 
 const SettingsTab = ({
   setOpenSettings,
@@ -64,7 +85,7 @@ const SettingsTab = ({
           </div>
           {showTrains && (
             <div className="flex flex-col pt-2 gap-2 border-t border-slate-400 dark:border-slate-700">
-              <div className="flex w-full justify-between ">
+              <div className="flex w-full justify-between">
                 <p className="px-3">{t("Settings:labels")}</p>
                 <Switch
                   name="Show train labels"

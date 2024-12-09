@@ -2,7 +2,6 @@ import { locos } from "@/lib/constants";
 import { Button, Select, SelectItem, Switch } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import { FilterTabTypes } from "@/lib/types/types";
-import { selectStyles, switchStyles } from "@/lib/constants/uistyles";
 
 const FilterTab = ({
   setOpenFilter,
@@ -14,6 +13,19 @@ const FilterTab = ({
   setSelectedLocos,
 }: FilterTabTypes) => {
   const { t } = useTranslation();
+
+  const switchStyles = {
+    thumb: "bg-primary_light dark:bg-light_gray",
+    wrapper:
+      "mx-2 bg-light_primary_light group-data-[selected=true]:bg-light_primary_dark dark:bg-gray-800 dark:group-data-[selected=true]:bg-gray-500",
+  };
+
+  const selectStyles = {
+    base: "px-2",
+    trigger:
+      "border border-slate-400 dark:border-slate-800 bg-light_primary_light hover:bg-light_primary_light/80 dark:bg-primary_dark dark:hover:bg-primary_dark/70 transition",
+    popoverContent: "rounded-lg text-primary bg-slate-200 dark:bg-primary_dark dark:text-light_gray",
+  };
 
   return (
     <div className="absolute flex flex-col gap-2 top-[165px] left-[50px] w-[320px] max-h-[75%] z-[1200] p-2 rounded-md border-1 border-slate-400 dark:border-slate-800 shadow-lg text-primary dark:text-light_gray bg-light_primary/50 dark:bg-primary/70 cursor-default max-sm:scale-85 max-sm:w-[340px] max-sm:left-1/2 max-sm:top-[150px] max-sm:transform max-sm:-translate-x-1/2 ">
