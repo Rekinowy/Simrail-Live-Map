@@ -25,6 +25,13 @@
       "react-dom": ["./node_modules/preact/compat/"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/LanguageSelector.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "components/LanguageSelector.jsx",
+    "lib/constants/uistyles.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,6 @@
 import { Polyline } from "react-leaflet";
 import { ranges } from "@/lib/constants/paths/ranges";
-// import { testPath } from "@/lib/constants/paths/testPath";
+import { testPath } from "@/lib/constants/paths/testPath";
 
 const RoutePath = ({ selectedTrain }: { selectedTrain: string }) => {
   let path = null;
@@ -19,10 +19,10 @@ const RoutePath = ({ selectedTrain }: { selectedTrain: string }) => {
     return (
       <>
         <Polyline pathOptions={{ color: "royalblue" }} positions={path} />
-        {/* <Polyline pathOptions={{ color: "green" }} positions={testPath} /> */}
       </>
     );
   }
+  // return <Polyline pathOptions={{ color: "green" }} positions={testPath} />;
 };
 
 export default RoutePath;

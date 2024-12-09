@@ -4,14 +4,14 @@ import useSWR from "swr";
 import { trains } from "@/lib/constants";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
-
 import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
-
 import { TrainDetailsType } from "@/lib/types/types";
 import { PiPath, PiPathBold } from "react-icons/pi";
 import TrainDetailsLite from "./TrainDetailsLite";
 import { transformVehicles } from "@/lib/utils/utils";
 import { cargoTrainsData } from "@/lib/constants/cargoTrainsData";
+import { Tooltip } from "@nextui-org/tooltip";
+import { tooltipDelay, tooltipStyle } from "@/lib/constants/uistyles";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -111,9 +111,17 @@ const TrainDetails = ({
             </p>
           )}
           {isDLC && (
-            <div className="border border-primary dark:border-light_primary_dark mt-2 bg-light_primary_dark dark:bg-primary_light px-1 rounded-[4px] text-[10px] leading-4 font-medium opacity-80">
-              DLC
-            </div>
+            <Tooltip
+              content={t("Details:dlc_cp")}
+              delay={tooltipDelay}
+              showArrow={true}
+              classNames={tooltipStyle}
+              placement="bottom"
+            >
+              <div className="border border-primary dark:border-light_primary_dark mt-2 bg-light_primary_dark dark:bg-primary_light px-1 rounded-[4px] text-[10px] leading-4 font-medium opacity-80 cursor-help">
+                DLC
+              </div>
+            </Tooltip>
           )}
         </div>
       </div>
@@ -168,22 +176,38 @@ const TrainDetails = ({
           showDetailsLite={showDetailsLite}
         />
       )}
-      <button
-        className={`absolute top-3 right-3 flex items-center gap-1 p-1 rounded-lg  ${
-          follow ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
-        } border-1  text-xs border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-700`}
-        onClick={() => setFollow((prev) => !prev)}
+      <Tooltip
+        content={t("Details:pin_train")}
+        delay={tooltipDelay}
+        showArrow={true}
+        classNames={tooltipStyle}
+        placement="left"
       >
-        {follow ? <MdPushPin className="w-5 h-5" /> : <MdOutlinePushPin className="w-5 h-5" />}
-      </button>
-      <button
-        className={`absolute top-3 left-3 flex items-center gap-1 p-1 rounded-lg  ${
-          showPath ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
-        } border-1  text-xs border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-700`}
-        onClick={() => setShowPath((prev) => !prev)}
+        <button
+          className={`absolute top-3 right-3 flex items-center gap-1 p-1 rounded-lg  ${
+            follow ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
+          } border-1  text-xs border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-700`}
+          onClick={() => setFollow((prev) => !prev)}
+        >
+          {follow ? <MdPushPin className="w-5 h-5" /> : <MdOutlinePushPin className="w-5 h-5" />}
+        </button>
+      </Tooltip>
+      <Tooltip
+        content={t("Details:draw_route")}
+        delay={tooltipDelay}
+        showArrow={true}
+        classNames={tooltipStyle}
+        placement="right"
       >
-        {showPath ? <PiPathBold className="w-5 h-5" /> : <PiPath className="w-5 h-5" />}
-      </button>
+        <button
+          className={`absolute top-3 left-3 flex items-center gap-1 p-1 rounded-lg  ${
+            showPath ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
+          } border-1  text-xs border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-700`}
+          onClick={() => setShowPath((prev) => !prev)}
+        >
+          {showPath ? <PiPathBold className="w-5 h-5" /> : <PiPath className="w-5 h-5" />}
+        </button>
+      </Tooltip>
     </div>
   );
 };

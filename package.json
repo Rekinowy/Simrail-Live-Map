@@ -9,23 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.2.9",
+    "@nextui-org/react": "^2.6.5",
     "@nextui-org/switch": "^2.0.25",
     "@nextui-org/system": "^2.0.15",
     "@nextui-org/theme": "^2.1.17",
+    "@nextui-org/tooltip": "^2.2.4",
     "@types/node": "20.6.5",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.16",
     "date-fns": "^4.1.0",
-    "framer-motion": "^10.18.0",
+    "framer-motion": "^11.13.1",
     "i18next": "^23.8.2",
     "i18next-resources-to-backend": "^1.2.0",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "next": "^14.0.3",
     "next-i18n-router": "^5.2.0",
-    "postcss": "8.4.30",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^14.0.1",
@@ -35,13 +34,15 @@
     "react-leaflet-tracking-marker": "^1.0.16",
     "react-responsive": "^10.0.0",
     "swr": "^2.2.4",
-    "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.3",
     "@types/leaflet": "^1.9.8",
+    "autoprefixer": "^10.4.20",
     "i18nexus-cli": "^3.3.0",
-    "tailwind-scrollbar": "^3.1.0-rc.0"
+    "postcss": "^8.4.49",
+    "tailwind-scrollbar": "^3.1.0-rc.0",
+    "tailwindcss": "^3.4.16"
   }
 }

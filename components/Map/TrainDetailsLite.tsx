@@ -3,13 +3,16 @@ import TrainInfoLite from "./TrainInfoLite";
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaRoute, FaUserAlt } from "react-icons/fa";
-import { BsCalendar2Week, BsCalendar2WeekFill } from "react-icons/bs";
+// import { BsCalendar2Week, BsCalendar2WeekFill } from "react-icons/bs";
 import { PiPath, PiPathBold } from "react-icons/pi";
 import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
 import { trains } from "@/lib/constants";
 import { TrainDetailsType } from "@/lib/types/types";
 import React from "react";
 import { IoInformationCircle, IoInformationCircleOutline } from "react-icons/io5";
+import { Tooltip } from "@nextui-org/tooltip";
+import { tooltipDelay, tooltipStyle } from "@/lib/constants/uistyles";
+import { useTranslation } from "react-i18next";
 
 const TrainDetailsLite = ({
   view,
@@ -45,6 +48,8 @@ const TrainDetailsLite = ({
   totalWeight: number;
   isDLC: boolean;
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={`flex flex-col absolute px-2 py-2 w-[80%] max-w-[280px] md:max-w-[260px] bottom-8 right-1/2 md:right-3 z-[1000] max-md:transform max-md:translate-x-1/2 rounded-lg border-1 border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary/90 dark:bg-primary/90 backdrop-blur-sm ${
@@ -117,38 +122,62 @@ const TrainDetailsLite = ({
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <button
-            className={`w-7 h-7 p-1 rounded-lg text-light_gray ${
-              follow ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
-            } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
-            onClick={() => setFollow((prev) => !prev)}
+          <Tooltip
+            content={t("Details:pin_train")}
+            delay={tooltipDelay}
+            showArrow={true}
+            classNames={tooltipStyle}
+            placement="right"
           >
-            {follow ? <MdPushPin /> : <MdOutlinePushPin />}
-          </button>
-          <button
-            className={`w-7 h-7 p-1 rounded-lg text-light_gray ${
-              showPath ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
-            } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
-            onClick={() => setShowPath((prev) => !prev)}
+            <button
+              className={`w-7 h-7 p-1 rounded-lg text-light_gray ${
+                follow ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
+              } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
+              onClick={() => setFollow((prev) => !prev)}
+            >
+              {follow ? <MdPushPin /> : <MdOutlinePushPin />}
+            </button>
+          </Tooltip>
+          <Tooltip
+            content={t("Details:draw_route")}
+            delay={tooltipDelay}
+            showArrow={true}
+            classNames={tooltipStyle}
+            placement="right"
           >
-            {showPath ? <PiPathBold /> : <PiPath />}
-          </button>
-          <button
-            className={`w-7 h-7 p-0.5 rounded-lg ${
-              view === "timetable" ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
-            } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
-            onClick={() => setView(view === "general" ? "timetable" : "general")}
+            <button
+              className={`w-7 h-7 p-1 rounded-lg text-light_gray ${
+                showPath ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
+              } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
+              onClick={() => setShowPath((prev) => !prev)}
+            >
+              {showPath ? <PiPathBold /> : <PiPath />}
+            </button>
+          </Tooltip>
+          <Tooltip
+            content={t("Details:details")}
+            delay={tooltipDelay}
+            showArrow={true}
+            classNames={tooltipStyle}
+            placement="right"
           >
-            {view === "timetable" ? (
-              <IoInformationCircle className="w-4 h-4 m-auto" />
-            ) : (
-              <IoInformationCircleOutline className="w-4 h-4 m-auto" />
-            )}
-          </button>
+            <button
+              className={`w-7 h-7 p-0.5 rounded-lg ${
+                view === "timetable" ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
+              } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
+              onClick={() => setView(view === "general" ? "timetable" : "general")}
+            >
+              {view === "timetable" ? (
+                <IoInformationCircle className="w-4 h-4 m-auto" />
+              ) : (
+                <IoInformationCircleOutline className="w-4 h-4 m-auto" />
+              )}
+            </button>
+          </Tooltip>
           {/* <button
             className={`w-7 h-7 p-0.5 rounded-lg ${
               view === "timetable" ? "bg-light_primary_dark dark:bg-primary_dark" : "bg-light_primary dark:bg-primary"
-            } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
+              } border-2 border-slate-400 dark:border-slate-600 text-primary_light dark:text-light_gray hover:bg-slate-400 dark:hover:bg-slate-600`}
             onClick={() => setView(view === "general" ? "timetable" : "general")}
           >
             {view === "timetable" ? (
