@@ -169,6 +169,10 @@ export const trainStops = [
   { name: "Sosnowiec Porąbka", pos: [50.272112, 19.216257] },
   { name: "Tunel", pos: [50.4336, 19.99125] },
   { name: "Warszawa Centralna", pos: [52.22883, 21.003176] },
+  { name: "Warszawa Ochota", pos: [52.2258261, 20.9908363] },
+  { name: "Warszawa Powiśle", pos: [52.2337094, 21.0281284] },
+  { name: "Warszawa Stadion", pos: [52.244748, 21.0439548] },
+  { name: "Warszawa Śródmieście", pos: [52.2293791, 21.0075854] },
   { name: "Warszawa Ursus", pos: [52.19641, 20.885262] },
   { name: "Warszawa Ursus - Niedźwiadek", pos: [52.19147, 20.87002] },
   { name: "Warszawa Włochy", pos: [52.206088, 20.914575] },
@@ -180,9 +184,7 @@ export const trainStops = [
   { name: "Zarzecze", pos: [50.36337, 19.699] },
   { name: "Zawiercie Borowe Pole", pos: [50.511078, 19.398637] },
   { name: "Zawiercie", pos: [50.48102, 19.42313] },
-] as const;
 
-export const newTrainStops = [
   // Tunel - Kraków
   { name: "Baranówka", pos: [50.14658, 20.09541] },
   { name: "Dziadówki", pos: [50.39915, 20.00838] },
@@ -198,6 +200,10 @@ export const newTrainStops = [
   { name: "Smroków", pos: [50.27471, 20.04668] },
   { name: "Szczepanowice", pos: [50.30115, 20.02466] },
   { name: "Zastów", pos: [50.12378, 20.06908] },
+] as const;
+
+export const newTrainStops = [
+  { name: "Warszawa Ursus Północny", pos: [52.2056548, 20.8898458] },
 
   // Łódź DLC
   { name: "Bedoń", pos: [51.73199, 19.64235] },
