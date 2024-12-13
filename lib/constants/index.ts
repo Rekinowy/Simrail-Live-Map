@@ -42,6 +42,7 @@ export const trains: TrainsType = {
   "EN57/EN57-1181": { img: "/en57-1181.png", name: "EN57-1181", length: 64.2, weight: 126.5 },
   "EN57/EN57-1219": { img: "/en57-1219.png", name: "EN57-1219", length: 64.2, weight: 126.5 },
   "EN57/EN57-1316": { img: "/en57-1316.png", name: "EN57-1316", length: 64.2, weight: 126.5 },
+  "EN57/EN57-1331": { img: "/en57-1331.png", name: "EN57-1331", length: 64.2, weight: 126.5 },
   "EN57/EN57-1458": { img: "/en57-1458.png", name: "EN57-1458", length: 64.2, weight: 126.5 },
   "EN57/EN57-1567": { img: "/en57-1567.png", name: "EN57-1567", length: 64.2, weight: 126.5 },
   "EN57/EN57-1571": { img: "/en57-1571.png", name: "EN57-1571", length: 64.2, weight: 126.5 },
@@ -52,6 +53,9 @@ export const trains: TrainsType = {
   "EN57/EN71-005": { img: "/en71-005.png", name: "EN71-005", length: 86.4, weight: 182 },
   "EN57/EN71-011": { img: "/en71-011.png", name: "EN71-011", length: 86.4, weight: 182 },
   "Pendolino/ED250-018 Variant": { img: "/ed250-018.png", name: "ED250-018 Pendolino", length: 187, weight: 414 },
+  "Ty2-70": { img: "/ty2-540.png", name: "Ty2-70", length: 23, weight: 98 },
+  "Ty2-347": { img: "/ty2-540.png", name: "Ty2-347", length: 23, weight: 98 },
+  "Ty2-477": { img: "/ty2-540.png", name: "Ty2-477", length: 23, weight: 98 },
   "Ty2-540": { img: "/ty2-540.png", name: "Ty2-540", length: 23, weight: 98 },
 } as const;
 
@@ -203,7 +207,8 @@ export const trainStops = [
 ] as const;
 
 export const newTrainStops = [
-  { name: "Warszawa Ursus Północny", pos: [52.2056548, 20.8898458] },
+  // { name: "Warszawa Ursus Północny", pos: [52.2056548, 20.8898458] },
+  // { name: "Kraków Grzegórzki", pos: [50.057065, 19.948026] },
 
   // Łódź DLC
   { name: "Bedoń", pos: [51.73199, 19.64235] },
