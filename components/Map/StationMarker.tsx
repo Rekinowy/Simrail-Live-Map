@@ -61,6 +61,10 @@ const StationMarker = ({
     lat = 50.25673;
     lng = 19.02148;
   }
+  if (stationName === "Miechów") {
+    lat = 50.35469;
+    lng = 20.011688;
+  }
 
   return (
     <>
