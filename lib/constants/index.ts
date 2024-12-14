@@ -180,7 +180,6 @@ export const trainStops = [
   { name: "Warszawa Ochota", pos: [52.2258261, 20.9908363] },
   { name: "Warszawa Powiśle", pos: [52.2337094, 21.0281284] },
   { name: "Warszawa Stadion", pos: [52.244748, 21.0439548] },
-  { name: "Warszawa Śródmieście", pos: [52.2293791, 21.0075854] },
   { name: "Warszawa Ursus", pos: [52.19641, 20.885262] },
   { name: "Warszawa Ursus - Niedźwiadek", pos: [52.19147, 20.87002] },
   { name: "Warszawa Włochy", pos: [52.206088, 20.914575] },
@@ -213,6 +212,7 @@ export const trainStops = [
 export const newTrainStops = [
   // { name: "Warszawa Ursus Północny", pos: [52.2056548, 20.8898458] },
   // { name: "Kraków Grzegórzki", pos: [50.057065, 19.948026] },
+  { name: "Warszawa Śródmieście", pos: [52.2293791, 21.0075854] },
 
   // Łódź DLC
   { name: "Bedoń", pos: [51.73199, 19.64235] },
