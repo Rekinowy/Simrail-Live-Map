@@ -1,6 +1,6 @@
 import { LatLngExpression } from "leaflet";
 
-export const path_19xxx = [
+export const path_198xx = [
   [52.255356, 21.085491],
   [52.255535, 21.084846],
   [52.255733, 21.084255],
@@ -258,7 +258,7 @@ export const path_19xxx = [
   [52.0602984, 20.4724706],
 ] as LatLngExpression[];
 
-export const path_91xxx = [
+export const path_918xx = [
   [52.061337, 20.475691],
   [52.0616, 20.476477],
   [52.062107, 20.478003],

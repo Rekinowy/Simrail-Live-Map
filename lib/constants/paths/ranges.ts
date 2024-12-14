@@ -13,6 +13,13 @@ export const ranges = [
   { min: 4100, max: 4190, path: paths.path_41xxx },
   { min: 41100, max: 41200, path: paths.path_41xxx },
 
+  // EIP/EC Gliwice/Bohumin - Warszawa/Gdynia
+  { min: 1400, max: 1490, path: paths.path_14xxx },
+  { min: 14100, max: 14200, path: paths.path_14xxx },
+  { min: 4100, max: 4190, path: paths.path_41xxx },
+  { min: 41100, max: 41200, path: paths.path_41xxx },
+  { min: 45000, max: 49000, path: paths.path_45xxx },
+
   // EIP/TLK Wrocław Gł - Warszawa
   { min: 1600, max: 1690, path: paths.path_16xxx },
   { min: 16100, max: 16200, path: paths.path_16xxx },
@@ -23,9 +30,13 @@ export const ranges = [
   { min: 1900, max: 1990, path: paths.path_19xx },
   { min: 9100, max: 9190, path: paths.path_91xx },
 
-  // RE1 Skierniewice - Warszawa
-  { min: 19000, max: 19990, path: paths.path_19xxx },
-  { min: 91000, max: 91990, path: paths.path_91xxx },
+  // R3 Ożarów - Zielonka
+  { min: 19700, max: 19790, path: paths.path_197xx },
+  { min: 91700, max: 91790, path: paths.path_917xx },
+
+  // R1 Skierniewice - Warszawa
+  { min: 19800, max: 19990, path: paths.path_198xx },
+  { min: 91800, max: 91990, path: paths.path_918xx },
 
   // TLK Kraków Gł - Poznań Gł
   { min: 37000, max: 37990, path: paths.path_37xxx },
@@ -61,6 +72,13 @@ export const ranges = [
   // REG Kielce - Kraków Płaszów
   { min: 23900, max: 23999, path: paths.path_239xx },
   { min: 32900, max: 32999, path: paths.path_329xx },
+
+  // TLK Kielce - Kraków Płaszów
+  { min: 23100, max: 32499, path: paths.path_231xx },
+  { min: 32100, max: 32499, path: paths.path_321xx },
+
+  // TLK Zakopane - Gdynia Postojowa
+  { min: 35000, max: 35999, path: paths.path_35xxx },
 
   // CARGO
   { min: 132000, max: 133000, path: paths.path_132xxx },
