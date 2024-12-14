@@ -515,6 +515,30 @@ export const cargoTrainsData = {
     length: 568,
     weight: 3240,
   },
+  "424068": {
+    length: 440,
+    weight: 2484,
+  },
+  "424070": {
+    length: 383,
+    weight: 2469,
+  },
+  "424072": {
+    length: 296,
+    weight: 1680,
+  },
+  "424074": {
+    length: 443,
+    weight: 2850,
+  },
+  "424076": {
+    length: 285,
+    weight: 1820,
+  },
+  "424078": {
+    length: 568,
+    weight: 3240,
+  },
   "441021": {
     length: 377,
     weight: 1443,
