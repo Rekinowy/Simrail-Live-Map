@@ -103,7 +103,7 @@ const TrainDetails = ({
           <img src={"/trains/" + trains[vehicles[0]]?.img} alt="train" />
         </div>
         <div className="flex flex-col items-center leading-5">
-          <h1 className="text-lg lg:text-xl">
+          <h1 className="text-lg lg:text-xl text-center">
             {trainName} <span className="font-bold">{trainNumber}</span>
           </h1>
           <h2 className="text-sm lg:text-base">{trains[locomotives[0]]?.name}</h2>
