@@ -7,18 +7,13 @@ export const ranges = [
   { min: 3100, max: 3190, path: paths.path_31xxx },
   { min: 31100, max: 31300, path: paths.path_31xxx },
 
-  // EIP/EC Gliwice/Bohumin - Warszawa
-  { min: 1400, max: 1490, path: paths.path_14xxx },
-  { min: 14100, max: 14200, path: paths.path_14xxx },
-  { min: 4100, max: 4190, path: paths.path_41xxx },
-  { min: 41100, max: 41200, path: paths.path_41xxx },
-
   // EIP/EC Gliwice/Bohumin - Warszawa/Gdynia
   { min: 1400, max: 1490, path: paths.path_14xxx },
   { min: 14100, max: 14200, path: paths.path_14xxx },
   { min: 4100, max: 4190, path: paths.path_41xxx },
   { min: 41100, max: 41200, path: paths.path_41xxx },
   { min: 45000, max: 49000, path: paths.path_45xxx },
+  { min: 54000, max: 59000, path: paths.path_54xxx },
 
   // EIP/TLK Wrocław Gł - Warszawa
   { min: 1600, max: 1690, path: paths.path_16xxx },
@@ -79,6 +74,7 @@ export const ranges = [
 
   // TLK Zakopane - Gdynia Postojowa
   { min: 35000, max: 35999, path: paths.path_35xxx },
+  { min: 53000, max: 53999, path: paths.path_53xxx },
 
   // CARGO
   { min: 132000, max: 133000, path: paths.path_132xxx },
