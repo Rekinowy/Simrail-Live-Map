@@ -10,10 +10,14 @@ export const ranges = [
   // EIP/EC Gliwice/Bohumin - Warszawa/Gdynia
   { min: 1400, max: 1490, path: paths.path_14xxx },
   { min: 14100, max: 14200, path: paths.path_14xxx },
-  { min: 4100, max: 4190, path: paths.path_41xxx },
+  { min: 4100, max: 4490, path: paths.path_41xxx },
   { min: 41100, max: 41200, path: paths.path_41xxx },
+  { min: 5400, max: 5490, path: paths.path_54xxx },
+
+  // EIP Bielsko-Biała
   { min: 45000, max: 49000, path: paths.path_45xxx },
   { min: 54000, max: 59000, path: paths.path_54xxx },
+  { min: 4500, max: 4990, path: paths.path_45xxx },
 
   // EIP/TLK Wrocław Gł - Warszawa
   { min: 1600, max: 1690, path: paths.path_16xxx },
@@ -47,7 +51,7 @@ export const ranges = [
 
   // TLK Kielce - Gliwice (p. Zawiercie)
   { min: 24100, max: 24149, path: paths.path_2412x },
-  { min: 42100, max: 42159, path: paths.path_4212x },
+  { min: 42100, max: 42149, path: paths.path_4212x },
 
   // TLK Kielce - Gliwice (p. Sędziszów)
   { min: 24150, max: 24200, path: paths.path_2417x },
