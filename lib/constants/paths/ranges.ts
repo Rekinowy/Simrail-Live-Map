@@ -60,6 +60,7 @@ export const ranges = [
 
   // REG Kielce - Kraków Płaszów
   { min: 23900, max: 23999, path: paths.path_239xx },
+  { min: 32900, max: 32999, path: paths.path_329xx },
 
   // CARGO
   { min: 132000, max: 133000, path: paths.path_132xxx },
