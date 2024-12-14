@@ -65,9 +65,6 @@ export const ranges = [
   { min: 40150, max: 40200, path: paths.path_4017x },
   { min: 40600, max: 40649, path: paths.path_4062x },
 
-  // TLK Bydgoszcz Gł - Gliwice
-  { min: 54000, max: 55000, path: paths.path_54xxx },
-
   // REG Kielce - Kraków Płaszów
   { min: 23900, max: 23999, path: paths.path_239xx },
   { min: 32900, max: 32999, path: paths.path_329xx },
