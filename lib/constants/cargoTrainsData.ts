@@ -1,52 +1,79 @@
 export const cargoTrainsData = {
-  "132001": {
-    length: 518,
-    weight: 1958,
-  },
-  "132005": {
-    length: 417,
-    weight: 1590,
-  },
-  "132009": {
-    length: 513,
-    weight: 1918,
-  },
-  "132013": {
-    length: 457,
-    weight: 1737,
-  },
-  "132017": {
-    length: 518,
-    weight: 1958,
-  },
-  "132021": {
-    length: 417,
-    weight: 1590,
-  },
-  "132025": {
-    length: 513,
-    weight: 1918,
-  },
-  "132029": {
-    length: 457,
-    weight: 1737,
-  },
-  "132033": {
-    length: 518,
-    weight: 1958,
-  },
-  "132037": {
-    length: 417,
-    weight: 1590,
-  },
-  "132041": {
-    length: 513,
-    weight: 1918,
-  },
   "132045": {
-    length: 457,
-    weight: 1737,
+    length: null,
+    weight: null,
   },
+  "132047": {
+    length: 538,
+    weight: 1768,
+  },
+  "132049": {
+    length: 489,
+    weight: 1595,
+  },
+  "132051": {
+    length: 496,
+    weight: 1584,
+  },
+  "132053": {
+    length: 478,
+    weight: 1410,
+  },
+  "132055": {
+    length: 537,
+    weight: 1698,
+  },
+  "132057": {
+    length: null,
+    weight: null,
+  },
+  "132059": {
+    length: 498,
+    weight: 1587,
+  },
+  "132061": {
+    length: 516,
+    weight: 728,
+  },
+  "132063": {
+    length: null,
+    weight: null,
+  },
+  "132065": {
+    length: 538,
+    weight: 1727,
+  },
+  "132067": {
+    length: 477,
+    weight: 1439,
+  },
+  "132069": {
+    length: null,
+    weight: null,
+  },
+  "132071": {
+    length: 529,
+    weight: 1665,
+  },
+  "132073": {
+    length: 438,
+    weight: 1452,
+  },
+  "132075": {
+    length: 477,
+    weight: 1473,
+  },
+  "132077": {
+    length: 529,
+    weight: 1628,
+  },
+  "132079": {
+    length: null,
+    weight: null,
+  },
+
+  //
+
   "142001": {
     length: 518,
     weight: 1958,

@@ -110,16 +110,18 @@ const TrainGeneralInfo = ({
             </div>
           )}
           <div className="flex flex-col gap-2">
-            <div className="flex dark:font-light">
-              <div className="flex items-center gap-3 w-1/2">
-                <PiArrowsHorizontalBold className="w-5 h-4 text-primary_dark dark:text-light_gray" />
-                <p>{totalLength} m</p>
+            {totalLength > 0 && totalWeight > 0 && (
+              <div className="flex dark:font-light">
+                <div className="flex items-center gap-3 w-1/2">
+                  <PiArrowsHorizontalBold className="w-5 h-4 text-primary_dark dark:text-light_gray" />
+                  <p>{totalLength} m</p>
+                </div>
+                <div className="flex items-center gap-3 w-1/2">
+                  <TbWeight className="w-5 h-4 text-primary_dark dark:text-light_gray" />
+                  <p>{totalWeight} t</p>
+                </div>
               </div>
-              <div className="flex items-center gap-3 w-1/2">
-                <TbWeight className="w-5 h-4 text-primary_dark dark:text-light_gray" />
-                <p>{totalWeight} t</p>
-              </div>
-            </div>
+            )}
             {wagonsList.length > 0 && (
               <div className="flex gap-3">
                 <div>

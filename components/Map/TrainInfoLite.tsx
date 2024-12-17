@@ -61,16 +61,18 @@ const TrainInfoLite = ({
   return (
     <div className="grid gap-1 mx-1">
       <div className="flex items-center">
-        <div className="flex flex-col w-1/2 px-1 gap-1 text-xs dark:font-light">
-          <div className="flex items-center gap-3">
-            <PiArrowsHorizontalBold className="w-4 h-3 text-primary_dark dark:text-light_gray" />
-            <p>{totalLength} m</p>
+        {totalLength > 0 && totalWeight > 0 && (
+          <div className="flex flex-col w-1/2 px-1 gap-1 text-xs dark:font-light">
+            <div className="flex items-center gap-3">
+              <PiArrowsHorizontalBold className="w-4 h-3 text-primary_dark dark:text-light_gray" />
+              <p>{totalLength} m</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <TbWeight className="w-4 h-3 text-primary_dark dark:text-light_gray" />
+              <p>{totalWeight} t</p>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            <TbWeight className="w-4 h-3 text-primary_dark dark:text-light_gray" />
-            <p>{totalWeight} t</p>
-          </div>
-        </div>
+        )}
         {signal && showSignalInfo && (
           <div className="flex flex-col px-1 gap-2 w-1/2">
             <div className="flex items-center gap-4">
