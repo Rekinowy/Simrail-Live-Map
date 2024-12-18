@@ -55,12 +55,12 @@ const TrainTimetable = ({
         </div>
       ) : (
         <>
-          <div className="flex gap-3 px-2 pb-1 items-center text-gray-700 dark:text-gray-300">
+          {/* <div className="flex gap-3 px-2 pb-1 items-center text-gray-700 dark:text-gray-300">
             <div>
               <GoAlertFill />
             </div>
             <div className="text-xs">{t("timetable_alert")}</div>
-          </div>
+          </div> */}
           <ul className="flex flex-col mx-2 md:mx-0 pr-2 overflow-y-auto scrollbar-thin scrollbar-thumb-light_primary_dark dark:scrollbar-thumb-primary_dark/80 scrollbar-track-light_primary_light/60 dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
             {timetable?.map(
               (

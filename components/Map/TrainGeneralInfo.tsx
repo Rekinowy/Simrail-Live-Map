@@ -12,6 +12,15 @@ import { GiCoalWagon } from "react-icons/gi";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { useState } from "react";
 import { calculateDistanceIn5Seconds } from "@/lib/utils/utils";
+import { Tooltip } from "@nextui-org/tooltip";
+
+const tooltipStyle = {
+  base: ["before:bg-light_primary_light dark:before:bg-primary_dark"],
+  content: [
+    "p-1.5 shadow-xl rounded-md",
+    "text-xs font-medium text-primary dark:text-light_gray bg-light_primary_light dark:bg-primary_dark",
+  ],
+};
 
 const TrainGeneralInfo = ({
   departure,
@@ -90,16 +99,18 @@ const TrainGeneralInfo = ({
           </div>
           {signal && showSignalInfo && (
             <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <div className="relative flex flex-col w-5 items-center gap-1">
-                  <PiTrafficSignalBold className="relative w-5 h-5 text-primary_dark dark:text-light_gray" />
-                  <div
-                    className={`absolute w-1.5 h-1.5 rounded-full shadow-[0_0px_10px_3px_rgba(0,0,0,0.2)]  ${signalStyle}`}
-                  ></div>
-                  <p className="font-semibold text-[7px] leading-[7px] text-primary_dark dark:text-light_gray">
-                    {signalName}
-                  </p>
-                </div>
+              <div className="flex items-center gap-5">
+                <Tooltip content={signalName} delay={500} classNames={tooltipStyle} placement="top">
+                  <div className="relative flex flex-col w-5 items-center gap-1  cursor-help">
+                    <PiTrafficSignalBold className="relative w-5 h-5 text-primary_dark dark:text-light_gray" />
+                    <div
+                      className={`absolute w-1.5 h-1.5 rounded-full shadow-[0_0px_10px_3px_rgba(0,0,0,0.2)]  ${signalStyle}`}
+                    ></div>
+                    <p className="font-semibold text-[8px] leading-[7px] text-primary_dark dark:text-light_gray">
+                      {signalName}
+                    </p>
+                  </div>
+                </Tooltip>
                 <div>
                   <p className="font-medium dark:font-normal">{displaySignalSpeed}</p>
                   <p className="text-[10px] font-medium dark:font-normal lg:text-xs leading-4">
