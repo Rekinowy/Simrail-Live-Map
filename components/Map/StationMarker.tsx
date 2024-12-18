@@ -83,7 +83,7 @@ const StationMarker = ({
         )}
         <Popup className="custom-popup station-popup" offset={[2, -12]} closeButton={false} autoPan={false}>
           <div className="flex h-[100px] w-[233px] rounded-md shadow-md overflow-hidden mb-2.5 justify-center">
-            <Image src={stationImage} alt="Station image" width={233} height={100} className="object-cover w-auto" />
+            <img src={stationImage} alt="Station image" width={233} height={100} className="object-cover w-auto" />
           </div>
           <div className="flex items-center justify-between font-semibold">
             <div className="max-w-[155px]">

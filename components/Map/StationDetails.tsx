@@ -1,5 +1,5 @@
 import { StationDetailsType } from "@/lib/types/types";
-import Image from "next/image";
+
 import { FaRegStar, FaStar, FaUserAlt } from "react-icons/fa";
 import { PiTimerBold } from "react-icons/pi";
 import StationDetailsLite from "./StationDetailsLite";
@@ -25,7 +25,7 @@ const StationDetails = ({
     <div className="absolute flex flex-col gap-4 top-2.5 right-3 w-64 lg:w-72 p-4 z-[1000] rounded-xl border-1 text-base border-slate-400 dark:border-slate-800 text-primary_dark dark:text-white bg-light_primary dark:bg-primary bg-opacity-90 backdrop-blur-sm">
       <div className="flex flex-col gap-3">
         <div className="relative h-full w-full rounded-lg shadow-xl overflow-hidden">
-          <Image src={stationImage} alt="Station image" width={291} height={125} className="object-cover relative" />
+          <img src={stationImage} alt="Station image" width={291} height={125} className="object-cover relative" />
           <div className="absolute top-1 left-1 px-1 text-md text-center font-bold min-w-[40px] text-slate-200 border-2 border-slate-300 rounded-[4px] bg-blue-700">
             {stationPrefix}
           </div>

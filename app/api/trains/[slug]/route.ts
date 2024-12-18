@@ -63,24 +63,24 @@ async function fetchTrainData(slug: string) {
         vehicleDLC.some((keyword) => vehicle.toLowerCase().includes(keyword.toLowerCase()))
       );
 
-      if (train.Type === "user" && (!player || steamID !== train?.TrainData?.ControlledBySteamID)) {
-        try {
-          const userApiUrl = `https://simrail-edr.emeraldnetwork.xyz/steam/${train?.TrainData?.ControlledBySteamID}`;
-          const response = await fetch(userApiUrl);
-          const steamUser = await response.json();
+      // if (train.Type === "user" && (!player || steamID !== train?.TrainData?.ControlledBySteamID)) {
+      //   try {
+      //     const userApiUrl = `https://simrail-edr.emeraldnetwork.xyz/steam/${train?.TrainData?.ControlledBySteamID}`;
+      //     const response = await fetch(userApiUrl);
+      //     const steamUser = await response.json();
 
-          if (steamUser) {
-            userData.name = steamUser.personaname;
-            userData.avatar = steamUser.avatar;
-            userData.profileUrl = steamUser.profileurl;
-          }
-        } catch (error) {
-          console.error(
-            `Błąd podczas pobierania danych użytkownika ${train?.TrainData?.ControlledBySteamID} do API Stations z API Steam:`,
-            error
-          );
-        }
-      }
+      //     if (steamUser) {
+      //       userData.name = steamUser.personaname;
+      //       userData.avatar = steamUser.avatar;
+      //       userData.profileUrl = steamUser.profileurl;
+      //     }
+      //   } catch (error) {
+      //     console.error(
+      //       `Błąd podczas pobierania danych użytkownika ${train?.TrainData?.ControlledBySteamID} do API Stations z API Steam:`,
+      //       error
+      //     );
+      //   }
+      // }
 
       if (train.EndStation === "Tarnowskie GóryTGD C") {
         train.EndStation = "Tarnowskie Góry TGD C";
