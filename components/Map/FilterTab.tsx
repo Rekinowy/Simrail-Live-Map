@@ -77,15 +77,14 @@ const FilterTab = ({
           </Select>
         </div>
       </div>
-      <div className="flex w-full justify-center">
-        <Button
+      <div className="flex w-full justify-center mt-1.5">
+        <button
           name="Show labels"
-          className="w-full bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800 text-sm"
-          size="sm"
+          className="w-full h-8 bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800 text-sm rounded-md hover:font-medium"
           onClick={() => setOpenFilter(false)}
         >
           {t("Settings:done")}
-        </Button>
+        </button>
       </div>
     </div>
   );

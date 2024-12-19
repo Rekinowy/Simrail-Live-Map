@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -47,13 +46,12 @@ const SupportModal = ({ setModalOpen }: { setModalOpen: (open: boolean) => void 
         </div>
         <div className="flex justify-center">
           <div className="flex w-full justify-center">
-            <Button
-              className="w-full bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800 text-sm"
-              size="md"
+            <button
+              className="w-full h-10 bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800 text-sm rounded-lg hover:font-medium"
               onClick={handleCloseModal}
             >
               {t("Home:close")}
-            </Button>
+            </button>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Button, Slider, Switch } from "@nextui-org/react";
+import { Slider, Switch } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import LanguageChanger from "../LanguageSelector";
 import { SettingsTabTypes } from "@/lib/types/types";
@@ -231,14 +231,13 @@ const SettingsTab = ({
         </div>
       </div>
       {/* "Done" button */}
-      <div className="flex w-full justify-center">
-        <Button
-          className="w-full bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800 text-sm"
-          size="sm"
+      <div className="flex w-full justify-center mt-1.5">
+        <button
+          className="w-full h-8 bg-light_primary dark:bg-primary border border-slate-400 dark:border-slate-800 text-sm rounded-md hover:font-medium"
           onClick={() => setOpenSettings(false)}
         >
           {t("Settings:done")}
-        </Button>
+        </button>
       </div>
     </div>
   );
