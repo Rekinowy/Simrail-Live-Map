@@ -99,7 +99,11 @@ const TrainGeneralInfo = ({
           </div>
           {signal && showSignalInfo && (
             <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-5">
+              <div
+                className={`flex items-center ${
+                  signalName.length > 8 ? "gap-5" : signalName.length > 6 ? "gap-4" : "gap-3"
+                }`}
+              >
                 <Tooltip content={signalName} delay={500} classNames={tooltipStyle} placement="top">
                   <div className="relative flex flex-col w-5 items-center gap-1  cursor-help">
                     <PiTrafficSignalBold className="relative w-5 h-5 text-primary_dark dark:text-light_gray" />
