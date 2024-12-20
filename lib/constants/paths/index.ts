@@ -43,7 +43,6 @@ export const paths = {
   path_61xxx,
   path_19xx,
   path_91xx,
-
   path_198xx,
   path_918xx,
   path_197xx,
