@@ -31,7 +31,7 @@ const ServerCounter = ({
   useEffect(() => {
     if (serverTime.data) {
       const serverDate = new Date(serverTime.data);
-      const timeOffset = ["pl3", "pl8", "de3", "de4"].includes(serverCode) ? 2 : 1;
+      const timeOffset = ["pl1", "pl4", "de2", "de3"].includes(serverCode) ? 2 : 1;
       serverDate.setHours(serverDate.getHours() - timeOffset);
       setCurrentTime(serverDate.toLocaleTimeString());
       setCurrentDate(serverDate.toLocaleDateString());
