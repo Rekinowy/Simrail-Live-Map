@@ -25,7 +25,7 @@ const CustomAttribution = ({ locale, setModalOpen }: { locale: string; setModalO
         onClick={handleOpenModal}
         className="!text-slate-700/90 dark:!text-light_gray/90 px-1 hover:underline cursor-pointer"
       >
-        Rekinowy ☕
+        Rekinowy
       </p>
     </footer>
   );

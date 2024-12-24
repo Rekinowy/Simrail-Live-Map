@@ -6,15 +6,21 @@ import { IoMdSettings } from "react-icons/io";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { useTheme } from "@/context/ThemeContext";
 import { FaFilter } from "react-icons/fa";
-// import { SiBuymeacoffee } from "react-icons/si";
 import { Tooltip } from "@nextui-org/tooltip";
 import { tooltipDelay } from "@/lib/constants/uistyles";
 import { useTranslation } from "react-i18next";
+import { SiBuymeacoffee } from "react-icons/si";
 
 const tooltipStyle = {
   content: [
     "p-1.5 shadow-xl rounded-md",
     "text-[10px] text-primary dark:text-light_gray bg-light_primary_light dark:bg-primary_dark",
+  ],
+};
+const supportTooltipStyle = {
+  content: [
+    "p-1.5 shadow-xl rounded-md",
+    "text-[10px] text-gray-100 dark:text-light_gray bg-green-700/80 dark:bg-green-900/80",
   ],
 };
 
@@ -95,14 +101,21 @@ const MapControls = ({
           </button>
         </Tooltip>
       </Control>
-      {/* <Control position="topleft">
-        <button
-          className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm !bg-green-700 dark:!bg-green-800"
-          onClick={handleOpenModal}
+      <Control position="topleft">
+        <Tooltip
+          content={t("Settings:support_me")}
+          delay={tooltipDelay}
+          classNames={supportTooltipStyle}
+          placement="right-end"
         >
-          <SiBuymeacoffee className="w-4 h-4 text-light_gray" />
-        </button>
-      </Control> */}
+          <button
+            className="flex justify-center items-center w-[30px] h-[30px] rounded-sm shadow-sm !bg-green-700 dark:!bg-green-900"
+            onClick={handleOpenModal}
+          >
+            <SiBuymeacoffee className="w-4 h-4 text-light_gray" />
+          </button>
+        </Tooltip>
+      </Control>
     </>
   );
 };

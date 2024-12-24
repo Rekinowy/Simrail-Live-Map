@@ -2,7 +2,7 @@ import Main from "@/components/Home/Main";
 import initTranslations from "@/lib/utils/i18n";
 import TranslationsProvider from "@/lib/utils/TranslationsProvider";
 
-const i18nNamespaces = ["Home"];
+const i18nNamespaces = ["Home", "Settings"];
 
 const Home = async ({ params: { locale } }: { params: { locale: string } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);

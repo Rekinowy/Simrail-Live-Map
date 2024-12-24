@@ -1,1193 +1,177 @@
 export const cargoTrainsData = {
-  "132045": {
-    length: null,
-    weight: null,
-  },
-  "132047": {
-    length: 538,
-    weight: 1768,
-  },
-  "132049": {
-    length: 489,
-    weight: 1595,
-  },
-  "132051": {
-    length: 496,
-    weight: 1584,
-  },
-  "132053": {
-    length: 478,
-    weight: 1410,
-  },
-  "132055": {
-    length: 537,
-    weight: 1698,
-  },
-  "132057": {
-    length: null,
-    weight: null,
-  },
-  "132059": {
-    length: 498,
-    weight: 1587,
-  },
-  "132061": {
-    length: 516,
-    weight: 728,
-  },
-  "132063": {
-    length: null,
-    weight: null,
-  },
-  "132065": {
-    length: 538,
-    weight: 1727,
-  },
-  "132067": {
-    length: 477,
-    weight: 1439,
-  },
-  "132069": {
-    length: null,
-    weight: null,
-  },
-  "132071": {
-    length: 529,
-    weight: 1665,
-  },
-  "132073": {
-    length: 438,
-    weight: 1452,
-  },
-  "132075": {
-    length: 477,
-    weight: 1473,
-  },
-  "132077": {
-    length: 529,
-    weight: 1628,
-  },
-  "132079": {
-    length: null,
-    weight: null,
-  },
-
+  "132045": { locos: ["ET22-911"], isDLC: true, spawnTime: "03:35", length: 340, weight: 2077 },
+  "132047": { locos: ["E6ACTa-014"], isDLC: false, spawnTime: "04:35", length: 538, weight: 1768 },
+  "132049": { locos: ["EU07-193", "EU07-096"], isDLC: false, spawnTime: "05:35", length: 489, weight: 1595 },
+  "132051": { locos: ["E186-134"], isDLC: false, spawnTime: "06:35", length: 496, weight: 1584 },
+  "132053": { locos: ["E6ACTa-016"], isDLC: false, spawnTime: "07:35", length: 478, weight: 1410 },
+  "132055": { locos: ["ET22-243"], isDLC: true, spawnTime: "08:35", length: 537, weight: 1698 },
+  "132057": { locos: ["EU07-153", "EU07-070"], isDLC: true, spawnTime: "09:35", length: 537, weight: 1163 },
+  "132059": { locos: ["ET25-002"], isDLC: false, spawnTime: "10:35", length: 498, weight: 1587 },
+  "132061": { locos: ["E186-929"], isDLC: false, spawnTime: "11:35", length: 516, weight: 728 },
+  "132063": { locos: ["ET22-256"], isDLC: true, spawnTime: "12:35", length: 352, weight: 2191 },
+  "132065": { locos: ["E6ACTa-014"], isDLC: false, spawnTime: "13:35", length: 538, weight: 1727 },
+  "132067": { locos: ["ET22-1163"], isDLC: true, spawnTime: "14:35", length: 477, weight: 1439 },
+  "132069": { locos: ["E186-929"], isDLC: true, spawnTime: "15:35", length: 364, weight: 769 },
+  "132071": { locos: ["EU07-096", "EU07-193"], isDLC: false, spawnTime: "16:35", length: 529, weight: 1665 },
+  "132073": { locos: ["ET25-002"], isDLC: false, spawnTime: "17:35", length: 438, weight: 1452 },
+  "132075": { locos: ["E186-134"], isDLC: false, spawnTime: "18:35", length: 477, weight: 1473 },
+  "132077": { locos: ["EU07-070", "EU07-153"], isDLC: false, spawnTime: "19:35", length: 529, weight: 1628 },
+  "132079": { locos: ["E6ACTa-016"], isDLC: true, spawnTime: "20:35", length: 378, weight: 2327 },
   //
-
-  "142001": {
-    length: 518,
-    weight: 1958,
-  },
-  "142003": {
-    length: 517,
-    weight: 1958,
-  },
-  "142005": {
-    length: 518,
-    weight: 1958,
-  },
-  "142007": {
-    length: 517,
-    weight: 1958,
-  },
-  "142009": {
-    length: 518,
-    weight: 1958,
-  },
-  "142011": {
-    length: 517,
-    weight: 1958,
-  },
-  "142013": {
-    length: 518,
-    weight: 1958,
-  },
-  "142015": {
-    length: 517,
-    weight: 1958,
-  },
-  "142017": {
-    length: 518,
-    weight: 1958,
-  },
-  "142019": {
-    length: 517,
-    weight: 1958,
-  },
-  "142021": {
-    length: 518,
-    weight: 1958,
-  },
-  "142023": {
-    length: 517,
-    weight: 1958,
-  },
-  "142025": {
-    length: 518,
-    weight: 1958,
-  },
-  "142027": {
-    length: 517,
-    weight: 1958,
-  },
-  "142029": {
-    length: 518,
-    weight: 1958,
-  },
-  "142031": {
-    length: 517,
-    weight: 1958,
-  },
-  "142033": {
-    length: 518,
-    weight: 1958,
-  },
-  "142035": {
-    length: 517,
-    weight: 1958,
-  },
-  "142037": {
-    length: 518,
-    weight: 1958,
-  },
-  "142039": {
-    length: 517,
-    weight: 1958,
-  },
-  "142041": {
-    length: 518,
-    weight: 1958,
-  },
-  "142043": {
-    length: 517,
-    weight: 1958,
-  },
-  "142045": {
-    length: 518,
-    weight: 1958,
-  },
-  "142047": {
-    length: 517,
-    weight: 1958,
-  },
-  "144251": {
-    length: 491,
-    weight: 960,
-  },
-  "144253": {
-    length: 554,
-    weight: 880,
-  },
-  "144255": {
-    length: 412,
-    weight: 644,
-  },
-  "144257": {
-    length: 424,
-    weight: 840,
-  },
-  "144259": {
-    length: 296,
-    weight: 480,
-  },
-  "144263": {
-    length: 285,
-    weight: 560,
-  },
-  "144265": {
-    length: 582,
-    weight: 920,
-  },
-  "144267": {
-    length: 491,
-    weight: 960,
-  },
-  "144269": {
-    length: 554,
-    weight: 880,
-  },
-  "144271": {
-    length: 412,
-    weight: 644,
-  },
-  "144273": {
-    length: 424,
-    weight: 840,
-  },
-  "144275": {
-    length: 296,
-    weight: 480,
-  },
-  "144279": {
-    length: 285,
-    weight: 560,
-  },
-  "144281": {
-    length: 582,
-    weight: 920,
-  },
-  "144283": {
-    length: 491,
-    weight: 960,
-  },
-  "144285": {
-    length: 554,
-    weight: 880,
-  },
-  "144287": {
-    length: 412,
-    weight: 644,
-  },
-  "144289": {
-    length: 424,
-    weight: 840,
-  },
-  "144291": {
-    length: 296,
-    weight: 480,
-  },
-  "144295": {
-    length: 285,
-    weight: 560,
-  },
-  "144297": {
-    length: 582,
-    weight: 920,
-  },
-  "243513": {
-    length: 266,
-    weight: 1580,
-  },
-  "243517": {
-    length: 443,
-    weight: 2520,
-  },
-  "243521": {
-    length: 364,
-    weight: 2164,
-  },
-  "243525": {
-    length: 527,
-    weight: 2784,
-  },
-  "243529": {
-    length: 266,
-    weight: 1580,
-  },
-  "243533": {
-    length: 443,
-    weight: 2520,
-  },
-  "243537": {
-    length: 364,
-    weight: 2164,
-  },
-  "243541": {
-    length: 527,
-    weight: 2784,
-  },
-  "243545": {
-    length: 266,
-    weight: 1580,
-  },
-  "243549": {
-    length: 443,
-    weight: 2520,
-  },
-  "243553": {
-    length: 364,
-    weight: 2164,
-  },
-  "243557": {
-    length: 527,
-    weight: 2784,
-  },
-  "244021": {
-    length: 438,
-    weight: 2602,
-  },
-  "244025": {
-    length: 443,
-    weight: 2340,
-  },
-  "244029": {
-    length: 438,
-    weight: 2602,
-  },
-  "244033": {
-    length: 443,
-    weight: 2340,
-  },
-  "244037": {
-    length: 438,
-    weight: 2602,
-  },
-  "244041": {
-    length: 443,
-    weight: 2340,
-  },
-  "244045": {
-    length: 438,
-    weight: 2602,
-  },
-  "244049": {
-    length: 443,
-    weight: 2340,
-  },
-  "244053": {
-    length: 438,
-    weight: 2602,
-  },
-  "244057": {
-    length: 443,
-    weight: 2340,
-  },
-  "244061": {
-    length: 438,
-    weight: 2602,
-  },
-  "244065": {
-    length: 443,
-    weight: 2340,
-  },
-  "412002": {
-    length: 518,
-    weight: 2208,
-  },
-  "412006": {
-    length: 457,
-    weight: 1957,
-  },
-  "412010": {
-    length: 516,
-    weight: 2172,
-  },
-  "412014": {
-    length: 497,
-    weight: 2124,
-  },
-  "412018": {
-    length: 518,
-    weight: 2208,
-  },
-  "412022": {
-    length: 457,
-    weight: 1957,
-  },
-  "412026": {
-    length: 516,
-    weight: 2172,
-  },
-  "412030": {
-    length: 497,
-    weight: 2124,
-  },
-  "412034": {
-    length: 518,
-    weight: 2208,
-  },
-  "412038": {
-    length: 457,
-    weight: 1957,
-  },
-  "412042": {
-    length: 516,
-    weight: 2172,
-  },
-  "412046": {
-    length: 497,
-    weight: 2124,
-  },
-  "413050": {
-    length: 428,
-    weight: 1640,
-  },
-  "413054": {
-    length: 429,
-    weight: 1840,
-  },
-  "413058": {
-    length: 503,
-    weight: 2270,
-  },
-  "413062": {
-    length: 428,
-    weight: 1640,
-  },
-  "413066": {
-    length: 429,
-    weight: 1840,
-  },
-  "413070": {
-    length: 503,
-    weight: 2270,
-  },
-  "413074": {
-    length: 428,
-    weight: 1640,
-  },
-  "413078": {
-    length: 429,
-    weight: 1840,
-  },
-  "413082": {
-    length: 503,
-    weight: 2270,
-  },
-  "413086": {
-    length: 428,
-    weight: 1640,
-  },
-  "413090": {
-    length: 429,
-    weight: 1840,
-  },
-  "413094": {
-    length: 503,
-    weight: 2270,
-  },
-  "424020": {
-    length: 518,
-    weight: 2599,
-  },
-  "424022": {
-    length: 568,
-    weight: 3240,
-  },
-  "424024": {
-    length: 440,
-    weight: 2484,
-  },
-  "424026": {
-    length: 383,
-    weight: 2469,
-  },
-  "424028": {
-    length: 296,
-    weight: 1680,
-  },
-  "424030": {
-    length: 443,
-    weight: 2850,
-  },
-  "424032": {
-    length: 285,
-    weight: 1820,
-  },
-  "424034": {
-    length: 568,
-    weight: 3240,
-  },
-  "424036": {
-    length: 518,
-    weight: 2599,
-  },
-  "424038": {
-    length: 568,
-    weight: 3240,
-  },
-  "424040": {
-    length: 440,
-    weight: 2484,
-  },
-  "424042": {
-    length: 383,
-    weight: 2469,
-  },
-  "424044": {
-    length: 296,
-    weight: 1680,
-  },
-  "424046": {
-    length: 443,
-    weight: 2850,
-  },
-  "424048": {
-    length: 285,
-    weight: 1820,
-  },
-  "424050": {
-    length: 568,
-    weight: 3240,
-  },
-  "424052": {
-    length: 518,
-    weight: 2599,
-  },
-  "424054": {
-    length: 568,
-    weight: 3240,
-  },
-  "424056": {
-    length: 440,
-    weight: 2484,
-  },
-  "424058": {
-    length: 383,
-    weight: 2469,
-  },
-  "424060": {
-    length: 296,
-    weight: 1680,
-  },
-  "424062": {
-    length: 443,
-    weight: 2850,
-  },
-  "424064": {
-    length: 285,
-    weight: 1820,
-  },
-  "424066": {
-    length: 568,
-    weight: 3240,
-  },
-  "424068": {
-    length: 440,
-    weight: 2484,
-  },
-  "424070": {
-    length: 383,
-    weight: 2469,
-  },
-  "424072": {
-    length: 296,
-    weight: 1680,
-  },
-  "424074": {
-    length: 443,
-    weight: 2850,
-  },
-  "424076": {
-    length: 285,
-    weight: 1820,
-  },
-  "424078": {
-    length: 568,
-    weight: 3240,
-  },
-  "441021": {
-    length: 377,
-    weight: 1443,
-  },
-  "441023": {
-    length: 538,
-    weight: 2011,
-  },
-  "441025": {
-    length: 374,
-    weight: 1403,
-  },
-  "441027": {
-    length: 377,
-    weight: 1443,
-  },
-  "441029": {
-    length: 538,
-    weight: 2011,
-  },
-  "441031": {
-    length: 374,
-    weight: 1403,
-  },
-  "441033": {
-    length: 377,
-    weight: 1443,
-  },
-  "441035": {
-    length: 538,
-    weight: 2011,
-  },
-  "441037": {
-    length: 374,
-    weight: 1403,
-  },
-  "441039": {
-    length: 377,
-    weight: 1443,
-  },
-  "441041": {
-    length: 538,
-    weight: 2011,
-  },
-  "441043": {
-    length: 374,
-    weight: 1403,
-  },
-  "441045": {
-    length: 377,
-    weight: 1443,
-  },
-  "441047": {
-    length: 538,
-    weight: 2011,
-  },
-  "441049": {
-    length: 374,
-    weight: 1403,
-  },
-  "441051": {
-    length: 377,
-    weight: 1443,
-  },
-  "441053": {
-    length: 538,
-    weight: 2011,
-  },
-  "441055": {
-    length: 374,
-    weight: 1403,
-  },
-  "441057": {
-    length: 377,
-    weight: 1443,
-  },
-  "441059": {
-    length: 538,
-    weight: 2011,
-  },
-  "441061": {
-    length: 374,
-    weight: 1403,
-  },
-  "441063": {
-    length: 377,
-    weight: 1443,
-  },
-  "441065": {
-    length: 538,
-    weight: 2011,
-  },
-  "441067": {
-    length: 374,
-    weight: 1403,
-  },
-  "442001": {
-    length: 417,
-    weight: 1390,
-  },
-  "442003": {
-    length: 498,
-    weight: 1644,
-  },
-  "442005": {
-    length: 417,
-    weight: 1390,
-  },
-  "442007": {
-    length: 498,
-    weight: 1644,
-  },
-  "442009": {
-    length: 417,
-    weight: 1390,
-  },
-  "442011": {
-    length: 498,
-    weight: 1644,
-  },
-  "442013": {
-    length: 417,
-    weight: 1390,
-  },
-  "442015": {
-    length: 498,
-    weight: 1644,
-  },
-  "442017": {
-    length: 417,
-    weight: 1390,
-  },
-  "442019": {
-    length: 498,
-    weight: 1644,
-  },
-  "442021": {
-    length: 417,
-    weight: 1390,
-  },
-  "442023": {
-    length: 498,
-    weight: 1644,
-  },
-  "442025": {
-    length: 417,
-    weight: 1390,
-  },
-  "442027": {
-    length: 498,
-    weight: 1644,
-  },
-  "442029": {
-    length: 417,
-    weight: 1390,
-  },
-  "442031": {
-    length: 498,
-    weight: 1644,
-  },
-  "442033": {
-    length: 417,
-    weight: 1390,
-  },
-  "442035": {
-    length: 498,
-    weight: 1644,
-  },
-  "442037": {
-    length: 417,
-    weight: 1390,
-  },
-  "442039": {
-    length: 498,
-    weight: 1644,
-  },
-  "442041": {
-    length: 417,
-    weight: 1390,
-  },
-  "442043": {
-    length: 498,
-    weight: 1644,
-  },
-  "442045": {
-    length: 417,
-    weight: 1390,
-  },
-  "442047": {
-    length: 498,
-    weight: 1644,
-  },
-  "443913": {
-    length: 318,
-    weight: 1373,
-  },
-  "443915": {
-    length: 259,
-    weight: 1122,
-  },
-  "443917": {
-    length: 318,
-    weight: 1373,
-  },
-  "443919": {
-    length: 259,
-    weight: 1122,
-  },
-  "443921": {
-    length: 318,
-    weight: 1373,
-  },
-  "443923": {
-    length: 259,
-    weight: 1122,
-  },
-  "443925": {
-    length: 318,
-    weight: 1373,
-  },
-  "443927": {
-    length: 259,
-    weight: 1122,
-  },
-  "443929": {
-    length: 318,
-    weight: 1373,
-  },
-  "443931": {
-    length: 259,
-    weight: 1122,
-  },
-  "443933": {
-    length: 318,
-    weight: 1373,
-  },
-  "443935": {
-    length: 259,
-    weight: 1122,
-  },
-  "443937": {
-    length: 318,
-    weight: 1373,
-  },
-  "443939": {
-    length: 259,
-    weight: 1122,
-  },
-  "443941": {
-    length: 318,
-    weight: 1373,
-  },
-  "443943": {
-    length: 259,
-    weight: 1122,
-  },
-  "443945": {
-    length: 318,
-    weight: 1373,
-  },
-  "443947": {
-    length: 259,
-    weight: 1122,
-  },
-  "443949": {
-    length: 318,
-    weight: 1373,
-  },
-  "443951": {
-    length: 259,
-    weight: 1122,
-  },
-  "443953": {
-    length: 318,
-    weight: 1373,
-  },
-  "443955": {
-    length: 259,
-    weight: 1122,
-  },
-  "443957": {
-    length: 318,
-    weight: 1373,
-  },
-  "443959": {
-    length: 259,
-    weight: 1122,
-  },
-  "464000": {
-    length: 464,
-    weight: 2991,
-  },
-  "464002": {
-    length: 511,
-    weight: 2920,
-  },
-  "464004": {
-    length: 532,
-    weight: 3426,
-  },
-  "464006": {
-    length: 369,
-    weight: 2084,
-  },
-  "464008": {
-    length: 464,
-    weight: 2991,
-  },
-  "464010": {
-    length: 511,
-    weight: 2920,
-  },
-  "464012": {
-    length: 532,
-    weight: 3426,
-  },
-  "464014": {
-    length: 369,
-    weight: 2084,
-  },
-  "464016": {
-    length: 464,
-    weight: 2991,
-  },
-  "464018": {
-    length: 511,
-    weight: 2920,
-  },
-  "464020": {
-    length: 532,
-    weight: 3426,
-  },
-  "464022": {
-    length: 369,
-    weight: 2084,
-  },
-  "464024": {
-    length: 464,
-    weight: 2991,
-  },
-  "464026": {
-    length: 511,
-    weight: 2920,
-  },
-  "464028": {
-    length: 532,
-    weight: 3426,
-  },
-  "464030": {
-    length: 369,
-    weight: 2084,
-  },
-  "464032": {
-    length: 464,
-    weight: 2991,
-  },
-  "464034": {
-    length: 511,
-    weight: 2920,
-  },
-  "464036": {
-    length: 532,
-    weight: 3426,
-  },
-  "464038": {
-    length: 369,
-    weight: 2084,
-  },
-  "464040": {
-    length: 464,
-    weight: 2991,
-  },
-  "464042": {
-    length: 511,
-    weight: 2920,
-  },
-  "464044": {
-    length: 532,
-    weight: 3426,
-  },
-  "464046": {
-    length: 369,
-    weight: 2084,
-  },
-  "629000": {
-    length: 417,
-    weight: 1790,
-  },
-  "629004": {
-    length: 454,
-    weight: 1477,
-  },
-  "629008": {
-    length: 478,
-    weight: 3078,
-  },
-  "629012": {
-    length: 417,
-    weight: 1790,
-  },
-  "629016": {
-    length: 454,
-    weight: 1477,
-  },
-  "629020": {
-    length: 478,
-    weight: 3078,
-  },
-  "629024": {
-    length: 417,
-    weight: 1790,
-  },
-  "629028": {
-    length: 454,
-    weight: 1477,
-  },
-  "629032": {
-    length: 478,
-    weight: 3078,
-  },
-  "629036": {
-    length: 417,
-    weight: 1790,
-  },
-  "629040": {
-    length: 454,
-    weight: 1477,
-  },
-  "629044": {
-    length: 478,
-    weight: 3078,
-  },
-  "649052": {
-    length: 440,
-    weight: 2184,
-  },
-  "649056": {
-    length: 418,
-    weight: 1390,
-  },
-  "649060": {
-    length: 440,
-    weight: 2184,
-  },
-  "649064": {
-    length: 418,
-    weight: 1390,
-  },
-  "649068": {
-    length: 440,
-    weight: 2184,
-  },
-  "649072": {
-    length: 418,
-    weight: 1390,
-  },
-  "649076": {
-    length: 440,
-    weight: 2184,
-  },
-  "649080": {
-    length: 418,
-    weight: 1390,
-  },
-  "649084": {
-    length: 440,
-    weight: 2184,
-  },
-  "649088": {
-    length: 418,
-    weight: 1390,
-  },
-  "649092": {
-    length: 440,
-    weight: 2184,
-  },
-  "649096": {
-    length: 418,
-    weight: 1390,
-  },
-  "414030": {
-    length: 518,
-    weight: 2208,
-  },
-  "414032": {
-    length: 397,
-    weight: 2556,
-  },
-  "414034": {
-    length: 518,
-    weight: 2208,
-  },
-  "414036": {
-    length: 397,
-    weight: 2556,
-  },
-  "414038": {
-    length: 518,
-    weight: 2208,
-  },
-  "414040": {
-    length: 397,
-    weight: 2556,
-  },
-  "414042": {
-    length: 518,
-    weight: 2208,
-  },
-  "414044": {
-    length: 397,
-    weight: 2556,
-  },
-  "414046": {
-    length: 518,
-    weight: 2208,
-  },
-  "414048": {
-    length: 397,
-    weight: 2556,
-  },
-  "414050": {
-    length: 518,
-    weight: 2208,
-  },
-  "414052": {
-    length: 397,
-    weight: 2556,
-  },
-  "414054": {
-    length: 518,
-    weight: 2208,
-  },
-  "414056": {
-    length: 397,
-    weight: 2556,
-  },
-  "414058": {
-    length: 518,
-    weight: 2208,
-  },
-  "414060": {
-    length: 397,
-    weight: 2556,
-  },
-  "414062": {
-    length: 518,
-    weight: 2208,
-  },
-  "414064": {
-    length: 397,
-    weight: 2556,
-  },
-  "414066": {
-    length: 518,
-    weight: 2208,
-  },
-  "414068": {
-    length: 397,
-    weight: 2556,
-  },
-  "414070": {
-    length: 518,
-    weight: 2208,
-  },
-  "414072": {
-    length: 397,
-    weight: 2556,
-  },
-  "414074": {
-    length: 518,
-    weight: 2208,
-  },
-  "414076": {
-    length: 397,
-    weight: 2556,
-  },
-  "445014": {
-    length: 219,
-    weight: 559,
-  },
-  "445018": {
-    length: 336,
-    weight: 527,
-  },
-  "445022": {
-    length: 457,
-    weight: 637,
-  },
-  "445026": {
-    length: 219,
-    weight: 559,
-  },
-  "445030": {
-    length: 336,
-    weight: 527,
-  },
-  "445034": {
-    length: 457,
-    weight: 637,
-  },
-  "445038": {
-    length: 219,
-    weight: 559,
-  },
-  "445042": {
-    length: 336,
-    weight: 527,
-  },
-  "445046": {
-    length: 457,
-    weight: 637,
-  },
-  "445050": {
-    length: 219,
-    weight: 559,
-  },
-  "445054": {
-    length: 336,
-    weight: 527,
-  },
-  "445058": {
-    length: 457,
-    weight: 637,
-  },
+  "144201": { locos: ["EU07-096"], isDLC: false, spawnTime: "03:41", length: 474, weight: 621 },
+  "144203": { locos: ["E186-929"], isDLC: false, spawnTime: "04:41", length: 576, weight: 1586 },
+  "144205": { locos: ["ET22-644"], isDLC: true, spawnTime: "05:41", length: 474, weight: 621 },
+  "144207": { locos: ["E6ACTadb-027"], isDLC: false, spawnTime: "06:41", length: 330, weight: 1827 },
+  "144209": { locos: ["EU07-153"], isDLC: false, spawnTime: "07:41", length: 474, weight: 1541 },
+  "144211": { locos: ["E186-134"], isDLC: true, spawnTime: "08:41", length: 352, weight: 2009 },
+  "144213": { locos: ["E6ACTa-014"], isDLC: false, spawnTime: "09:41", length: 554, weight: 3160 },
+  "144215": { locos: ["ET22-243"], isDLC: true, spawnTime: "10:41", length: 377, weight: 787 },
+  "144217": { locos: ["EU07-070"], isDLC: false, spawnTime: "11:41", length: 454, weight: 1747 },
+  "144219": { locos: ["ET22-911"], isDLC: true, spawnTime: "12:41", length: 608, weight: 2675 },
+  "144221": { locos: ["E186-929"], isDLC: false, spawnTime: "13:41", length: 541, weight: 2281 },
+  "144223": { locos: ["E6ACTadb-027"], isDLC: false, spawnTime: "14:41", length: 455, weight: 2434 },
+  "144225": { locos: ["EU07-193"], isDLC: false, spawnTime: "15:41", length: 311, weight: 1702 },
+  "144227": { locos: ["E186-134"], isDLC: false, spawnTime: "16:41", length: 596, weight: 2361 },
+  "144229": { locos: ["EU07-153"], isDLC: false, spawnTime: "17:41", length: 507, weight: 780 },
+  "144231": { locos: ["ET25-002"], isDLC: true, spawnTime: "18:41", length: 606, weight: 3253 },
+  "144233": { locos: ["ET22-911"], isDLC: true, spawnTime: "19:41", length: 412, weight: 2210 },
+  "144235": { locos: ["E6ACTadb-027"], isDLC: false, spawnTime: "20:41", length: 612, weight: 3357 },
+  "144237": { locos: ["EU07-193"], isDLC: false, spawnTime: "21:41", length: 338, weight: 1795 },
+  "144239": { locos: ["ET22-256"], isDLC: true, spawnTime: "22:41", length: 414, weight: 2580 },
+  "144241": { locos: ["EU07-070"], isDLC: false, spawnTime: "23:41", length: 533, weight: 691 },
+  "144295": { locos: ["E6ACTa-016"], isDLC: false, spawnTime: "00:41", length: 598, weight: 2336 },
+  "144297": { locos: ["E6ACTadb-027"], isDLC: false, spawnTime: "01:41", length: 610, weight: 3268 },
+  "144299": { locos: ["ET22-1163"], isDLC: true, spawnTime: "02:41", length: 518, weight: 3278 },
+  //
+  "412010": { locos: ["E186-929"], isDLC: false, spawnTime: "00:59", length: 516, weight: 1532 },
+  "412012": { locos: ["ET22-644"], isDLC: true, spawnTime: "01:59", length: 497, weight: 1894 },
+  "412014": { locos: ["ET25-002"], isDLC: false, spawnTime: "02:59", length: 478, weight: 1876 },
+  "412016": { locos: ["EU07-193", "EU07-096"], isDLC: false, spawnTime: "03:59", length: 450, weight: 1386 },
+  "412018": { locos: ["E186-134"], isDLC: false, spawnTime: "04:59", length: 496, weight: 1508 },
+  "412020": { locos: ["E6ACTa-014"], isDLC: false, spawnTime: "05:59", length: 538, weight: 1691 },
+  "412022": { locos: ["ET22-1163"], isDLC: true, spawnTime: "06:59", length: 457, weight: 1785 },
+  "412024": { locos: ["E6ACTa-016"], isDLC: false, spawnTime: "07:59", length: 518, weight: 708 },
+  "412026": { locos: ["EU07-070", "EU07-153"], isDLC: false, spawnTime: "08:59", length: 549, weight: 1773 },
+  "412028": { locos: ["ET25-002"], isDLC: false, spawnTime: "09:59", length: 518, weight: 1647 },
+  "412030": { locos: ["ET22-256"], isDLC: true, spawnTime: "10:59", length: 457, weight: 1799 },
+  "412032": { locos: ["E6ACTa-014"], isDLC: false, spawnTime: "11:59", length: 538, weight: 1768 },
+  "412034": { locos: ["ET22-243"], isDLC: true, spawnTime: "12:59", length: 517, weight: 1635 },
+  "412036": { locos: ["E6ACTa-016"], isDLC: false, spawnTime: "13:59", length: 518, weight: 1708 },
+  "412038": { locos: ["ET22-911"], isDLC: true, spawnTime: "14:59", length: 537, weight: 1798 },
+  "412040": { locos: ["E186-929"], isDLC: false, spawnTime: "15:59", length: 417, weight: 1607 },
+  "412042": { locos: ["ET25-002"], isDLC: false, spawnTime: "16:59", length: 518, weight: 708 },
+  "412044": { locos: ["ET22-1163"], isDLC: true, spawnTime: "17:59", length: 517, weight: 1596 },
+  "412046": { locos: ["EU07-153", "EU07-070"], isDLC: false, spawnTime: "18:59", length: 549, weight: 1773 },
+  "412048": { locos: ["E6ACTa-014"], isDLC: false, spawnTime: "19:59", length: 518, weight: 1685 },
+  "412050": { locos: ["ET22-243"], isDLC: true, spawnTime: "20:59", length: 537, weight: 1712 },
+  "412052": { locos: ["E186-134"], isDLC: false, spawnTime: "21:59", length: 516, weight: 1663 },
+  "412054": { locos: ["E6ACTa-016"], isDLC: false, spawnTime: "22:59", length: 438, weight: 1715 },
+  "412056": { locos: ["EU07-096", "EU07-193"], isDLC: false, spawnTime: "23:59", length: 549, weight: 771 },
+  //
+  "424000": { locos: ["ET22-256"], isDLC: true, spawnTime: "23:30", length: 518, weight: 3026 },
+  "424050": { locos: ["EU07-096", "EU07-193"], isDLC: false, spawnTime: "00:30", length: 593, weight: 3173 },
+  "424052": { locos: ["E6ACTa-016"], isDLC: false, spawnTime: "01:30", length: 596, weight: 3267 },
+  "424054": { locos: ["ET22-911"], isDLC: true, spawnTime: "02:30", length: 464, weight: 2711 },
+  "424056": { locos: ["ET22-243"], isDLC: true, spawnTime: "03:30", length: 609, weight: 3257 },
+  "424058": { locos: ["EU07-070"], isDLC: false, spawnTime: "04:30", length: 324, weight: 1733 },
+  "424060": { locos: ["E186-134"], isDLC: false, spawnTime: "05:30", length: 454, weight: 2400 },
+  "424062": { locos: ["ET22-1163"], isDLC: true, spawnTime: "06:30", length: 474, weight: 2639 },
+  "424064": { locos: ["EU07-068"], isDLC: false, spawnTime: "07:30", length: 338, weight: 1791 },
+  "424066": { locos: ["ET22-836"], isDLC: true, spawnTime: "08:30", length: 623, weight: 3333 },
+  "424068": { locos: ["EU07-070", "EU07-153"], isDLC: false, spawnTime: "09:30", length: 509, weight: 2721 },
+  "424070": { locos: ["ET22-243"], isDLC: true, spawnTime: "10:30", length: 518, weight: 3063 },
+  "424072": { locos: ["E6ACTa-014"], isDLC: false, spawnTime: "11:30", length: 568, weight: 3041 },
+  "424074": { locos: ["EU07-096"], isDLC: false, spawnTime: "12:30", length: 282, weight: 1545 },
+  "424076": { locos: ["E186-929"], isDLC: false, spawnTime: "13:30", length: 426, weight: 2269 },
+  "424078": { locos: ["ET22-644"], isDLC: true, spawnTime: "14:30", length: 496, weight: 2726 },
+  "424080": { locos: ["EU07-193"], isDLC: false, spawnTime: "15:30", length: 296, weight: 1633 },
+  "424082": { locos: ["EU07-153", "EU07-070"], isDLC: false, spawnTime: "16:30", length: 382, weight: 2090 },
+  "424084": { locos: ["E186-134"], isDLC: false, spawnTime: "17:30", length: 383, weight: 2082 },
+  "424086": { locos: ["ET22-1163"], isDLC: true, spawnTime: "18:30", length: 518, weight: 3019 },
+  "424088": { locos: ["ET25-002"], isDLC: false, spawnTime: "19:30", length: 568, weight: 3122 },
+  "424090": { locos: ["EU07-153"], isDLC: false, spawnTime: "20:30", length: 338, weight: 1789 },
+  "424092": { locos: ["E186-929"], isDLC: true, spawnTime: "21:30", length: 417, weight: 2319 },
+  "424094": { locos: ["EU07-193", "EU07-096"], isDLC: false, spawnTime: "22:30", length: 565, weight: 2979 },
+  //
+  "234301": { locos: ["Unknown"], isDLC: true, spawnTime: "00:04", length: 478, weight: 2931 },
+  "234303": { locos: ["Unknown"], isDLC: false, spawnTime: "01:04", length: 434, weight: 1682 },
+  "234305": { locos: ["Unknown"], isDLC: false, spawnTime: "02:04", length: 413, weight: 756 },
+  "234307": { locos: ["Unknown"], isDLC: false, spawnTime: "03:04", length: 568, weight: 3049 },
+  "234309": { locos: ["Unknown"], isDLC: true, spawnTime: "04:04", length: 549, weight: 3378 },
+  "234311": { locos: ["Unknown"], isDLC: false, spawnTime: "05:04", length: 533, weight: 1652 },
+  "234313": { locos: ["Unknown"], isDLC: false, spawnTime: "06:04", length: 517, weight: 1579 },
+  "234315": { locos: ["Unknown"], isDLC: true, spawnTime: "07:04", length: 518, weight: 3076 },
+  "234317": { locos: ["Unknown"], isDLC: false, spawnTime: "08:04", length: 481, weight: 770 },
+  "234319": { locos: ["Unknown"], isDLC: false, spawnTime: "09:04", length: 568, weight: 3026 },
+  "234321": { locos: ["Unknown"], isDLC: false, spawnTime: "10:04", length: 255, weight: 1398 },
+  "234323": { locos: ["Unknown"], isDLC: false, spawnTime: "11:04", length: 536, weight: 2076 },
+  "234325": { locos: ["Unknown"], isDLC: true, spawnTime: "12:04", length: 512, weight: 3288 },
+  "234327": { locos: ["Unknown"], isDLC: false, spawnTime: "13:04", length: 495, weight: 2614 },
+  "234329": { locos: ["Unknown"], isDLC: false, spawnTime: "14:04", length: 343, weight: 1827 },
+  "234331": { locos: ["Unknown"], isDLC: false, spawnTime: "15:04", length: 417, weight: 554 },
+  "234333": { locos: ["Unknown"], isDLC: false, spawnTime: "16:04", length: 434, weight: 1371 },
+  "234335": { locos: ["Unknown"], isDLC: true, spawnTime: "17:04", length: 591, weight: 2828 },
+  "234337": { locos: ["Unknown"], isDLC: false, spawnTime: "18:04", length: 509, weight: 2649 },
+  "234339": { locos: ["Unknown"], isDLC: false, spawnTime: "19:04", length: 570, weight: 3114 },
+  "234341": { locos: ["Unknown"], isDLC: true, spawnTime: "20:04", length: 478, weight: 2904 },
+  "234343": { locos: ["Unknown"], isDLC: false, spawnTime: "21:04", length: 554, weight: 1890 },
+  "234345": { locos: ["Unknown"], isDLC: false, spawnTime: "22:04", length: 551, weight: 2925 },
+  "234347": { locos: ["Unknown"], isDLC: false, spawnTime: "23:04", length: 613, weight: 1349 },
+  //
+  "324200": { locos: ["Unknown"], isDLC: false, spawnTime: "00:09", length: 260, weight: 1426 },
+  "324202": { locos: ["Unknown"], isDLC: true, spawnTime: "01:09", length: 449, weight: 707 },
+  "324204": { locos: ["Unknown"], isDLC: false, spawnTime: "02:09", length: 573, weight: 1405 },
+  "324206": { locos: ["Unknown"], isDLC: false, spawnTime: "03:09", length: 300, weight: 532 },
+  "324208": { locos: ["Unknown"], isDLC: false, spawnTime: "04:09", length: 537, weight: 2937 },
+  "324210": { locos: ["Unknown"], isDLC: true, spawnTime: "05:09", length: 549, weight: 3377 },
+  "324212": { locos: ["Unknown"], isDLC: false, spawnTime: "06:09", length: 568, weight: 2419 },
+  "324214": { locos: ["Unknown"], isDLC: true, spawnTime: "07:09", length: 563, weight: 2183 },
+  "324216": { locos: ["Unknown"], isDLC: true, spawnTime: "08:09", length: 544, weight: 3061 },
+  "324218": { locos: ["Unknown"], isDLC: false, spawnTime: "09:09", length: 437, weight: 680 },
+  "324220": { locos: ["Unknown"], isDLC: false, spawnTime: "10:09", length: 516, weight: 1532 },
+  "324222": { locos: ["Unknown"], isDLC: true, spawnTime: "11:09", length: 386, weight: 831 },
+  "324224": { locos: ["Unknown"], isDLC: true, spawnTime: "12:09", length: 496, weight: 2584 },
+  "324226": { locos: ["Unknown"], isDLC: false, spawnTime: "13:09", length: 538, weight: 2100 },
+  "324228": { locos: ["Unknown"], isDLC: true, spawnTime: "14:09", length: 396, weight: 2249 },
+  "324230": { locos: ["Unknown"], isDLC: false, spawnTime: "15:09", length: 445, weight: 667 },
+  "324232": { locos: ["Unknown"], isDLC: false, spawnTime: "16:09", length: 538, weight: 1973 },
+  "324234": { locos: ["Unknown"], isDLC: false, spawnTime: "17:09", length: 434, weight: 1369 },
+  "324236": { locos: ["Unknown"], isDLC: false, spawnTime: "18:09", length: 539, weight: 2788 },
+  "324238": { locos: ["Unknown"], isDLC: false, spawnTime: "19:09", length: 385, weight: 1890 },
+  "324240": { locos: ["Unknown"], isDLC: false, spawnTime: "20:09", length: 569, weight: 2092 },
+  "324242": { locos: ["Unknown"], isDLC: true, spawnTime: "21:09", length: 463, weight: 1018 },
+  "324244": { locos: ["Unknown"], isDLC: false, spawnTime: "22:09", length: 496, weight: 1918 },
+  "324246": { locos: ["Unknown"], isDLC: false, spawnTime: "23:09", length: 394, weight: 1459 },
+  //
+  "344100": { locos: ["Unknown"], isDLC: false, spawnTime: "00:27", length: 559, weight: 2204 },
+  "344102": { locos: ["Unknown"], isDLC: true, spawnTime: "01:27", length: 565, weight: 3364 },
+  "344104": { locos: ["Unknown"], isDLC: false, spawnTime: "02:27", length: 328, weight: 1719 },
+  "344108": { locos: ["Unknown"], isDLC: false, spawnTime: "04:27", length: 552, weight: 823 },
+  "344112": { locos: ["Unknown"], isDLC: false, spawnTime: "06:27", length: 525, weight: 2640 },
+  "344116": { locos: ["Unknown"], isDLC: false, spawnTime: "08:27", length: 527, weight: 2125 },
+  "344120": { locos: ["Unknown"], isDLC: false, spawnTime: "10:27", length: 354, weight: 480 },
+  "344124": { locos: ["Unknown"], isDLC: false, spawnTime: "12:27", length: 540, weight: 2898 },
+  "344128": { locos: ["Unknown"], isDLC: false, spawnTime: "14:27", length: 495, weight: 1635 },
+  "344132": { locos: ["Unknown"], isDLC: false, spawnTime: "16:27", length: 450, weight: 1770 },
+  "344136": { locos: ["Unknown"], isDLC: false, spawnTime: "18:27", length: 498, weight: 1611 },
+  "344140": { locos: ["Unknown"], isDLC: false, spawnTime: "20:27", length: 440, weight: 684 },
+  "344142": { locos: ["Unknown"], isDLC: true, spawnTime: "21:27", length: 377, weight: 2156 },
+  "344144": { locos: ["Unknown"], isDLC: false, spawnTime: "22:27", length: 245, weight: 1251 },
+  "344146": { locos: ["Unknown"], isDLC: false, spawnTime: "23:27", length: 424, weight: 2198 },
+  //
+  "444401": { locos: ["Unknown"], isDLC: false, spawnTime: "00:44", length: 310, weight: 500 },
+  "444403": { locos: ["Unknown"], isDLC: false, spawnTime: "01:44", length: 344, weight: 1895 },
+  "444405": { locos: ["Unknown"], isDLC: true, spawnTime: "02:44", length: 352, weight: 768 },
+  "444407": { locos: ["Unknown"], isDLC: false, spawnTime: "03:44", length: 457, weight: 1373 },
+  "444409": { locos: ["Unknown"], isDLC: false, spawnTime: "04:44", length: 310, weight: 1639 },
+  "444411": { locos: ["Unknown"], isDLC: false, spawnTime: "05:44", length: 612, weight: 1128 },
+  "444415": { locos: ["Unknown"], isDLC: true, spawnTime: "07:44", length: 545, weight: 3265 },
+  "444419": { locos: ["Unknown"], isDLC: false, spawnTime: "09:44", length: 269, weight: 1480 },
+  "444423": { locos: ["Unknown"], isDLC: false, spawnTime: "11:44", length: 596, weight: 3282 },
+  "444427": { locos: ["Unknown"], isDLC: false, spawnTime: "13:44", length: 496, weight: 743 },
+  "444431": { locos: ["Unknown"], isDLC: false, spawnTime: "15:44", length: 498, weight: 2004 },
+  "444435": { locos: ["Unknown"], isDLC: false, spawnTime: "17:44", length: 282, weight: 1495 },
+  "444439": { locos: ["Unknown"], isDLC: true, spawnTime: "19:44", length: 438, weight: 2811 },
+  "444443": { locos: ["Unknown"], isDLC: false, spawnTime: "21:44", length: 576, weight: 2222 },
+  "444447": { locos: ["Unknown"], isDLC: false, spawnTime: "23:44", length: 585, weight: 2133 },
 };
