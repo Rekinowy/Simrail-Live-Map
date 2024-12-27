@@ -16,7 +16,7 @@ type ServerDataType = {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ServersList = ({ isModalOpen }: { isModalOpen: boolean }) => {
-  const servers = useSWR("https://panel.simrail.eu:8084/servers-open", fetcher, { refreshInterval: 5000 });
+  const servers = useSWR("https://panel.simrail.eu:8084/servers-open", fetcher, { refreshInterval: 15000 });
 
   return (
     <section

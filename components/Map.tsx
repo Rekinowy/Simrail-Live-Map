@@ -63,7 +63,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   });
 
   const stations = useSWR(STATIONS_API_URL, fetcher, {
-    refreshInterval: 5000,
+    refreshInterval: 10000,
   });
 
   const isMobile = useMediaQuery({ maxWidth: 839 });

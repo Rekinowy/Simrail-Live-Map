@@ -53,7 +53,7 @@ const TrainDetails = ({
   const username = user?.name || "User";
 
   const timetable = useSWR(`/api/timetable/${serverCode}/${trainNumber}`, fetcher, {
-    refreshInterval: 5000,
+    refreshInterval: 10000,
   });
 
   const vehicleData = transformVehicles(vehicles);
