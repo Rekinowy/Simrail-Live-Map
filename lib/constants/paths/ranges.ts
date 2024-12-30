@@ -38,8 +38,8 @@ export const ranges = [
   { min: 91800, max: 91990, path: paths.path_918xx },
 
   // TLK Kraków Gł - Poznań Gł
-  { min: 37000, max: 37990, path: paths.path_37xxx },
-  { min: 73000, max: 73990, path: paths.path_73xxx },
+  { min: 3700, max: 3799, path: paths.path_37xxx },
+  { min: 7300, max: 7399, path: paths.path_73xxx },
 
   // REG Katowice - Busko Zdrój
   { min: 24900, max: 24990, path: paths.path_249xx },
@@ -95,6 +95,7 @@ export const ranges = [
   { min: 442000, max: 442990, path: paths.path_442xxx },
   { min: 443000, max: 443990, path: paths.path_443xxx },
   { min: 445000, max: 445490, path: paths.path_445xxx },
+  { min: 445500, max: 445590, path: paths.path_4455xx },
   { min: 464000, max: 465000, path: paths.path_464xxx },
   { min: 344000, max: 345000, path: paths.path_344xxx },
   { min: 324000, max: 325000, path: paths.path_324xxx },
