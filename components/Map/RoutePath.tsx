@@ -2,6 +2,7 @@ import { Polyline } from "react-leaflet";
 import { ranges } from "@/lib/constants/paths/ranges";
 import { testPath } from "@/lib/constants/paths/testPath";
 import { path_335xx0, path_335xx1, path_336xx0, path_336xx1 } from "@/lib/constants/paths/cargo/path-[335xxx-336xxx]";
+import { path_2412x, path_4212x } from "@/lib/constants/paths/passenger/path-[2412x-4212x]";
 
 const RoutePath = ({ selectedTrain }: { selectedTrain: string }) => {
   let path = null;
@@ -26,6 +27,14 @@ const RoutePath = ({ selectedTrain }: { selectedTrain: string }) => {
         break;
       }
     }
+  }
+
+  if (number == 24201) {
+    path = path_2412x;
+  }
+
+  if (number == 42200 || number == 42202) {
+    path = path_4212x;
   }
 
   if (path) {
