@@ -55,7 +55,7 @@ export const ranges = [
 
   // TLK Kielce - Gliwice (p. Sędziszów)
   { min: 24150, max: 24200, path: paths.path_2417x },
-  { min: 42150, max: 42200, path: paths.path_4217x },
+  { min: 42150, max: 42300, path: paths.path_4217x },
 
   // S41 Tychy Lodowisko - Częstochowa
   { min: 40100, max: 40149, path: paths.path_4012x },
