@@ -109,6 +109,8 @@ export const wagonNames: { [key: string]: WagonInfo } = {
   "11xa/112A_50 51 19-08 136": { name: "A9ou (112A)", length: 24.52, weight: 40 },
   "11xa/112A_51 51 19-70 003": { name: "A9ou (112A)", length: 24.52, weight: 40 },
 
+  "11xa/80s/110Ac_50 51 59-78 003-8 Variant": { name: "Bc9ou (110Ac)", length: 24.52, weight: 40 },
+
   "406Ra": { name: "Zaes (406Ra)", length: 12.3, weight: 23 },
   "406Rb": { name: "Zas (406Rb)", length: 12.3, weight: 23 },
   "408S/408S": { name: "Uacs (408S)", length: 14.1, weight: 24.5 },
