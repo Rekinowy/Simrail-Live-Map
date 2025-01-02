@@ -233,6 +233,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
               setShowPath={setShowPath}
               showDetailsLite={showDetailsLite}
               showSignalInfo={showSignalInfo}
+              timetableIndex={train.timetable_index}
             />
           )
         );

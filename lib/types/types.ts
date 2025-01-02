@@ -40,6 +40,7 @@ export type TrainDataType = {
   signal_speed: number;
   signal_distance: number;
   timezone_offset: number;
+  timetable_index: number;
   view: string;
   isDLC: boolean;
   setView: (view: string) => void;
@@ -171,6 +172,7 @@ export type TrainDetailsType = {
   showDetailsLite: boolean;
   showSignalInfo: boolean;
   isDLC: boolean;
+  timetableIndex: number;
 };
 
 export type StationDetailsType = {

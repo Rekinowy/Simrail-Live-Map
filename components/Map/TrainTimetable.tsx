@@ -12,11 +12,13 @@ const TrainTimetable = ({
   serverCode,
   timeOffset,
   showDetailsLite,
+  timetableIndex,
 }: {
   trainNumber: string;
   serverCode: string;
   timeOffset: number;
   showDetailsLite: boolean;
+  timetableIndex: number;
 }) => {
   const { t } = useTranslation();
   const lastPassedStationRef = useRef(null);

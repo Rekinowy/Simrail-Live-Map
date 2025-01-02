@@ -46,6 +46,7 @@ const TrainDetailsLite = ({
   totalLength,
   totalWeight,
   isDLC,
+  timetableIndex,
 }: TrainDetailsType & {
   username: string;
   wagons: { list: { name: string; count: number }[]; counter: number };
@@ -221,7 +222,13 @@ const TrainDetailsLite = ({
         <>
           <div className="border-t m-2 opacity-20 border-primary dark:border-white"></div>
 
-          <TrainTimetable trainNumber={trainNumber} serverCode={serverCode} timeOffset={timeOffset} showDetailsLite />
+          <TrainTimetable
+            trainNumber={trainNumber}
+            serverCode={serverCode}
+            timeOffset={timeOffset}
+            showDetailsLite
+            timetableIndex={timetableIndex}
+          />
         </>
       )}
     </div>
