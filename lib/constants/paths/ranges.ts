@@ -70,7 +70,7 @@ export const ranges = [
   { min: 32900, max: 32999, path: paths.path_329xx },
 
   // TLK Kielce - Kraków Płaszów
-  { min: 23100, max: 32499, path: paths.path_231xx },
+  { min: 23100, max: 23499, path: paths.path_231xx },
   { min: 32100, max: 32499, path: paths.path_321xx },
 
   // TLK Zakopane - Gdynia Postojowa
