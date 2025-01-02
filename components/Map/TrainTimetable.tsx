@@ -3,14 +3,17 @@ import { useEffect, useRef } from "react";
 import Spinner from "../UI/Spinner";
 import { useTranslation } from "react-i18next";
 import { GoAlertFill } from "react-icons/go";
+import useSWR from "swr";
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const TrainTimetable = ({
-  timetable,
+  trainNumber,
   serverCode,
   timeOffset,
   showDetailsLite,
 }: {
-  timetable: any[];
+  trainNumber: string;
   serverCode: string;
   timeOffset: number;
   showDetailsLite: boolean;
@@ -18,6 +21,11 @@ const TrainTimetable = ({
   const { t } = useTranslation();
   const lastPassedStationRef = useRef(null);
   let timezoneOffset = timeOffset || 0;
+
+  const tt = useSWR(`/api/timetable/${serverCode}/${trainNumber}`, fetcher, {
+    refreshInterval: 10000,
+  });
+  const timetable = tt.data;
 
   const lastPassedStationIndex = (() => {
     let lastIndex = -1;
@@ -75,7 +83,7 @@ const TrainTimetable = ({
                   terminal: string;
                   track: string;
                 },
-                index
+                index: number
               ) => {
                 const isBeforeOrLastPassedStation = index <= (lastPassedStationIndex ?? -1);
                 const isFirstNonPassedStation = index === (lastPassedStationIndex ?? -1) + 1;

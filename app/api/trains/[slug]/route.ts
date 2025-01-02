@@ -1,3 +1,4 @@
+// app/api/trainz/[slug]/route.ts
 "use server";
 
 interface Train {
@@ -14,71 +15,63 @@ interface Train {
     SignalInFront: string;
     SignalInFrontSpeed: number;
     DistanceToSignalInFront: number;
+    VDDelayedTimetableIndex: number;
     ControlledBySteamID: string;
   };
   Type: string;
 }
 
-interface Player {
-  train_number: number;
-  type: {};
-}
+const userCache: { [key: string]: any } = {};
 
-// export const revalidate = 0;
+async function fetchUserData(steamID: string) {
+  if (userCache[steamID]) {
+    return userCache[steamID];
+  }
+
+  try {
+    const userApiUrl = `https://simrail-edr.emeraldnetwork.xyz/steam/${steamID}`;
+    const response = await fetch(userApiUrl);
+    const steamUser = await response.json();
+
+    if (steamUser) {
+      userCache[steamID] = steamUser;
+      return steamUser;
+    }
+  } catch (error) {
+    console.error(`Błąd podczas pobierania danych użytkownika ${steamID} do API Stations z API Steam:`, error);
+  }
+  return null;
+}
 
 async function fetchTrainData(slug: string) {
   const trainsApiUrl = `https://panel.simrail.eu:8084/trains-open?serverCode=${slug}`;
-  const trainsUsersApiUrl = `https://simrail-edr.de/api/train/${slug}`;
 
-  const [trainResponse, playerResponse] = await Promise.all([
-    fetch(trainsApiUrl, { next: { revalidate: 0 } }),
-    fetch(trainsUsersApiUrl, { next: { revalidate: 0 } }),
-  ]);
-
+  const trainResponse = await fetch(trainsApiUrl, { next: { revalidate: 0 } });
   const trains = await trainResponse.json();
-  const players = await playerResponse.json();
-
   const trainsData = trains.data;
-  const playersData = players.data;
 
   const vehicleDLC = ["ET22", "406R", "441V"];
 
   const processedData = await Promise.all(
     trainsData.map(async (train: Train) => {
-      const player = playersData.find((player: Player) => player?.train_number?.toString() === train.TrainNoLocal);
-      const steamID = "0";
-
       let userData = {
         type: train?.Type,
         id: train?.TrainData.ControlledBySteamID,
-        name: player?.steam_user?.name,
-        score: player?.steam_user?.score || null,
-        avatar: player?.steam_user?.avatar,
-        profileUrl: player?.steam_user?.profile_link,
-        dispatcher_time: player?.steam_user?.dispatcher_time || null,
-        distance: player?.steam_user?.distance_meter || null,
+        name: null,
+        avatar: null,
+        profileUrl: null,
       };
 
       const isDLC = train.Vehicles.some((vehicle) =>
         vehicleDLC.some((keyword) => vehicle.toLowerCase().includes(keyword.toLowerCase()))
       );
 
-      if (train.Type === "user" && (!player || steamID !== train?.TrainData?.ControlledBySteamID)) {
-        try {
-          const userApiUrl = `https://simrail-edr.emeraldnetwork.xyz/steam/${train?.TrainData?.ControlledBySteamID}`;
-          const response = await fetch(userApiUrl);
-          const steamUser = await response.json();
-
-          if (steamUser) {
-            userData.name = steamUser.personaname;
-            userData.avatar = steamUser.avatar;
-            userData.profileUrl = steamUser.profileurl;
-          }
-        } catch (error) {
-          console.error(
-            `Błąd podczas pobierania danych użytkownika ${train?.TrainData?.ControlledBySteamID} do API Stations z API Steam:`,
-            error
-          );
+      if (train.Type === "user" && userData.id) {
+        const steamUser = await fetchUserData(userData.id);
+        if (steamUser) {
+          userData.name = steamUser.personaname;
+          userData.avatar = steamUser.avatar;
+          userData.profileUrl = steamUser.profileurl;
         }
       }
 
@@ -99,9 +92,9 @@ async function fetchTrainData(slug: string) {
         signal: train.TrainData?.SignalInFront,
         signal_speed: train.TrainData?.SignalInFrontSpeed,
         signal_distance: train.TrainData?.DistanceToSignalInFront,
+        timetable_index: train.TrainData?.VDDelayedTimetableIndex,
         user: userData,
         isDLC: isDLC,
-        timezone_offset: player ? player.server?.timezone_offset : 0,
       };
     })
   );

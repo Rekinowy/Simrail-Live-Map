@@ -1,6 +1,5 @@
 import TrainGeneralInfo from "./TrainGeneralInfo";
 import TrainTimetable from "./TrainTimetable";
-import useSWR from "swr";
 import { trains } from "@/lib/constants";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
@@ -12,8 +11,6 @@ import { transformVehicles } from "@/lib/utils/utils";
 import { cargoTrainsData } from "@/lib/constants/cargoTrainsData";
 import { Tooltip } from "@nextui-org/tooltip";
 import { tooltipDelay } from "@/lib/constants/uistyles";
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const tooltipStyle = {
   base: ["before:bg-light_primary_light dark:before:bg-primary_dark"],
@@ -52,10 +49,6 @@ const TrainDetails = ({
 
   const username = user?.name || "User";
 
-  const timetable = useSWR(`/api/timetable/${serverCode}/${trainNumber}`, fetcher, {
-    refreshInterval: 10000,
-  });
-
   const vehicleData = transformVehicles(vehicles);
   const wagons = vehicleData.wagons;
   const locomotives = vehicleData.locomotives;
@@ -92,7 +85,6 @@ const TrainDetails = ({
       showPath={showPath}
       setShowPath={setShowPath}
       username={username}
-      timetable={timetable}
       showDetailsLite={showDetailsLite}
       showSignalInfo={showSignalInfo}
       wagons={wagons}
@@ -182,7 +174,7 @@ const TrainDetails = ({
       )}
       {view === "timetable" && (
         <TrainTimetable
-          timetable={timetable?.data}
+          trainNumber={trainNumber}
           serverCode={serverCode}
           timeOffset={timeOffset}
           showDetailsLite={showDetailsLite}
