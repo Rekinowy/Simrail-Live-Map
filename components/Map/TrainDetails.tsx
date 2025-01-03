@@ -56,13 +56,9 @@ const TrainDetails = ({
   let totalLength = Math.round(vehicleData.totalLength);
   let totalWeight = Math.round(vehicleData.totalWeight);
 
-  // if (trainNumber.length >= 6 && cargoTrainsData[trainNumber as keyof typeof cargoTrainsData]) {
-  //   totalLength = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].length;
-  //   totalWeight = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].weight;
-  // }
-  if (trainNumber.length >= 6) {
-    totalLength = 0;
-    totalWeight = 0;
+  if (trainNumber.length >= 6 && cargoTrainsData[trainNumber as keyof typeof cargoTrainsData]) {
+    totalLength = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].length;
+    totalWeight = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].weight;
   }
 
   return showLite ? (
