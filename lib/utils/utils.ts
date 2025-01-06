@@ -242,3 +242,8 @@ export const calculateDistanceIn5Seconds = (speed: number): number => {
 
   return distanceIn5Seconds;
 };
+
+export function getImageByName(name: string): string | undefined {
+  const train = Object.values(trains).find((train) => train.name === name);
+  return train ? `/trains/${train.img}` : undefined;
+}

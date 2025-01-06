@@ -1,9 +1,12 @@
 import { SearchBoxProps } from "@/lib/types/types";
-import { Input } from "@nextui-org/react";
+import { Input, Tooltip } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import { FaSearch } from "react-icons/fa";
 import SearchItem from "./SearchItem";
-import ServerCounter from "./ServerCounter";
+import { BiTimer } from "react-icons/bi";
+import SpawnList from "./SpawnList";
+import { useState } from "react";
+import { IoCloseCircle } from "react-icons/io5";
 
 const SearchBox = ({
   searchValue,
@@ -11,18 +14,28 @@ const SearchBox = ({
   setSelectedMarker,
   setSelectedLocos,
   filteredResults,
+  currentTime,
 }: SearchBoxProps) => {
   const { t } = useTranslation();
+  const [showSpawnList, setShowSpawnList] = useState(false);
+
+  const tooltipStyle = {
+    base: ["before:bg-light_primary_light dark:before:bg-primary_dark"],
+    content: [
+      "p-1.5 shadow-xl rounded-md",
+      "text-[10px] text-primary dark:text-light_gray bg-light_primary_light dark:bg-primary_dark",
+    ],
+  };
 
   return (
-    <>
-      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-[1200] text-primary dark:text-white">
+    <div className="absolute flex-col top-2 left-1/2 transform -translate-x-1/2 z-[1200] flex border p-0.5 rounded-[10px] gap-1 bg-light_primary_dark/80 dark:bg-primary_dark/80 border-light_primary_dark dark:border-primary_dark overflow-hidden">
+      <div className="flex gap-0.5 text-primary dark:text-white">
         <Input
           isClearable
           placeholder={t("Searchbox:search")}
           radius="sm"
           size="sm"
-          className="relative z-10 inputBlur"
+          className="z-10"
           classNames={{
             input: [
               "bg-transparent",
@@ -31,10 +44,10 @@ const SearchBox = ({
               "ml-1",
             ],
             inputWrapper: [
-              "h-9 md:h-10",
-              "w-60 md:w-72",
+              "h-8 sm:h-9",
+              "w-56 sm:w-60",
               "shadow-xl",
-              "bg-light_primary/60 dark:bg-primary/60",
+              "bg-light_primary/50 dark:bg-primary/50",
               "hover:bg-light_primary/80 hover:dark:bg-primary/80",
               "focus-within:!bg-light_primary focus-within:dark:!bg-primary",
               "!cursor-text",
@@ -43,17 +56,40 @@ const SearchBox = ({
             clearButton: ["text-slate-700 dark:text-light_gray"],
           }}
           value={searchValue}
-          onChange={(value) => setSearchValue(value.target.value)}
+          onChange={(value) => {
+            setSearchValue(value.target.value);
+            setShowSpawnList(false);
+          }}
           onClear={() => setSearchValue("")}
           startContent={<FaSearch className="text-slate-700 dark:text-light_gray" />}
         />
-        <div className="relative flex flex-col w-[95%] max-h-[70dvh] m-auto rounded-b-lg shadow-lg overflow-hidden scroll-smooth">
-          <ul className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-thumb-light_primary_light/60 scrollbar-track-light_primary/50 dark:scrollbar-thumb-primary_light dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg max-h-[80dvh]">
+        <Tooltip content={t("Searchbox:spawn_list")} delay={1000} classNames={tooltipStyle} placement="right">
+          <button
+            onClick={() => {
+              setSearchValue("");
+              setShowSpawnList(!showSpawnList);
+            }}
+            className={`group relative flex justify-center items-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg shadow-xl  hover:bg-light_primary/90 hover:dark:bg-primary/90 ${
+              showSpawnList ? "bg-light_primary dark:bg-primary" : "bg-light_primary/70 dark:bg-primary/70"
+            } border border-slate-400 dark:border-slate-800 transition-all duration-100`}
+          >
+            {showSpawnList ? (
+              <IoCloseCircle className="w-9 h-[16px] dark:text-gray-300 opacity-80 group-hover:opacity-100 transition-all duration-100" />
+            ) : (
+              <BiTimer className="w-9 h-[18px] opacity-80 group-hover:opacity-100 transition-all duration-100" />
+            )}
+          </button>
+        </Tooltip>
+      </div>
+      {searchValue && (
+        <div className="flex flex-col w-full max-h-[70dvh] mx-auto shadow-lg scroll-smooth overflow-hidden rounded-lg">
+          <ul className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-thumb-light_primary_light/60 scrollbar-track-light_primary/50 dark:scrollbar-thumb-primary_light dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
             {searchValue.length > 0 &&
               (filteredResults.length > 0 ? (
                 filteredResults.map((item) => {
                   return (
                     <SearchItem
+                      key={item.id}
                       item={item}
                       setSelectedMarker={setSelectedMarker}
                       setSearchValue={setSearchValue}
@@ -67,10 +103,11 @@ const SearchBox = ({
                 </div>
               ))}
           </ul>
-          <div className="backdrop-blur-md absolute inset-0 z-0 pointer-events-none"></div>
         </div>
-      </div>
-    </>
+      )}
+      {showSpawnList && <SpawnList currentTime={currentTime} />}
+      <div className="backdrop-blur-md absolute inset-0 -z-10 pointer-events-none"></div>
+    </div>
   );
 };
 export default SearchBox;

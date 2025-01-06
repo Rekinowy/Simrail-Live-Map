@@ -75,6 +75,7 @@ export type SearchBoxProps = {
   setSelectedMarker: (value: string) => void;
   setSelectedLocos: (value: any) => void;
   filteredResults: SearchResultType[];
+  currentTime: string;
 };
 
 export type ServerCounterProps = {
@@ -84,6 +85,8 @@ export type ServerCounterProps = {
   totalStations: number;
   userStationsCount: number;
   selectedMarker: string;
+  currentTime: string;
+  currentDate: string;
 };
 
 export type SearchItemProps = {

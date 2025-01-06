@@ -29,7 +29,7 @@ const RoutePath = ({ selectedTrain }: { selectedTrain: string }) => {
     }
   }
 
-  if (number == 24201) {
+  if (number == 24205) {
     path = path_2412x;
   }
 

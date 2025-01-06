@@ -31,6 +31,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 export default function Map({ code, locale }: { code: string; locale: string }) {
   const TRAINS_API_URL = `/api/trains/${code}`;
   const STATIONS_API_URL = `/api/stations/${code}`;
+  const TIME_API_URL = `/api/time/${code}`;
 
   const [selectedMarker, setSelectedMarker] = useState("");
   const [showTrains, setShowTrains] = useState(true);
@@ -42,6 +43,8 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   const [searchValue, setSearchValue] = useState("");
   const [filteredResults, setFilteredResults] = useState<SearchResultType[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState<string>("");
+  const [currentDate, setCurrentDate] = useState<string>("");
 
   const [showMarkerLabels, setShowMarkerLabels] = useLocalStorage("showMarkerLabels", true);
   const [showStationLabels, setShowStationLabels] = useLocalStorage("showStationLabels", true);
@@ -66,12 +69,34 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
     refreshInterval: 10000,
   });
 
+  const serverTime = useSWR(TIME_API_URL, fetcher, {
+    refreshInterval: 0,
+  });
+
   const isMobile = useMediaQuery({ maxWidth: 839 });
   const totalTrains = trains.data?.length || 0;
   const userTrainsCount = trains.data?.filter((train: TrainDataType) => train.user?.type === "user").length || 0;
   const totalStations = stations.data?.length || 0;
   const userStationsCount =
     stations.data?.filter((station: StationDataType) => station.user?.type === "user").length || 0;
+
+  useEffect(() => {
+    if (serverTime.data) {
+      const serverDate = new Date(serverTime.data);
+
+      setCurrentTime(serverDate.toLocaleTimeString("en-GB", { timeZone: "UTC" }));
+      setCurrentDate(serverDate.toLocaleDateString("en-GB", { timeZone: "UTC" }));
+
+      const interval = setInterval(() => {
+        serverDate.setSeconds(serverDate.getSeconds() + 1);
+        // setShowColon((prev) => !prev);
+        setCurrentTime(serverDate.toLocaleTimeString("en-GB", { timeZone: "UTC" }));
+        setCurrentDate(serverDate.toLocaleDateString("en-GB", { timeZone: "UTC" }));
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [serverTime.data]);
 
   useEffect(() => {
     const results = filterSearchData(searchValue, trains.data, stations.data);
@@ -245,6 +270,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
         filteredResults={filteredResults}
         setSelectedMarker={setSelectedMarker}
         setSelectedLocos={setSelectedLocos}
+        currentTime={currentTime}
       />
       {openSettings && (
         <SettingsTab
@@ -293,6 +319,8 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
           totalStations={totalStations}
           userStationsCount={userStationsCount}
           selectedMarker={selectedMarker}
+          currentTime={currentTime}
+          currentDate={currentDate}
         />
       )}
       {isModalOpen && <SupportModal setModalOpen={setModalOpen} />}

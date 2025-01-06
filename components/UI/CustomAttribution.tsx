@@ -4,7 +4,7 @@ const CustomAttribution = ({ locale, setModalOpen }: { locale: string; setModalO
   };
 
   return (
-    <footer className="z-[800] absolute flex items-center right-0 bottom-0 text-slate-700/80 dark:text-light_gray/80 pl-0.5 bg-light_primary/80 dark:bg-primary/80 rounded-l-md border border-primary/30 ">
+    <footer className="z-[800] absolute flex items-center right-0 bottom-0 text-slate-700/80 dark:text-light_gray/80 pl-0.5 bg-light_primary/80 dark:bg-primary/80 rounded-l-md border border-primary/30 backdrop-blur-sm">
       <a href="https://leafletjs.com/" target="_blank">
         <img
           src="/leaflet-logo.png"

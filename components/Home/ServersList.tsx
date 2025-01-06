@@ -2,7 +2,6 @@
 
 import Spinner from "../UI/Spinner";
 import Link from "next/link";
-import { useTranslation } from "react-i18next";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 import { PiTrafficSignalThin } from "react-icons/pi";

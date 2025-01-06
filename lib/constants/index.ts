@@ -296,6 +296,7 @@ export const stationIcon = new Icon({
   iconAnchor: [10, 10],
   popupAnchor: [3, -12],
 });
+
 export const newStationIcon = new Icon({
   iconUrl: "/station-new.png",
   className: "opacity-60",
