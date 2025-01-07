@@ -15,6 +15,7 @@ const SearchBox = ({
   setSelectedLocos,
   filteredResults,
   currentTime,
+  availableTrains,
 }: SearchBoxProps) => {
   const { t } = useTranslation();
   const [showSpawnList, setShowSpawnList] = useState(false);
@@ -105,7 +106,14 @@ const SearchBox = ({
           </ul>
         </div>
       )}
-      {showSpawnList && <SpawnList currentTime={currentTime} />}
+      {showSpawnList && (
+        <SpawnList
+          currentTime={currentTime}
+          availableTrains={availableTrains}
+          setSelectedMarker={setSelectedMarker}
+          setShowSpawnList={setShowSpawnList}
+        />
+      )}
       <div className="backdrop-blur-md absolute inset-0 -z-10 pointer-events-none"></div>
     </div>
   );

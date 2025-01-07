@@ -8,19 +8,33 @@ import { LuTimer } from "react-icons/lu";
 import { SiSpeedtest } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "@nextui-org/tooltip";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
+import { GiSandsOfTime } from "react-icons/gi";
 
 interface SpawnListItemProps {
   train: Train;
   currentTime: string;
   isSelected: boolean;
   onSelect: () => void;
+  availableTrains: [{ number: string; type: string }];
+  setSelectedMarker: (value: string) => void;
+  setShowSpawnList: (value: boolean) => void;
 }
 
-const SpawnListItem: React.FC<SpawnListItemProps> = ({ train, currentTime, isSelected, onSelect }) => {
+const SpawnListItem: React.FC<SpawnListItemProps> = ({
+  train,
+  currentTime,
+  isSelected,
+  onSelect,
+  availableTrains,
+  setSelectedMarker,
+  setShowSpawnList,
+}) => {
   let allData = routesData;
   const { t } = useTranslation();
 
   const spawnTime = train.spawnTime;
+  let isOnMap = false;
   const [spawnHours, spawnMinutes] = spawnTime.split(":").map(Number);
   const [currentHours, currentMinutes, currentSeconds] = currentTime.split(":").map(Number);
 
@@ -70,13 +84,34 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({ train, currentTime, isSel
       "text-[10px] text-primary dark:text-light_gray bg-light_primary_light dark:bg-primary_dark",
     ],
   };
+
+  const liClassName = () => {
+    if (isSelected && difference === 0) {
+      return "bg-green-600/80 dark:bg-green-800/80";
+    } else if (isSelected) {
+      return "bg-light_primary/90 dark:bg-primary/95";
+    } else if (difference === 0) {
+      return "bg-green-600/50 hover:bg-green-600/70 dark:bg-green-900/75 hover:dark:bg-green-800/60";
+    } else {
+      return "bg-light_primary/50 hover:bg-light_primary_dark/80 dark:bg-primary/60 dark:hover:bg-primary_light/60";
+    }
+  };
+
+  for (const availableTrain of availableTrains) {
+    if (availableTrain.number === train.id) {
+      isOnMap = true;
+      break;
+    }
+  }
+
+  if (isSelected && isOnMap) {
+    setSelectedMarker(train.id);
+    setShowSpawnList(false);
+  }
+
   return (
     <li
-      className={`relative flex z-10 ${
-        isSelected
-          ? "bg-light_primary/90 dark:bg-primary/95"
-          : "bg-light_primary/50 hover:bg-light_primary_dark/80 dark:bg-primary/60 dark:hover:bg-primary_light/60"
-      } cursor-pointer border-b border-slate-400 dark:border-slate-800 dark:text-gray-200 transition-all`}
+      className={`relative flex z-10 ${liClassName()} cursor-pointer border-b border-slate-400 dark:border-slate-800 dark:text-gray-200 transition-all`}
     >
       <button onClick={onSelect} className="flex flex-col w-full px-2 py-1 gap-2">
         <div className="flex w-full gap-1 items-center">
@@ -116,11 +151,25 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({ train, currentTime, isSel
             </div>
           </div>
           <div className="border-l h-5/6 dark:border-light_primary/40 border-primary/40 mx-1" />
-          <div className="flex flex-col w-1/4 justify-center">
-            <p className="text-[9px]">{t("Searchbox:spawn_in")}:</p>
-            <h3 className="font-medium text-base">{difference}&prime;</h3>
-            <p className="text-[10px] pt-1.5">({train.spawnTime})</p>
-          </div>
+          {difference == 0 ? (
+            isOnMap ? (
+              <div className="flex flex-col w-1/4 justify-center items-center">
+                <IoCheckmarkDoneSharp className="w-8 h-8" />
+                <p className="text-[9px]">{t("Searchbox:on_map")}</p>
+              </div>
+            ) : (
+              <div className="flex flex-col w-1/4 justify-center items-center">
+                <GiSandsOfTime className="w-6 h-9" />
+                <p className="text-[9px]">{t("Searchbox:waiting")}</p>
+              </div>
+            )
+          ) : (
+            <div className="flex flex-col w-1/4 justify-center">
+              <p className="text-[9px]">{t("Searchbox:spawn_in")}:</p>
+              <h3 className="font-medium text-base">{difference}&prime;</h3>
+              <p className="text-[10px] pt-1.5">({train.spawnTime})</p>
+            </div>
+          )}
         </div>
         {isSelected && (
           <div className="flex justify-between w-full text-gray-600 dark:text-gray-400 ">

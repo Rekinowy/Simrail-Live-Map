@@ -14,7 +14,17 @@ export interface Train {
   spawnTimeDate: Date;
 }
 
-const SpawnList = ({ currentTime }: { currentTime: string }) => {
+const SpawnList = ({
+  currentTime,
+  availableTrains,
+  setSelectedMarker,
+  setShowSpawnList,
+}: {
+  currentTime: string;
+  availableTrains: [{ number: string; type: string }];
+  setSelectedMarker: (value: string) => void;
+  setShowSpawnList: (value: boolean) => void;
+}) => {
   const [upcomingTrains, setUpcomingTrains] = useState<Train[]>([]);
   const [selectedTrainId, setSelectedTrainId] = useState<string | null>(null);
 
@@ -35,7 +45,7 @@ const SpawnList = ({ currentTime }: { currentTime: string }) => {
           spawnDate.setHours(hour, minute, 0, 0);
 
           // Handle case where spawn time is on the next day
-          if (spawnDate < currentDate) {
+          if (spawnDate.getTime() < currentDate.getTime() && hour < currentHour) {
             spawnDate.setDate(spawnDate.getDate() + 1);
           }
 
@@ -50,11 +60,12 @@ const SpawnList = ({ currentTime }: { currentTime: string }) => {
       ];
 
       const upcoming = allTrains
-        .filter(
-          (train) =>
-            train.spawnTimeDate > currentDate &&
-            train.spawnTimeDate <= new Date(currentDate.getTime() + 120 * 60 * 1000)
-        )
+        .filter((train) => {
+          const pastLimit = new Date(currentDate.getTime() - 1 * 60 * 1000);
+          const futureLimit = new Date(currentDate.getTime() + 59 * 60 * 1000);
+
+          return train.spawnTimeDate > pastLimit && train.spawnTimeDate <= futureLimit;
+        })
         .sort((a, b) => a.spawnTimeDate.getTime() - b.spawnTimeDate.getTime());
 
       setUpcomingTrains(upcoming);
@@ -73,6 +84,9 @@ const SpawnList = ({ currentTime }: { currentTime: string }) => {
             currentTime={currentTime}
             isSelected={train.id === selectedTrainId}
             onSelect={() => handleSelectTrain(train.id)}
+            availableTrains={availableTrains}
+            setSelectedMarker={setSelectedMarker}
+            setShowSpawnList={setShowSpawnList}
           />
         ))}
       </ul>

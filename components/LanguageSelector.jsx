@@ -13,10 +13,11 @@ export default function LanguageSelector({ selectStyles, isHome = false }) {
   const currentPathname = usePathname();
 
   const languages = [
-    { locale: "en", label: "English", flag: "/gb.svg" },
-    { locale: "pl", label: "Polski", flag: "/pl.svg" },
+    { locale: "cs", label: "Český", flag: "/cz.svg" },
     { locale: "de", label: "Deutsch", flag: "/de.svg" },
+    { locale: "en", label: "English", flag: "/gb.svg" },
     { locale: "fr", label: "Français", flag: "/fr.svg" },
+    { locale: "pl", label: "Polski", flag: "/pl.svg" },
   ];
 
   const handleChange = (e) => {

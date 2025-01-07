@@ -21,7 +21,7 @@ const Main = ({ title }: { title: string }) => {
       </section>{" "}
       <ServersList isModalOpen={isModalOpen} />
       <footer className="absolute bottom-4 pt-4 text-sm text-light_primary_light dark:text-light_primary_dark opacity-50 ">
-        © 2024 | Created by{" "}
+        © 2025 | Created by{" "}
         <a href={`mailto:rekinowy994@gmail.com`} className="font-medium opacity-100 hover:underline">
           Rekinowy <MdEmail className="inline w-5 h-4 mb-0.5" />
         </a>

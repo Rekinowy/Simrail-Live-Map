@@ -76,6 +76,7 @@ export type SearchBoxProps = {
   setSelectedLocos: (value: any) => void;
   filteredResults: SearchResultType[];
   currentTime: string;
+  availableTrains: [{ number: string; type: string }];
 };
 
 export type ServerCounterProps = {

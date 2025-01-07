@@ -80,6 +80,12 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   const userStationsCount =
     stations.data?.filter((station: StationDataType) => station.user?.type === "user").length || 0;
 
+  const availableTrains =
+    trains.data?.map((train: TrainDataType) => ({
+      number: train.number,
+      type: train.user.type,
+    })) || [];
+
   useEffect(() => {
     if (serverTime.data) {
       const serverDate = new Date(serverTime.data);
@@ -271,7 +277,9 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
         setSelectedMarker={setSelectedMarker}
         setSelectedLocos={setSelectedLocos}
         currentTime={currentTime}
+        availableTrains={availableTrains}
       />
+
       {openSettings && (
         <SettingsTab
           setOpenSettings={setOpenSettings}

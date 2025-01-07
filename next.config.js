@@ -15,13 +15,4 @@ module.exports = {
       },
     ],
   },
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "https://simrail-live-map2.netlify.app/",
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
 };
