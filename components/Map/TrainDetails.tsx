@@ -100,7 +100,7 @@ const TrainDetails = ({
           <h1 className="text-lg lg:text-xl text-center">
             {trainName} <span className="font-bold">{trainNumber}</span>
           </h1>
-          <h2 className="text-sm lg:text-base">{trains[locomotives[0]]?.name}</h2>
+          <h2 className="text-sm lg:text-base text-gray-600 dark:text-gray-300">{trains[locomotives[0]]?.name}</h2>
 
           {locomotives.length > 1 && (
             <p className="text-xs text-gray-300">

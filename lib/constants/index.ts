@@ -2,6 +2,25 @@ import { StationsPosType, WagonInfo } from "./../types/types";
 import { Icon } from "leaflet";
 import { TrainsType } from "../types/types";
 
+export const restarts: Record<string, string[]> = {
+  cz1: ["01:31", "08:31", "15:31"],
+  de1: ["01:27", "08:27", "15:27"],
+  de2: ["01:27", "08:27", "15:27"],
+  de3: ["01:28", "08:28", "15:28"],
+  fr1: ["01:28", "08:28", "15:28"],
+  int1: ["01:29", "08:29", "15:29"],
+  int2: ["01:30", "08:30", "15:30"],
+  int3: ["01:30", "08:30", "15:30"],
+  int4: ["01:31", "08:31", "15:31"],
+  int5: ["01:31", "08:31", "15:31"],
+  int6: ["01:32", "08:32", "15:32"],
+  int9: ["01:32", "08:32", "15:32"],
+  pl1: ["01:24", "08:24", "15:24"],
+  pl2: ["01:24", "08:24", "15:24"],
+  pl3: ["01:25", "08:25", "15:25"],
+  pl4: ["01:26", "08:26", "15:26"],
+};
+
 export const trains: TrainsType = {
   "Dragon2/ET25-002": { img: "/et25-002.png", name: "ET25-002 Dragon 2", length: 20, weight: 119 },
   "Dragon2/E6ACTa-014": { img: "/e6acta-014.png", name: "E6ACTa-014 Dragon 2", length: 20, weight: 119 },

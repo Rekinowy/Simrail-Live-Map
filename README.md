@@ -6,7 +6,7 @@ SimRail Live Map is a web application built with React, Next.js and Leaflet libr
 
 ## Live Demo
 
-You can access the live map at: [SimRail Live Map](https://simrail-live-map.vercel.app/)
+You can access the live map at: [SimRail Live Map](https://simrail-live-map.netlify.app/)
 
 ## Features
 

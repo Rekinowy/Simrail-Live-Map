@@ -27,7 +27,6 @@ import CustomAttribution from "./UI/CustomAttribution";
 import SupportModal from "./Home/SupportModal";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 export default function Map({ code, locale }: { code: string; locale: string }) {
   const TRAINS_API_URL = `/api/trains/${code}`;
   const STATIONS_API_URL = `/api/stations/${code}`;
@@ -42,10 +41,10 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   const [selectedLocos, setSelectedLocos] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredResults, setFilteredResults] = useState<SearchResultType[]>([]);
-  const [isModalOpen, setModalOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState<string>("");
   const [currentDate, setCurrentDate] = useState<string>("");
 
+  const [isModalOpen, setModalOpen] = useLocalStorage("isModalOpen", true);
   const [showMarkerLabels, setShowMarkerLabels] = useLocalStorage("showMarkerLabels", true);
   const [showStationLabels, setShowStationLabels] = useLocalStorage("showStationLabels", true);
   const [trainLabelZoomLevel, setTrainLabelZoomLevel] = useLocalStorage("trainLabelZoomLevel", 12);
