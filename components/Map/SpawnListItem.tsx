@@ -42,6 +42,8 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({
   const currentDate = new Date(0, 0, 0, currentHours, currentMinutes);
   let difference = (spawnDate.getTime() - currentDate.getTime()) / (1000 * 60);
 
+  const moeTrainIds = ["23903", "32912", "23969", "32976", "24903", "24911", "42904", "42914"];
+
   if (difference < 0) {
     difference += 1440;
   }
@@ -75,6 +77,10 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({
       spawnEnd = data.spawnEnd;
       break;
     }
+  }
+
+  if (moeTrainIds.includes(train.id)) {
+    category = "MOE";
   }
 
   const tooltipStyle = {
@@ -131,7 +137,7 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({
                       classNames={tooltipStyle}
                       placement="top"
                     >
-                      <div className="h-3 border border-primary dark:border-light_primary_dark bg-light_primary_dark dark:bg-primary_light mt-0.5 px-0.5 rounded-[4px] text-[8px] leading-[11px] font-medium opacity-80 cursor-help">
+                      <div className="h-3 border border-primary dark:border-light_primary_dark bg-light_primary_dark dark:bg-primary_light m-0.5 px-0.5 rounded-[4px] text-[8px] leading-[11px] font-medium opacity-80 cursor-help">
                         DLC
                       </div>
                     </Tooltip>
@@ -185,10 +191,12 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({
             </div>
             <div className="flex gap-1 sm:gap-2 text-[10px] ">
               <div className="flex flex-col">
-                <div className="flex gap-0.5">
-                  <PiArrowsHorizontalBold className="w-2.5 h-3.5" />
-                  {train.length} m
-                </div>
+                {train.length && (
+                  <div className="flex gap-0.5">
+                    <PiArrowsHorizontalBold className="w-2.5 h-3.5" />
+                    {train.length} m
+                  </div>
+                )}
                 {vmax && (
                   <div className="flex gap-0.5 truncate">
                     <SiSpeedtest className="w-2.5 h-3.5" />
@@ -197,15 +205,18 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({
                 )}
               </div>
               <div className="flex flex-col ">
-                <div className="flex gap-0.5">
-                  <TbWeight className="w-2.5 h-3.5" />
-                  {train.weight} t
-                </div>
-
-                <div className="flex gap-0.5">
-                  <LuTimer className="w-2.5 h-3.5" />
-                  {routeTime}
-                </div>
+                {train.weight && (
+                  <div className="flex gap-0.5">
+                    <TbWeight className="w-2.5 h-3.5" />
+                    {train.weight} t
+                  </div>
+                )}
+                {routeTime && (
+                  <div className="flex gap-0.5">
+                    <LuTimer className="w-2.5 h-3.5" />
+                    {routeTime}
+                  </div>
+                )}
               </div>
             </div>
           </div>

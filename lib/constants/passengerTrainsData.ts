@@ -158,7 +158,7 @@ export const passengerTrainsData = {
   //
   "45000": { locos: ["EP08-001"], isDLC: false, spawnTime: "03:41", length: 223, weight: 435 },
   "45002": { locos: ["EP08-013"], isDLC: false, spawnTime: "04:41", length: 172, weight: 349 },
-  "45004": { locos: ["E186-134 Traxx"], isDLC: false, spawnTime: "05:41", length: 203, weight: 406 },
+  "45004": { locos: ["E186-134 Traxx"], isDLC: false, spawnTime: "05:41", length: 252, weight: 486 },
   "45006": { locos: ["EP08-013"], isDLC: false, spawnTime: "06:41", length: 147, weight: 309 },
   "45008": { locos: ["EP08-013"], isDLC: false, spawnTime: "07:41", length: 227, weight: 448 },
   "45010": { locos: ["E186-929 Traxx"], isDLC: false, spawnTime: "08:41", length: 203, weight: 405 },
