@@ -57,8 +57,8 @@ const TrainDetails = ({
   let totalWeight = Math.round(vehicleData.totalWeight);
 
   if (trainNumber.length >= 6 && cargoTrainsData[trainNumber as keyof typeof cargoTrainsData]) {
-    totalLength = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].length;
-    totalWeight = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].weight;
+    totalLength = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].length ?? 0;
+    totalWeight = cargoTrainsData[trainNumber as keyof typeof cargoTrainsData].weight ?? 0;
   }
 
   return showLite ? (
