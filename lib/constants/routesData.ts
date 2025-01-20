@@ -594,7 +594,7 @@ export const routesData = [
   {
     min: 336001,
     max: 336100,
-    category: "LTE",
+    category: "PWE",
     vmax: 100,
     time: "00:12",
     origin: "Kraków Nowa Huta NHEO",
@@ -619,7 +619,7 @@ export const routesDataAlt = [
   {
     min: 336000,
     max: 336100,
-    category: "LTE",
+    category: "PWE",
     vmax: 100,
     time: "00:14",
     origin: "Kraków Płaszów",
