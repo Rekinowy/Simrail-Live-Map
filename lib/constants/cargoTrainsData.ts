@@ -121,7 +121,7 @@ export const cargoTrainsData = {
   "424136": { locos: ["E6ACTa-014 Dragon 2"], isDLC: false, spawnTime: "19:24", length: 538, weight: 2100 },
   "424140": { locos: ["EU07-096", "EU07-193"], isDLC: false, spawnTime: "21:24", length: null, weight: null },
   "424144": { locos: ["EU07-241"], isDLC: false, spawnTime: "23:24", length: null, weight: null },
-  "424146": { locos: ["E6ACTa-016"], isDLC: false, spawnTime: "00:24", length: null, weight: null },
+  "424146": { locos: ["E6ACTa-016 Dragon 2"], isDLC: false, spawnTime: "00:24", length: null, weight: null },
   //
   "234301": { locos: ["ET22-243"], isDLC: true, spawnTime: "00:04", length: 478, weight: 2931 },
   "234303": { locos: ["EU07-070"], isDLC: false, spawnTime: "01:04", length: 434, weight: 1682 },
