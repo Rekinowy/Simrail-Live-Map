@@ -65,7 +65,7 @@ const TrainDetailsLite = ({
       <div className="flex">
         <div className="flex flex-col w-4/12 items-center justify-center">
           <div className="flex flex-col h-14 w-14 justify-center brightness-125 dark:brightness-105">
-            <img src={"/trains/" + trains[vehicles[0]]?.img} alt="train" />
+            <img src={"/trains" + trains[vehicles[0]]?.img} alt="train" />
           </div>
           <div className="flex flex-col items-center leading-5">
             <h1 className="text-xs text-center">

@@ -21,7 +21,7 @@ export const filterSearchData = (
           id: train.id,
           label: train.number,
           username: train.user?.name || "",
-          image: `/trains/${trains[train.vehicles[0]]?.img}`,
+          image: `/trains${trains[train.vehicles[0]]?.img}`,
           type: "train" as "train",
         }));
       searchResults = searchResults.concat(trainResults);
@@ -245,5 +245,5 @@ export const calculateDistanceIn5Seconds = (speed: number): number => {
 
 export function getImageByName(name: string): string | undefined {
   const train = Object.values(trains).find((train) => train.name === name);
-  return train ? `/trains/${train.img}` : undefined;
+  return train ? `/trains${train.img}` : undefined;
 }
