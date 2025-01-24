@@ -6,14 +6,20 @@
     "dev": "i18nexus pull && next dev",
     "build": "i18nexus pull && next build",
     "start": "i18nexus pull && next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:worker": "opennextjs-cloudflare",
+    "dev:worker": "wrangler dev --port 8771",
+    "preview": "npm run build:worker && npm run dev:worker",
+    "deploy": "npm run build:worker && wrangler deploy"
   },
   "dependencies": {
+    "@jridgewell/sourcemap-codec": "^1.5.0",
     "@nextui-org/react": "^2.6.5",
     "@nextui-org/switch": "^2.0.25",
     "@nextui-org/system": "^2.0.15",
     "@nextui-org/theme": "^2.1.17",
     "@nextui-org/tooltip": "^2.2.4",
+    "@rollup/plugin-inject": "^5.0.5",
     "@types/node": "20.6.5",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
@@ -24,10 +30,10 @@
     "i18next-resources-to-backend": "^1.2.0",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
-    "next": "^14.0.3",
+    "next": "^14.2.23",
     "next-i18n-router": "^5.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-i18next": "^14.0.1",
     "react-icons": "^5.0.1",
     "react-leaflet": "^4.2.1",
@@ -38,12 +44,16 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^0.3.9",
     "@types/date-fns": "^2.6.3",
     "@types/leaflet": "^1.9.8",
     "autoprefixer": "^10.4.20",
+    "esbuild": "0.24.2",
+    "eslint-config-next": "^14.2.23",
     "i18nexus-cli": "^3.3.0",
     "postcss": "^8.4.49",
     "tailwind-scrollbar": "^3.1.0-rc.0",
-    "tailwindcss": "^3.4.16"
+    "tailwindcss": "^3.4.16",
+    "wrangler": "^3.104.0"
   }
 }
