@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { LatLngTuple } from "leaflet";
 
 const RoutePathSpawn = ({ selectedTrain }: { selectedTrain: string }) => {
-  let path = null;
+  let path: LatLngTuple[] | null = null;
   let zoom = 10;
   const number = Number(selectedTrain);
 
@@ -14,24 +14,24 @@ const RoutePathSpawn = ({ selectedTrain }: { selectedTrain: string }) => {
 
   if (number >= 335000 && number <= 335900) {
     if (number % 2 === 0) {
-      path = path_335xx0;
+      path = path_335xx0 as LatLngTuple[];
       zoom = 13;
     } else {
-      path = path_335xx1;
+      path = path_335xx1 as LatLngTuple[];
       zoom = 13;
     }
   } else if (number >= 336000 && number <= 336900) {
     if (number % 2 === 0) {
-      path = path_336xx0;
+      path = path_336xx0 as LatLngTuple[];
       zoom = 13;
     } else {
-      path = path_336xx1;
+      path = path_336xx1 as LatLngTuple[];
       zoom = 13;
     }
   } else {
     for (const range of ranges) {
       if (number >= range.min && number <= range.max) {
-        path = range.path;
+        path = range.path as LatLngTuple[];
         zoom = range.zoom;
         break;
       }
@@ -39,12 +39,12 @@ const RoutePathSpawn = ({ selectedTrain }: { selectedTrain: string }) => {
   }
 
   if (number == 24205) {
-    path = path_2412x;
+    path = path_2412x as LatLngTuple[];
     zoom = 10;
   }
 
   if (number == 42200 || number == 42202) {
-    path = path_4212x;
+    path = path_4212x as LatLngTuple[];
     zoom = 10;
   }
 
