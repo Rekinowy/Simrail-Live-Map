@@ -77,6 +77,10 @@ export type SearchBoxProps = {
   filteredResults: SearchResultType[];
   currentTime: string;
   availableTrains: [{ number: string; type: string }];
+  showSpawnList: boolean;
+  setShowSpawnList: (value: boolean) => void;
+  selectedTrainId: string | null;
+  setSelectedTrainId: (value: string | null) => void;
 };
 
 export type ServerCounterProps = {
@@ -119,6 +123,8 @@ export type TrainMarkerProps = {
   serverCode: string;
   follow: boolean;
   isDLC: boolean;
+  handleSpawnListClose: () => void;
+  selectedTrainId: string | null;
 };
 
 export type TrainGeneralType = {
@@ -152,6 +158,8 @@ export type StationMarkerProps = {
   showMarkerLabels: boolean;
   labelZoomLevel: number;
   showDetailsLite: boolean;
+  handleSpawnListClose: () => void;
+  selectedTrainId: string | null;
 };
 
 export type TrainDetailsType = {

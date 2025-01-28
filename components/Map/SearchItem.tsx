@@ -2,7 +2,6 @@ import { SearchItemProps } from "@/lib/types/types";
 import { GiLever } from "react-icons/gi";
 
 const SearchItem = ({ item, setSelectedMarker, setSearchValue, setSelectedLocos }: SearchItemProps) => {
-  console.log(item);
   return (
     <li
       key={item.id}

@@ -23,6 +23,8 @@ const StationMarker = ({
   showMarkerLabels,
   labelZoomLevel,
   showDetailsLite,
+  handleSpawnListClose,
+  selectedTrainId,
 }: StationMarkerProps) => {
   const username = user?.name || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
@@ -33,7 +35,7 @@ const StationMarker = ({
     : [lat, lng];
 
   const stationIcon = divIcon({
-    html: `<div class='marker-container'>
+    html: `<div class='marker-container' style='opacity: ${selectedTrainId ? 0.2 : 1}'>
     <img src='${user.type === "user" ? avatar : "/bot-avatar.jpg"}' alt="User avatar" class='rounded-md border-[3px]  ${
       user.type === "user"
         ? "border-sky-500 dark:border-sky-600 w-9 h-9 -ml-[20px] -mt-[18px]"
@@ -67,6 +69,7 @@ const StationMarker = ({
           click: (event) => {
             event.target.closePopup();
             setSelectedStation(stationName);
+            handleSpawnListClose();
           },
           mouseover: (event) => {
             event.target.openPopup();
@@ -76,7 +79,7 @@ const StationMarker = ({
           },
         }}
       >
-        {showMarkerLabels && zoomLevel >= labelZoomLevel && (
+        {showMarkerLabels && zoomLevel >= labelZoomLevel && !selectedTrainId && (
           <Tooltip direction="bottom" permanent={true} offset={[0, 16]} className="custom-tooltip">
             {stationPrefix}
           </Tooltip>

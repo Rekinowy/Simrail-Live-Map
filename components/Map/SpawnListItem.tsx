@@ -19,6 +19,7 @@ interface SpawnListItemProps {
   availableTrains: [{ number: string; type: string }];
   setSelectedMarker: (value: string) => void;
   setShowSpawnList: (value: boolean) => void;
+  setSelectedTrainId: (value: string | null) => void;
 }
 
 const SpawnListItem: React.FC<SpawnListItemProps> = ({
@@ -29,6 +30,7 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({
   availableTrains,
   setSelectedMarker,
   setShowSpawnList,
+  setSelectedTrainId,
 }) => {
   let allData = routesData;
   const { t } = useTranslation();
@@ -111,6 +113,7 @@ const SpawnListItem: React.FC<SpawnListItemProps> = ({
   }
 
   if (isSelected && isOnMap) {
+    setSelectedTrainId(null);
     setSelectedMarker(train.id);
     setShowSpawnList(false);
   }

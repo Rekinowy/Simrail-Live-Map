@@ -31,6 +31,8 @@ const TrainMarker = ({
   selectedLocos,
   follow,
   isDLC,
+  handleSpawnListClose,
+  selectedTrainId,
 }: TrainMarkerProps) => {
   const username = user?.name || "User";
   const avatar = user?.avatar || "/user-avatar.jpg";
@@ -49,16 +51,6 @@ const TrainMarker = ({
       setRotationAngle(calculateRotationAngle(prevPos.current, position));
       prevPos.current = { lat, lng };
       setHasPositionChanged(true);
-
-      // Coordinates to local storage
-
-      // const selectedTrainNumbers = [];
-
-      // if (selectedTrainNumbers.includes(trainNumber)) {
-      //   const coordinates = JSON.parse(localStorage.getItem(`coordinates_${trainNumber}`) || "[]");
-      //   coordinates.push([parseFloat(lat.toFixed(6)), parseFloat(lng.toFixed(6))]);
-      //   localStorage.setItem(`coordinates_${trainNumber}`, JSON.stringify(coordinates));
-      // }
     }
 
     if (selectedTrain == trainNumber && follow) {
@@ -67,7 +59,7 @@ const TrainMarker = ({
   }, [position, trainNumber]);
 
   const markerIcon = divIcon({
-    html: `<div class='marker-container relative'>
+    html: `<div class='marker-container relative' style='opacity: ${selectedTrainId ? 0.2 : 1};'>
     <img src='${
       user.type === "user" ? avatar : "/bot-avatar.jpg"
     }' alt="User avatar" class='rounded-full border-[3px] ${
@@ -125,6 +117,7 @@ const TrainMarker = ({
           click: (event) => {
             event.target.closePopup();
             setSelectedTrain(trainNumber);
+            handleSpawnListClose();
           },
           mouseover: (event) => {
             event.target.openPopup();
@@ -134,7 +127,7 @@ const TrainMarker = ({
           },
         }}
       >
-        {showMarkerLabels && zoomLevel >= labelZoomLevel && (
+        {showMarkerLabels && zoomLevel >= labelZoomLevel && !selectedTrainId && (
           <Tooltip direction="top" permanent={true} opacity={0.8} offset={[2, -16]} className="custom-tooltip">
             {trainNumber}
           </Tooltip>

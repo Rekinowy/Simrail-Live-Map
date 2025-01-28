@@ -19,16 +19,20 @@ const SpawnList = ({
   availableTrains,
   setSelectedMarker,
   setShowSpawnList,
+  selectedTrainId,
+  setSelectedTrainId,
 }: {
   currentTime: string;
   availableTrains: [{ number: string; type: string }];
   setSelectedMarker: (value: string) => void;
   setShowSpawnList: (value: boolean) => void;
+  selectedTrainId: string | null;
+  setSelectedTrainId: (id: string | null) => void;
 }) => {
   const [upcomingTrains, setUpcomingTrains] = useState<Train[]>([]);
-  const [selectedTrainId, setSelectedTrainId] = useState<string | null>(null);
 
   const handleSelectTrain = (id: string) => {
+    setSelectedMarker("");
     setSelectedTrainId(id === selectedTrainId ? null : id);
   };
 
@@ -87,6 +91,7 @@ const SpawnList = ({
             availableTrains={availableTrains}
             setSelectedMarker={setSelectedMarker}
             setShowSpawnList={setShowSpawnList}
+            setSelectedTrainId={setSelectedTrainId}
           />
         ))}
       </ul>

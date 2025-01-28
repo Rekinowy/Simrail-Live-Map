@@ -25,6 +25,7 @@ import { useMediaQuery } from "react-responsive";
 import ServerCounter from "./Map/ServerCounter";
 import CustomAttribution from "./UI/CustomAttribution";
 import SupportModal from "./Home/SupportModal";
+import RoutePathSpawn from "./Map/RoutePathSpawn";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 export default function Map({ code, locale }: { code: string; locale: string }) {
@@ -43,6 +44,8 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   const [filteredResults, setFilteredResults] = useState<SearchResultType[]>([]);
   const [currentTime, setCurrentTime] = useState<string>("");
   const [currentDate, setCurrentDate] = useState<string>("");
+  const [showSpawnList, setShowSpawnList] = useState(false);
+  const [selectedTrainId, setSelectedTrainId] = useState<string | null>(null);
 
   const [isModalOpen, setModalOpen] = useLocalStorage("isModalOpen", true);
   const [showMarkerLabels, setShowMarkerLabels] = useLocalStorage("showMarkerLabels", true);
@@ -85,6 +88,11 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
       type: train.user.type,
     })) || [];
 
+  const handleSpawnListClose = () => {
+    setShowSpawnList(false);
+    setSelectedTrainId(null);
+  };
+
   useEffect(() => {
     if (serverTime.data) {
       const serverDate = new Date(serverTime.data);
@@ -118,6 +126,7 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" className="map-tiles transition-all" />
         {showPath && <RoutePath selectedTrain={selectedMarker} />}
+        {selectedTrainId && <RoutePathSpawn selectedTrain={selectedTrainId} />}
         <CustomAttribution locale={locale} setModalOpen={setModalOpen} />
         <MapControls
           openSettings={openSettings}
@@ -203,6 +212,8 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
               selectedLocos={selectedLocos}
               serverCode={code}
               follow={followTrain}
+              handleSpawnListClose={handleSpawnListClose}
+              selectedTrainId={selectedTrainId}
             />
           );
         })}
@@ -226,6 +237,8 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
               showMarkerLabels={showStationLabels}
               labelZoomLevel={stationLabelZoomLevel}
               showDetailsLite={showDetailsLite}
+              handleSpawnListClose={handleSpawnListClose}
+              selectedTrainId={selectedTrainId}
             />
           );
         })}
@@ -277,6 +290,10 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
         setSelectedLocos={setSelectedLocos}
         currentTime={currentTime}
         availableTrains={availableTrains}
+        showSpawnList={showSpawnList}
+        setShowSpawnList={setShowSpawnList}
+        selectedTrainId={selectedTrainId}
+        setSelectedTrainId={setSelectedTrainId}
       />
 
       {openSettings && (

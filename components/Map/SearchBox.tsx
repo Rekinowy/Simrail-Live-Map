@@ -5,7 +5,6 @@ import { FaSearch } from "react-icons/fa";
 import SearchItem from "./SearchItem";
 import { BiTimer } from "react-icons/bi";
 import SpawnList from "./SpawnList";
-import { useState } from "react";
 import { IoCloseCircle } from "react-icons/io5";
 
 const SearchBox = ({
@@ -16,9 +15,12 @@ const SearchBox = ({
   filteredResults,
   currentTime,
   availableTrains,
+  showSpawnList,
+  setShowSpawnList,
+  selectedTrainId,
+  setSelectedTrainId,
 }: SearchBoxProps) => {
   const { t } = useTranslation();
-  const [showSpawnList, setShowSpawnList] = useState(false);
 
   const tooltipStyle = {
     base: ["before:bg-light_primary_light dark:before:bg-primary_dark"],
@@ -29,7 +31,13 @@ const SearchBox = ({
   };
 
   return (
-    <div className="absolute flex-col top-2 left-1/2 transform -translate-x-1/2 z-[1200] flex border p-0.5 rounded-[10px] gap-1 bg-light_primary_dark/80 dark:bg-primary_dark/80 border-light_primary_dark dark:border-primary_dark overflow-hidden">
+    <div
+      className={`absolute flex-col top-2 ${
+        showSpawnList && selectedTrainId
+          ? "right-1/2 max-sm:transform max-md:translate-x-1/2 md:right-3"
+          : "right-1/2 transform translate-x-1/2"
+      } z-[1200] flex border p-0.5 rounded-[10px] gap-1 bg-light_primary_dark/80 dark:bg-primary_dark/80 border-light_primary_dark dark:border-primary_dark overflow-hidden transition-all`}
+    >
       <div className="flex gap-0.5 text-primary dark:text-white">
         <Input
           isClearable
@@ -60,6 +68,7 @@ const SearchBox = ({
           onChange={(value) => {
             setSearchValue(value.target.value);
             setShowSpawnList(false);
+            setSelectedTrainId(null);
           }}
           onClear={() => setSearchValue("")}
           startContent={<FaSearch className="text-slate-700 dark:text-light_gray" />}
@@ -68,6 +77,7 @@ const SearchBox = ({
           <button
             onClick={() => {
               setSearchValue("");
+              setSelectedTrainId(null);
               setShowSpawnList(!showSpawnList);
             }}
             className={`group relative flex justify-center items-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg shadow-xl  hover:bg-light_primary/90 hover:dark:bg-primary/90 ${
@@ -112,6 +122,8 @@ const SearchBox = ({
           availableTrains={availableTrains}
           setSelectedMarker={setSelectedMarker}
           setShowSpawnList={setShowSpawnList}
+          selectedTrainId={selectedTrainId}
+          setSelectedTrainId={setSelectedTrainId}
         />
       )}
       <div className="backdrop-blur-md absolute inset-0 -z-10 pointer-events-none"></div>
