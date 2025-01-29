@@ -14,7 +14,7 @@ const selectStyles = {
   popoverContent: "rounded-lg text-primary bg-slate-200 dark:bg-primary_dark dark:text-light_gray",
 };
 
-const buttonStyles =
+export const buttonStyles =
   "flex p-3.5 sm:p-4 w-[46px] sm:w-[56px] h-[46px] sm:h-[56px] items-center bg-light_primary/90 dark:bg-primary/80 hover:bg-light_primary_light dark:hover:bg-primary text-primary dark:text-slate-200 hover:text-primary_dark dark:hover:text-white text-lg border rounded-lg border-slate-400 hover:border-slate-600 dark:border-slate-800 dark:hover:border-slate-900 hover:scale-[1.02] transition duration-100";
 
 const iconStyles = "w-4 sm:w-5 h-4 sm:h-5 text-primary dark:text-light_gray";

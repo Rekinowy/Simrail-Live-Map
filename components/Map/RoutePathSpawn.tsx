@@ -1,9 +1,10 @@
-import { Polyline, useMap } from "react-leaflet";
+import { Marker, Polyline, Popup, useMap } from "react-leaflet";
 import { ranges } from "@/lib/constants/paths/ranges";
 import { path_335xx0, path_335xx1, path_336xx0, path_336xx1 } from "@/lib/constants/paths/cargo/path-[335xxx-336xxx]";
 import { path_2412x, path_4212x } from "@/lib/constants/paths/passenger/path-[2412x-4212x]";
 import { useEffect } from "react";
 import { LatLngTuple } from "leaflet";
+import { routeEndIcon, routeStartIcon } from "@/lib/constants";
 
 const RoutePathSpawn = ({ selectedTrain }: { selectedTrain: string }) => {
   let path: LatLngTuple[] | null = null;
@@ -62,7 +63,9 @@ const RoutePathSpawn = ({ selectedTrain }: { selectedTrain: string }) => {
   if (path) {
     return (
       <>
+        <Marker position={path[0]} icon={routeStartIcon} zIndexOffset={-100} />
         <Polyline pathOptions={{ color: "orange" }} positions={path} />
+        <Marker position={path[path.length - 1]} icon={routeEndIcon} zIndexOffset={-100} />
       </>
     );
   }

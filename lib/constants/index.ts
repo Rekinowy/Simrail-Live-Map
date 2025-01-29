@@ -329,3 +329,15 @@ export const newStationIcon = new Icon({
   iconAnchor: [10, 10],
   popupAnchor: [3, -12],
 });
+
+export const routeStartIcon = new Icon({
+  iconUrl: "/start-flag.svg",
+  iconSize: [32, 32],
+  iconAnchor: [6, 30],
+});
+
+export const routeEndIcon = new Icon({
+  iconUrl: "/end-flag.svg",
+  iconSize: [32, 32],
+  iconAnchor: [6, 30],
+});

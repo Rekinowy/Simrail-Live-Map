@@ -15,15 +15,15 @@ type ServerDataType = {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ServersList = ({ isModalOpen }: { isModalOpen: boolean }) => {
-  const servers = useSWR("https://panel.simrail.eu:8084/servers-open", fetcher, { refreshInterval: 2000 });
+  const servers = useSWR("https://panel.simrail.eu:8084/servers-open", fetcher, { refreshInterval: 10000 });
 
   return (
     <section
       className={`${
         servers.data?.data
-          ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full lg:mb-4 gap-4 md:gap-6"
+          ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-4 md:gap-6"
           : "flex w-full items-center justify-center"
-      } p-4 mb-10 min-h-[50%] max-w-screen-lg rounded-lg border border-light_primary/50 dark:border-primary shadow-lg bg-light_primary/30 dark:bg-primary/50 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-thin scrollbar-thumb-light_primary_dark dark:scrollbar-thumb-primary_dark/80   scrollbar-thumb-rounded-xl scrollbar-track-transparent ${
+      } p-4 mb-16 min-h-[50%] max-w-screen-lg rounded-lg border border-light_primary/50 dark:border-primary shadow-lg bg-light_primary/30 dark:bg-primary/50 cursor-default backdrop-blur-sm overflow-y-auto scrollbar-thin scrollbar-thumb-light_primary_dark dark:scrollbar-thumb-primary_dark/80 scrollbar-thumb-rounded-xl scrollbar-track-transparent ${
         isModalOpen && "hidden"
       }`}
     >
