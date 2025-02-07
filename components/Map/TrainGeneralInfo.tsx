@@ -39,6 +39,7 @@ const TrainGeneralInfo = ({
   const [isExpanded, setIsExpanded] = useState(false);
 
   const wagonsList = wagons.list;
+  console.log(wagonsList);
 
   let signalName = "";
   if (signal) {
@@ -153,14 +154,21 @@ const TrainGeneralInfo = ({
                       />
                     </button>
                     {isExpanded && (
-                      <ul className="text-primary_dark dark:text-gray-200 list-disc">
-                        {wagonsList.map((wagon: { name: string; count: number }) => {
+                      <ul className="text-primary_dark/90 dark:text-gray-200/90  list-disc">
+                        {wagonsList.map((wagon: { name: string; count: number; img: string }) => {
                           return (
-                            <li>
-                              <div className="flex">
-                                <p className="font-light w-8 lg:w-9">{wagon.count} &times;</p>
-                                <p>{wagon.name}</p>
-                              </div>
+                            <li className="flex">
+                              <p className="font-light w-8 lg:w-9">{wagon.count} &times;</p>
+                              <Tooltip
+                                content={<img width={128} src={`/wagons/${wagon.img}`} alt={wagon.name} />}
+                                delay={500}
+                                classNames={tooltipStyle}
+                                placement="left-start"
+                              >
+                                <p className="hover:text-primary_dark hover:dark:text-gray-200 cursor-help">
+                                  {wagon.name}
+                                </p>
+                              </Tooltip>
                             </li>
                           );
                         })}
@@ -168,9 +176,18 @@ const TrainGeneralInfo = ({
                     )}
                   </div>
                 ) : (
-                  <div className="flex text-primary_dark dark:text-gray-200 ">
+                  <div className="flex text-primary_dark/90 dark:text-gray-200/90">
                     <p className="dark:font-light w-8 lg:w-9 leading-[22px]">{wagonsList[0].count} &times;</p>
-                    <p className="leading-[22px]">{wagonsList[0].name}</p>
+                    <Tooltip
+                      content={<img width={128} src={`/wagons/${wagonsList[0].img}`} alt={wagonsList[0].name} />}
+                      delay={1000}
+                      classNames={tooltipStyle}
+                      placement="left-start"
+                    >
+                      <p className="leading-[22px] hover:text-primary_dark hover:dark:text-gray-200 cursor-help">
+                        {wagonsList[0].name}
+                      </p>
+                    </Tooltip>
                   </div>
                 )}
               </div>

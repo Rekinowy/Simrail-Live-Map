@@ -200,7 +200,7 @@ export const calculateRotationAngle = (prevPos: any, currentPos: any) => {
 };
 
 export const transformVehicles = (vehicles: string[]) => {
-  const wagons: string[] = [];
+  const wagons: { name: string; img: string }[] = []; // Zmieniono typ na obiekt z name i img
   const locomotives: string[] = [vehicles[0]];
   let totalWeight = trains[vehicles[0]]?.weight || 0;
   let totalLength = trains[vehicles[0]]?.length || 0;
@@ -218,8 +218,11 @@ export const transformVehicles = (vehicles: string[]) => {
       totalLength += trains[vehicle]?.length || 0;
     } else {
       const key = Object.keys(wagonNames).find((key) => vehicle.startsWith(key));
-      key && wagons.push(wagonNames[key].name || vehicle);
       if (key && wagonNames[key]) {
+        wagons.push({
+          name: wagonNames[key].name || vehicle,
+          img: wagonNames[key].img || "",
+        });
         totalWeight += wagonNames[key].weight || 0;
         totalLength += wagonNames[key].length || 0;
       }
@@ -228,10 +231,14 @@ export const transformVehicles = (vehicles: string[]) => {
 
   const wagonCounts: { [key: string]: number } = {};
   wagons.forEach((wagon) => {
-    wagonCounts[wagon] = (wagonCounts[wagon] || 0) + 1;
+    wagonCounts[wagon.name] = (wagonCounts[wagon.name] || 0) + 1;
   });
 
-  const transformedWagons = Object.entries(wagonCounts).map(([wagon, count]) => ({ name: wagon, count }));
+  const transformedWagons = Object.entries(wagonCounts).map(([wagon, count]) => ({
+    name: wagon,
+    count,
+    img: wagons.find((w) => w.name === wagon)?.img || "",
+  }));
 
   return { wagons: { list: transformedWagons, counter: wagons.length }, locomotives, totalWeight, totalLength };
 };

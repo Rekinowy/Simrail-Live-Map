@@ -11,6 +11,7 @@ export type TrainsType = {
 
 export type WagonInfo = {
   name: string;
+  img: string;
   length: number;
   weight: number;
 };
@@ -137,7 +138,7 @@ export type TrainGeneralType = {
   user: UserType;
   username: string;
   showSignalInfo: boolean;
-  wagons: { list: { name: string; count: number }[]; counter: number };
+  wagons: { list: { name: string; count: number; img: string }[]; counter: number };
   totalLength: number;
   totalWeight: number;
 };
