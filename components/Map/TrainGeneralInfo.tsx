@@ -179,7 +179,7 @@ const TrainGeneralInfo = ({
                   <div className="flex text-primary_dark/90 dark:text-gray-200/90">
                     <p className="dark:font-light w-8 lg:w-9 leading-[22px]">{wagonsList[0].count} &times;</p>
                     <Tooltip
-                      content={<img width={128} src={`/wagons/${wagonsList[0].img}`} alt={wagonsList[0].name} />}
+                      content={<img width={128} src={`/wagons${wagonsList[0].img}`} alt={wagonsList[0].name} />}
                       delay={1000}
                       classNames={tooltipStyle}
                       placement="left-start"
