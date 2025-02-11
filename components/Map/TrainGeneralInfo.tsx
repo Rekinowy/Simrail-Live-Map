@@ -39,7 +39,6 @@ const TrainGeneralInfo = ({
   const [isExpanded, setIsExpanded] = useState(false);
 
   const wagonsList = wagons.list;
-  console.log(wagonsList);
 
   let signalName = "";
   if (signal) {
