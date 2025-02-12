@@ -6,7 +6,7 @@ export const passengerEmuTrainsData = {
   "23909": { locos: ["EN57-650", "EN57-1331"], isDLC: false, spawnTime: "08:52", length: 128, weight: 253 },
   "23911": { locos: ["EN71-015"], isDLC: false, spawnTime: "09:52", length: 86, weight: 182 },
   "23913": { locos: ["EN57-1181"], isDLC: false, spawnTime: "10:52", length: 64, weight: 127 },
-  "23915": { locos: ["N96-001 Elf"], isDLC: false, spawnTime: "11:52", length: 42, weight: 83 },
+  "23915": { locos: ["EN96-001 Elf"], isDLC: false, spawnTime: "11:52", length: 42, weight: 83 },
   "23917": { locos: ["EN71-002"], isDLC: false, spawnTime: "12:52", length: 86, weight: 182 },
   "23919": { locos: ["EN71-004", "EN57-650"], isDLC: false, spawnTime: "13:52", length: 151, weight: 309 },
   "23921": { locos: ["EN57-1331", "EN57-1181"], isDLC: false, spawnTime: "14:52", length: 128, weight: 253 },
