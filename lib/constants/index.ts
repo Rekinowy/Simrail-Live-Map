@@ -41,6 +41,7 @@ export const trains: TrainsType = {
   "4E/EP07-135": { img: "/ep07-135.png", name: "EP07-135", length: 15, weight: 80 },
   "4E/EP07-174": { img: "/ep07-174.png", name: "EP07-174", length: 15, weight: 80 },
   "4E/EP08-001": { img: "/ep08-001.png", name: "EP08-001", length: 15, weight: 80 },
+  "4E/EP08-008": { img: "/ep08-008.png", name: "EP08-008", length: 15, weight: 80 },
   "4E/EP08-013": { img: "/ep08-013.png", name: "EP08-013", length: 15, weight: 80 },
   "201E/ET22-243": { img: "/et22-243.png", name: "ET22-243", length: 18.5, weight: 120 },
   "201E/ET22-256": { img: "/et22-256.png", name: "ET22-256", length: 18.5, weight: 120 },
