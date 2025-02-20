@@ -159,7 +159,7 @@ const TrainGeneralInfo = ({
                             <li className="flex">
                               <p className="font-light w-8 lg:w-9">{wagon.count} &times;</p>
                               <Tooltip
-                                content={<img width={128} src={`/wagons/${wagon.img}`} alt={wagon.name} />}
+                                content={<img width={128} src={`/wagons${wagon.img}`} alt={wagon.name} />}
                                 delay={500}
                                 classNames={tooltipStyle}
                                 placement="left-start"
@@ -198,11 +198,7 @@ const TrainGeneralInfo = ({
             <div className="border-t mt-4 mb-3 w-[95%] self-center opacity-30 border-primary dark:border-white" />
             <div className="flex gap-3 items-center">
               <FaUserAlt className="w-5 h-3.5 text-primary_dark dark:text-light_gray" />
-              {user.score === null ? (
-                <div className=" flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words">
-                  {username}
-                </div>
-              ) : (
+              {user.profileUrl ? (
                 <Link
                   className="group flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words hover:underline"
                   href={user.profileUrl}
@@ -210,6 +206,10 @@ const TrainGeneralInfo = ({
                 >
                   {username} <FiExternalLink className="w-2.5 h-5 opacity-50 group-hover:opacity-100" />
                 </Link>
+              ) : (
+                <div className=" flex gap-1.5 font-medium overflow-hidden text-overflow-ellipsis break-words">
+                  {username}
+                </div>
               )}
             </div>
             {user.distance && user.distance !== 0 && (
