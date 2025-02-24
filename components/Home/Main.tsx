@@ -6,9 +6,11 @@ import ServersList from "./ServersList";
 import SupportModal from "./SupportModal";
 import { MdEmail } from "react-icons/md";
 import ChangelogButton from "../UI/ChangelogButton";
+import InfoModal from "./InfoModal";
 
 const Main = ({ title }: { title: string }) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isInfoModalOpen, setInfoModalOpen] = useState(true);
 
   return (
     <main className="flex flex-col h-[100dvh] items-center p-4 md:p-8">
@@ -29,6 +31,7 @@ const Main = ({ title }: { title: string }) => {
         </a>
       </footer>
       {isModalOpen && <SupportModal setModalOpen={setModalOpen} />}
+      {isInfoModalOpen && <InfoModal setModalOpen={setInfoModalOpen} />}
     </main>
   );
 };
