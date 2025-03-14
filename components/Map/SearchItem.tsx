@@ -1,7 +1,9 @@
 import { SearchItemProps } from "@/lib/types/types";
+import { FaUserAlt } from "react-icons/fa";
 import { GiLever } from "react-icons/gi";
 
 const SearchItem = ({ item, setSelectedMarker, setSearchValue, setSelectedLocos }: SearchItemProps) => {
+  console.log(item);
   return (
     <li
       key={item.id}
@@ -29,9 +31,18 @@ const SearchItem = ({ item, setSelectedMarker, setSearchValue, setSelectedLocos 
             )}
           </div>
           <div className="flex gap-0.5 flex-col flex-shrink items-start max-w-[190px]">
-            <p className="text-sm font-medium dark:font-normal text-left">{item.label}</p>
+            <div>
+              <p className="text-sm font-medium dark:font-normal text-left">{item.label}</p>
+              <p className="text-[10px] dark:font-light text-left text-gray-600 dark:text-gray-400">{item.name}</p>
+            </div>
             {item.username && (
-              <p className="text-xs text-slate-950 dark:text-slate-200 dark:font-light truncate">{item.username}</p>
+              <>
+                <div className="border-t w-full border-primary/20 dark:border-white/20" />
+                <div className="flex gap-1 items-center">
+                  <FaUserAlt className="w-2 h-2 text-primary_dark dark:text-light_gray" />
+                  <p className="text-xs text-slate-950 dark:text-slate-200 dark:font-light truncate">{item.username}</p>
+                </div>
+              </>
             )}
           </div>
         </div>

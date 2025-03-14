@@ -67,6 +67,7 @@ export type SearchResultType = {
   label: string;
   username: string;
   image: string;
+  name?: string;
   type: "train" | "station";
 };
 

@@ -44,7 +44,7 @@ const RoutePath = ({ selectedTrain }: { selectedTrain: string }) => {
       </>
     );
   }
-  // return <Polyline pathOptions={{ color: "green" }} positions={testPath} />;
+  return <Polyline pathOptions={{ color: "green" }} positions={testPath} />;
 };
 
 export default RoutePath;

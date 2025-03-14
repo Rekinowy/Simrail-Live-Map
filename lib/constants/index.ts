@@ -22,10 +22,10 @@ export const restarts: Record<string, string[]> = {
 };
 
 export const trains: TrainsType = {
-  "Dragon2/ET25-002": { img: "/et25-002.png", name: "ET25-002 Dragon 2", length: 20, weight: 119 },
-  "Dragon2/E6ACTa-014": { img: "/e6acta-014.png", name: "E6ACTa-014 Dragon 2", length: 20, weight: 119 },
-  "Dragon2/E6ACTa-016": { img: "/e6acta-016.png", name: "E6ACTa-016 Dragon 2", length: 20, weight: 119 },
-  "Dragon2/E6ACTadb-027": { img: "/e6actadb-027.png", name: "E6ACTadb-027 Dragon 2", length: 20, weight: 119 },
+  "Dragon2/ET25-002": { img: "/et25-002.png", name: "ET25-002 Dragon 2", length: 20, weight: 120 },
+  "Dragon2/E6ACTa-014": { img: "/e6acta-014.png", name: "E6ACTa-014 Dragon 2", length: 20, weight: 120 },
+  "Dragon2/E6ACTa-016": { img: "/e6acta-016.png", name: "E6ACTa-016 Dragon 2", length: 20, weight: 120 },
+  "Dragon2/E6ACTadb-027": { img: "/e6actadb-027.png", name: "E6ACTadb-027 Dragon 2", length: 20, weight: 120 },
   "Traxx/Traxx": { img: "/e186-134.png", name: "E186-134 Traxx", length: 18, weight: 84 },
   "Traxx/E186-134": { img: "/e186-134.png", name: "E186-134 Traxx", length: 18, weight: 84 },
   "Traxx/E186-929": { img: "/e186-929.png", name: "E186-929 Traxx", length: 18, weight: 84 },
@@ -143,6 +143,9 @@ export const wagonNames: { [key: string]: WagonInfo } = {
   "412W": { name: "Eaos (412W)", img: "/412W.png", length: 14.05, weight: 20 },
   "424Z": { name: "Res (424Z)", img: "/424Z.png", length: 19.93, weight: 22 },
   "441V": { name: "Falns (441V)", img: "/441V.png", length: 13.5, weight: 26 },
+  "629Z/434Z": { name: "Sgns (434Z)", img: "/434Z.png", length: 13.5, weight: 26 },
+  "629Z/629Z": { name: "Sggrss (629Z)", img: "/629Z.png", length: 13.5, weight: 26 },
+  "629Z/230-01": { name: "Sgmmns-x (230-01)", img: "/230-01.png", length: 13.5, weight: 26 },
 
   "Z2/a9emnouz": { name: "A9emnouz (B91)", img: "/A9emnouz.png", length: 26.42, weight: 44 },
   "Z2/a9mnouz": { name: "A9mnouz (B91)", img: "/A9mnouz.png", length: 26.42, weight: 44 },

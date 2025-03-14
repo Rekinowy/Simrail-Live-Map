@@ -8,7 +8,7 @@ import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaUserAlt } from "react-icons/fa";
 import { trains } from "@/lib/constants";
 import { TrainMarkerProps } from "@/lib/types/types";
-import { calculateRotationAngle } from "@/lib/utils/utils";
+import { calculateRotationAngle, transformVehicles } from "@/lib/utils/utils";
 
 const TrainMarker = ({
   lat,
@@ -40,6 +40,8 @@ const TrainMarker = ({
   const prevPos = useRef({ lat, lng });
   const map = useMap();
   const isLocoSelected = selectedLocos.some((loco) => vehicles[0]?.includes(loco));
+  const vehicleData = transformVehicles(vehicles);
+  const locomotive = vehicleData.locomotives[0];
 
   const [hasPositionChanged, setHasPositionChanged] = useState(false);
   const [rotationAngle, setRotationAngle] = useState(0);
@@ -135,13 +137,13 @@ const TrainMarker = ({
         <Popup className="custom-popup" offset={[4, -14]} closeButton={false} autoPan={false}>
           <div className="flex gap-2 items-center">
             <div className="flex items-center w-[50px] h-[46px] brightness-125 dark:brightness-105">
-              <img src={"/trains" + trains[vehicles[0]]?.img} alt="train" width={50} height={40} />
+              <img src={"/trains" + trains[locomotive]?.img} alt="train" width={50} height={40} />
             </div>
             <div className="flex flex-col justify-center text-sm leading-5">
               <h1>
                 {trainName} <span className="font-bold">{trainNumber}</span>
               </h1>
-              <span className="text-xs">{trains[vehicles[0]]?.name}</span>
+              <span className="text-xs">{trains[locomotive]?.name}</span>
               {isDLC && (
                 <div className="border w-fit border-primary dark:border-light_primary_dark mt-1 bg-light_primary_dark dark:bg-primary_light px-[3px] rounded-[3px] text-[8px] leading-3 font-medium opacity-80">
                   DLC

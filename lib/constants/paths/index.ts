@@ -10,13 +10,12 @@ import { path_2412x, path_4212x } from "./passenger/path-[2412x-4212x]";
 import { path_2417x, path_4217x } from "./passenger/path-[2417x-4217x]";
 import { path_4012x, path_4067x } from "./passenger/path-[4012x-4067x]";
 import { path_4017x, path_4062x } from "./passenger/path-[4017x-4062x]";
-import { path_132xxx, path_142xxx } from "./cargo/path-[132xxx-142xxx]";
 import { path_146xxx, path_446xxx } from "./cargo/path-[146xxx-446xxx]";
 import { path_412xxx, path_413xxx } from "./cargo/path-[412xxx-413xxx]";
-import { path_649xxx, path_629xxx } from "./cargo/path-[649xxx-629xxx]";
+import { path_649xxx } from "./cargo/path-649xxx";
 import { path_1443xx, path_144xxx } from "./cargo/path-144xxx";
 import { path_243xxx } from "./cargo/path-243xxx";
-import { path_244xxx } from "./cargo/path-244xxx";
+import { path_242xxx } from "./cargo/path-242xxx";
 import { path_414xxx } from "./cargo/path-414xxx";
 import { path_4241xx, path_424xxx } from "./cargo/path-424xxx";
 import { path_441xxx } from "./cargo/path-441xxx";
@@ -33,6 +32,9 @@ import { path_321xx, path_231xx } from "./passenger/path-[231xx-321xx]";
 import { path_35xxx, path_53xxx } from "./passenger/path-[35xxx-53xxx]";
 import { path_45xxx, path_54xxx } from "./passenger/path-[54xxx-45xxx]";
 import { path_197xx, path_917xx } from "./passenger/path-[197xx-971xx]";
+import { path_132xxx } from "./cargo/path-132xxx";
+import { path_142xxx, path_4121xx } from "./cargo/path-[4121xx-142xxx]";
+import { path_422xxx } from "./cargo/path-422xxx";
 
 export const paths = {
   path_13xxx,
@@ -74,13 +76,12 @@ export const paths = {
   path_146xxx,
   path_446xxx,
   path_412xxx,
+  path_4121xx,
   path_413xxx,
   path_649xxx,
-  path_629xxx,
   path_144xxx,
   path_1443xx,
   path_243xxx,
-  path_244xxx,
   path_414xxx,
   path_424xxx,
   path_4241xx,
@@ -94,4 +95,6 @@ export const paths = {
   path_324xxx,
   path_444xxx,
   path_234xxx,
+  path_242xxx,
+  path_422xxx,
 };

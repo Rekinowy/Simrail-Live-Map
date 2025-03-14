@@ -21,7 +21,8 @@ export const filterSearchData = (
           id: train.id,
           label: train.number,
           username: train.user?.name || "",
-          image: `/trains${trains[train.vehicles[0]]?.img}`,
+          image: `/trains${trains[transformVehicles(train.vehicles).locomotives[0]]?.img}`,
+          name: trains[transformVehicles(train.vehicles).locomotives[0]]?.name,
           type: "train" as "train",
         }));
       searchResults = searchResults.concat(trainResults);
@@ -200,10 +201,11 @@ export const calculateRotationAngle = (prevPos: any, currentPos: any) => {
 };
 
 export const transformVehicles = (vehicles: string[]) => {
-  const wagons: { name: string; img: string }[] = []; // Zmieniono typ na obiekt z name i img
-  const locomotives: string[] = [vehicles[0]];
-  let totalWeight = trains[vehicles[0]]?.weight || 0;
-  let totalLength = trains[vehicles[0]]?.length || 0;
+  const wagons: { name: string; img: string }[] = [];
+  const firstLocoKey = Object.keys(trains).find((key) => vehicles[0].startsWith(key));
+  const locomotives: string[] = [firstLocoKey || vehicles[0]];
+  let totalWeight = firstLocoKey ? trains[firstLocoKey].weight : 0;
+  let totalLength = firstLocoKey ? trains[firstLocoKey].length : 0;
 
   vehicles.slice(1).forEach((vehicle, index) => {
     const isLocomotive =
@@ -213,9 +215,12 @@ export const transformVehicles = (vehicles: string[]) => {
       (vehicle.startsWith("4E") && index === 0);
 
     if (isLocomotive) {
-      locomotives.push(vehicle);
-      totalWeight += trains[vehicle]?.weight || 0;
-      totalLength += trains[vehicle]?.length || 0;
+      const locoKey = Object.keys(trains).find((key) => vehicle.startsWith(key));
+      locomotives.push(locoKey || vehicle);
+      if (locoKey) {
+        totalWeight += trains[locoKey].weight;
+        totalLength += trains[locoKey].length;
+      }
     } else {
       const key = Object.keys(wagonNames).find((key) => vehicle.startsWith(key));
       if (key && wagonNames[key]) {

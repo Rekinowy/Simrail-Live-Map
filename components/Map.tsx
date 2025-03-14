@@ -26,7 +26,6 @@ import ServerCounter from "./Map/ServerCounter";
 import CustomAttribution from "./UI/CustomAttribution";
 import SupportModal from "./Home/SupportModal";
 import RoutePathSpawn from "./Map/RoutePathSpawn";
-import InfoModal from "./Home/InfoModal";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 export default function Map({ code, locale }: { code: string; locale: string }) {
@@ -49,7 +48,6 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
   const [selectedTrainId, setSelectedTrainId] = useState<string | null>(null);
 
   const [isModalOpen, setModalOpen] = useLocalStorage("isModalOpen", true);
-  const [isInfoModalOpen, setInfoModalOpen] = useLocalStorage("isInfoModalOpen", true);
   const [showMarkerLabels, setShowMarkerLabels] = useLocalStorage("showMarkerLabels", true);
   const [showStationLabels, setShowStationLabels] = useLocalStorage("showStationLabels", true);
   const [trainLabelZoomLevel, setTrainLabelZoomLevel] = useLocalStorage("trainLabelZoomLevel", 12);
@@ -350,7 +348,6 @@ export default function Map({ code, locale }: { code: string; locale: string }) 
         />
       )}
       {isModalOpen && <SupportModal setModalOpen={setModalOpen} />}
-      {isInfoModalOpen && <InfoModal setModalOpen={setInfoModalOpen} />}
     </NextUIProvider>
   );
 }

@@ -3,7 +3,6 @@ import TrainInfoLite from "./TrainInfoLite";
 import { SlSpeedometer } from "react-icons/sl";
 import { RiMapPin2Fill, RiMapPin2Line } from "react-icons/ri";
 import { FaRoute, FaUserAlt } from "react-icons/fa";
-// import { BsCalendar2Week, BsCalendar2WeekFill } from "react-icons/bs";
 import { PiPath, PiPathBold } from "react-icons/pi";
 import { MdOutlinePushPin, MdPushPin } from "react-icons/md";
 import { trains } from "@/lib/constants";
@@ -42,6 +41,7 @@ const TrainDetailsLite = ({
   signalSpeed,
   signalDistance,
   showSignalInfo,
+  locomotives,
   wagons,
   totalLength,
   totalWeight,
@@ -49,6 +49,7 @@ const TrainDetailsLite = ({
   timetableIndex,
 }: TrainDetailsType & {
   username: string;
+  locomotives: string[];
   wagons: { list: { name: string; count: number }[]; counter: number };
   totalLength: number;
   totalWeight: number;
@@ -65,13 +66,13 @@ const TrainDetailsLite = ({
       <div className="flex">
         <div className="flex flex-col w-4/12 items-center justify-center">
           <div className="flex flex-col h-14 w-14 justify-center brightness-125 dark:brightness-105">
-            <img src={"/trains" + trains[vehicles[0]]?.img} alt="train" />
+            <img src={"/trains" + trains[locomotives[0]]?.img} alt="train" />
           </div>
           <div className="flex flex-col items-center leading-5">
             <h1 className="text-xs text-center">
               {trainName} <span className="font-bold">{trainNumber}</span>
             </h1>
-            <p className="text-center leading-3 text-[10px]">{trains[vehicles[0]]?.name}</p>
+            <p className="text-center leading-3 text-[10px]">{trains[locomotives[0]]?.name}</p>
           </div>
           {isDLC && (
             <Tooltip

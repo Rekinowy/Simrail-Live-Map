@@ -50,7 +50,7 @@ async function fetchTrainData(slug: string) {
   const trains = await trainResponse.json();
   const trainsData = trains.data;
 
-  const vehicleDLC = ["ET22", "406R", "441V"];
+  const vehicleDLC = ["ET22", "406R", "441V", "629Z/629Z", "629Z/434Z"];
 
   const processedData = await Promise.all(
     trainsData.map(async (train: Train) => {

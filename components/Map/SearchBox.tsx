@@ -94,7 +94,7 @@ const SearchBox = ({
       </div>
       {searchValue && (
         <div className="flex flex-col w-full max-h-[70dvh] mx-auto shadow-lg scroll-smooth overflow-hidden rounded-lg">
-          <ul className="flex flex-col overflow-y-auto z-10 scrollbar scrollbar-thumb-light_primary_light/60 scrollbar-track-light_primary/50 dark:scrollbar-thumb-primary_light dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
+          <ul className="flex flex-col gap-[1px] overflow-y-auto z-10 scrollbar scrollbar-thumb-light_primary_light/60 scrollbar-track-light_primary/50 dark:scrollbar-thumb-primary_light dark:scrollbar-track-primary/70 scrollbar-thumb-rounded-lg">
             {searchValue.length > 0 &&
               (filteredResults.length > 0 ? (
                 filteredResults.map((item) => {
